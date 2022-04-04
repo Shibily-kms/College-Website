@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <meta name="description"
+    content="Official website for Noorul huda Students' Association (NSA). Under the Majma'a Sharee-ath & Arts College (Wafy), Kavanur - Areekode,
+     You can evaluate the activities and services of our union through the website">
+  <meta name="author" content="Noorul huda Students' Association (NSA)">
+
+  {{!-- Icon , styleSheet and Javascripts --}}
+  <link rel="icon" href="/images/images/nsa-icon.png" type="png/jpg" sizes="16*16">
+  <link rel='stylesheet' href='/stylesheets/commen/media.css' />
+  <script src="/javascripts/javascript.js"></script>
+
+
+
+  {{!-- Google fonts --}}
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+  {{!-- Boostrap Icon --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+  {{!-- Jquary table --}}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+  {{!-- ajax --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  {{!-- Other --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.6/platform.min.js"></script>
+  <link rel="stylesheet" href="  https://printjs-4de6.kxcdn.com/print.min.css">
+  <script src="  https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
+</head>
+
+
+<body>
+
+  {{{body}}}
+
+  <script>
+
+    let Android = "Android"
+    Android = new RegExp('(\\w*' + Android + '\\w*)', 'gi');
+    let ios = "iphone"
+    ios = new RegExp('(\\w*' + ios + '\\w*)', 'gi');
+    var pho = document.getElementById('hi')
+    var AndroidMobile = platform.description.match(Android);
+    var iphone = platform.description.match(ios);
+    if (AndroidMobile) {
+      document.getElementById('mobile').href = "/stylesheets/group/media-mobile.css";
+
+    } else if (iphone) {
+      document.getElementById('mobile').href = "/stylesheets/group/media-mobile.css";
+
+    } else {
+
+
+    }
+
+  </script>
+</body>
+
+</html>

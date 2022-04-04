@@ -1,0 +1,138 @@
+/*  laptop & pc*/
+@media (min-width:1025px){
+    h1{
+        font-size: 40px;
+    }
+    h2{
+        font-size: 33px;
+    }
+    h3{
+        font-size: 25px;
+    }
+    h4{
+        font-size: 18px;
+    }
+    h5{
+        font-size: 14px;
+    }
+    h6{
+        font-size: 11px;
+    }
+    h7{
+        font-size: 09px;
+    }
+    p{
+        font-size: 12px;
+    }
+   
+
+
+}
+
+/* ipad Pro */
+@media (max-width:1024px){
+
+    h1{
+        font-size: 35px;
+    }
+    h2{
+        font-size: 29px;
+    }
+    h3{
+        font-size: 22px;
+    }
+    h4{
+        font-size: 16px;
+    }
+    h5{
+        font-size: 12px;
+    }
+    h6{
+        font-size: 9px;
+    }
+    h7{
+        font-size: 8px;
+    }
+    p{
+        font-size: 11px;
+    }
+    
+
+
+}
+
+@media (max-width:900px) {
+
+   
+
+
+
+}
+
+/* ipad */
+@media (max-width:768px) {
+    h1{
+        font-size: 32px;
+    }
+    h2{
+        font-size: 25px;
+    }
+    h3{
+        font-size: 20px;
+    }
+    h4{
+        font-size: 15px;
+    }
+    h5{
+        font-size: 10px;
+    }
+    h6{
+        font-size: 8px;
+    }
+    h7{
+        font-size: 7px;
+    }
+    p{
+        font-size: 10px;
+    }
+    
+
+
+}
+
+/* 500 */
+@media (max-width:500px)  {
+   
+
+}
+
+/* all mobile */
+@media (max-width:375px) {
+
+    h1{
+        font-size: 28px;
+    }
+    h2{
+        font-size: 22px;
+    }
+    h3{
+        font-size: 18px;
+    }
+    h4{
+        font-size: 14px;
+    }
+    h5{
+        font-size: 9px;
+    }
+    h6{
+        font-size: 7px;
+    }
+    h7{
+        font-size: 6px;
+    }
+    p{
+        font-size: 9px;
+    }
+  
+
+}
