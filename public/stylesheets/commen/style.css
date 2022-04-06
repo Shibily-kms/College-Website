@@ -1,0 +1,29 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat","Poppins",sans-serif;
+  }
+
+body{
+    margin: 0;
+    background-color: var(--background-color);
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container{
+    padding: 0;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-top: 59px;
+    padding-bottom: 20px;
+
+}
+figure{
+    margin: 0;
+}

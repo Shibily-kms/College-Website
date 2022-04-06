@@ -24,6 +24,14 @@
     p{
         font-size: 12px;
     }
+    .container{
+        padding: 0;
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-top: 59px;
+        padding-bottom: 20px;
+ 
+    }
    
 
 
@@ -55,6 +63,13 @@
     }
     p{
         font-size: 11px;
+    }
+    .container{
+        padding: 0;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-top: 58px;
+        padding-bottom: 20px;
     }
     
 
@@ -132,6 +147,13 @@
     }
     p{
         font-size: 9px;
+    }
+    .container{
+        padding: 0;
+        padding-left: 3%;
+        padding-right: 3%;
+        padding-top: 50px;
+        padding-bottom: 20px;
     }
   
 

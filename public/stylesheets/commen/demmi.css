@@ -1,0 +1,31 @@
+.btn-lg{
+    border: none;
+    font-size: 16px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+.hover-fill-dr{
+    background: none;
+    border: solid var(--color-one) 2px;
+    color: var(--color-one);
+}
+.hover-fill-dr:hover{
+    background-color: var(--color-one);
+    border: solid var(--color-one) 2px;
+    color: var(--color-white);
+}
+.hover-fill-red{
+    background: none;
+    border: solid var(--color-red) 2px;
+    color: var(--color-red);
+}
+.hover-fill-red:hover{
+    background-color: var(--color-red);
+    border: solid var(--color-red) 2px;
+    color: var(--color-white) ;
+}

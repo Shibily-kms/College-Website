@@ -1,0 +1,13 @@
+.admin-eidt{
+    background-color: var(--color-c-white);
+    color: var(--color-c-black);
+    padding: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 22px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}

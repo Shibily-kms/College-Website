@@ -1,0 +1,161 @@
+<header>
+      <a href="#" class="logo"><img src="/images/icons/nsa-online.png" alt=""></a>
+      <div id="navigation">
+        <ul class="menu">
+          <div class="close-btn"></div>
+          <li class="menu-item"><a href="#">Home</a></li>
+          <li class="menu-item">
+            <a class="sub-btn" href="#">College <i class="fas fa-angle-down"></i></a>
+            <ul class="sub-menu">
+              <li class="sub-item"><a href="#">Our Teachers</a></li>
+              <li class="sub-item"><a href="#">Our Leaders</a></li>
+              <li class="sub-item"><a href="#">Our Faculty</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a class="sub-btn" href="#">Union <i class="fas fa-angle-down"></i></a>
+            <ul class="sub-menu">
+
+              <li class="sub-item more">
+                <a class="more-btn" href="#">NSA <i class="fas fa-angle-right"></i></a>
+                <ul class="more-menu">
+                  <li class="more-item"><a href="#">Fine arts</a></li>
+                  <li class="more-item"><a href="#">Literary wing</a></li>
+                  <li class="more-item"><a href="#">Medical board</a></li>
+                  <li class="more-item"><a href="#">Research cell</a></li>
+                  <li class="more-item"><a href="#">PRO & It nob</a></li>
+                  <li class="more-item"><a href="#">Garden committe</a></li>
+                  <li class="more-item"><a href="#">Library wing</a></li>
+                  <li class="more-item"><a href="#">Social affirs</a></li>
+                </ul>
+              </li>
+
+              <li class="sub-item more">
+                <a class="more-btn" href="#">SKSSF <i class="fas fa-angle-right"></i></a>
+                <ul class="more-menu">
+                  <li class="more-item"><a href="#">Fund</a></li>
+                  <li class="more-item"><a href="#">Store</a></li>
+                </ul>
+              </li>
+
+              <li class="sub-item"><a href="#">Class unions</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a class="sub-btn" href="#">Updates <i class="fas fa-angle-down"></i></a>
+            <ul class="sub-menu">
+              <li class="sub-item"><a href="#">Notifications</a></li>
+              <li class="sub-item"><a href="#">News</a></li>
+              <li class="sub-item"><a href="#">Status frame</a></li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a class="sub-btn" href="#">About <i class="fas fa-angle-down"></i></a>
+            <ul class="sub-menu">
+              <li class="sub-item"><a href="#">Gallery</a></li>
+              <li class="sub-item"><a href="#">Contact us</a></li>
+            
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a class="sub-btn" href="#"><i id="theam-icon" {{#if nsaWebDarkTheme}}class="bi bi-moon-fill"{{else}}class="bi bi-brightness-high-fill"{{/if}}></i> Theme <i class="fas fa-angle-down"></i></a>
+            <ul class="sub-menu">
+              <li class="sub-item" id="light"><a href="#" onclick="toLight()"><i class="bi bi-brightness-high-fill"></i> Light</a></li>
+              <li class="sub-item" id="dark"><a onclick="toDark()"><i class="bi bi-moon-fill"></i> Dark </a></li>
+            
+            </ul>
+          </li>
+           <li class="menu-item"><a href="#"><i class="bi bi-search"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="menu-btn"></div>
+    </header>
+
+    
+    <script type="text/javascript">
+    //jquery for toggle dropdown menus
+    $(document).ready(function(){
+      //toggle sub-menus
+      $(".sub-btn").click(function(){
+        $(this).next(".sub-menu").slideToggle();
+      });
+
+      //toggle more-menus
+      $(".more-btn").click(function(){
+        $(this).next(".more-menu").slideToggle();
+      });
+    });
+
+    //javascript for the responsive navigation menu
+    var menu = document.querySelector(".menu");
+    var menuBtn = document.querySelector(".menu-btn");
+    var closeBtn = document.querySelector(".close-btn");
+
+    menuBtn.addEventListener("click", () => {
+      menu.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      menu.classList.remove("active");
+    });
+
+    //javascript for the navigation bar effects on scroll
+    window.addEventListener("scroll", function(){
+      var header = document.querySelector("header");
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+    </script>
+
+
+    
+<script>
+    var light = document.getElementById('light')
+    var dark = document.getElementById('dark')
+    var theme = document.getElementById('theme-change')
+    var div = document.getElementById('theam-icon')
+
+
+    function toLight() {
+        theme.href = '/stylesheets/root/light-theme.css'
+        light.className = 'sub-item nav-active'
+        dark.className = 'sub-item  '
+        div.className = 'bi bi-brightness-high-fill'
+
+        $.ajax({
+            url: '/change-theme',
+            data: {
+                theme : "light"
+            },
+            method: 'post',
+            success: () => {
+             alert('change')
+            }
+        })
+        
+    }
+
+
+
+    function toDark() {
+        theme.href = '/stylesheets/root/dark-theme.css'
+        dark.className = 'sub-item nav-active'
+        light.className = 'sub-item'
+        div.className = 'bi bi-moon-fill'
+
+        $.ajax({
+            url: '/change-theme',
+            data: {
+                theme : "dark"
+            },
+            method: 'post',
+            success: () => {
+              alert('change')
+            }
+        })
+
+    }
+
+</script>
+
+  

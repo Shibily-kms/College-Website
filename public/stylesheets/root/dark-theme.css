@@ -1,3 +1,26 @@
-:root{
-   --background-color : black;
+img {
+   opacity: .75;
+   transition: opacity .5s ease-in-out;
+   -webkit-transition: opacity .5s ease-in-out;
+   -moz-transition: opacity .5s ease-in-out;
+   -ms-transition: opacity .5s ease-in-out;
+   -o-transition: opacity .5s ease-in-out;
 }
+
+
+:root{
+   --background-color : rgb(27, 27, 27);
+    --color-one : rgb(0, 0, 0);
+    --color-one-light1:  rgb(54, 54, 54);
+    --color-one-light2: rgb(94, 94, 94);
+    --color-white : white;
+    --color-white-light1 : rgba(207, 207, 207, 0.658);
+    --color-red: rgb(212, 25, 0);
+    --color-dark : #000116;
+    --color-c-white-light1: rgba(87, 87, 87, 0.411);
+    --color-c-white: black;
+    --color-c-black: white;
+    --shadow-c-white : 0 5px 25px rgb(0 0 0 / 50%);
+    --shadow-white : 0px -30px 5px -30px rgba(255, 255, 255, 0.2)
+}
+

@@ -1,3 +1,15 @@
 :root{
     --background-color : rgb(255, 255, 255);
+    --color-one : teal;
+    --color-one-light1:  rgb(1, 139, 139);
+    --color-one-light2: #4c9e9e;
+    --color-white : white;
+    --color-white-light1 : rgba(255, 255, 255, 0.658);
+    --color-red: rgb(212, 25, 0);
+    --color-dark : #000116;
+    --color-c-white-light1: rgba(255, 255, 255, 0.37);
+    --color-c-white: white;
+    --color-c-black: black;
+    --shadow-c-white : 0 5px 25px rgb(0 0 0 / 20%);
+    --shadow-white : 0px -30px 5px -30px rgba(255, 255, 255, 0.2)
 }
