@@ -9,6 +9,7 @@ img {
 
 
 :root{
+   /* color */
    --background-color : rgb(27, 27, 27);
     --color-one : rgb(0, 0, 0);
     --color-one-light1:  rgb(54, 54, 54);
@@ -20,6 +21,14 @@ img {
     --color-c-white-light1: rgba(87, 87, 87, 0.411);
     --color-c-white: black;
     --color-c-black: white;
+    --color-c-dark : rgb(134, 134, 134);
+    --color-two : rgb(95, 136, 12 ,.8) ;
+    --header-line-color : rgba(110, 110, 110, 0.404);
+    --color-c-green-light1 : rgba(151, 151, 151, 0.616);
+    --color-c-blue : rgb(40, 121, 228);
+
+
+    /* shadow */
     --shadow-c-white : 0 5px 25px rgb(0 0 0 / 50%);
     --shadow-white : 0px -30px 5px -30px rgba(255, 255, 255, 0.2)
 }

@@ -1,0 +1,95 @@
+/*  laptop & pc*/
+@media (min-width:1025px){
+  
+
+}
+
+/* ipad Pro */
+@media (max-width:1024px){
+  .news-div .news-item{
+    width: 50%;
+    
+
+  }
+ 
+
+}
+
+@media (max-width:900px) {
+
+   
+
+
+
+}
+
+/* ipad */
+@media (max-width:768px) {
+    
+  .four-links{
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .four-links .link-div{
+    
+    display: flex;
+    float: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: none;
+    padding: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: auto;
+    
+}
+  .four-links .link-div i{
+    font-size: 20px;
+    border: none;
+   padding: none;
+}
+  .four-links .link-div h4{
+    margin-left: 20px;
+    margin-top: 0;
+    
+  }
+  .demmi-div{
+    display: none;
+  }
+
+    
+
+
+}
+
+/* 500 */
+@media (max-width:500px)  {
+  .news-div .news-item{
+    width: 100%;
+    padding: 0;
+    padding-top: 15px;
+
+  }
+  .seemore a{
+    width: 100%;
+  }
+
+}
+
+/* all mobile */
+@media (max-width:375px) {
+
+ 
+  
+
+}

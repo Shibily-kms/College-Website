@@ -4,12 +4,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat","Poppins",sans-serif;
-  }
+}
 
 body{
     margin: 0;
     background-color: var(--background-color);
     box-sizing: border-box;
+    font-family: "Montserrat","Poppins",sans-serif;
 }
 
 a {
@@ -24,6 +25,24 @@ a {
     padding-bottom: 20px;
 
 }
+.home-container{
+    padding: 0;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 20px;
+
+}
+
 figure{
     margin: 0;
 }
+
+::selection {
+    color: var(--color-white);
+    background: var(--color-c-green-light1);
+  }
+
+  ::-moz-selection { /* Code for Firefox */
+    color: red;
+    background: yellow;
+  }

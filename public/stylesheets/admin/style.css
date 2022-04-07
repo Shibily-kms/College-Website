@@ -1,6 +1,6 @@
 .admin-eidt{
-    background-color: var(--color-c-white);
-    color: var(--color-c-black);
+    color: var(--color-c-white);
+    background-color: var(--color-c-black);
     padding: 10px;
     padding-left: 12px;
     padding-right: 12px;
@@ -10,4 +10,8 @@
     -moz-border-radius: 100px;
     -ms-border-radius: 100px;
     -o-border-radius: 100px;
+    box-shadow: var(--shadow-c-white);
+}
+.admin-eidt i{
+    font-weight: normal;
 }

@@ -48,8 +48,19 @@ header  #navigation .menu{
   margin: 20px;
   padding: 25px 0;
 }
+.menu-item > span{
+  color: var(--color-white);
+  font-size: 1em;
+  text-decoration: none;
+  margin: 20px;
+  padding: 25px 0;
+}
 
 .menu-item > a:hover{
+  color: var(--color-white-light1);
+  transition: 0.3s;
+}
+.menu-item > span:hover{
   color: var(--color-white-light1);
   transition: 0.3s;
 }
@@ -87,6 +98,12 @@ header.sticky .menu-item .sub-menu{
 }
 
 .menu-item .sub-menu .sub-item a{
+  color: var(--color-white);
+  font-size: 1em;
+  text-decoration: none;
+  padding: 15px 30px;
+}
+.menu-item .sub-menu .sub-item span{
   color: var(--color-white);
   font-size: 1em;
   text-decoration: none;
@@ -222,11 +239,12 @@ header.sticky .menu-item .sub-menu{
 
   .close-btn{
     position: absolute;
-    background: url(/images/icons/nsa-icon.png) no-repeat;
+    background: url(/images/icons/close-icon.png) no-repeat;
     width: 40px;
     height: 40px;
     background-size: 25px;
     background-position: center;
+    
     top: 0;
     left: 0;
     margin: 25px;
@@ -234,7 +252,7 @@ header.sticky .menu-item .sub-menu{
   }
 
   .menu-btn{
-    background: url(/images/icons/nsa-icon.png) no-repeat;
+    background: url(/images/icons/menu-icon.png) no-repeat;
     width: 40px;
     height: 40px;
     background-size: 30px;
