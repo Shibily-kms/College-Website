@@ -10,7 +10,7 @@ const verifyAdminLogin = (req, res, next) => {
     if (req.session.NSAWEBADMIN) {
       next()
     } else {
-      res.redirect('/admin/singin')
+      res.redirect('/admin/signin')
     }
   };
 
@@ -31,12 +31,16 @@ router.get('/', verifyAdminLogin,  (req, res, next)=> {
 // signin and singout
 router.get('/signin', (req,res)=>{
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  console.log('1');
   if(req.session.NSAWEBADMIN){
+    console.log('2');
     res.redirect('/admin')
   }else if(req.session.Error){
+    console.log('3');
     res.render('admin/signin', { title: 'Admin panel', nsaWebDarkTheme,"Error":req.session.Error })
     req.session.Error = false
   }else{
+    console.log('4');
     res.render('admin/signin', {title : 'Admin panel', nsaWebDarkTheme})
   }
 })
