@@ -3,7 +3,7 @@
   
   .slider{
     position: relative;
-    background: var(--color-dark);
+    background: var(--color-black-light-1);
     width: 100%;
     height: auto;
     overflow: hidden;
@@ -28,11 +28,15 @@
     height: 100%;
     object-fit: cover;
   }
-  
+
   .slider .slide .info{
     position: absolute;
     color: var(--color-c-black);
-    background: var(--color-c-white-light1);
+    background-color: var(--color-slider-info) ;
+    
+    
+    
+    
     width: 50%;
     bottom: 70px;
     margin-left: 50px;
@@ -44,6 +48,7 @@
   .slider .slide .info h2{
     font-size: 2em;
     font-weight: 800;
+    
   }
   
   .slider .slide .info p{
@@ -73,7 +78,7 @@
     z-index: 2;
     font-size: 2em;
     color: var(--color-c-black);
-    background: var(--color-c-white-light1);
+    background: var(--color-slider-info);
     padding: 10px;
     cursor: pointer;
   }
@@ -97,7 +102,7 @@
   
   .navigation-visibility .slide-icon{
     z-index: 1;
-    background:var(--color-c-white-light1);
+    background:var(--color-slider-info);
     width: 10px;
     height: 10px;
     transform: translateY(-50px);
@@ -116,7 +121,7 @@
 }
   
   .navigation-visibility .slide-icon.active{
-    background: var(--color-one);
+    background: var(--color-c-blue-1);
   }
   
   @media (max-width: 900px){
@@ -152,26 +157,29 @@
   /* Contents  */
   .content-div{
     padding-top: 20px;
-    border-bottom: 1px dashed var(--header-line-color);
-    padding-bottom: 20px;
     position: relative;
+    overflow: hidden;
   }
   .content-div .header{
     font-family: "Poppins";
     font-weight: bold;
-    color: var(--color-c-dark);
+    
+    color: var(--color-c-white-light-8);
     position: relative;
   }
-  .content-div .header-line{
+  .content-div .header::after{
+    content: "";
     width: 100%;
     height: 1px;
-    background-color: var(--header-line-color);
-    bottom: 5px;
+    background-color: var(--color-c-white-light-4);
+    bottom: 10px;
     position: absolute;
+    margin-left: 4px;
   }
 
+
   .content-div .header .first-word{
-    color: var(--color-two);
+    color: var(--color-rose-1);
     font-family: "Poppins";
     font-weight: bold;
 
@@ -179,6 +187,7 @@
 
   .content-div  p{
     color: var(--color-c-black);
+    margin-bottom: 12px;
     text-align: justify;
     line-height: 1.5;
     text-indent: 50px;
@@ -195,9 +204,9 @@
   }
 
   .four-links .link-div{
-    background-color: var(--color-two);
+    background-color: var(--color-rose-1);
     color: var(--color-white);
-    border: 10px solid var(--background-color);
+    border: 10px solid var(--color-white-2);
     text-align: center;
     width: 25%;
     float: left;
@@ -245,7 +254,7 @@
   }
   .news-div .news-item img{
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
     height: auto;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -253,11 +262,22 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+.news-div .news-item div{
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
 .news-div .news-item h4{
   margin-top: 10px;
   text-align: center;
-  color: var(--color-c-blue);
-  font-family: "Gayathri";
+  color: var(--color-rose-light-3);
+  font-family: "Manjari";
   font-weight:bold;
   
 }
@@ -266,13 +286,14 @@
   text-align: justify;
   line-height: 1.5;
   text-indent: 0;
-  font-family: "Gayathri";
-  font-weight:bold;
+  font-family: "Manjari";
+  
 
 }
 .news-div .news-item button{
   margin-top: 15px;
 }
+
 .seemore{
   display: flex;
   justify-content: center;

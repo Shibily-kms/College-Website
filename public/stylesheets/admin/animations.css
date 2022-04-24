@@ -1,0 +1,26 @@
+
+@keyframes admin-alert {
+    0%{
+        width: 0;
+        bottom: 80px;
+    }
+    10%{
+       width: 600px;
+       bottom: 80px;
+    }
+
+    75%{
+        bottom: 80px;
+    }
+    90%{
+        width: 600px;
+        bottom: 80px;
+    }
+    100%{
+        
+        display: none;
+        bottom: 80px;
+        width: 0;
+       
+}
+  }

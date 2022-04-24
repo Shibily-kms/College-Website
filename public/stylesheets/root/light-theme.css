@@ -1,24 +1,141 @@
 :root{
-    /* color */
-    --background-color : rgb(255, 255, 255);
-    --color-one : rgb(1, 38, 87);
-    --color-one-light1:  rgb(1, 57, 131);
-    --color-one-light2: rgb(5, 78, 173);
+    
+    /* Our Blue */
+    --color-blue-1 : #012657;
+    --color-blue-2 : #011d42;
+    --color-blue-3 : #011b3d;
+    /*  */
+    --color-blue-light-1:  #01275a; 
+    --color-blue-light-2:  #013983; /*lll*/
+    --color-blue-light-3:  #003172; 
+    --color-blue-light-4:  #003c8b; 
+    --color-blue-light-5:  #004bad; 
+    --color-blue-light-6:  #0057c9; 
+    --color-blue-light-7:  #0266e9; 
+    --color-blue-light-8:  #0873ff; 
+    --color-blue-light-9:  #2282ff; 
+    --color-blue-light-10: #3b90ff; 
+    --color-blue-light-11: #569fff; 
+    --color-blue-light-12: #7ab3ff; 
+    
+    /* Our Rose */
+    --color-rose-1 : #af0259; /*lll*/
+    --color-rose-2 : #910048;
+    --color-rose-3 : #700038;
+    --color-rose-4 : #520029;
+    /*  */
+    --color-rose-light-1 : #a50052; 
+    --color-rose-light-2 : #c50163; 
+    --color-rose-light-3 : #e40072; /*lll*/
+    --color-rose-light-4 : #ff0180; 
+    --color-rose-light-5 : #ff198c; 
+    --color-rose-light-6 : #ff389b; 
+    --color-rose-light-7 : #ff55aa; 
+    --color-rose-light-8 : #ff6fb7; 
+    --color-rose-light-9 : #ff90c7; 
+    --color-rose-light-10 : #ffb0d8; 
+    --color-rose-light-11 : #ffcde6; 
+
+    /* Our White */
     --color-white : white;
-    --color-white-light1 : rgba(255, 255, 255, 0.658);
-    --color-red: rgb(212, 25, 0);
-    --color-dark : #000116;
-    --color-c-white-light1: rgba(255, 255, 255, 0.37);
+
+    /* Our Black */
+    --color-black-light-1 : #171717;
+    --color-black-light-2 : #2E2E2E;
+    --color-black-light-3 : #464646;
+    --color-black-light-4 : #5D5D5D;
+    --color-black-light-5 : #747474;
+    --color-black-light-6 : #8B8B8B;
+    --color-black-light-7 : #A2A2A2;
+    --color-black-light-8 : #B9B9B9;
+    --color-black-light-9 : #D1D1D1;
+    --color-black-light-10 : #E8E8E8;
+    --color-black-light-11 : #f7f7f7;
+
+    /* .......... Changes............... */
+    /* Our Change Blue */
+    --color-c-blue-1 : #012657;
+    --color-c-blue-2 : #011d42;
+    --color-c-blue-3 : #011b3d;
+
+    
+    --color-c-blue-light-1:  #01275a; 
+    --color-c-blue-light-2:  #013983; /*lll*/
+    --color-c-blue-light-3:  #003172; 
+    --color-c-blue-light-4:  #003c8b; 
+    --color-c-blue-light-5:  #004bad; /*lll*/
+    --color-c-blue-light-6:  #0057c9; 
+    --color-c-blue-light-7:  #0266e9; 
+    --color-c-blue-light-8:  #0873ff; 
+    --color-c-blue-light-9:  #2282ff; 
+    --color-c-blue-light-10: #3b90ff; 
+    --color-c-blue-light-11: #569fff; 
+    --color-c-blue-light-12: #7ab3ff; 
+   
+    /* Our Change Rose */
+    
+    --color-c-rose-light-1 : #a50052; 
+    --color-c-rose-light-2 : #c50163; 
+    --color-c-rose-light-3 : #e40072; /*lll*/
+    --color-c-rose-light-4 : #ff0180; 
+    --color-c-rose-light-5 : #ff198c; 
+    --color-c-rose-light-6 : #ff389b; 
+    --color-c-rose-light-7 : #ff55aa; 
+    --color-c-rose-light-8 : #ff6fb7; 
+    --color-c-rose-light-9 : #ff90c7; 
+    --color-c-rose-light-10 : #ffb0d8; 
+    --color-c-rose-light-11 : #ffcde6; 
+
+    /*  */
+    --color-c-rose-yellow-light-1 : #a50052; 
+    --color-c-rose-yellow-light-2 : #c50163; 
+    --color-c-rose-yellow-light-3 : #e40072; /*lll*/
+    --color-c-rose-yellow-light-4 : #ff0180; 
+    --color-c-rose-yellow-light-5 : #ff198c; 
+    --color-c-rose-yellow-light-6 : #ff389b; 
+    --color-c-rose-yellow-light-7 : #ff55aa; 
+    --color-c-rose-yellow-light-8 : #ff6fb7; 
+    --color-c-rose-yellow-light-9 : #ff90c7; 
+    --color-c-rose-yellow-light-10 : #ffb0d8; 
+    --color-c-rose-yellow-light-11 : #ffcde6; 
+
+    /* Our Change White */
     --color-c-white: white;
+    
+    /*  */
+    --color-white-1 : #ffffff;
+    --color-white-2 : #ffffff;
+    --color-white-3 : #ffffff;
+    --color-white-4 : #ffffff;
+
+    /*  */
+    --color-c-white-light-1 : #f7f7f7;
+    --color-c-white-light-2 : #f1f1f1;
+    --color-c-white-light-3 : #E8E8E8;
+    --color-c-white-light-4 : #dddddd;
+    --color-c-white-light-5 : #D1D1D1;
+    --color-c-white-light-6 : #B9B9B9;
+    --color-c-white-light-7 : #A2A2A2;
+    --color-c-white-light-8 : #8B8B8B;
+    --color-c-white-light-9 : #747474;
+    --color-c-white-light-10 : #5D5D5D;
+    --color-c-white-light-11 : #464646;
+    --color-c-white-light-12 : #2E2E2E;
+    --color-c-white-light-13 : #171717;
+
+    /* Our Change Black */
     --color-c-black: black;
-    --color-c-dark : rgb(56, 56, 56);
-    --color-two : rgb(61, 114, 0);
-    --header-line-color : rgba(110, 110, 110, 0.404);
-    --color-c-green-light1 : rgb(116, 148, 56);
-    --color-c-blue : rgb(1, 57, 131);
 
+    /* Our Color */
+    --color-red-1: rgb(223, 0, 0);
+    --color-green-1: rgb(17, 129, 0);
+    --color-slider-info : rgba(255, 255, 255, 0.37);
 
-    /* shadow */
     --shadow-c-white : 0 5px 25px rgb(0 0 0 / 20%);
+    --shadow-c-white2 : 0 5px 25px rgba(0, 0, 0, 0.363);
     --shadow-white : 0px -30px 5px -30px rgba(255, 255, 255, 0.2);
+
+
+
+
 }

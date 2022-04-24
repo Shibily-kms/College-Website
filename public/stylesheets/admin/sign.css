@@ -1,0 +1,91 @@
+.admin-login{
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
+}
+.admin-login>.signin{
+    background-color: var(--color-white-3);
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    box-shadow: var(--shadow-c-white);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.admin-login>.signin>.header{
+    
+    position: relative;
+    padding-top: 100px;
+    border-bottom: solid 1px var(--color-c-white-light-4);
+    
+}
+.admin-login>.signin>.header>img{
+    width: 100px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+}
+.admin-login>.signin>.header h4{
+    text-align: center;
+    margin-top: 4px;
+    font-family: "Poppins";
+    font-weight: 600;
+    color: var(--color-c-rose-yellow-light-2);
+    margin-bottom: 13px;  
+}
+
+.admin-login>.signin>.content>{
+    margin-top: 20px;
+}
+
+.admin-login>.signin>.content>form>input{
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid var(--color-c-black);
+    margin-top: 3px;
+    color: var(--color-c-white-light-7);
+}
+.admin-login>.signin>.content>form :nth-child(2){
+    margin-bottom: 15px;
+}
+
+.admin-login>.signin>.content>form>label{
+    color: var(--color-c-black);
+    font-size: 14px;
+}
+.admin-login>.signin>.content>form>a{
+    font-size: 12px;
+    color: var(--color-rose-light-3);
+}
+.admin-login>.signin>.content>form button{
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    background-color: var(--color-rose-1);
+    color: var(--color-white-1);
+}
+
+.admin-login>.signin>.content>form button:hover{
+    background-color: var(--color-rose-2);
+}

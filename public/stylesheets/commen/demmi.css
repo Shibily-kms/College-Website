@@ -43,11 +43,164 @@
 
 .hover-fill-grn{
     background: none;
-    border: solid var(--color-two) 2px;
-    color: var(--color-two);
+    border: solid var(--color-rose-light-3) 2px;
+    color: var(--color-rose-light-3);
 }
 .hover-fill-grn:hover{
-    background-color: var(--color-two);
-    border: solid var(--color-two) 2px;
+    background-color: var(--color-rose-light-3);
+    border: solid 2px var(--color-rose-light-3) ;
     color: var(--color-c-white);
 }
+
+/* Inputs */
+.text-input{
+    outline: none;
+    padding: 10px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border: none;
+    background: none;
+}
+
+  /* main title demmi */
+  .main-title{
+    width: 100%;
+    height: 300px;
+   
+    margin-top: 75px;
+    -webkit-box-shadow: inset 1px -112px 76px -45px var(--color-white-2);
+    -moz-box-shadow: inset 1px -112px 76px -45px var(--color-white-2);
+    box-shadow: inset 1px -112px 76px -45px var(--color-white-2);
+    overflow: hidden;
+    position: relative;
+    
+}
+
+.main-title h1{
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    color: var(--color-white);
+    
+}
+
+
+/* Profile demmi */
+.four-profile{
+    display: flex;   
+    flex-wrap: wrap; 
+    width: 100%;
+    margin-top: -150px;
+}
+
+.four-profile .profile{
+    padding: 15px;
+    box-sizing: border-box;
+    width: 25%;
+}
+.four-profile .fifteen-profile{
+   
+    width: 50%;
+}
+.four-profile .profile>div{
+    padding: 10px;
+    background-color: var(--color-white-3);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    position: relative;
+    margin-top: 95px;
+    box-shadow: var(--shadow-c-white2);
+}
+
+
+.four-profile .profile .image{
+   
+    display: flex;
+    justify-content: center;
+    margin-top: -95px;
+    
+    
+    
+}
+
+.four-profile .profile .image img{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    box-shadow: var(--shadow-c-white);
+    opacity: 1;
+    
+}
+.four-profile .profile .image img:hover{
+    animation: ImageRotate 2s  ease-in;
+    -webkit-animation: ImageRotate 2s  ease-in;
+}
+
+.four-profile .profile .content {
+    text-align: center;
+    margin-top: 13px;
+}
+.four-profile .profile .content h4{
+    color: var(--color-blue-light-2);
+    font-family: "Poppins";
+}
+.four-profile .profile .content :nth-child(2){
+    color: var(--color-rose-light-7);
+    font-weight: bold;
+    font-style: italic;
+    
+}
+.four-profile .profile .content hr{
+    opacity: .4;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    
+}
+.four-profile>.profile>.content>:nth-child(4),:nth-child(5){
+    color: var(--color-c-black);
+   
+    
+}
+
+/* Alert */
+
+.error-alert{
+    background-color:  var(--color-red-1);
+    color: var(--color-c-white);
+}
+.error-alert>div>.icon>div>i{
+    color:  var(--color-red-1);
+    
+}
+.error-alert>div>.icon>div{
+    background-color: var(--color-c-white);
+}
+
+/*  */
+.success-alert{
+    background-color:  var(--color-green-1);
+    color: var(--color-c-white);
+}
+.success-alert>div>.icon>div>i{
+    color:  var(--color-green-1);
+    
+}
+.success-alert>div>.icon>div{
+    background-color: var(--color-c-white);
+}
+

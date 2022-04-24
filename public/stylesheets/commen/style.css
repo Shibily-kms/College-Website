@@ -8,9 +8,11 @@
 
 body{
     margin: 0;
-    background-color: var(--background-color);
+    
+    background-color: var(--color-white-2);
     box-sizing: border-box;
     font-family: "Montserrat","Poppins",sans-serif;
+    min-width: 275px;
 }
 
 a {
@@ -21,7 +23,7 @@ a {
     padding: 0;
     padding-left: 7%;
     padding-right: 7%;
-    padding-top: 59px;
+    
     padding-bottom: 20px;
 
 }
@@ -39,10 +41,42 @@ figure{
 
 ::selection {
     color: var(--color-white);
-    background: var(--color-c-green-light1);
+    background: var(--color-c-rose-light-6);
   }
 
   ::-moz-selection { /* Code for Firefox */
-    color: red;
-    background: yellow;
+    color: var(--color-white);
+    background: var(--color-c-rose-light-6);
   }
+
+
+
+  
+  [data-title] {
+    position: relative;
+  }
+  
+  [data-title]:hover::before {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -26px;
+    display: inline-block;
+    padding: 6px 9px;
+    border-radius: 2px;
+    background: var(--color-dark);
+    color:var(--color-white);
+    font-size: 13px;
+    font-family: sans-serif;
+    white-space: nowrap;
+  }
+  [data-title]:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 8px;
+    display: inline-block;
+    color: var(--color-white);
+    border: 8px solid transparent;	
+    border-bottom: 8px solid var(--color-dark);
+  }
+

@@ -9,7 +9,7 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-one);
+  background: var(--color-c-blue-1);
   box-shadow: var(--shadow-c-white);
   padding: 0 80px;
   transition: 0.6s;
@@ -20,7 +20,7 @@ header .logo img{
 }
 
 .nav-active{
-  color: var(--color-one-light2);
+  color: var(--color-c-blue-light-5);
 }
 header  #navigation{
   position: relative;
@@ -39,7 +39,14 @@ header  #navigation .menu{
   justify-content: center;
   list-style: none;
   user-select: none;
+ 
 }
+
+
+ .close-btn .logo{
+  display: none;
+}
+
 
 .menu-item > a{
   color: var(--color-white);
@@ -57,17 +64,17 @@ header  #navigation .menu{
 }
 
 .menu-item > a:hover{
-  color: var(--color-white-light1);
+  color: var(--color-black-light-9);
   transition: 0.3s;
 }
 .menu-item > span:hover{
-  color: var(--color-white-light1);
+  color: var(--color-black-light-9);
   transition: 0.3s;
 }
 
 .menu-item .sub-menu{
   position: absolute;
-  background: var(--color-one-light1);
+  background: var(--color-c-blue-light-2);
   top: 74px;
   line-height: 40px;
   list-style: none;
@@ -111,16 +118,18 @@ header.sticky .menu-item .sub-menu{
 }
 
 .menu-item .sub-menu .sub-item:hover{
-  background: var(--color-one-light2);
+  background: var(--color-c-blue-light-5);
 }
 
 .menu-item .sub-menu .sub-item:last-child:hover{
   border-radius: 0 0 8px 8px;
 }
 
+
+
 .more .more-menu{
   position: absolute;
-  background: var(--color-one-light1);
+  background: var(--color-c-blue-light-2);
   list-style: none;
   top: 0;
   left: 100%;
@@ -147,18 +156,20 @@ header.sticky .menu-item .sub-menu{
 }
 
 .more .more-menu .more-item:hover{
-  background: var(--color-one-light2);
+  background: var(--color-c-blue-light-5);
 }
 
 .menu-btn{
   display: none;
 }
 
+
+/* .................... Media .................. */
 @media (max-width: 1060px){
   header  #navigation .menu{
     position: fixed;
     display: block;
-    background: var(--color-one-light1);
+    background: var(--color-c-blue-light-2);
     min-width: 350px;
     height: 100vh;
     top: 0;
@@ -183,12 +194,13 @@ header.sticky .menu-item .sub-menu{
     position: relative;
   }
 
+
   .menu-item .sub-menu{
     opacity: 1;
     position: relative;
     top: 0;
     transform: translateX(10px);
-    background: var(--color-c-white-light1) .1;
+    background: var(--color-slider-info) ;
     border-radius: 5px;
     overflow: hidden;
     display: none;
@@ -211,7 +223,7 @@ header.sticky .menu-item .sub-menu{
   }
 
   .menu-item .sub-menu .sub-item a:hover{
-    color: var(--color-white-light1);
+    color: var(--color-black-light-9);
     transition: 0.3s;
   }
 
@@ -220,7 +232,7 @@ header.sticky .menu-item .sub-menu{
     position: relative;
     left: 0;
     transform: translateY(0);
-    background: var(--color-c-white-light1) .1;
+    background: var(--color-slider-info) ;
     border-radius: 5px;
     display: none;
   }
@@ -244,12 +256,19 @@ header.sticky .menu-item .sub-menu{
     height: 40px;
     background-size: 25px;
     background-position: center;
-    
     top: 0;
     left: 0;
     margin: 25px;
     cursor: pointer;
+    
   }
+  .menu-item a ::after{
+    content: "Search";
+    margin-left: 5px;
+    font-style: normal;
+  }
+  
+
 
   .menu-btn{
     background: url(/images/icons/menu-icon.png) no-repeat;
@@ -268,4 +287,16 @@ header.sticky .menu-item .sub-menu{
   header.sticky{
     padding: 10px 20px;
   }
+}
+
+@media (max-width: 500px){
+  header  #navigation .menu{
+    min-width: 100%;
+  }
+
+  .close-btn .logo{
+    display: block;
+    margin-left: 70px;
+  }
+
 }

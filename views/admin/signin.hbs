@@ -1,0 +1,40 @@
+<section class="admin-container">
+    <div class="admin-login">
+        <div class="signin">
+            <div class="header">
+                <img src="/images/icons/nsa-icon.png" alt="nsa-logo">
+                <h4>Admin login</h4>
+            </div>
+            <div class="content">
+                <form action="/admin/signin" method="post">
+                    <label for="">Email</label>
+                    <input type="email" name="EmailId" class="text-input" required autofocus>
+                    <label for="password">Password</label>
+                    <input type="password" name="Password" class="text-input" required>
+                    <a href="">Forgot password ?</a>
+                    <button class="btn-lg">Sign in</button>
+                </form>
+            </div>
+        </div>
+        {{#if Error}}
+        <div class="admin-alert">
+            <div class="alert-box error-alert">
+                <div>
+                    <div class="icon">
+                        <div>
+                            <i id="alertIcon" class="bi bi-x-circle-fill "></i>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <h5> {{Error}}</h5>
+                    </div>
+                    <i class="bi bi-x"></i>
+                    <audio autoplay hidden src="/audio/alert/01.mp3"></audio>
+
+                </div>
+            </div>
+        </div>
+        {{/if}}
+
+    </div>
+</section>
