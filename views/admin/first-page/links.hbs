@@ -1,0 +1,29 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('first-page').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" style="position: relative;" class="admin-container">
+    <div class="headding">
+        <div>
+            <i class="bi bi-link-45deg"></i>
+            <h4>Links</h4>
+        </div>
+    </div>
+
+    <div class="first-page-links">
+        <form action="/admin/first-page/links" method="post">
+            <label for="">1. Our university; WAFY - CIC</label>
+            <input type="url" placeholder="Enter Website link" name="cic" value="{{Links.Cic}}" class="text-input">
+            <label for="">2. Our Institution; MAJMA'A KAVANUR</label>
+            <input type="url" placeholder="Enter Website link" name="college" value="{{Links.College}}" class="text-input">
+            <label for="">3. Our Association; W S F</label>
+            <input type="url" placeholder="Enter Website link" name="wsf" value="{{Links.Wsf}}" class="text-input">
+            <div class="fsb-end">
+                <button class="btn-md" type="reset">Reset</button>
+                <button class="btn-md" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>

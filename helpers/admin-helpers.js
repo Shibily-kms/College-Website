@@ -7,6 +7,8 @@ const { response } = require('express')
 
 module.exports = {
 
+
+    // For admin
     authAdminLog:(body)=>{
         return new Promise((resolve, reject) => {
             let response = [] 
@@ -29,6 +31,54 @@ module.exports = {
                 resolve({EmailError:true})
             }
          })
+    },
+
+    // First page
+    editSlider:(body)=>{
+       
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.FIRST_PAGE_COLLECTION).updateOne({Name : "Slide", "Slids.Id":body.id},{
+                $set:{
+                    "Slids.$.Header" : body.header,
+                    "Slids.$.Content" : body.content
+                }
+            }).then((response)=>{
+                resolve()
+            })
+         })
+    },
+
+    editFirstPagePeragraph:(body,type)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.FIRST_PAGE_COLLECTION).updateOne({Name : type},{
+                $set:{
+                    Header : body.Header,
+                    Para1 : body.Para1,
+                    Para2 : body.Para2,
+                    Para3 : body.Para3,
+                    Para4 : body.Para4,
+                    Para5 : body.Para5
+                  
+                }
+            }).then(()=>{
+                resolve()
+            })
+         })
+    },
+
+    editFirstLinks:(body,type)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.FIRST_PAGE_COLLECTION).updateOne({Name : type},{
+                $set:{
+                    Cic : body.cic,
+                    College : body.college,
+                    Wsf : body.wsf
+                }
+            }).then(()=>{
+                resolve()
+            })
+         })
     }
+
     
 }

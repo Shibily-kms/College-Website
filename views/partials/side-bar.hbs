@@ -1,0 +1,109 @@
+<section>
+    <div id="side-bar" class="side-bar">
+        <div>
+            <div class="menu" id="menu">
+                <a href="/admin/#home">
+                    <div class="main-item " id="Home" ><span class="icon"><i
+                                class="bi bi-house-fill"></i></span> <span class="title">Home </span>
+                    </div>
+                </a>
+                <a href="/admin/first-page">
+                    <div class="main-item" id="first-page" ><span class="icon"><i class="bi bi-file-earmark-post"></i></span>
+                    <span class="title">First page </span></div>
+                </a>
+                <div class="main-item" id="College" ><span class="icon"><i
+                            class="bi bi-building"></i></span><span class="title">College <i
+                            class="bi bi-chevron-right"></i></span>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="/our-teachers">Our Teachers</a></li>
+                        <li class="sub-item"><a href="/our-leaders">Our Leaders</a></li>
+                        <li class="sub-item"><a href="/our-faculty">Our Faculty</a></li>
+                    </ul>
+                </div>
+                <div class="main-item" id="Union" >
+                    <span class="icon"><i class="bi bi-diagram-3-fill"></i></span><span class="title">Union <i
+                            class="bi bi-chevron-right"></i></span>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="/our-teachers">NSA</a></li>
+                        <li class="sub-item"><a href="/our-leaders">SKSSF</a></li>
+                        <li class="sub-item"><a href="/our-faculty">Class unions</a></li>
+
+                    </ul>
+                </div>
+                <div class="main-item" id="Updates" >
+                    <span class="icon"><i class="bi bi-capslock-fill"></i></span><span class="title">Updates <i
+                            class="bi bi-chevron-right"></i></span>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="/notifications">Notifications</a></li>
+                        <li class="sub-item"><a href="/news">News</a></li>
+                        <li class="sub-item"><a href="/status-frame">Status frame</a></li>
+                    </ul>
+                </div>
+                <div class="main-item" id="About" >
+                    <span class="icon"><i class="bi bi-chat-dots-fill"></i></span><span class="title"> About <i
+                            class="bi bi-chevron-right"></i></span>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="/gallery">Gallery</a></li>
+                        <li class="sub-item"><a href="/contact-us">Contact us</a></li>
+
+                    </ul>
+                </div>
+                <div class="main-item" id="Settings" >
+                    <span class="icon"><i class="bi bi-gear-fill"></i></span><span class="title"> Settings <i
+                            class="bi bi-chevron-right"></i></span>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="/gallery">Other</a></li>
+                        <li class="sub-item"><a href="/contact-us">Settings</a></li>
+
+                    </ul>
+                </div>
+
+                
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script type="text/javascript">
+    //jquery for toggle dropdown menus
+    $(document).ready(function () {
+        //toggle sub-menus
+        $(".sub-btn").click(function () {
+            $(this).next(".sub-menu").slideToggle();
+        });
+
+        //toggle more-menus
+        $(".more-btn").click(function () {
+            $(this).next(".more-menu").slideToggle();
+        });
+    });
+
+    //javascript for the responsive navigation menu
+    var menu = document.querySelector(".menu");
+    var menuBtn = document.querySelector(".menu-btn");
+    var closeBtn = document.querySelector(".close-btn");
+
+    menuBtn.addEventListener("click", () => {
+        menu.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+        menu.classList.remove("active");
+    });
+
+    //javascript for the navigation bar effects on scroll
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
+

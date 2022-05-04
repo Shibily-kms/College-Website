@@ -1,0 +1,204 @@
+/* First pages */
+
+.main-list{
+   
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;  
+
+}
+.main-list .list-div{
+   
+    height: auto;
+    width: fit-content;
+    padding: 10px;
+    
+}
+.main-list .list-div>a>.list{
+    
+    width: 138px;
+    height: 138px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: var(--shadow-c-white);
+    overflow: hidden;
+    padding: 5px;
+
+}
+.main-list .list-div>a>.list:hover{
+    background-color: var(--color-c-black-opacity-2);
+}
+
+.main-list .list-div>a>.list>.icon{
+    display: flex;
+    justify-content: center;
+    color: var(--color-c-black);
+    font-size: 70px;
+    height: 105px;
+    align-items: center;
+}
+.main-list .list-div>a>.list>.title{
+    text-align: center;
+    
+    
+}
+.main-list .list-div>a>.list>.title>h5{
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--color-c-black);
+   
+}
+
+/* Slider */
+
+.carousel-editor{
+   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.carousel-editor .carousel-div{
+   
+    width: fit-content;
+    padding:15px;
+}
+.carousel-editor .carousel-div>.carousel{
+    background: none;
+    position: relative;
+    width: 250px;
+    
+   
+    
+  
+}
+.carousel-editor .carousel-div>.carousel>img{
+   width: 250px;
+   height: 150px;
+    object-fit: cover;
+   border-radius: 10px;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   -ms-border-radius: 10px;
+   -o-border-radius: 10px;
+   box-shadow: var(--shadow-c-white);
+}
+.carousel-editor .carousel-div>.carousel>h4{
+  text-align: center;
+  font-weight: normal;
+  font-size: 15px;
+  margin-top: 5px;
+  color: var(--color-c-black);
+  
+}
+.carousel-editor .carousel-div>.carousel>.icon{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-c-black);
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-c-white);
+}
+.carousel-editor .carousel-div>.carousel>.icon>form{
+ display: none;
+}
+
+/* Model */
+
+.edit-slider{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -30%);
+    -webkit-transform: translate(-50%, -30%);
+    -moz-transform: translate(-50%, -30%);
+    -ms-transform: translate(-50%, -30%);
+    -o-transform: translate(-50%, -30%);
+    
+}
+
+.edit-slider .model>.content>form>.image{
+    
+    width: 100%;
+    position: relative;
+    
+}
+.edit-slider .model>.content>form>.image>img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px ;
+    -webkit-border-radius: 15px ;
+    -moz-border-radius: 15px ;
+    -ms-border-radius: 15px ;
+    -o-border-radius: 15px ;
+    box-shadow: var(--shadow-c-white);
+}
+.edit-slider .model>.content>form>.image>.admin-edit{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    
+}
+.edit-slider .model>.content>form>:last-child{
+    
+    width: 100%;
+    margin-top: 15px;
+}
+.edit-slider .model>.content>form>div>input,textarea{
+    width: 100%; 
+    margin-top: 3px;
+    border: solid 1px var(--color-c-black-opacity-5);
+}
+.edit-slider .model>.content>form>div>textarea{    
+    border: solid 1px var(--color-c-black-opacity-5);
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 180px;
+    min-height: 50px;
+}
+
+.edit-slider .model>.content>form>div>input{
+    margin-bottom: 10px;
+}
+.edit-slider .model>.content>form>div>label{
+    margin-left: 8px;
+    color: var(--color-c-black);
+    
+}
+.edit-slider .model>.content>form>div>label>span{
+   font-size: 11px;
+   font-style: italic;
+   color: var(--color-c-rose-yellow-light-3);
+    
+}
+
+
+/* For links */
+
+.first-page-links{
+    width: 100%;
+}
+.first-page-links input{
+    width: 100%;
+    margin-top: 3px;
+    margin-bottom: 15px;
+}
+.first-page-links div :first-child{
+    background-color: var(--color-c-white-light-10);
+    color: var(--color-c-white);
+}

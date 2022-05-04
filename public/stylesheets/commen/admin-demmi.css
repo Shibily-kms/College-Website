@@ -30,6 +30,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 15;
 
 }
 .admin-alert>.alert-box{
@@ -47,8 +48,8 @@
     padding-left: 15px;
     padding-right: 15px;
     box-sizing: border-box;
-    animation: admin-alert 3.5s  ease-in;
-    -webkit-animation: admin-alert 3.5s  ease-in;
+    animation: admin-alert 4s  ease-in;
+    -webkit-animation: admin-alert 4s  ease-in;
 }
 .admin-alert>.alert-box>div{
     display: flex;
@@ -72,11 +73,13 @@
 }
 .admin-alert>.alert-box>div>.icon>div>i{
     font-size: 24px;
-    margin-left: .5px;
+    margin-left: .5px;  
+    margin-top: 1px;  
 }
 .admin-alert>.alert-box>div>.message{
     width: 90%;
     opacity: .85;
+   
     
 }
 .admin-alert>.alert-box>div>.message>h5{
@@ -89,4 +92,112 @@
     cursor: pointer;
 
 }
+
+/* Headding */
+.headding{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+.headding>div{
+    background-color: var(--color-c-rose-yellow-light-3);
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.headding>div>h4{
+    color: var(--color-c-white);
+    font-weight: normal;
+    font-size: 15px;
+}
+.headding>div>i{
+    color: var(--color-c-white);
+    margin-right: 5px;
+}
+
+/* Paragraph content Editor*/
+
+.summery{
+    width: 100%;
+}
+.summery input{
+    width: 100%;
+    margin-bottom: 15px;
+}
+.summery textarea{
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 70px;
+    max-height: 250px;
+    margin-bottom: 15px;
+
+}
+.summery label{
+    font-weight: bold;
+    margin-left: 7px;
+}
+.summery .add-button{
+    width: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 10px;
+    padding-bottom: 20px;
+    border: solid 1px var(--color-c-black-opacity-5);
+    margin-bottom: 15px;
     
+}
+.summery .add-button>label{
+    font-weight: normal;
+}
+.summery .add-button>label {
+    font-weight: normal;
+}
+
+.summery .buttons{
+    display: flex;
+    justify-content: end;
+
+}
+.summery .buttons>button{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.summery .buttons :nth-child(1),.summery .buttons :nth-child(2){
+    background-color: var(--color-rose-light-2);
+    color: var(--color-white);
+}
+.summery .buttons :last-child{
+    background-color: var(--color-green-1);
+    color: var(--color-white);
+    width: 150px;
+}
+
+.summery label>span{
+    margin-left: 15px;
+    background-color: var(--color-red-1);
+    padding: 2px 4px 2px 3px;
+    border-radius: 35px;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    -ms-border-radius: 35px;
+    -o-border-radius: 35px;
+    color: var(--color-c-white);
+    cursor: pointer;
+}
+

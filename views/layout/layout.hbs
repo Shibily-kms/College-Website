@@ -12,10 +12,14 @@
 
   {{!-- Icon , styleSheet and Javascripts --}}
   <link rel="icon" href="/images/icons/nsa-icon.png" type="png/jpg" sizes="16*16">
-  <link id="theme-change" rel='stylesheet' {{#if nsaWebDarkTheme}} href='/stylesheets/root/dark-theme.css' {{else}}
-    href='/stylesheets/root/light-theme.css' {{/if}} />
+  <link id='theme-change' class='{{#if nsaWebDarkTheme}}Dark {{else}}Light{{/if}}' rel='stylesheet' {{#if
+    nsaWebDarkTheme}} href='/stylesheets/root/dark-theme.css' {{else}} href='/stylesheets/root/light-theme.css'
+    {{/if}} />
   <link rel='stylesheet' href='/stylesheets/admin/style.css' />
   <link rel='stylesheet' href='/stylesheets/admin/sign.css' />
+  <link rel='stylesheet' href='/stylesheets/admin/header.css' />
+  <link rel='stylesheet' href='/stylesheets/admin/home.css' />
+  <link rel='stylesheet' href='/stylesheets/admin/first-page.css' />
   <link rel='stylesheet' href='/stylesheets/commen/style.css' />
   <link rel='stylesheet' href='/stylesheets/user/home.css' />
   <link rel='stylesheet' href='/stylesheets/user/footer.css' />
@@ -30,7 +34,8 @@
   {{!-- Media --}}
   <link rel='stylesheet' href='/stylesheets/commen/media.css' />
   <link rel='stylesheet' href='/stylesheets/user/media.css' />
-  
+  <link rel='stylesheet' href='/stylesheets/admin/media.css' />
+
   <script src="/javascripts/javascript.js"></script>
   <script src="/javascripts/commen.js"></script>
 
@@ -41,9 +46,12 @@
     rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'
     rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500;600;700;800;900&display=swap'
+    rel="stylesheet">
   <link href='https://fonts.googleapis.com/css2?family=Manjari:wght@100;200;300;400;500;600;700;800;900&display=swap'
     rel="stylesheet">
 
+  {{!-- Cropper.js --}}
 
 
   {{!-- Boostrap Icon --}}
@@ -76,14 +84,57 @@
 
 
 <body>
-  {{#if admin}}
-  {{>admin-header}}
-  {{>side-bar}}
-  {{else}}
+  {{#if adminHere}}
   {{>user-header}}
   {{/if}}
+  {{#if user}}
+  {{>user-header}}
+  {{/if}}
+  {{#if sideHeader}}
+  {{>admin-header}}
+  {{>side-bar}}
+  {{/if}}
+  {{#if Error}}
+  <div id="alert-div" class="admin-alert">
+    <div class="alert-box  error-alert">
+      <div>
+        <div class="icon">
+          <div>
+            <i id="alertIcon" class="bi bi-x-circle-fill "></i>
+          </div>
+        </div>
+        <div class="message">
+          <h5 id="alert-content"> {{Error}}</h5>
+        </div>
+        <i class="bi bi-x"></i>
+        <audio id="alert-audio" autoplay hidden src="/audio/alert/01.mp3"></audio>
+
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if Success}}
+  <div class="admin-alert">
+    <div class="alert-box success-alert">
+      <div>
+        <div class="icon">
+          <div>
+            <i class="bi bi-check-circle-fill"></i>
+          </div>
+        </div>
+        <div class="message">
+          <h5> {{Success}}</h5>
+        </div>
+        <i class="bi bi-x"></i>
+        <audio autoplay hidden src="/audio/alert/01.mp3"></audio>
+
+      </div>
+    </div>
+  </div>
+  {{/if}}
   {{{body}}}
-  {{#if adminHeader}}
+  {{#if admin}}
   {{else}}
   {{>user-footer}}
   {{/if}}

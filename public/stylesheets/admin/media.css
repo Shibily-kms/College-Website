@@ -1,0 +1,46 @@
+/*  laptop & pc*/
+@media (min-width:1025px){
+  
+
+}
+
+/* ipad Pro */
+@media (max-width:1024px){
+  
+ 
+
+}
+
+@media (max-width:900px) {
+
+    .admin-header>.head-content>#menu-button{
+        display: none;
+        
+}
+
+}
+
+/* ipad */
+@media (max-width:768px) {
+    
+  
+
+
+    
+
+
+}
+
+/* 500 */
+@media (max-width:500px)  {
+  
+
+}
+
+/* all mobile */
+@media (max-width:375px) {
+
+  
+  
+
+}

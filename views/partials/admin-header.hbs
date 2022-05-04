@@ -1,163 +1,72 @@
-<header>
-      <a href="/" class="logo"><img src="/images/icons/nsa-online.png" alt="NSA Logo"></a>
-      <div id="navigation">
-        <ul class="menu" id="menu">
-          <div class="close-btn">
-            <a href="/" class="logo" ><img src="/images/icons/nsa-online.png" alt="NSA Logo"></a>
-          </div>
-          
-         <li class="menu-item"><a href="/#home"></a></li>
-          <li class="menu-item">
-            <span class="sub-btn" >College <i class="fas fa-angle-down"></i></span>
-            <ul class="sub-menu">
-              <li class="sub-item"><a href="/our-teachers">Our Teachers</a></li>
-              <li class="sub-item"><a href="/our-leaders">Our Leaders</a></li>
-              <li class="sub-item"><a href="/our-faculty">Our Faculty</a></li>
-            </ul>
-          </li>
-          <li class="menu-item">
-            <span class="sub-btn" href="#">Union <i class="fas fa-angle-down"></i></span>
-            <ul class="sub-menu">
+<section class="admin-header">
+  <div class="logo">
+    <a href="/admin"> <img src="/images/icons/nsa-online.png" alt="NSA logo"> </a>
+  </div>
+  <div class="head-content">
+    <span data-title="Sidebar" id="menu-button" class="icon-div" onclick="menuChange()"><i class="bi bi-menu-app-fill"></i></span>
+    <span data-title="Change theme" id="theme-button" class="" onclick="tooDark()">{{#if nsaWebDarkTheme}}<i class="bi bi-brightness-high-fill"></i>{{else}}<i class="bi bi-moon-fill"></i>{{/if}}</span>
+  </div>
+</section>
 
-              <li class="sub-item more">
-                <a class="more-btn" href="/nsa">NSA <i class="fas fa-angle-right"></i></a>
-                <ul class="more-menu">
-                  <li class="more-item"><a href="/nsa/fine-arts">Fine arts</a></li>
-                  <li class="more-item"><a href="/nsa/literary-wing">Literary wing</a></li>
-                  <li class="more-item"><a href="/nsa/medical-board">Medical board</a></li>
-                  <li class="more-item"><a href="/nsa/research-cell">Research cell</a></li>
-                  <li class="more-item"><a href="/nsa/pro-itnob">PRO & It nob</a></li>
-                  <li class="more-item"><a href="/nsa/garden-committee">Garden committee</a></li>
-                  <li class="more-item"><a href="/nsa/library-board">Library board</a></li>
-                  <li class="more-item"><a href="/nsa/social-affirs">Social affirs</a></li>
-                </ul>
-              </li>
 
-              <li class="sub-item more">
-                <a class="more-btn" href="/skssf">SKSSF <i class="fas fa-angle-right"></i></a>
-                <ul class="more-menu">
-                  <li class="more-item"><a href="/skssf/fund">Fund</a></li>
-                  <li class="more-item"><a href="/skssf/store">Store</a></li>
-                </ul>
-              </li>
-
-              <li class="sub-item"><a href="/nsa/class-unions">Class unions</a></li>
-            </ul>
-          </li>
-          <li class="menu-item">
-            <span class="sub-btn" href="">Updates <i class="fas fa-angle-down"></i></span>
-            <ul class="sub-menu">
-              <li class="sub-item"><a href="/notifications">Notifications</a></li>
-              <li class="sub-item"><a href="/news">News</a></li>
-              <li class="sub-item"><a href="/status-frame">Status frame</a></li>
-            </ul>
-          </li>
-          <li class="menu-item">
-            <span class="sub-btn" href="">About <i class="fas fa-angle-down"></i></span>
-            <ul class="sub-menu">
-              <li class="sub-item"><a href="/gallery">Gallery</a></li>
-              <li class="sub-item"><a href="/contact-us">Contact us</a></li>
-            
-            </ul>
-          </li>
-          <li class="menu-item">
-            <span class="sub-btn" ><i id="theam-icon" {{#if nsaWebDarkTheme}}class="bi bi-moon-fill"{{else}}class="bi bi-brightness-high-fill"{{/if}}></i> Theme <i class="fas fa-angle-down"></i></span>
-            <ul class="sub-menu">
-              <li class="sub-item" id="light"><span href="" onclick="toLight()"><i class="bi bi-brightness-high-fill"></i> Light</span></li>
-              <li class="sub-item" id="dark"><span onclick="toDark()"><i class="bi bi-moon-fill"></i> Dark </span></li>
-            
-            </ul>
-          </li> 
-         
-            <li class="menu-item"><a href="/search" ><i class="bi bi-search search-name"></i></a></li> 
-          
-        </ul>
-
-       
-      </div>
-      <div class="menu-btn"></div>
-    </header>
-
-    
-    <script type="text/javascript">
-    //jquery for toggle dropdown menus
-    $(document).ready(function(){
-      //toggle sub-menus
-      $(".sub-btn").click(function(){
-        $(this).next(".sub-menu").slideToggle();
-      });
-
-      //toggle more-menus
-      $(".more-btn").click(function(){
-        $(this).next(".more-menu").slideToggle();
-      });
-    });
-
-    //javascript for the responsive navigation menu
-    var menu = document.querySelector(".menu");
-    var menuBtn = document.querySelector(".menu-btn");
-    var closeBtn = document.querySelector(".close-btn");
-
-    menuBtn.addEventListener("click", () => {
-      menu.classList.add("active");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      menu.classList.remove("active");
-    });
-
-    //javascript for the navigation bar effects on scroll
-    window.addEventListener("scroll", function(){
-      var header = document.querySelector("header");
-      header.classList.toggle("sticky", window.scrollY > 0);
-    });
-    </script>
-    
 <script>
-    var light = document.getElementById('light')
-    var dark = document.getElementById('dark')
+
+  function menuChange() {
+
+    var MenuButton = document.getElementById('menu-button');
+    var sideBar = document.getElementById('side-bar');
+    var container = document.getElementById('admin-container')
+
+    if (MenuButton.innerHTML == '<i class="bi bi-menu-app-fill"></i>') {
+      MenuButton.innerHTML = '<i class="bi bi-menu-button-fill"></i>'
+    } else {
+      MenuButton.innerHTML = '<i class="bi bi-menu-app-fill"></i>'
+    }
+
+    sideBar.classList.toggle("little-bar")
+    container.classList.toggle('little-container')
+
+  }
+
+</script>
+
+
+
+<script>
+
+
+  function tooDark() {
+
+    let Ontheme = null
     var theme = document.getElementById('theme-change')
-    var div = document.getElementById('theam-icon')
+    var button = document.getElementById('theme-button')
+    
+    if (theme.className === "Light") {
+      // To dark
+      theme.href = '/stylesheets/root/dark-theme.css'
+      button.innerHTML = '<i class="bi bi-brightness-high-fill"></i>'
+      theme.className = "Dark"
+      Ontheme = "Dark"
+    
+    } else {
+      // To Light
+      button.innerHTML = '<i class="bi bi-moon-fill"></i>'
+      theme.href = '/stylesheets/root/light-theme.css'
+      theme.className = "Light"
+      Ontheme = "Light"
+    }
 
-
-    function toLight() {
-        theme.href = '/stylesheets/root/light-theme.css'
-        light.className = 'sub-item nav-active'
-        dark.className = 'sub-item  '
-        div.className = 'bi bi-brightness-high-fill'
-
-        $.ajax({
-            url: '/change-theme',
-            data: {
-                theme : "light"
-            },
-            method: 'post',
-            success: () => {
-             alert('change')
-            }
-        })
+    $.ajax({
+      url: '/change-theme',
+      data: {
+        theme: Ontheme
+      },
+      method: 'post',
+      success: () => {
         
-    }
+      }
+    })
 
-
-
-    function toDark() {
-        theme.href = '/stylesheets/root/dark-theme.css'
-        dark.className = 'sub-item nav-active'
-        light.className = 'sub-item'
-        div.className = 'bi bi-moon-fill'
-
-        $.ajax({
-            url: '/change-theme',
-            data: {
-                theme : "dark"
-            },
-            method: 'post',
-            success: () => {
-              alert('change')
-            }
-        })
-
-    }
+  }
 
 </script>

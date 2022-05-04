@@ -32,13 +32,23 @@
         padding-bottom: 20px;
     }
     .admin-container{
-            padding:0;
-            padding-left: 7%;
-        padding-right: 7%;
+        padding:0;
+        padding-left: 2%;
+        padding-right: 2%;
         padding-top: 75px;
-            padding-bottom : 20px;
-            min-width:600px;
+        padding-bottom : 20px;
+        min-width:600px;
+        margin-left: 200px;
+        transition: 0.3s;
+        transition-property: transform, ;
+        position: relative;
         }
+        .little-container{
+        margin-left: 65px;
+        transition: 0.3s;
+        transition-property: transform, ;
+        position: relative;
+          }
    
     .home-container{
         padding: 0;
@@ -88,12 +98,22 @@
     }
     .admin-container{
         padding:0;
-        padding-left : 5%;
-        padding-right: 5%;
+        padding-left : 3%;
+        padding-right: 3%;
         padding-top: 75px;
         padding-bottom : 20px;
         min-width:600px;
+        margin-left: 200px;
+        transition: 0.3s;
+        transition-property: transform, ;
+        position: relative;
     }
+    .little-container{
+        margin-left: 65px;
+        transition: 0.3s;
+        transition-property: transform, ;
+        position: relative;
+          }
     .home-container{
         padding: 0;
         margin-left: 5%;
@@ -121,6 +141,19 @@
     .four-profile .fifteen-profile{
         width: 100%;
     }
+    .admin-container{
+        padding:0;
+        padding-left : 3%;
+        padding-right: 3%;
+        padding-top: 75px;
+        padding-bottom : 20px;
+        margin-left: 65px;
+        transition: 0.3s;
+        transition-property: transform, ;
+        position: relative;
+    }
+
+    
 
 
 
@@ -203,14 +236,7 @@
         padding-top: 75px;
         padding-bottom: 20px;
     }
-    .admin-container{
-        padding:0;
-        padding-left : 1%;
-        padding-right: 1%;
-        padding-top: 75px;
-        padding-bottom : 20px;
-        min-width:600px;
-    }
+   
     .home-container{
         padding: 0;
         padding-left: 1%;

@@ -1,52 +1,46 @@
 <section style="padding-top: 70px;">
   {{!-- Slider --}}
   <div class="slider-div">
-    {{#if admin}}
-    <a class="admin-eidt edit-icon-carousel" href=""><i class="bi bi-camera-fill"></i></a>
+    {{#if adminHere}}
+    <a class="admin-edit edit-icon-carousel" data-title="Edit" target="_blank" href="/admin/first-page/slider"><i
+        class="bi bi-camera-fill"></i></a>
     {{/if}}
     <div class="slider">
       <div class="slide active">
-        <img src="/images/slider/1.jpg" alt="">
+        <img src="/images/slider/{{Slides.[0].Id}}.jpg" alt="">
         <div class="info">
-          <h1>WELCOME TO NOORUL HUDA</h1>
-          <p>Noorul huda Students Association , generally abbreviated as NSA , is a student union of Majma'a Shareeath
-            and Arts College students. It is governed by annually elected delegates from students of the campus under
-            the entire control of an advisory board.Our direction and ideas are led by our teachers and student members.
-          </p>
+          <h1>{{Slides.[0].Header}}</h1>
+          <p>{{Slides.[0].Content}}</p>
 
         </div>
       </div>
       <div class="slide">
-        <img src="/images/slider/2.jpg" alt="">
+        <img src="/images/slider/{{Slides.[1].Id}}.jpg" alt="">
         <div class="info">
-          <h2>Tropical Desert</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.</p>
+          <h1>{{Slides.[1].Header}}</h1>
+          <p>{{Slides.[1].Content}}</p>
           <button class="btn-lg hover-fill-red">Read more</button>
         </div>
       </div>
       <div class="slide">
-        <img src="/images/slider/3.jpg" alt="">
+        <img src="/images/slider/{{Slides.[2].Id}}.jpg" alt="">
         <div class="info">
-          <h2>Steaming Volcanoes</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.</p>
+          <h1>{{Slides.[2].Header}}</h1>
+          <p>{{Slides.[2].Content}}</p>
         </div>
       </div>
       <div class="slide">
-        <img src="/images/slider/4.jpg" alt="">
+        <img src="/images/slider/{{Slides.[3].Id}}.jpg" alt="">
         <div class="info">
-          <h2>Mountain River</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.</p>
+          <h1>{{Slides.[3].Header}}</h1>
+          <p>{{Slides.[3].Content}}</p>
         </div>
       </div>
       <div class="slide">
-        <img src="/images/slider/5.jpg" alt="">
+        <img src="/images/slider/{{Slides.[4].Id}}.jpg" alt="">
         <div class="info">
-          <h2>Egypt Pyramids</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.</p>
+          <h1>{{Slides.[4].Header}}</h1>
+          <p>{{Slides.[4].Content}}</p>
         </div>
       </div>
       <div class="navigation">
@@ -66,99 +60,59 @@
 </section>
 <section class="home-container" style="">
   {{!-- Noorul huda content --}}
-  <div class="content-div {{#if admin}} edit-boarder {{/if}}">
-    {{#if admin}} <a class="admin-eidt edit-icon-content" href=""><i class="bi bi-pencil-fill"></i></a>  {{/if}}
-    <h3 class="header">
-      <span class="first-word">THE</span> NOORUL HUDA STUDENTS' ASSOCIATION
-    </h3>
-
-    <p class="perag">
-      Noorul huda Students Association , generally abbreviated as NSA , is a student union of Majma'a Shareeath and Arts 
-      College students. It is governed by annually elected delegates from students of the campus under the entire control 
-      of an advisory board.Our direction and ideas are led by our teachers and student members.
-      We’re called the Students’ Union because that’s what we are; a union of students. It’s the issues that matter to students 
-      that drive us. Here, students can feel assured that their views count, their voice is strong, and together we’ll use them 
-      to make student life even better.
-    </p>
-    <p class="perag">
-      Noorul huda Students Association , generally abbreviated as NSA , is a student union of Majma'a Shareeath and Arts 
-      College students. It is governed by annually elected delegates from students of the campus under the entire control 
-      of an advisory board.Our direction and ideas are led by our teachers and student members.
-      We’re called the Students’ Union because that’s what we are; a union of students. It’s the issues that matter to students 
-      that drive us. Here, students can feel assured that their views count, their voice is strong, and together we’ll use them 
-      to make student life even better.
-    </p>
-    <p class="perag">
-      Noorul huda Students Association , generally abbreviated as NSA , is a student union of Majma'a Shareeath and Arts 
-      College students. It is governed by annually elected delegates from students of the campus under the entire control 
-      of an advisory board.Our direction and ideas are led by our teachers and student members.
-      We’re called the Students’ Union because that’s what we are; a union of students. It’s the issues that matter to students 
-      that drive us. Here, students can feel assured that their views count, their voice is strong, and together we’ll use them 
-      to make student life even better.
-    </p>
+  <div class="content-div {{#if adminHere}} edit-boarder {{/if}}">
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" href="/admin/first-page/the-nsa" target="_blank"><i
+        class="bi bi-pencil-fill"></i></a> {{/if}}
+    <h3 class="header" id="NSA-Header">{{TheNsa.Header}}</h3>
+    <p class="perag">{{TheNsa.Para1}}</p>
+    <p class="perag">{{TheNsa.Para2}}</p>
+    <p class="perag">{{TheNsa.Para3}}</p>
+    <p class="perag">{{TheNsa.Para4}}</p>
+    <p class="perag">{{TheNsa.Para5}}</p>
   </div>
 
   {{!-- College content --}}
-  <div class="content-div {{#if admin}} edit-boarder {{/if}} ">
-    {{#if admin}} <a class="admin-eidt edit-icon-content" href=""><i class="bi bi-pencil-fill"></i></a> {{/if}}
-    <h3 class="header">
-    
-      <span class="first-word">THE</span> MAJMA'A WAFY COLLEGE, KAVANUR
-    </h3>
-    <p class="perag">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni molestiae laudantium voluptatibus praesentium
-      velit. Incidunt voluptatibus, esse deserunt mollitia error unde rerum quod voluptas molestias odio? Quod
-      temporibus vitae corrupti!
-      At possimus sint, minima esse omnis tempora, autem voluptates eligendi dolores est totam laudantium temporibus
-      quidem nobis sit repellat aliquid deleniti quasi adipisci reiciendis corporis facilis? Iure quae laboriosam porro.
-      Eaque quis perspiciatis itaque natus, sit velit quibusdam ipsam ipsa tenetur earum aliquam architecto tempore eum
-      reiciendis dignissimos provident error veritatis adipisci sapiente iure, quas est sunt officiis? Ex, eos.
-      Accusantium voluptate exercitationem nihil dicta error quaerat fugit ad perspiciatis alias neque! Facere
-      asperiores nulla incidunt ab provident, natus, ex dolorum eligendi, veritatis hic architecto non quam sequi
-      placeat necessitatibus.
-      Sequi odit ex, impedit ullam architecto voluptas consequuntur minus soluta cupiditate dolorum! Unde ullam officia
-      culpa sequi. Vero, similique dolore unde recusandae, aperiam numquam, in praesentium repellendus odio sed minima!
-      Cumque assumenda quia nam debitis, voluptatem modi nemo ad voluptas non consequatur, hic voluptatibus rem, vel
-      impedit officiis voluptatum adipisci. Possimus non nulla ipsam consectetur est ad error ut aspernatur!
-      Repellat omnis velit corporis itaque facilis, totam dolore eius aut reiciendis modi doloribus incidunt eveniet
-      autem porro enim accusantium possimus id illum cupiditate impedit qui libero vitae exercitationem quia! Magnam!
-      Maxime fuga vitae minima commodi reiciendis odit aliquam repellendus nam architecto et sequi earum ut sed
-      excepturi, eveniet beatae aut quisquam magnam porro ipsum. Exercitationem ullam laboriosam recusandae voluptates
-      natus.
-      
-    </p>
+  <div class="content-div {{#if adminHere}} edit-boarder {{/if}} ">
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" href="/admin/first-page/the-majma"><i
+        class="bi bi-pencil-fill"></i></a> {{/if}}
+    <h3 class="header" id="Majma-Header">{{TheMajma.Header}}</h3>
+    <p class="perag">{{TheMajma.Para1}}</p>
+    <p class="perag">{{TheMajma.Para2}}</p>
+    <p class="perag">{{TheMajma.Para3}}</p>
+    <p class="perag">{{TheMajma.Para4}}</p>
+    <p class="perag">{{TheMajma.Para5}}</p>
   </div>
 
   {{!-- four links --}}
 
-  <div class="four-links {{#if admin}} edit-boarder {{/if}}">
-   {{#if admin}}  <a class="admin-eidt edit-icon-content" href=""><i class="bi bi-pencil-fill"></i></a> {{/if}}
-    <a href="http://www.wafycic.com/" target="_blank">
+  <div class="four-links {{#if adminHere}} edit-boarder {{/if}}">
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" target="_blank" href="/admin/first-page/links"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+    <a href="{{Links.Cic}}" target="_blank">
       <div class="link-div">
         <i class="bi bi-mortarboard-fill"></i>
-        <h4>Our univesrsity; <br>
-          Wafy - CIC
+        <h4>Our university; <br>
+          WAFY - CIC
         </h4>
       </div>
     </a>
-    <a href="http://wafycic.com/college_details/kavanurmajmaa" target="_blank">
+    <a href="{{Links.College}}" target="_blank">
       <div class="link-div">
         <i class="bi bi-easel-fill"></i>
-        <h4>Our Institution;<br> Majma'a wafy college
+        <h4>Our Institution;<br> MAJMA'A KAVANUR
         </h4>
       </div>
     </a>
-    <a href="http://www.facebook.com/wsfstate/" target="_blank">
+    <a href="{{Links.Wsf}}" target="_blank">
       <div class="link-div">
         <i class="bi bi-people-fill"></i>
-        <h4>Our mother association; <br> W S F
+        <h4>Our Association; <br> W S F
         </h4>
       </div>
     </a>
     <a href="/notifications">
       <div class="link-div">
-        <i class="bi bi-bell-fill"></i>
-        <h4> Notifications
+        <i class="bi bi-tags-fill"></i>
+        <h4> About us
         </h4>
       </div>
     </a>
@@ -175,9 +129,9 @@
     <div class="news-div">
       <div class="news-item">
         <div class="img-hover-zoom">
-        <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
+          <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
         </div>
-        <h4 >ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
+        <h4>ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
         <p>അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും
           ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ
           ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും
@@ -186,7 +140,7 @@
       </div>
       <div class="news-item">
         <div class="img-hover-zoom">
-        <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
+          <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
         </div>
         <h4>ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
         <p>അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും
@@ -196,8 +150,8 @@
         <button class="btn-md hover-fill-dr">Read more</button>
       </div>
       <div class="news-item">
-      <div class="img-hover-zoom">
-        <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
+        <div class="img-hover-zoom">
+          <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
         </div>
         <h4>ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
         <p>അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും
@@ -207,8 +161,8 @@
         <button class="btn-md hover-fill-dr">Read more</button>
       </div>
       <div class="news-item">
-       <div class="img-hover-zoom">
-        <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
+        <div class="img-hover-zoom">
+          <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
         </div>
         <h4>ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
         <p>അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും
@@ -218,9 +172,10 @@
         <button class="btn-md hover-fill-dr">Read more</button>
       </div>
     </div>
-    <div  class="seemore">
-     <a href="/news" class="btn-lg hover-fill-grn">See more</a>
+    <div class="seemore">
+      <a href="/news" class="btn-lg hover-fill-grn">See more</a>
     </div>
+  
   </div>
 </section>
 
@@ -308,4 +263,19 @@
   slider.addEventListener("mouseout", () => {
     repeater();
   });
+</script>
+
+
+{{!-- Color change --}}
+
+<script>
+
+  let nsa = document.getElementById('NSA-Header').innerHTML
+  const first = nsa.split(' ').shift();
+  document.getElementById("NSA-Header").innerHTML = nsa.replace(first, `<span class ="first-word">` + first + `</span>`);
+
+  let majma = document.getElementById('Majma-Header').innerHTML
+  const fir = majma.split(' ').shift();
+  document.getElementById("Majma-Header").innerHTML = majma.replace(fir, `<span class ="first-word">` + fir + `</span>`);
+
 </script>

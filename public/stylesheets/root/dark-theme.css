@@ -12,6 +12,11 @@ img {
     
     /* Our Blue */
 
+    --color-blue-1 : #012657;
+    --color-blue-2 : #011d42;
+    --color-blue-3 : #011b3d;
+    /*  */
+
     --color-blue-light-1:  #000266; 
     --color-blue-light-2:  #010386; /*lll*/
     --color-blue-light-3:  #0003a3; 
@@ -47,6 +52,22 @@ img {
     /* Our White */
     --color-white : white;
 
+     /* Our White Opacity */
+
+     --color-white-opacity-0 : rgba(255, 255, 255, 0.03);
+     --color-white-opacity-1 : rgba(255, 255, 255, 0.1);
+     --color-white-opacity-2 : rgba(255, 255, 255, 0.2);
+     --color-white-opacity-3 : rgba(255, 255, 255, 0.3);
+     --color-white-opacity-4 : rgba(255, 255, 255, 0.4);
+     --color-white-opacity-5 : rgba(255, 255, 255, 0.5);
+     --color-white-opacity-6 : rgba(255, 255, 255, 0.6);
+     --color-white-opacity-7 : rgba(255, 255, 255, 0.7);
+     --color-white-opacity-8 : rgba(255, 255, 255, 0.8);
+     --color-white-opacity-9 : rgba(255, 255, 255, 0.9);
+
+     /* Our Black */
+     --color-balck : black;
+
 
     /* Our Black */
     --color-black-light-1 : #171717;
@@ -60,6 +81,19 @@ img {
     --color-black-light-9 : #D1D1D1;
     --color-black-light-10 : #E8E8E8;
     --color-black-light-11 : #f7f7f7;
+
+     /* Our Black Opacity */
+
+     --color-black-opacity-0 : rgb(0, 0, 0, .03);
+     --color-black-opacity-1 : rgb(0, 0, 0, .1);
+     --color-black-opacity-2 : rgb(0, 0, 0, .2);
+     --color-black-opacity-3 : rgb(0, 0, 0, .3);
+     --color-black-opacity-4 : rgb(0, 0, 0, .4);
+     --color-black-opacity-5 : rgb(0, 0, 0, .5);
+     --color-black-opacity-6 : rgb(0, 0, 0, .6);
+     --color-black-opacity-7 : rgb(0, 0, 0, .7);
+     --color-black-opacity-8 : rgb(0, 0, 0, .8);
+     --color-black-opacity-9 : rgb(0, 0, 0, .9);
 
 
 /*////////.......... Changes...............////////// */
@@ -136,10 +170,37 @@ img {
     --color-c-white-light-12 : #f1f1f1;
     --color-c-white-light-13 : #f7f7f7;
 
+     /* Our change Black Opacity */
+     --color-c-black-opacity-0 : rgba(255, 255, 255, 0.03);
+     --color-c-black-opacity-1 : rgba(255, 255, 255, 0.1);
+     --color-c-black-opacity-2 : rgba(255, 255, 255, 0.2);
+     --color-c-black-opacity-3 : rgba(255, 255, 255, 0.3);
+     --color-c-black-opacity-4 : rgba(255, 255, 255, 0.4);
+     --color-c-black-opacity-5 : rgba(255, 255, 255, 0.5);
+     --color-c-black-opacity-6 : rgba(255, 255, 255, 0.6);
+     --color-c-black-opacity-7 : rgba(255, 255, 255, 0.7);
+     --color-c-black-opacity-8 : rgba(255, 255, 255, 0.8);
+     --color-c-black-opacity-9 : rgba(255, 255, 255, 0.9);
+ 
+     /* Our change White Opacity */
+ 
+     --color-c-white-opacity-0 : rgb(0, 0, 0, .03);
+     --color-c-white-opacity-1 : rgb(0, 0, 0, .1);
+     --color-c-white-opacity-2 : rgb(0, 0, 0, .2);
+     --color-c-white-opacity-3 : rgb(0, 0, 0, .3);
+     --color-c-white-opacity-4 : rgb(0, 0, 0, .4);
+     --color-c-white-opacity-5 : rgb(0, 0, 0, .5);
+     --color-c-white-opacity-6 : rgb(0, 0, 0, .6);
+     --color-c-white-opacity-7 : rgb(0, 0, 0, .7);
+     --color-c-white-opacity-8 : rgb(0, 0, 0, .8);
+     --color-c-white-opacity-9 : rgb(0, 0, 0, .9);
+
     /* Our Change Black */
     --color-c-black: white;
 
     /* Our Color */
+    --color-warning : rgb(253, 207, 0);
+    --color-warning-opacity-3 : rgba(255, 255, 0, 0.329);
     --color-red-1: rgb(223, 0, 0);
     --color-green-1: rgb(17, 129, 0);
     --color-slider-info : rgba(87, 87, 87, 0.411);

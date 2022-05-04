@@ -12,7 +12,8 @@ var adminRouter = require('./routes/admin');
 
 var hbs = require('express-handlebars');
 var app = express();
-var fileupload = require('express-fileupload');
+var fileUpload = require('express-fileupload');
+
 var db = require('./config/connection')
 
 var store = new MongoDBSession({
@@ -20,6 +21,7 @@ var store = new MongoDBSession({
   collection: 'Sessions',
   
 })
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +35,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(fileupload());
+app.use(fileUpload());
+
 app.use(session({
   secret:"key",
   resave:false,

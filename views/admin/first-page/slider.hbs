@@ -1,0 +1,225 @@
+<section id="admin-container" style="position: relative;" class="admin-container">
+    <div class="headding">
+        <div>
+            <i class="bi bi-aspect-ratio-fill"></i>
+            <h4>Slider</h4>
+        </div>
+    </div>
+    <div class="carousel-editor">
+        <div class="carousel-div">
+            <div class="carousel">
+                <img src="/images/slider/{{Slides.[0].Id}}.jpg" alt="slider" onerror="this.onerror=null;callfun(this);">
+                <h4>{{Slides.[0].Header}}</h4>
+                <div class="icon" data-title="Edit slider">
+                    <div onclick="openmodel('{{Slides.[0].Id}}');">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-div">
+            <div class="carousel">
+                <img src="/images/slider/{{Slides.[1].Id}}.jpg" alt="slider" onerror="this.onerror=null;callfun(this);">
+                <h4>{{Slides.[1].Header}}</h4>
+                <div class="icon" data-title="Edit slider">
+                    <div onclick="openmodel('{{Slides.[1].Id}}');">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-div">
+            <div class="carousel">
+                <img src="/images/slider/{{Slides.[2].Id}}.jpg" alt="slider" onerror="this.onerror=null;callfun(this);">
+                <h4>{{Slides.[2].Header}}</h4>
+                <div class="icon" data-title="Edit slider">
+                    <div onclick="openmodel('{{Slides.[2].Id}}');">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-div">
+            <div class="carousel">
+                <img src="/images/slider/{{Slides.[3].Id}}.jpg" alt="slider" onerror="this.onerror=null;callfun(this);">
+                <h4>{{Slides.[3].Header}}</h4>
+                <div class="icon" data-title="Edit slider">
+                    <div onclick="openmodel('{{Slides.[3].Id}}');">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-div">
+            <div class="carousel">
+                <img src="/images/slider/{{Slides.[4].Id}}.jpg" alt="slider" onerror="this.onerror=null;callfun(this);">
+                <h4>{{Slides.[4].Header}}</h4>
+                <div class="icon" data-title="Edit slider">
+                    <div onclick="openmodel('{{Slides.[4].Id}}');">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="edit-slider" id="edit-slider">
+        <div class="model">
+            <div class="header">
+                <h4>Edit slider</h4>
+                <i title="Close" class="bi bi-x-circle" onclick="closeModel(id)"></i>
+            </div>
+            <div class="content">
+                <form action="/admin/first-pege/slider/edit-slider" method="post" enctype="multipart/form-data">
+                    <div class="image">
+                        <img id="slider-image" src="" alt="slider" >
+                        <div data-title="Choose image" class="admin-edit">
+                            <i onclick="chooseSlider()" class="bi bi-camera-fill"></i>
+                        </div>
+                        <input type="file" onchange="viewImage(event)" hidden accept="image/jpg, image/jpeg" name="slider" id="slider-file">
+                    </div>
+                    <input type="text" id="slider-id" hidden name="id">
+                    <div>
+                        <label for="">Header <span>( maximum length 35 letters only )</span></label>
+                        <input id="slider-header" name="header" type="text" maxlength="35" class="text-input">
+                        <label for="">Content <span>( maximum length 350 letters only )</span></label>
+                        <textarea name="content" id="slider-content" cols="30" rows="10" maxlength="350"
+                            class="text-input"></textarea>
+                    </div>
+            </div>
+            <div class="footer">
+                <button type="reset" class="btn-md cancel">Reset</button>
+                <button type="submit" class="btn-md save">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{{!-- Alert --}}
+<div id="alert-div" class="admin-alert" style="display: none;">
+    <div class="alert-box  error-alert">
+        <div>
+            <div class="icon">
+                <div>
+                    <i id="alertIcon" class="bi bi-x-circle-fill "></i>
+                </div>
+            </div>
+            <div class="message">
+                <h5 id="alert-content"> {{Error}}</h5>
+            </div>
+            <i class="bi bi-x"></i>
+            <audio id="alert-audio" autoplay hidden src=""></audio>
+
+        </div>
+    </div>
+</div>
+
+
+{{#if Success}}
+<div class="admin-alert">
+    <div class="alert-box success-alert">
+        <div>
+            <div class="icon">
+                <div>
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+            </div>
+            <div class="message">
+                <h5> {{Success}}</h5>
+            </div>
+            <i class="bi bi-x"></i>
+            <audio autoplay hidden src="/audio/alert/01.mp3"></audio>
+
+        </div>
+    </div>
+</div>
+{{/if}}
+
+
+
+
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('first-page').className = "main-item active-main"
+</script>
+
+
+{{!-- Cntroll model --}}
+
+<script>
+    var slider = document.getElementById('edit-slider')
+    var header = document.getElementById('slider-header')
+    var content = document.getElementById('slider-content')
+    var image = document.getElementById('slider-image')
+    var choose = document.getElementById('slider-file')
+    var alertDiv = document.getElementById('alert-div')
+    var alertContent = document.getElementById('alert-content')
+    var alertAudio = document.getElementById('alert-audio')
+    var sliderId = document.getElementById('slider-id')
+
+    function openmodel(id) {
+        slider.style.display = "block"
+        image.src = '/images/slider/' + id + '.jpg'
+        sliderId.value = id
+
+        $.ajax({
+            url: '/admin/first-page/slider/find-slider',
+            data: {
+                Id: id,
+            },
+            method: 'post',
+            success: (result) => {
+                header.value = result.Header
+                content.value = result.Content
+            }
+        })
+
+    }
+    function closeModel(id) {
+
+        slider.style.display = 'none'
+    }
+    function chooseSlider() {
+        choose.click();
+    }
+    function hideAlert() {
+        alertAudio.src = ""
+        alertDiv.style.display = "none"
+      
+    }
+
+    function viewImage(event) {
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+
+            const maxFileSize = 3145728; // 3 MB
+            const Width = 1000;
+            const Height = 415;
+
+
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+            img.onload = () => {
+                console.log(event)
+                if (file.size > maxFileSize) {
+                    alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
+                    alertDiv.style.display = "flex"
+                    alertAudio.src = "/audio/alert/01.mp3"
+                    setTimeout(hideAlert, 3000)
+                } else {
+
+                    image.src = URL.createObjectURL(event.target.files[0])
+
+
+                }
+            };
+        }
+    }
+</script>
+
+<script>
+    function openfileDialog() {
+        document.getElementById('input-slider').click();
+
+    }
+</script>
