@@ -39,8 +39,47 @@ function closebtn(id) {
     BB.style.display = 'block'
 }
 
-// 
+// Slider
 
-function ParaHeader(){
-    alert()
+function closeModel(id) {
+
+    document.getElementById(id).style.display = 'none'
 }
+
+function chooseSlider() {
+    document.getElementById('slider-file').click();
+}
+
+function viewImage(event) {
+    var image = document.getElementById('profile-image')
+    var alertDiv = document.getElementById('alert-div')
+    var alertContent = document.getElementById('alert-content')
+    var alertAudio = document.getElementById('alert-audio')
+    if (event.target.files && event.target.files[0]) {
+        const file = event.target.files[0];
+
+        const maxFileSize = 3145728; // 3 MB
+
+
+
+        const img = new Image();
+        img.src = URL.createObjectURL(file);
+        img.onload = () => {
+            console.log(event)
+            if (file.size > maxFileSize) {
+                alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
+                alertDiv.style.display = "flex"
+                alertAudio.src = "/audio/alert/01.mp3"
+                setTimeout(hideAlert, 3000)
+            } else {
+
+                image.src = URL.createObjectURL(event.target.files[0])
+
+
+            }
+        };
+    }
+}
+
+// call
+

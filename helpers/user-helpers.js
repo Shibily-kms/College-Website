@@ -54,6 +54,25 @@ module.exports = {
                 resolve(links)
             })
          })
+    },
+
+    getAllTeachers:()=>{
+        return new Promise(async(resolve, reject) => { 
+            let firstTwo = []
+            let teachers = await db.get().collection(collection.PROFILE_COLLECTON).find({Type:"Teacher"}).toArray()
+            teachers.sort((a,b) => {
+                return a.Index - b.Index;
+            })
+             for(let i=0; i < 2 ; i++ ){
+                 firstTwo.push(teachers[i])
+             }
+             teachers.splice(0,2)
+             let data = {
+                 firstTwo,
+                 teachers
+             }
+             resolve(data)
+         })
     }
 
 

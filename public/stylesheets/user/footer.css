@@ -46,17 +46,20 @@ footer{
 .user-footer .bottom div{
     display: flex;
     padding-top: 20px;
-    
     border-top: solid 1px var(--color-white);
     opacity: .5;
     justify-content: space-between;
     margin-top: 10px;
     color: var(--color-white);
     font-style: italic;
+    font-weight: 200;
+    
 }
 
 .user-footer .bottom div a{
     color: var(--color-white);
     font-style: italic;
     opacity: .6;
+    font-weight: 200;
+   
 }

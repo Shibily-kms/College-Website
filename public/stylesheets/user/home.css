@@ -33,10 +33,6 @@
     position: absolute;
     color: var(--color-c-black);
     background-color: var(--color-slider-info) ;
-    
-    
-    
-    
     width: 50%;
     bottom: 70px;
     margin-left: 50px;
@@ -46,8 +42,8 @@
   }
   
   .slider .slide .info h2{
-    font-size: 2em;
-    font-weight: 800;
+    font-weight: 700;
+    
     
   }
   
@@ -55,6 +51,7 @@
     font-size: 1em;
     font-weight: 400;
     font-style: italic;
+    
   }
   
   .navigation{

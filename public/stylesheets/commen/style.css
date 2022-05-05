@@ -19,6 +19,10 @@ a {
     text-decoration: none;
 }
 
+label{
+  font-size: 14px;
+}
+
 .container{
     padding: 0;
     padding-left: 7%;

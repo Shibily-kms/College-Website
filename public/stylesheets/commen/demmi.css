@@ -190,6 +190,7 @@
     flex-wrap: wrap; 
     width: 100%;
     margin-top: -150px;
+    position: relative;
 }
 
 .four-profile .profile{
@@ -234,6 +235,8 @@
     -o-border-radius: 100%;
     box-shadow: var(--shadow-c-white);
     opacity: 1;
+    object-fit: cover;
+    
     
 }
 .four-profile .profile .image img:hover{
@@ -246,12 +249,12 @@
     margin-top: 13px;
 }
 .four-profile .profile .content h4{
-    color: var(--color-blue-light-2);
-    font-family: "Poppins";
+    color: var(--color-c-blue-light-8);
+   
 }
 .four-profile .profile .content :nth-child(2){
     color: var(--color-rose-light-7);
-    font-weight: bold;
+    
     font-style: italic;
     
 }
@@ -317,6 +320,7 @@
 }
 .model .header h4{
     color: var(--color-c-black);
+    font-weight: 400;
 }
 .model .header i{
     cursor: pointer;

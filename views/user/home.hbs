@@ -9,7 +9,7 @@
       <div class="slide active">
         <img src="/images/slider/{{Slides.[0].Id}}.jpg" alt="">
         <div class="info">
-          <h1>{{Slides.[0].Header}}</h1>
+          <h2>{{Slides.[0].Header}}</h2>
           <p>{{Slides.[0].Content}}</p>
 
         </div>
@@ -17,7 +17,7 @@
       <div class="slide">
         <img src="/images/slider/{{Slides.[1].Id}}.jpg" alt="">
         <div class="info">
-          <h1>{{Slides.[1].Header}}</h1>
+          <h2>{{Slides.[1].Header}}</h2>
           <p>{{Slides.[1].Content}}</p>
           <button class="btn-lg hover-fill-red">Read more</button>
         </div>
@@ -25,21 +25,21 @@
       <div class="slide">
         <img src="/images/slider/{{Slides.[2].Id}}.jpg" alt="">
         <div class="info">
-          <h1>{{Slides.[2].Header}}</h1>
+          <h2>{{Slides.[2].Header}}</h2>
           <p>{{Slides.[2].Content}}</p>
         </div>
       </div>
       <div class="slide">
         <img src="/images/slider/{{Slides.[3].Id}}.jpg" alt="">
         <div class="info">
-          <h1>{{Slides.[3].Header}}</h1>
+          <h2>{{Slides.[3].Header}}</h2>
           <p>{{Slides.[3].Content}}</p>
         </div>
       </div>
       <div class="slide">
         <img src="/images/slider/{{Slides.[4].Id}}.jpg" alt="">
         <div class="info">
-          <h1>{{Slides.[4].Header}}</h1>
+          <h2>{{Slides.[4].Header}}</h2>
           <p>{{Slides.[4].Content}}</p>
         </div>
       </div>
@@ -61,7 +61,7 @@
 <section class="home-container" style="">
   {{!-- Noorul huda content --}}
   <div class="content-div {{#if adminHere}} edit-boarder {{/if}}">
-    {{#if adminHere}} <a class="admin-edit edit-icon-content" href="/admin/first-page/the-nsa" target="_blank"><i
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/first-page/the-nsa" target="_blank"><i
         class="bi bi-pencil-fill"></i></a> {{/if}}
     <h3 class="header" id="NSA-Header">{{TheNsa.Header}}</h3>
     <p class="perag">{{TheNsa.Para1}}</p>
@@ -73,7 +73,7 @@
 
   {{!-- College content --}}
   <div class="content-div {{#if adminHere}} edit-boarder {{/if}} ">
-    {{#if adminHere}} <a class="admin-edit edit-icon-content" href="/admin/first-page/the-majma"><i
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/first-page/the-majma"><i
         class="bi bi-pencil-fill"></i></a> {{/if}}
     <h3 class="header" id="Majma-Header">{{TheMajma.Header}}</h3>
     <p class="perag">{{TheMajma.Para1}}</p>
@@ -86,7 +86,7 @@
   {{!-- four links --}}
 
   <div class="four-links {{#if adminHere}} edit-boarder {{/if}}">
-    {{#if adminHere}} <a class="admin-edit edit-icon-content" target="_blank" href="/admin/first-page/links"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" target="_blank" href="/admin/first-page/links"><i class="bi bi-pencil-fill"></i></a> {{/if}}
     <a href="{{Links.Cic}}" target="_blank">
       <div class="link-div">
         <i class="bi bi-mortarboard-fill"></i>

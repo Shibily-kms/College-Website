@@ -32,7 +32,10 @@ router.get('/', async function (req, res, next) {
 router.get('/our-teachers',(req,res)=>{
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
-    res.render('user/our-teachers', { title: "Our teachers",nsaWebDarkTheme,adminHere,user:true, })
+    userHelpers.getAllTeachers().then((data)=>{
+        console.log(data);
+        res.render('user/our-teachers', { title: "Our teachers",nsaWebDarkTheme,adminHere,user:true, data })
+    })
 });
 
 
