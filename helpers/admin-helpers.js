@@ -114,7 +114,7 @@ module.exports = {
                     }
                 }).then(()=>{
                     response.Id = body.Id
-                    response.Success= "New teacher profile successfully created"
+                    response.Success= "Teacher profile successfully updated"
                     resolve(response)
                 })
             }

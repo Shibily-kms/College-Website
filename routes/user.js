@@ -37,6 +37,16 @@ router.get('/our-teachers',(req,res)=>{
         res.render('user/our-teachers', { title: "Our teachers",nsaWebDarkTheme,adminHere,user:true, data })
     })
 });
+// Our leaders
+
+router.get('/our-leaders',(req,res)=>{
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+  //  userHelpers.getAllTeachers().then((data)=>{
+       
+        res.render('user/our-leaders', { title: "Our leaders",nsaWebDarkTheme,adminHere,user:true,  })
+  //  })
+});
 
 
 

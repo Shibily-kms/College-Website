@@ -63,6 +63,7 @@
         </div>
 
     </div>
+    <div class="model-border" id="profile-Div">
     <div class="edit-slider" id="edit-slider">
         <div class="model">
             <div class="header">
@@ -93,6 +94,7 @@
                 </form>
             </div>
         </div>
+    </div>
     </div>
 </section>
 {{!-- Alert --}}
@@ -147,6 +149,7 @@
 {{!-- Cntroll model --}}
 
 <script>
+    let profileDiv = document.getElementById('profile-Div')
     var slider = document.getElementById('edit-slider')
     var header = document.getElementById('slider-header')
     var content = document.getElementById('slider-content')
@@ -158,6 +161,7 @@
     var sliderId = document.getElementById('slider-id')
 
     function openmodel(id) {
+        profileDiv.style.display = "flex"
         slider.style.display = "block"
         image.src = '/images/slider/' + id + '.jpg'
         sliderId.value = id
@@ -177,6 +181,7 @@
     }
     function closeModel(id) {
 
+        profileDiv.style.display = 'none'
         slider.style.display = 'none'
     }
     function chooseSlider() {

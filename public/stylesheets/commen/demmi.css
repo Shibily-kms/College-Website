@@ -382,6 +382,16 @@
     color: var(--color-white);
 }
 
+.model-border{
+    width: 90%;
+    height: 85vh;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 80px;
+    display: none;
+}
+
 /* Info bar */
 
 .info-bar{

@@ -65,11 +65,14 @@
 
 
     </div>
+    <div class="model-border" id="profile-Div">
+
+    
     <div class="edit-slider teacher-profile-div" id="profile-model">
         <div class="model">
             <div class="header">
                 <h4 id="model-header">Edit slider</h4>
-                <i title="Close" class="bi bi-x-circle" onclick="closeModel('profile-model')"></i>
+                <i title="Close" class="bi bi-x-circle" onclick="closeModel('profile-Div')"></i>
             </div>
             <div class="content">
                 <form action="/admin/our-teachers" method="post" enctype="multipart/form-data">
@@ -108,10 +111,12 @@
             </div>
         </div>
     </div>
+    </div>
 
 </section>
 
 <script>
+    let profileDiv = document.getElementById('profile-Div')
     let profile = document.getElementById('profile-model')
     let header = document.getElementById('model-header')
     let image = document.getElementById('profile-image')
@@ -123,6 +128,7 @@
     let idInput = document.getElementById('slider-id')
 
     function openmodel(id) {
+        profileDiv.style.display = "flex"
         profile.style.display = "block"
         if (id == 'new') {
             header.innerHTML = "Create profile"

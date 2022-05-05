@@ -42,7 +42,7 @@ function closebtn(id) {
 // Slider
 
 function closeModel(id) {
-
+    
     document.getElementById(id).style.display = 'none'
 }
 

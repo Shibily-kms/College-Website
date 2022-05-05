@@ -1,34 +1,17 @@
 <section class="our-teacher">
     <div class="main-title title-image">
 
-        <h1>Our teachers</h1>
+        <h1>Our leaders</h1>
     </div>
 </section>
 <section class="container">
     <div  class="four-profile {{#if adminHere}} edit-boarder {{/if}}">
-    {{#if adminHere}} <a class="admin-edit edit-icon-content"  href="/admin/our-teachers" data-title="Edit" target="_blank"><i
+    {{#if adminHere}} <a class="admin-edit edit-icon-content"  href="/admin/our-leaders" data-title="Edit" target="_blank"><i
         class="bi bi-pencil-fill"></i></a> {{/if}}
-        {{!-- 50% --}}
-        {{#each data.firstTwo}}
-        <div id="foru-profile" class="profile fifteen-profile" >
-            <div>
-                <div class="image">
-                <img src="/images/profiles/{{this.Id}}.jpg" alt="profile">
-                </div>
-                <div class="content">
-                <h4>{{this.FullName}}</h4>
-                <p>- {{this.Position}} -</p>
-                <hr>
-                <p>{{this.Address}}</p>
-                <p>{{this.Mobile}}</p>
-                </div>
-            </div>
-        </div>
-        {{/each}}
        
         
         {{!-- 25% --}}
-        {{#each data.teachers}}
+        {{!-- {{#each data.teachers}} --}}
         <div id="foru-profile" class="profile " >
             <div>
                 <div class="image">
@@ -43,7 +26,7 @@
                 </div>
             </div>
         </div>
-        {{/each}}
+        {{!-- {{/each}} --}}
        
        
        
@@ -51,8 +34,3 @@
     </div>
 </section>
 
-<script>
-    let profile = document.getElementById('foru-profile')
-    console.log(profile)
-    console.log(profile.childNodes[2])
-</script>
