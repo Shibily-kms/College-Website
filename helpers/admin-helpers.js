@@ -48,9 +48,9 @@ module.exports = {
         })
     },
 
-    editFirstPagePeragraph: (body, type) => {
+    editPeragraph: (body, type) => {
         return new Promise((resolve, reject) => {
-            db.get().collection(collection.FIRST_PAGE_COLLECTION).updateOne({ Name: type }, {
+            db.get().collection(collection.PARAGRAPH_COLLECTION).updateOne({ Name: type }, {
                 $set: {
                     Header: body.Header,
                     Para1: body.Para1,

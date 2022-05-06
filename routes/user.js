@@ -47,6 +47,19 @@ router.get('/our-leaders',(req,res)=>{
    })
 });
 
+// Our faculty
+
+router.get('/our-faculty',async(req,res)=>{
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    let Pre = await userHelpers.getPreData();
+    let Ug = await userHelpers.getUgData();
+    let Pg = await userHelpers.getPgData();
+    let Hod = await userHelpers.getHodData();
+    res.render('user/our-faculty', { title: "Our faculty",nsaWebDarkTheme,adminHere,user:true, Pre,Ug ,Pg,Hod  })
+
+});
+
 
 
 

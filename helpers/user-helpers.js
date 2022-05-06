@@ -36,14 +36,14 @@ module.exports = {
 
     getTheNsa:()=>{
         return new Promise((resolve, reject) => { 
-            db.get().collection(collection.FIRST_PAGE_COLLECTION).findOne({Name : "The Nsa"}).then((nsa)=>{
+            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Name : "The Nsa"}).then((nsa)=>{
                 resolve(nsa)
             })
-         })
+         }) 
     },
     getTheMajma:()=>{
         return new Promise((resolve, reject) => { 
-            db.get().collection(collection.FIRST_PAGE_COLLECTION).findOne({Name : "The Majma"}).then((majma)=>{
+            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Name : "The Majma"}).then((majma)=>{
                 resolve(majma)
             })
          })
@@ -89,6 +89,41 @@ module.exports = {
              resolve(leaders)
          })
     },
+
+    getPreData:()=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Id : "PRGPH03"}).then((pre)=>{
+                resolve(pre)
+            })
+         }) 
+    },
+    getUgData:()=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Id : "PRGPH04"}).then((ug)=>{
+                resolve(ug)
+            })
+         }) 
+    },
+    getPgData:()=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Id : "PRGPH05"}).then((pg)=>{
+                resolve(pg)
+            })
+         }) 
+    },
+
+    getHodData:()=>{
+        return new Promise(async(resolve, reject) => { 
+           
+            let Hod = await db.get().collection(collection.PROFILE_COLLECTON).find({Type:"Hod"}).toArray()
+            Hod.sort((a,b) => {
+                return a.Index - b.Index;
+            })
+            
+             resolve(Hod)
+         })
+    },
+
 
 
 }

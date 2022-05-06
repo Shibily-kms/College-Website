@@ -143,7 +143,7 @@ router.get('/first-page/the-nsa', verifyAdminLogin, async (req, res) => {
 
 router.post('/first-page/the-nsa', verifyAdminLogin, (req, res) => {
   let type = "The Nsa"
-  adminHelpers.editFirstPagePeragraph(req.body, type).then(() => {
+  adminHelpers.editPeragraph(req.body, type).then(() => {
     req.session.Success = "Successfully edited"
     res.redirect('/admin/first-page/the-nsa')
   })
@@ -167,7 +167,7 @@ router.get('/first-page/the-majma', verifyAdminLogin, async (req, res) => {
 
 router.post('/first-page/the-majma', verifyAdminLogin, (req, res) => {
   let type = "The Majma"
-  adminHelpers.editFirstPagePeragraph(req.body, type).then(() => {
+  adminHelpers.editPeragraph(req.body, type).then(() => {
     req.session.Success = "Successfully edited"
     res.redirect('/admin/first-page/the-majma')
   })
@@ -265,14 +265,111 @@ router.post('/our-leaders', verifyAdminLogin, (req, res) => {
   })
 });
 
+// Our faculty
+
+router.get('/our-faculty', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+    res.render('admin/college/our-faculty', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true,  })
+});
+
+// Pre - OUr faculty
+router.get('/our-faculty/pre', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Pre = await userHelpers.getPreData();
+  if (req.session.Success) {
+    res.render('admin/college/pre', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Pre  })
+    req.session.Success = false
+  } else {
+    res.render('admin/college/pre', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Pre  })
+  }
+});
 
 
+router.post('/our-faculty/pre', verifyAdminLogin, (req, res) => {
+  
+  let type = "Pre"
+  adminHelpers.editPeragraph(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/our-faculty/pre')
+  })
+});
+
+// UG - Our faculty
+
+router.get('/our-faculty/ug', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Ug = await userHelpers.getUgData();
+  if (req.session.Success) {
+    res.render('admin/college/ug', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Ug  })
+    req.session.Success = false
+  } else {
+    res.render('admin/college/ug', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Ug })
+  }
+});
+
+router.post('/our-faculty/ug', verifyAdminLogin, (req, res) => {
+  let type = "Ug"
+  adminHelpers.editPeragraph(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/our-faculty/ug')
+  })
+});
 
 
+// PG - Our faculty
+
+router.get('/our-faculty/pg', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Pg = await userHelpers.getPgData();
+  if (req.session.Success) {
+    res.render('admin/college/pg', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Pg  })
+    req.session.Success = false
+  } else {
+    res.render('admin/college/pg', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Pg  })
+  }
+});
+
+router.post('/our-faculty/pg', verifyAdminLogin, (req, res) => {
+  
+  let type = "Pg"
+  adminHelpers.editPeragraph(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/our-faculty/pg')
+  })
+});
+
+// HOD our faculty
+
+router.get('/our-faculty/pg-hod', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Hod = await userHelpers.getHodData()
+  if (req.session.Success) {
+    res.render('admin/college/pg-hod', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Hod   })
+    req.session.Success = false
+  } else {
+    res.render('admin/college/pg-hod', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Hod  })
+  }
+});
 
 
-
-
+router.post('/our-faculty/pg-hod', verifyAdminLogin, (req, res) => {
+  req.body.Type = 'Hod'
+  adminHelpers.addUpdateProfile(req.body).then((response) => {
+    console.log('here me');
+    let Image = req.files
+    if (Image) {
+      Image = req.files.Profile
+      Image.mv('./public/images/profiles/' + response.Id + '.jpg')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/our-faculty/pg-hod')
+  })
+});
 
 
 

@@ -1,0 +1,55 @@
+{{!-- active button --}}
+<script>
+  var current = document.getElementById('College').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" style="position: relative;" class="admin-container">
+  <div class="headding">
+    <div>
+      <i class="bi bi-text-paragraph"></i>
+      <h4>Preparatory</h4>
+    </div>
+  </div>
+  <div class="summery">
+    <form action="/admin/our-faculty/pre" method="post">
+      <input type="text" hidden name="id" value="PRGPH03">
+      <label for="">Header</label>
+      <input type="text" name="Header" value="{{Pre.Header}}" class="text-input">
+      <label for="">Paragraph 01</label>
+      <textarea name="Para1" id="a" class="text-input" cols="30" rows="10">{{Pre.Para1}}</textarea>
+      <label for="">Paragraph 02</label>
+      <textarea name="Para2" id="" class="text-input" cols="30" rows="10">{{Pre.Para2}}</textarea>
+      <span {{#if Pre.Para3}}{{else}} style="display: none;" {{/if}} id="para03">
+        <label for="">Paragraph 03 <span><i class="bi bi-trash3" onclick="closepara('para03')"></i></span></label>
+        <textarea name="Para3" id="" class="text-input" cols="30" rows="10">{{Pre.Para3}}</textarea>
+      </span>
+      <span{{#if Pre.Para4}}{{else}} style="display: none;" {{/if}} id="para04">
+        <label for="">Paragraph 04 <span><i class="bi bi-trash3" onclick="closepara('para04')"></i></span></label>
+        <textarea name="Para4" id="" class="text-input" cols="30" rows="10">{{Pre.Para4}}</textarea>
+        </span><span {{#if Pre.Para5}}{{else}} style="display: none;" {{/if}} id="para05">
+          <label for="">Paragraph 05 <span><i class="bi bi-trash3" onclick="closepara('para05')"></i></span></label>
+          <textarea name="Para5" id="" class="text-input" cols="30" rows="10">{{Pre.Para5}}</textarea>
+        </span>
+
+        <div class="buttons">
+          {{#if Pre.Para5}}
+          {{#if Pre.Para4}}
+          {{#if Pre.Para3}}
+          {{else}}
+          <button id="praButton" type="button" onclick="showPara('para')" class="btn-md"><i></i>Add Paragraph</button>
+          {{/if}}
+          {{else}}
+          <button id="praButton" type="button" onclick="showPara('para')" class="btn-md"><i></i>Add Paragraph</button>
+          {{/if}}
+          {{else}}
+          <button id="praButton" type="button" onclick="showPara('para')" class="btn-md"><i></i>Add Paragraph</button>
+          {{/if}}
+          <Button type="submit" class="btn-md"><i></i>Submit</Button>
+        </div>
+
+
+
+    </form>
+  </div>
+</section>

@@ -231,6 +231,8 @@
 .edit-profile>.profile img{
     width: 200px;
     height: 200px;
+    min-width: 200px;
+    min-height: 200px;
     object-fit: cover;
     border-radius: 12px;
     -webkit-border-radius: 12px;
@@ -238,6 +240,7 @@
     -ms-border-radius: 12px;
     -o-border-radius: 12px;
     box-shadow: var(--shadow-c-white);
+    background: url(/images/profiles/1.jpg) ;
 }
 .edit-profile>.profile:hover .profile-overly{
     opacity: 1;

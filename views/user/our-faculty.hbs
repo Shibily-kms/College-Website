@@ -1,0 +1,89 @@
+<section class="our-teacher">
+    <div class="main-title title-image">
+        <h1>Our faculty</h1>
+    </div>
+</section>
+<section class="container">
+    {{!-- PRE content --}}
+    <div class="content-div {{#if adminHere}} edit-boarder {{/if}}">
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/our-faculty/pre"
+            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+        <h3 class="header" id="PRE-Header">{{Pre.Header}}</h3>
+        <p class="perag">{{Pre.Para1}}</p>
+        <p class="perag">{{Pre.Para2}}</p>
+        <p class="perag">{{Pre.Para3}}</p>
+        <p class="perag">{{Pre.Para4}}</p>
+        <p class="perag">{{Pre.Para5}}</p>
+    </div>
+
+    {{!-- UG content --}}
+    <div class="content-div {{#if adminHere}} edit-boarder {{/if}}">
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/our-faculty/ug"
+            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+        <h3 class="header" id="UG-Header">{{Ug.Header}}</h3>
+        <p class="perag">{{Ug.Para1}}</p>
+        <p class="perag">{{Ug.Para2}}</p>
+        <p class="perag">{{Ug.Para3}}</p>
+        <p class="perag">{{Ug.Para4}}</p>
+        <p class="perag">{{Ug.Para5}}</p>
+    </div>
+
+    {{!-- PG content --}}
+    <div class="content-div {{#if adminHere}} edit-boarder {{/if}}">
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/our-faculty/pg"
+            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+        <h3 class="header" id="PG-Header">{{Pg.Header}}</h3>
+        <p class="perag"> {{Pg.Para1}}</p>
+        <p class="perag">{{Pg.Para2}}</p>
+        <p class="perag">{{Pg.Para3}}</p>
+        <p class="perag">{{Pg.Para4}}</p>
+        <p class="perag">{{Pg.Para5}}</p>
+    </div>
+
+    <div style="margin-top: 0;" class="four-profile {{#if adminHere}} edit-boarder {{/if}}">
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" href="/admin/our-faculty/pg-hod" data-title="Edit"
+            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+
+        {{!-- 25% --}}
+
+        {{#each Hod}}
+        <div id="foru-profile" class="profile ">
+            <div>
+                <div class="image">
+                    <img src="/images/profiles/{{this.Id}}.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h4>{{this.FullName}}</h4>
+                    <p>- {{this.Position}} -</p>
+                    <hr>
+                    <p>{{this.Address}}</p>
+                    <p>{{this.Mobile}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+
+
+
+    </div>
+</section>
+
+{{!-- Color change --}}
+
+<script>
+    
+  let pre = document.getElementById('PRE-Header').innerHTML
+  console.log('hi')
+  const first = pre.split(' ').shift();
+  document.getElementById("PRE-Header").innerHTML = pre.replace(first, `<span class ="first-word">` + first + `</span>`);
+
+  let ug = document.getElementById('UG-Header').innerHTML
+  const fir = ug.split(' ').shift();
+  document.getElementById("UG-Header").innerHTML = ug.replace(fir, `<span class ="first-word">` + fir + `</span>`);
+
+  let pg = document.getElementById('PG-Header').innerHTML
+  const firs = pg.split(' ').shift();
+  document.getElementById("PG-Header").innerHTML = pg.replace(firs, `<span class ="first-word">` + firs + `</span>`);
+
+</script>
