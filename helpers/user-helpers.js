@@ -76,7 +76,19 @@ module.exports = {
              }
              resolve(data)
          })
-    }
+    },
+
+    getAllLeaders:()=>{
+        return new Promise(async(resolve, reject) => { 
+           
+            let leaders = await db.get().collection(collection.PROFILE_COLLECTON).find({Type:"Leader"}).toArray()
+            leaders.sort((a,b) => {
+                return a.Index - b.Index;
+            })
+            
+             resolve(leaders)
+         })
+    },
 
 
 }

@@ -211,7 +211,8 @@ router.get('/our-teachers', verifyAdminLogin, async (req, res) => {
 });
 
 router.post('/our-teachers', verifyAdminLogin, (req, res) => {
-  adminHelpers.addUpdateTeacher(req.body).then((response) => {
+  req.body.Type = 'Teacher'
+  adminHelpers.addUpdateProfile(req.body).then((response) => {
     let Image = req.files
     if (Image) {
       Image = req.files.Profile
@@ -222,7 +223,7 @@ router.post('/our-teachers', verifyAdminLogin, (req, res) => {
   })
 });
 
-router.post('/our-teachers/delete-profile',(req,res)=>{
+router.post('/delete-profile',(req,res)=>{
  
   adminHelpers.deleteProfile(req.body).then((response)=>{
     let Imagepath = path.join(__dirname, '../public/images/profiles/' + req.body.Id + '.jpg')
@@ -242,15 +243,27 @@ router.post('/our-teachers/delete-profile',(req,res)=>{
 router.get('/our-leaders', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
- // let teachers = await userHelpers.getAllTeachers()
+  let leaders = await userHelpers.getAllLeaders()
    if(req.session.Success){
-    res.render('admin/college/our-tea', { title: 'Admin panel', "Success":req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, teachers })
+    res.render('admin/college/our-leaders', { title: 'Admin panel', "Success":req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, leaders })
     req.session.Success = false
   }else{
-    res.render('admin/college/our-teachers', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, teachers })
+    res.render('admin/college/our-leaders', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, leaders  })
   }
 });
 
+router.post('/our-leaders', verifyAdminLogin, (req, res) => {
+  req.body.Type = 'Leader'
+  adminHelpers.addUpdateProfile(req.body).then((response) => {
+    let Image = req.files
+    if (Image) {
+      Image = req.files.Profile
+      Image.mv('./public/images/profiles/' + response.Id + '.jpg')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/our-leaders')
+  })
+});
 
 
 

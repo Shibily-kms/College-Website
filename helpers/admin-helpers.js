@@ -80,14 +80,13 @@ module.exports = {
         })
     },
 
-    addUpdateTeacher: (body) => {
+    addUpdateProfile: (body) => {
        
         let response = []
         return new Promise((resolve, reject) => {
             if(body.Mobile){
                 body.Mobile =  parseInt(body.Mobile)
             }
-                
             body.Index =  parseInt(body.Index)
             if (body.Id == '') {
                 
@@ -100,10 +99,10 @@ module.exports = {
                     }
                     body.Id = randomString
                 }
-                body.Type = 'Teacher'
+                
                 db.get().collection(collection.PROFILE_COLLECTON).insertOne(body).then(() => {
                     response.Id = body.Id
-                    response.Success= "New teacher profile successfully created"
+                    response.Success= "New Profile Successfully Created"
                     resolve(response)
                 })
             }else{
@@ -117,7 +116,7 @@ module.exports = {
                     }
                 }).then(()=>{
                     response.Id = body.Id
-                    response.Success= "Teacher profile successfully updated"
+                    response.Success= "This Profile Successfully Updated"
                     resolve(response)
                 })
             }
