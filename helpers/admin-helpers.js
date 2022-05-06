@@ -81,13 +81,16 @@ module.exports = {
     },
 
     addUpdateTeacher: (body) => {
-        console.log(body);
+       
         let response = []
         return new Promise((resolve, reject) => {
-            body.Mobile =  parseInt(body.Mobile)
+            if(body.Mobile){
+                body.Mobile =  parseInt(body.Mobile)
+            }
+                
             body.Index =  parseInt(body.Index)
             if (body.Id == '') {
-                console.log(3);
+                
                 create_random_id(10)
                 function create_random_id(sting_length) {
                     var randomString = '';

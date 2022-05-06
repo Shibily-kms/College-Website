@@ -65,7 +65,7 @@ function viewImage(event) {
         const img = new Image();
         img.src = URL.createObjectURL(file);
         img.onload = () => {
-            console.log(event)
+           
             if (file.size > maxFileSize) {
                 alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
                 alertDiv.style.display = "flex"

@@ -48,12 +48,12 @@ figure{
 
 ::selection {
     color: var(--color-white);
-    background: var(--color-c-rose-light-6);
+    background: var(--color-c-blue-light-8);
   }
 
   ::-moz-selection { /* Code for Firefox */
     color: var(--color-white);
-    background: var(--color-c-rose-light-6);
+    background: var(--color-c-blue-light-8);
   }
 
 

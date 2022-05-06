@@ -33,7 +33,7 @@ router.get('/our-teachers',(req,res)=>{
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     userHelpers.getAllTeachers().then((data)=>{
-        console.log(data);
+     
         res.render('user/our-teachers', { title: "Our teachers",nsaWebDarkTheme,adminHere,user:true, data })
     })
 });

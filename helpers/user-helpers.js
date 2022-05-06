@@ -10,7 +10,7 @@ module.exports = {
     getFullSlide: () => {
         return new Promise((resolve, reject) => {
             db.get().collection(collection.FIRST_PAGE_COLLECTION).findOne({ Name: "Slide" }).then((slide) => {
-                console.log(slide.Slids);
+               
                 resolve(slide.Slids)
             })
         })
@@ -63,10 +63,13 @@ module.exports = {
             teachers.sort((a,b) => {
                 return a.Index - b.Index;
             })
-             for(let i=0; i < 2 ; i++ ){
-                 firstTwo.push(teachers[i])
-             }
-             teachers.splice(0,2)
+          
+            if(teachers[1]){
+                for(let i=0; i < 2 ; i++ ){
+                    firstTwo.push(teachers[i])
+                }
+                teachers.splice(0,2)
+            }
              let data = {
                  firstTwo,
                  teachers

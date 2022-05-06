@@ -121,7 +121,7 @@ router.post('/first-pege/slider/edit-slider', verifyAdminLogin, (req, res) => {
 
 router.post('/first-page/slider/find-slider', (req, res) => {
   userHelpers.getOneSlide(req.body).then((result) => {
-    console.log(result, 'rsult');
+   
     res.json(result)
   })
 
@@ -201,6 +201,7 @@ router.get('/our-teachers', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
   let teachers = await userHelpers.getAllTeachers()
+
    if(req.session.Success){
     res.render('admin/college/our-teachers', { title: 'Admin panel', "Success":req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, teachers })
     req.session.Success = false
@@ -222,18 +223,53 @@ router.post('/our-teachers', verifyAdminLogin, (req, res) => {
 });
 
 router.post('/our-teachers/delete-profile',(req,res)=>{
-  console.log('here');
+ 
   adminHelpers.deleteProfile(req.body).then((response)=>{
     let Imagepath = path.join(__dirname, '../public/images/profiles/' + req.body.Id + '.jpg')
     fs.unlink(Imagepath, function (err) {
       if (err)
-       return console.log(err);
-      console.log('file deleted successfully');
+       return ;
+     
     });
-    console.log(Imagepath);
+  
     res.json(response)
   })
-})
+});
+
+
+// Our leaders
+
+router.get('/our-leaders', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+ // let teachers = await userHelpers.getAllTeachers()
+   if(req.session.Success){
+    res.render('admin/college/our-tea', { title: 'Admin panel', "Success":req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, teachers })
+    req.session.Success = false
+  }else{
+    res.render('admin/college/our-teachers', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, teachers })
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;

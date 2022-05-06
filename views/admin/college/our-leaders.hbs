@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="edit-profile">
-        
+
         {{#each teachers.firstTwo}}
         <div id="profileDiv{{this.Id}}" class="profile">
             <img src="/images/profiles/{{this.Id}}.jpg" alt="profile">
@@ -48,7 +48,7 @@
                     <span id="index{{this.Id}}">{{this.Index}}</span>
                 </div>
                 <div title="Remove" onclick="deleteProfile('{{this.Id}}')" class="remove">
-                    <i id="removeIcon{{this.Id}}" class="bi bi-trash3"></i>
+                    <i class="bi bi-trash3"></i>
                 </div>
             </div>
         </div>
@@ -161,7 +161,6 @@
 
 <script>
     function deleteProfile(Id) {
-      
         let div = document.getElementById('profileDiv' + Id)
         let Icon = document.getElementById('removeIcon' + Id)
         Icon.className = 'bi bi-emoji-frown'
@@ -172,7 +171,7 @@
             data: {
                 Id
             },
-            method: 'post', 
+            method: 'post',
             success: (response) => {
                 div.style.display = 'none'
 
