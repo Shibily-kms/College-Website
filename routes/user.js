@@ -24,7 +24,9 @@ router.get('/', async function (req, res, next) {
   ///  var TheNsa = await userHelpers.getTheNsa()
   ///  var TheMajma = await userHelpers.getTheMajma()
    // var Links = await userHelpers.getFLinks()
-    res.render('user/home', { title: "Home",nsaWebDarkTheme,adminHere,user:true, Slides,TheNsa , TheMajma,Links });
+    res.render('user/home', { title: "Home",nsaWebDarkTheme,adminHere,user:true,
+   //  Slides,TheNsa , TheMajma,Links
+    });
 });
 
 // Our teachers
