@@ -20,10 +20,10 @@ router.post('/change-theme',(req,res)=>{
 router.get('/', async function (req, res, next) {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
-    var Slides = await userHelpers.getFullSlide()
-    var TheNsa = await userHelpers.getTheNsa()
-    var TheMajma = await userHelpers.getTheMajma()
-    var Links = await userHelpers.getFLinks()
+  //  var Slides = await userHelpers.getFullSlide()
+  ///  var TheNsa = await userHelpers.getTheNsa()
+  ///  var TheMajma = await userHelpers.getTheMajma()
+   // var Links = await userHelpers.getFLinks()
     res.render('user/home', { title: "Home",nsaWebDarkTheme,adminHere,user:true, Slides,TheNsa , TheMajma,Links });
 });
 
