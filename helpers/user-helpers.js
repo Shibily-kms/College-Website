@@ -33,21 +33,6 @@ module.exports = {
             })
         })
     },
-
-    getTheNsa:()=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Name : "The Nsa"}).then((nsa)=>{
-                resolve(nsa)
-            })
-         }) 
-    },
-    getTheMajma:()=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Name : "The Majma"}).then((majma)=>{
-                resolve(majma)
-            })
-         })
-    },
     getFLinks:()=>{
         return new Promise((resolve, reject) => { 
             db.get().collection(collection.FIRST_PAGE_COLLECTION).findOne({Name : "Links"}).then((links)=>{
@@ -90,28 +75,6 @@ module.exports = {
          })
     },
 
-    getPreData:()=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Id : "PRGPH03"}).then((pre)=>{
-                resolve(pre)
-            })
-         }) 
-    },
-    getUgData:()=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Id : "PRGPH04"}).then((ug)=>{
-                resolve(ug)
-            })
-         }) 
-    },
-    getPgData:()=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Id : "PRGPH05"}).then((pg)=>{
-                resolve(pg)
-            })
-         }) 
-    },
-
     getHodData:()=>{
         return new Promise(async(resolve, reject) => { 
            
@@ -124,6 +87,30 @@ module.exports = {
          })
     },
 
+    getNormalPara:(id)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.PARAGRAPH_COLLECTION).findOne({Id : id}).then((paragrpah)=>{
+                resolve(paragrpah)
+            })
+         }) 
+    },
+
+    getNormalProfile:(Type)=>{
+        return new Promise(async(resolve, reject) => { 
+            let Profiles = await db.get().collection(collection.PROFILE_COLLECTON).find({Type}).toArray()
+            Profiles.sort((a,b) => {
+                return a.Index - b.Index;
+            })
+             resolve(Profiles)
+         })
+    },
+
+    getNormelLinks:(Type)=>{
+        return new Promise(async(resolve, reject) => { 
+            let links = await db.get().collection(collection.LINK_COLLECTION).findOne({Type})
+            resolve(links)
+         });
+    }
 
 
 }

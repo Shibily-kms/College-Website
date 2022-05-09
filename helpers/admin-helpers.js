@@ -65,6 +65,31 @@ module.exports = {
             })
         })
     },
+    editPeragraphWithButton: (body, type) => {
+        console.log(body,type);
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.PARAGRAPH_COLLECTION).updateOne({ Name: type, }, {
+                $set: {
+                    
+                    Header: body.Header,
+                    Para1: body.Para1,
+                    Para2: body.Para2,
+                    Para3: body.Para3,
+                    Para4: body.Para4,
+                    Para5: body.Para5,
+                    "Btn1.Name" : body.B1Name,
+                    "Btn1.Link" : body.B1Link,
+                    "Btn1.New" : body.B1New,
+                    "Btn2.Name" : body.B2Name,
+                    "Btn2.Link" : body.B2Link,
+                    "Btn2.New" : body.B2New
+                }
+            }).then(() => {
+                console.log('iam2');
+                resolve()
+            })
+        })
+    },
 
     editFirstLinks: (body, type) => {
         return new Promise((resolve, reject) => {
@@ -127,6 +152,32 @@ module.exports = {
         return new Promise((resolve, reject) => { 
             db.get().collection(collection.PROFILE_COLLECTON).deleteOne({Id:body.Id}).then((Id)=>{
                 resolve(Id)
+            })
+         })
+    },
+
+    updateLinks:(body,Type)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.LINK_COLLECTION).updateOne({Type},{
+                $set:{
+                    Discord : body.Discord,
+                    Email : body.Email,
+                    Facebook : body.Facebook,
+                    Github : body.Github,
+                    Website : body.Website,
+                    Instagram : body.Instagram,
+                    Linkedin : body.Linkedin,
+                    Messenger : body.Messenger,
+                    Mobile : body.Mobile,
+                    Signal : body.Signal,
+                    Telegram : body.Telegram,
+                    Tiktok : body.Tiktok,
+                    Twitter : body.Twitter,
+                    Whatsapp : body.Whatsapp,
+                    Youtube : body.Youtube
+                }
+            }).then(()=>{
+                resolve()
             })
          })
     }

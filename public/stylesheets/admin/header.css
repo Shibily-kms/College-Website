@@ -45,7 +45,6 @@
   -o-border-radius: 8px 0 0 8px;
   
 }
-
 .side-bar .main-item:hover{
   color: var(--color-white); 
   border-radius: 10px;

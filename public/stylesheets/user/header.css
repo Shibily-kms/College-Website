@@ -156,10 +156,20 @@ header.sticky .menu-item .sub-menu{
 .more .more-menu .more-item:hover{
   background: var(--color-c-blue-light-5);
 }
-
+.sub-item .more-btn{
+  background-color: var(--color-white);
+  padding: 1px 10px 1px 10px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  color: var(--color-c-blue-1);
+}
 .menu-btn{
   display: none;
 }
+
 
 
 /* .................... Media .................. */
@@ -247,6 +257,17 @@ header.sticky .menu-item .sub-menu{
     margin-left: 20px;
   }
 
+  .more .more-btn{
+    background-color: var(--color-white);
+    padding: 1px 10px 1px 10px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    color: var(--color-c-blue-1);
+}
+
   .close-btn{
     position: absolute;
     background: url(/images/icons/close-icon.png) no-repeat;
@@ -276,6 +297,7 @@ header.sticky .menu-item .sub-menu{
     background-position: center;
     cursor: pointer;
     display: block;
+    
   }
 
   header{

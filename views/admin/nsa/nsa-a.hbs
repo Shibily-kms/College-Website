@@ -1,0 +1,93 @@
+{{!-- active button --}}
+<script>
+  var current = document.getElementById('Union').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" style="position: relative;" class="admin-container">
+  <div class="headding">
+    <div>
+      <i class="bi bi-text-paragraph"></i>
+      <h4>NSA About</h4>
+    </div>
+  </div>
+  <div class="summery">
+    <form action="/admin/nsa/nsa-about" method="post">
+      <input type="text" hidden name="id" value="PRGPH06">
+      <label for="">Header</label>
+      <input type="text" name="Header" value="{{nsaPara.Header}}" class="text-input">
+      <label for="">Paragraph 01</label>
+      <textarea name="Para1" id="a" class="text-input" cols="30" rows="10">{{nsaPara.Para1}}</textarea>
+      <label for="">Paragraph 02</label>
+      <textarea name="Para2" id="" class="text-input" cols="30" rows="10">{{nsaPara.Para2}}</textarea>
+      <span {{#if nsaPara.Para3}}{{else}} style="display: none;" {{/if}} id="para03">
+        <label for="">Paragraph 03 <span><i class="bi bi-trash3" onclick="closepara('para03')"></i></span></label>
+        <textarea name="Para3" id="" class="text-input" cols="30" rows="10">{{nsaPara.Para3}}</textarea>
+      </span>
+      <span{{#if nsaPara.Para4}}{{else}} style="display: none;" {{/if}} id="para04">
+        <label for="">Paragraph 04 <span><i class="bi bi-trash3" onclick="closepara('para04')"></i></span></label>
+        <textarea name="Para4" id="" class="text-input" cols="30" rows="10">{{nsaPara.Para4}}</textarea>
+        </span><span {{#if nsaPara.Para5}}{{else}} style="display: none;" {{/if}} id="para05">
+          <label for="">Paragraph 05 <span><i class="bi bi-trash3" onclick="closepara('para05')"></i></span></label>
+          <textarea name="Para5" id="" class="text-input" cols="30" rows="10">{{nsaPara.Para5}}</textarea>
+        </span>
+        <span {{#if nsaPara.Btn1.Name}}{{else}} style="display: none;" {{/if}} id="btn01">
+        <label for="">Button 01 <span><i class="bi bi-trash3" onclick="closebtn('btn01')"></i></span></label>
+        <div class="add-button">
+          <label for="">Button name</label>
+          <input type="text" value="{{nsaPara.Btn1.Name}}" name="B1Name" class="text-input">
+          <label for="">Link</label>
+          <input type="text" value="{{nsaPara.Btn1.Link}}" name="B1Link" class="text-input">
+          <label class="checkbox-label" for="blank1">
+            <input type="checkbox" name="B1New" {{#if nsaPara.Btn1.New}} checked{{/if}}  id="blank1">
+            <span class="mark"></span>
+          </label>
+          <label style="margin-left: 45px; " for="blank1">Open new tab</label>
+        </div>
+      </span>
+      <span {{#if nsaPara.Btn2.Name}}{{else}} style="display: none;" {{/if}} id="btn02">
+        <label for="">Button 02 <span><i class="bi bi-trash3" onclick="closebtn('btn02')"></i></span></label>
+        <div class="add-button">
+          <label for="">Button name</label>
+          <input type="text" value="{{nsaPara.Btn2.Name}}" name="B2Name" class="text-input">
+          <label for="">Link</label>
+          <input type="text" value="{{nsaPara.Btn2.Link}}" name="B2Link" class="text-input">
+          <label class="checkbox-label" for="blank2">
+            <input {{#if nsaPara.Btn2.New}} checked{{/if}} type="checkbox" name="B2New" id="blank2">
+            <span class="mark"></span>
+          </label>
+          <label style="margin-left: 45px; " for="blank2">Open new tab</label>
+        </div>
+      </span>
+
+        <div class="buttons">
+          {{#if nsaPara.Para5}}
+          {{#if nsaPara.Para4}}
+          {{#if nsaPara.Para3}}
+          {{else}}
+          <button id="praButton" type="button" onclick="showPara('para')" class="btn-md"><i></i>Add Paragraph</button>
+          {{/if}}
+          {{else}}
+          <button id="praButton" type="button" onclick="showPara('para')" class="btn-md"><i></i>Add Paragraph</button>
+          {{/if}}
+          {{else}}
+          <button id="praButton" type="button" onclick="showPara('para')" class="btn-md"><i></i>Add Paragraph</button>
+          {{/if}}
+
+          {{#if nsaPara.Btn2.Name}}
+          {{#if nsaPara.Btn1.Name}}
+          {{else}}
+          <button id="btnButton" type="button" onclick="showButton()" class="btn-md"><i></i>Add Button</button>
+          {{/if}}
+          {{else}}
+          <button id="btnButton" type="button" onclick="showButton()" class="btn-md"><i></i>Add Button</button>
+          {{/if}}
+          <Button type="submit" class="btn-md"><i></i>Submit</Button>
+
+        </div>
+
+
+
+    </form>
+  </div>
+</section>

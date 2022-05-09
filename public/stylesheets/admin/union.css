@@ -1,0 +1,79 @@
+/* NSA */
+.pera-buttens{
+   
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+}
+.pera-buttens button{
+    border: solid 1px var(--color-rose-1);
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    background: none;
+    color: var(--color-rose-1);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.pera-buttens button:hover{
+    border: solid 1px var(--color-rose-1);
+    background: var(--color-rose-1);
+    color: var(--color-c-white);
+}
+.pera-buttens i{
+    margin-left: 10px;
+}
+
+/* NSA & SKSSF links */
+
+.header-links{
+    display: flex;
+    justify-content: center;
+}
+.header-links .link-div{
+    width: 500px;
+    margin-top: 30px;
+}
+.header-links .link-div h4{
+    text-align: center;
+    font-weight: normal;
+}
+.header-links .link-div .link i{
+    margin-left: 10px;
+    font-size: 25px;
+     
+}
+.header-links .link-div .link input{
+    width: 100%;
+    border: none;
+    font-size: 16px;
+   
+}
+.header-links .link-div .link {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-white-2);
+    color: var(--color-c-black);
+    border: solid 1px var(--color-c-black-opacity-5);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.header-links .link-div .submit button {
+   background-color: var(--color-green-1);
+   border-radius: 10px;
+   color: var(--color-white);
+   width: 100%;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   -ms-border-radius: 10px;
+   -o-border-radius: 10px;
+}

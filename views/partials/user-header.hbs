@@ -22,21 +22,21 @@
         <ul class="sub-menu">
 
           <li class="sub-item more">
-            <a class="more-btn" href="/nsa">NSA <i class="fas fa-angle-right"></i></a>
+            <a class="" href="/nsa">NSA </a><i class="fas fa-angle-right more-btn"></i>
             <ul class="more-menu">
               <li class="more-item"><a href="/nsa/fine-arts">Fine arts</a></li>
-              <li class="more-item"><a href="/nsa/literary-wing">Literary wing</a></li>
-              <li class="more-item"><a href="/nsa/medical-board">Medical board</a></li>
-              <li class="more-item"><a href="/nsa/research-cell">Research cell</a></li>
-              <li class="more-item"><a href="/nsa/pro-itnob">PRO & It nob</a></li>
-              <li class="more-item"><a href="/nsa/garden-committee">Garden committee</a></li>
               <li class="more-item"><a href="/nsa/library-board">Library board</a></li>
-              <li class="more-item"><a href="/nsa/social-affirs">Social affirs</a></li>
+              <li class="more-item"><a href="/nsa/literary-wing">Literary wing</a></li>
+              <li class="more-item"><a href="/nsa/social-affairs">Social affairs</a></li>
+              <li class="more-item"><a href="/nsa/medical-board">Medical board</a></li>
+              <li class="more-item"><a href="/nsa/pro-itnob">PRO & It nob</a></li>
+              <li class="more-item"><a href="/nsa/research-cell">Research cell</a></li>
+              <li class="more-item"><a href="/nsa/garden-committee">Garden committee</a></li>
             </ul>
           </li>
 
           <li class="sub-item more">
-            <a class="more-btn" href="/skssf">SKSSF <i class="fas fa-angle-right"></i></a>
+            <a class="" href="/skssf">SKSSF </a><i class="fas fa-angle-right more-btn"></i>
             <ul class="more-menu">
               <li class="more-item"><a href="/skssf/fund">Fund</a></li>
               <li class="more-item"><a href="/skssf/store">Store</a></li>
@@ -103,6 +103,7 @@
   var closeBtn = document.querySelector(".close-btn");
 
   menuBtn.addEventListener("click", () => {
+    console.log('clicked')
     menu.classList.add("active");
   });
 

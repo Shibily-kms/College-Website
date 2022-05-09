@@ -1,0 +1,87 @@
+<section class="our-teacher">
+    <div class="main-title title-image">
+        <h1>THE NSA</h1>
+        <div class="icons">
+          {{#if NsaLinks.Discord}}<a href="{{NsaLinks.Discord}}" target="_blank" data-title="Discord"><i class="bi bi-discord"></i></a> {{/if}}
+          {{#if NsaLinks.Email}}<a href="mailto:{{NsaLinks.Email}}" target="_blank" data-title="Email"><i class="bi bi-envelope-fill"></i></a> {{/if}}
+          {{#if NsaLinks.Facebook}}<a href="{{NsaLinks.Facebook}}" target="_blank" data-title="Facebook"><i class="bi bi-facebook"></i></a> {{/if}}
+          {{#if NsaLinks.Github}}<a href="{{NsaLinks.Github}}" target="_blank" data-title="Github"><i class="bi bi-github"></i></a> {{/if}}
+          {{#if NsaLinks.Website}}<a href="{{NsaLinks.Website}}" target="_blank" data-title="Website"><i class="bi bi-globe"></i></a> {{/if}}
+          {{#if NsaLinks.Instagram}}<a href="{{NsaLinks.Instagram}}" target="_blank" data-title="Instagram"><i class="bi bi-instagram"></i></a> {{/if}}
+          {{#if NsaLinks.Linkedin}}<a href="{{NsaLinks.Linkedin}}" target="_blank" data-title="Linkedin"><i class="bi bi-linkedin"></i></a> {{/if}}
+          {{#if NsaLinks.Messenger}}<a href="{{NsaLinks.Messenger}}" target="_blank" data-title="Messenger"><i class="bi bi-messenger"></i></a> {{/if}}
+          {{#if NsaLinks.Mobile}}<a href="{{NsaLinks.Mobile}}" target="_blank" data-title="Mobile"><i class="bi bi-telephone-fill"></i></a> {{/if}}
+          {{#if NsaLinks.Signal}}<a href="{{NsaLinks.Signal}}" target="_blank" data-title="Signal"><i class="bi bi-signal"></i></a> {{/if}}
+          {{#if NsaLinks.Telegram}}<a href="{{NsaLinks.Telegram}}" target="_blank" data-title="Telegram"><i class="bi bi-telegram"></i></a> {{/if}}
+          {{#if NsaLinks.Tiktok}}<a href="{{NsaLinks.Tiktok}}" target="_blank" data-title="Tiktok"><i class="bi bi-tiktok"></i></a> {{/if}}
+          {{#if NsaLinks.Twitter}}<a href="{{NsaLinks.Twitter}}" target="_blank" data-title="Twitter"><i class="bi bi-twitter"></i></a> {{/if}}
+          {{#if NsaLinks.Whatsapp}}<a href="{{NsaLinks.Whatsapp}}" target="_blank" data-title="Whatsapp"><i class="bi bi-whatsapp"></i></a> {{/if}}
+          {{#if NsaLinks.Youtube}}<a href="{{NsaLinks.Youtube}}" target="_blank" data-title="Youtube"><i class="bi bi-youtube"></i></a> {{/if}}
+        </div>
+    </div>
+</section>
+<section class="container" style="margin-top: -90px;">
+    {{!-- NSA content --}}
+    <div class="content-div {{#if adminHere}} edit-boarder {{/if}}">
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/nsa/nsa-about"
+            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+        <h3 class="header" id="Header">{{nsaPara.Header}}</h3>
+        <p class="perag">{{nsaPara.Para1}}</p>
+        <p class="perag">{{nsaPara.Para2}}</p>
+        <p class="perag">{{nsaPara.Para3}}</p>
+        <p class="perag">{{nsaPara.Para4}}</p>
+        <p class="perag">{{nsaPara.Para5}}</p>
+        
+        <div class="pera-buttens">
+            {{#if nsaPara.Btn1.Name}}
+            <a href="{{nsaPara.Btn1.Link}}" {{#if nsaPara.Btn1.New}} target="_blank" {{/if}}><button class="btn-lg">{{nsaPara.Btn1.Name}} {{#if nsaPara.Btn1.New}} <i class="bi bi-arrow-up-right"></i> {{/if}} </button></a>
+            {{/if}}
+            {{#if nsaPara.Btn2.Name}}
+            <a href="{{nsaPara.Btn2.Link}}" {{#if nsaPara.Btn2.New}} target="_blank" {{/if}}><button class="btn-lg">{{nsaPara.Btn2.Name}} {{#if nsaPara.Btn2.New}} <i class="bi bi-arrow-up-right"></i> {{/if}} </button></a>
+            {{/if}}
+            
+        </div>
+        
+    </div>
+
+    <div style="margin-top: 0;" class="four-profile {{#if adminHere}} edit-boarder {{/if}}">
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" href="/admin/our-faculty/pg-hod" data-title="Edit"
+            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+
+        {{!-- 25% --}}
+
+        
+        {{#each nsaPro}}
+        <div id="foru-profile" class="profile ">
+            <div>
+                <div class="image">
+                    <img src="/images/profiles/{{this.Id}}.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h4>{{this.FullName}}</h4>
+                    <p>- {{this.Position}} -</p>
+                    <hr>
+                    <p>{{this.Address}}</p>
+                    <p>{{this.Mobile}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+
+
+
+</section>
+
+
+{{!-- Color change --}}
+
+<script>
+
+    let pre = document.getElementById('Header').innerHTML
+    console.log('hi')
+    const first = pre.split(' ').shift();
+    document.getElementById("Header").innerHTML = pre.replace(first, `<span class ="first-word">` + first + `</span>`);
+
+</script>

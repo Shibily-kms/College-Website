@@ -121,7 +121,7 @@ router.post('/first-pege/slider/edit-slider', verifyAdminLogin, (req, res) => {
 
 router.post('/first-page/slider/find-slider', (req, res) => {
   userHelpers.getOneSlide(req.body).then((result) => {
-   
+
     res.json(result)
   })
 
@@ -132,7 +132,8 @@ router.post('/first-page/slider/find-slider', (req, res) => {
 router.get('/first-page/the-nsa', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
-  let TheNsa = await userHelpers.getTheNsa()
+  let Id1 = "PRGPH01"
+  var TheNsa = await userHelpers.getNormalPara(Id1);
   if (req.session.Success) {
     res.render('admin/first-page/the-nsa', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, TheNsa })
     req.session.Success = false
@@ -156,7 +157,8 @@ router.post('/first-page/the-nsa', verifyAdminLogin, (req, res) => {
 router.get('/first-page/the-majma', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
-  let TheMajma = await userHelpers.getTheMajma()
+  let Id2 = "PRGPH02"
+  var TheMajma = await userHelpers.getNormalPara(Id2);
   if (req.session.Success) {
     res.render('admin/first-page/the-majma', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, TheMajma })
     req.session.Success = false
@@ -202,10 +204,10 @@ router.get('/our-teachers', verifyAdminLogin, async (req, res) => {
   let admin = req.session.NSAWEBADMIN
   let teachers = await userHelpers.getAllTeachers()
 
-   if(req.session.Success){
-    res.render('admin/college/our-teachers', { title: 'Admin panel', "Success":req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, teachers })
+  if (req.session.Success) {
+    res.render('admin/college/our-teachers', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, teachers })
     req.session.Success = false
-  }else{
+  } else {
     res.render('admin/college/our-teachers', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, teachers })
   }
 });
@@ -223,16 +225,16 @@ router.post('/our-teachers', verifyAdminLogin, (req, res) => {
   })
 });
 
-router.post('/delete-profile',(req,res)=>{
- 
-  adminHelpers.deleteProfile(req.body).then((response)=>{
+router.post('/delete-profile', (req, res) => {
+
+  adminHelpers.deleteProfile(req.body).then((response) => {
     let Imagepath = path.join(__dirname, '../public/images/profiles/' + req.body.Id + '.jpg')
     fs.unlink(Imagepath, function (err) {
       if (err)
-       return ;
-     
+        return;
+
     });
-  
+
     res.json(response)
   })
 });
@@ -244,11 +246,11 @@ router.get('/our-leaders', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
   let leaders = await userHelpers.getAllLeaders()
-   if(req.session.Success){
-    res.render('admin/college/our-leaders', { title: 'Admin panel', "Success":req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, leaders })
+  if (req.session.Success) {
+    res.render('admin/college/our-leaders', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, leaders })
     req.session.Success = false
-  }else{
-    res.render('admin/college/our-leaders', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, leaders  })
+  } else {
+    res.render('admin/college/our-leaders', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, leaders })
   }
 });
 
@@ -270,25 +272,26 @@ router.post('/our-leaders', verifyAdminLogin, (req, res) => {
 router.get('/our-faculty', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
-    res.render('admin/college/our-faculty', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true,  })
+  res.render('admin/college/our-faculty', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, })
 });
 
 // Pre - OUr faculty
 router.get('/our-faculty/pre', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
-  let Pre = await userHelpers.getPreData();
+  let Id1 = "PRGPH03"
+  let Pre = await userHelpers.getNormalPara(Id1);
   if (req.session.Success) {
-    res.render('admin/college/pre', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Pre  })
+    res.render('admin/college/pre', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Pre })
     req.session.Success = false
   } else {
-    res.render('admin/college/pre', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Pre  })
+    res.render('admin/college/pre', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Pre })
   }
 });
 
 
 router.post('/our-faculty/pre', verifyAdminLogin, (req, res) => {
-  
+
   let type = "Pre"
   adminHelpers.editPeragraph(req.body, type).then(() => {
     req.session.Success = "Successfully edited"
@@ -301,9 +304,10 @@ router.post('/our-faculty/pre', verifyAdminLogin, (req, res) => {
 router.get('/our-faculty/ug', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
-  let Ug = await userHelpers.getUgData();
+  let Id2 = "PRGPH04"
+  let Ug = await userHelpers.getNormalPara(Id2);
   if (req.session.Success) {
-    res.render('admin/college/ug', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Ug  })
+    res.render('admin/college/ug', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Ug })
     req.session.Success = false
   } else {
     res.render('admin/college/ug', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Ug })
@@ -324,17 +328,18 @@ router.post('/our-faculty/ug', verifyAdminLogin, (req, res) => {
 router.get('/our-faculty/pg', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
-  let Pg = await userHelpers.getPgData();
+  let Id3 = "PRGPH05"
+  let Pg = await userHelpers.getNormalPara(Id3);
   if (req.session.Success) {
-    res.render('admin/college/pg', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Pg  })
+    res.render('admin/college/pg', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Pg })
     req.session.Success = false
   } else {
-    res.render('admin/college/pg', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Pg  })
+    res.render('admin/college/pg', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Pg })
   }
 });
 
 router.post('/our-faculty/pg', verifyAdminLogin, (req, res) => {
-  
+
   let type = "Pg"
   adminHelpers.editPeragraph(req.body, type).then(() => {
     req.session.Success = "Successfully edited"
@@ -349,10 +354,10 @@ router.get('/our-faculty/pg-hod', verifyAdminLogin, async (req, res) => {
   let admin = req.session.NSAWEBADMIN
   let Hod = await userHelpers.getHodData()
   if (req.session.Success) {
-    res.render('admin/college/pg-hod', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Hod   })
+    res.render('admin/college/pg-hod', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Hod })
     req.session.Success = false
   } else {
-    res.render('admin/college/pg-hod', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Hod  })
+    res.render('admin/college/pg-hod', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Hod })
   }
 });
 
@@ -368,6 +373,264 @@ router.post('/our-faculty/pg-hod', verifyAdminLogin, (req, res) => {
     }
     req.session.Success = response.Success
     res.redirect('/admin/our-faculty/pg-hod')
+  })
+});
+
+// NSA
+
+router.get('/nsa', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  res.render('admin/nsa/nsa-all', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, })
+});
+
+router.get('/nsa/nsa-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH06"
+  let nsaPara = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/nsa-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, nsaPara })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/nsa-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, nsaPara })
+  }
+});
+
+router.get('/nsa/nsa-members', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Type = "NSA"
+  let nsaPro = await userHelpers.getNormalProfile(Type);
+  if (req.session.Success) {
+    res.render('admin/nsa/nsa-m', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true,nsaPro  })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/nsa-m', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true,nsaPro  })
+  }
+});
+
+router.get('/nsa/nsa-links', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Type = "Nsa"
+  let NsaLinks = await userHelpers.getNormelLinks(Type);
+
+  if (req.session.Success) {
+    res.render('admin/nsa/nsa-links', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, NsaLinks  })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/nsa-links', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, NsaLinks  })
+  }
+});
+
+router.post('/nsa/nsa-members', verifyAdminLogin, (req, res) => {
+  req.body.Type = 'NSA'
+  adminHelpers.addUpdateProfile(req.body).then((response) => {
+    let Image = req.files
+    if (Image) {
+      Image = req.files.Profile
+      Image.mv('./public/images/profiles/' + response.Id + '.jpg')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/nsa/nsa-members')
+  })
+});
+
+router.post('/nsa/nsa-about', verifyAdminLogin, (req, res) => {
+  let type = "Nsa"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/nsa-about')
+  })
+});
+
+router.post('/nsa/nsa-links', verifyAdminLogin, (req, res) => {
+  let type = "Nsa"
+  adminHelpers.updateLinks(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/nsa-links')
+  })
+});
+
+
+// NSa - Fine arts
+router.get('/nsa/fine-arts-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH07"
+  let FineArts = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/fine-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, FineArts })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/fine-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, FineArts })
+  }
+});
+
+router.post('/nsa/fine-arts-about', verifyAdminLogin, (req, res) => {
+
+  let type = "Fine"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/fine-arts-about')
+  })
+});
+
+// NSA - Library Board
+router.get('/nsa/library-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH08"
+  let Library = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/library-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Library })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/library-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Library })
+  }
+});
+
+router.post('/nsa/library-about', verifyAdminLogin, (req, res) => {
+
+  let type = "Library"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/library-about')
+  })
+});
+
+// NSA - Literary
+router.get('/nsa/literary-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH09"
+  let Literary = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/literary-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Literary })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/literary-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Literary })
+  }
+});
+
+router.post('/nsa/literary-about', verifyAdminLogin, (req, res) => {
+
+  let type = "Literary"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/literary-about')
+  })
+});
+
+// NSA - SAB
+router.get('/nsa/sab-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH10"
+  let Sab = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/sab-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Sab })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/sab-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Sab })
+  }
+});
+
+router.post('/nsa/sab-about', verifyAdminLogin, (req, res) => {
+  let type = "Sab"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/sab-about')
+  })
+});
+
+// NSA - Mediacal
+router.get('/nsa/medical-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH11"
+  let Medical = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/medical-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Medical })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/medical-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Medical })
+  }
+});
+
+router.post('/nsa/medical-about', verifyAdminLogin, (req, res) => {
+  let type = "Medical"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/medical-about')
+  })
+});
+
+// NSA - Itnob
+router.get('/nsa/pro-it-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH12"
+  let ItNob = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/it-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, ItNob })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/it-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, ItNob })
+  }
+});
+
+router.post('/nsa/pro-it-about', verifyAdminLogin, (req, res) => {
+  let type = "It"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/pro-it-about')
+  })
+});
+
+// NSA - Research
+router.get('/nsa/research-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH13"
+  let Research = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/research-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Research })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/research-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Research })
+  }
+});
+
+router.post('/nsa/research-about', verifyAdminLogin, (req, res) => {
+  let type = "Research"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/research-about')
+  })
+});
+
+
+// NSA - Garden
+router.get('/nsa/garden-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH14"
+  let Garden = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/nsa/garden-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Garden })
+    req.session.Success = false
+  } else {
+    res.render('admin/nsa/garden-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Garden })
+  }
+});
+
+router.post('/nsa/garden-about', verifyAdminLogin, (req, res) => {
+  let type = "Garden"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/nsa/garden-about')
   })
 });
 
