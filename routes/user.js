@@ -164,6 +164,43 @@ router.get('/nsa/garden-committee', async (req, res) => {
 
 });
 
+// SKSSF
+
+
+router.get('/skssf', async (req, res) => {
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    let Id = "PRGPH15"
+    let SkssfPara = await userHelpers.getNormalPara(Id);
+    let Type1 = "Skssf"
+    let SkssfPro = await userHelpers.getNormalProfile(Type1);
+    let Type2 = "Skssf"
+    let SkssfLinks = await userHelpers.getNormelLinks(Type2);
+    
+    res.render('user/skssf', { title: "The SKSSF", nsaWebDarkTheme, adminHere, user: true, SkssfPara,SkssfPro,SkssfLinks })
+});
+
+router.get('/skssf/fund', async (req, res) => {
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    let Id = "PRGPH16"
+    let Fund = await userHelpers.getNormalPara(Id);
+    let Type1 = "Fund"
+    let FundPro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/fund', { title: "Fund", nsaWebDarkTheme, adminHere, user: true, Fund, FundPro })
+
+});
+router.get('/skssf/store', async (req, res) => {
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    let Id = "PRGPH17"
+    let Store = await userHelpers.getNormalPara(Id);
+    let Type1 = "Store"
+    let StorePro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/store', { title: "Store", nsaWebDarkTheme, adminHere, user: true, Store, StorePro })
+
+});
+
 
 
 

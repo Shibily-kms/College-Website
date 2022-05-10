@@ -8,12 +8,12 @@
     <div class="headding">
         <div>
             <i class="bi bi-people-fill"></i>
-            <h4>SKSSF Members</h4>
+            <h4>Store Members</h4>
         </div>
     </div>
     <div class="edit-profile">
 
-        {{#each SkssfPro}}
+        {{#each StorePro}}
         <div id="profileDiv{{this.Id}}" class="profile">
             <img src="/images/profiles/{{this.Id}}.jpg" alt="">
             <h5 id="fullname{{this.Id}}">{{this.FullName}}</h5>
@@ -54,7 +54,7 @@
                     <i title="Close" class="bi bi-x-circle" onclick="closeModel('profile-Div')"></i>
                 </div>
                 <div class="content">
-                    <form action="/admin/skssf/skssf-members" method="post" enctype="multipart/form-data">
+                    <form action="/admin/skssf/store-members" method="post" enctype="multipart/form-data">
                         <div class="image">
                             <img id="profile-image" src="/images/background/1.jpg" alt="profile">
                             <h5></h5>

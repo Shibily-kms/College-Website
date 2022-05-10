@@ -846,55 +846,48 @@ router.post('/nsa/garden-about', verifyAdminLogin, (req, res) => {
 
 // SKSSF
 
-
 router.get('/skssf', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
   res.render('admin/skssf/skssf-all', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, })
 });
 
-router.get('/skssf/nsa-about', verifyAdminLogin, async (req, res) => {
+router.get('/skssf/skssf-about', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
-  let Id = "PRGPH06"
-  let nsaPara = await userHelpers.getNormalPara(Id);
+  let Id = "PRGPH15"
+  let SkssfPara = await userHelpers.getNormalPara(Id);
   if (req.session.Success) {
-    res.render('admin/nsa/nsa-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, nsaPara })
+    res.render('admin/skssf/skssf-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, SkssfPara })
     req.session.Success = false
   } else {
-    res.render('admin/nsa/nsa-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, nsaPara })
+    res.render('admin/skssf/skssf-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, SkssfPara })
   }
 });
 
-router.get('/nsa/nsa-members', verifyAdminLogin, async (req, res) => {
+router.post('/skssf/skssf-about', verifyAdminLogin, (req, res) => {
+  let type = "Skssf"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/skssf/skssf-about')
+  })
+});
+
+router.get('/skssf/skssf-members', verifyAdminLogin, async (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
-  let Type = "NSA"
-  let nsaPro = await userHelpers.getNormalProfile(Type);
+  let Type = "Skssf"
+  let SkssfPro = await userHelpers.getNormalProfile(Type);
   if (req.session.Success) {
-    res.render('admin/nsa/nsa-m', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true,nsaPro  })
+    res.render('admin/skssf/skssf-m', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true,SkssfPro  })
     req.session.Success = false
   } else {
-    res.render('admin/nsa/nsa-m', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true,nsaPro  })
+    res.render('admin/skssf/skssf-m', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true,SkssfPro  })
   }
 });
 
-router.get('/nsa/nsa-links', verifyAdminLogin, async (req, res) => {
-  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
-  let admin = req.session.NSAWEBADMIN
-  let Type = "Nsa"
-  let NsaLinks = await userHelpers.getNormelLinks(Type);
-
-  if (req.session.Success) {
-    res.render('admin/nsa/nsa-links', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, NsaLinks  })
-    req.session.Success = false
-  } else {
-    res.render('admin/nsa/nsa-links', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, NsaLinks  })
-  }
-});
-
-router.post('/nsa/nsa-members', verifyAdminLogin, (req, res) => {
-  req.body.Type = 'NSA'
+router.post('/skssf/skssf-members', verifyAdminLogin, (req, res) => {
+  req.body.Type = 'Skssf'
   adminHelpers.addUpdateProfile(req.body).then((response) => {
     let Image = req.files
     if (Image) {
@@ -902,23 +895,129 @@ router.post('/nsa/nsa-members', verifyAdminLogin, (req, res) => {
       Image.mv('./public/images/profiles/' + response.Id + '.jpg')
     }
     req.session.Success = response.Success
-    res.redirect('/admin/nsa/nsa-members')
+    res.redirect('/admin/skssf/skssf-members')
   })
 });
 
-router.post('/nsa/nsa-about', verifyAdminLogin, (req, res) => {
-  let type = "Nsa"
-  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
-    req.session.Success = "Successfully edited"
-    res.redirect('/admin/nsa/nsa-about')
-  })
+router.get('/skssf/skssf-links', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Type = "Skssf"
+  let SkssfLinks = await userHelpers.getNormelLinks(Type);
+
+  if (req.session.Success) {
+    res.render('admin/skssf/skssf-links', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, SkssfLinks  })
+    req.session.Success = false
+  } else {
+    res.render('admin/skssf/skssf-links', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, SkssfLinks  })
+  }
 });
 
-router.post('/nsa/nsa-links', verifyAdminLogin, (req, res) => {
-  let type = "Nsa"
+router.post('/skssf/skssf-links', verifyAdminLogin, (req, res) => {
+  let type = "Skssf"
   adminHelpers.updateLinks(req.body, type).then(() => {
     req.session.Success = "Successfully edited"
-    res.redirect('/admin/nsa/nsa-links')
+    res.redirect('/admin/skssf/skssf-links')
+  })
+});
+
+
+// SKSSF - Fund
+router.get('/skssf/fund-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH16"
+  let Fund = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/skssf/fund-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Fund })
+    req.session.Success = false
+  } else {
+    res.render('admin/skssf/fund-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Fund })
+  }
+});
+
+router.get('/skssf/fund-members', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Type = "Fund"
+  let FundPro = await userHelpers.getNormalProfile(Type);
+  if (req.session.Success) {
+    res.render('admin/skssf/fund-m', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true,FundPro  })
+    req.session.Success = false
+  } else {
+    res.render('admin/skssf/fund-m', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true,FundPro  })
+  }
+});
+
+router.post('/skssf/fund-members', verifyAdminLogin, (req, res) => {
+  req.body.Type = 'Fund'
+  adminHelpers.addUpdateProfile(req.body).then((response) => {
+    let Image = req.files
+    if (Image) {
+      Image = req.files.Profile
+      Image.mv('./public/images/profiles/' + response.Id + '.jpg')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/skssf/fund-members')
+  })
+});
+
+router.post('/skssf/fund-about', verifyAdminLogin, (req, res) => {
+
+  let type = "Fund"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/skssf/fund-about')
+  })
+});
+
+// SKSSF - Store
+router.get('/skssf/store-about', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Id = "PRGPH17"
+  let Store = await userHelpers.getNormalPara(Id);
+  if (req.session.Success) {
+    res.render('admin/skssf/store-a', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Store })
+    req.session.Success = false
+  } else {
+    res.render('admin/skssf/store-a', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, Store })
+  }
+});
+
+
+router.get('/skssf/store-members', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Type = "Store"
+  let StorePro = await userHelpers.getNormalProfile(Type);
+  if (req.session.Success) {
+    res.render('admin/skssf/store-m', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true,StorePro  })
+    req.session.Success = false
+  } else {
+    res.render('admin/skssf/store-m', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true,StorePro  })
+  }
+});
+
+router.post('/skssf/store-members', verifyAdminLogin, (req, res) => {
+  req.body.Type = "Store"
+  adminHelpers.addUpdateProfile(req.body).then((response) => {
+    let Image = req.files
+    if (Image) {
+      Image = req.files.Profile
+      Image.mv('./public/images/profiles/' + response.Id + '.jpg')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/skssf/store-members')
+  })
+});
+
+router.post('/skssf/store-about', verifyAdminLogin, (req, res) => {
+
+  let type = "Store"
+  adminHelpers.editPeragraphWithButton(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/skssf/store-about')
   })
 });
 

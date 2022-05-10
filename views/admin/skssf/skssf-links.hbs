@@ -1,0 +1,118 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('Union').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="headding">
+        <div>
+            <i class="bi bi-people-fill"></i>
+            <h4>SKSSF Links</h4>
+        </div>
+    </div>
+    <div class="header-links">
+        <div class="link-div">
+            <h4>Choose and Enter</h4>
+            <form action="/admin/skssf/skssf-links" method="post">
+               
+                {{!-- Discord --}}
+                <div class="link">
+                    <i class="bi bi-discord" title="Discord"></i>
+                    <input type="url" class="text-input" value="{{SkssfLinks.Discord}}" name="Discord" placeholder="Discord URL">
+                </div>
+                
+                {{!-- Mail --}}
+                <div class="link">
+                    <i class="bi bi-envelope-fill" title="E mail"></i>
+                    <input type="email" class="text-input" value="{{SkssfLinks.Email}}" name="Email" placeholder="Enter Email ">
+                </div>
+                {{!-- facebook --}}
+                <div class="link">
+                    <i class="bi bi-facebook" title="Facebook"></i>
+                    <input type="url" class="text-input" value="{{SkssfLinks.Facebook}}" name="Facebook" placeholder="Facebook URL">
+                </div>
+            
+                {{!-- github --}}
+                <div class="link">
+                    <i class="bi bi-github" title="Github"></i>
+                    <input type="url" class="text-input" value="{{SkssfLinks.Github}}" name="Github" placeholder="Github URL">
+                </div>
+                
+                {{!-- Website --}}
+                <div class="link">
+                    <i class="bi bi-globe" title="Website"></i>
+                    <input type="url" class="text-input" value="{{SkssfLinks.Website}}" name="Website" placeholder="Website URL">
+                </div>
+
+                {{!-- Instagram --}}
+                <div class="link">
+                    <i class="bi bi-instagram" title="Instagram"></i>
+                    <input type="url" class="text-input" name="Instagram" value="{{SkssfLinks.Instagram}}" placeholder="Instagram URL">
+                </div>
+
+                {{!-- Linkedin --}}
+                <div class="link">
+                    <i class="bi bi-linkedin" title="Linkedin"></i>
+                    <input type="url" class="text-input" name="Linkedin" value="{{SkssfLinks.Linkedin}}" placeholder="LinkedIn URL">
+                </div>
+
+                {{!-- Messenger --}}
+                <div class="link">
+                    <i class="bi bi-messenger" title="Messenger"></i>
+                    <input type="text" class="text-input" value="{{SkssfLinks.Messenger}}" name="Messenger" placeholder="Messanger URL">
+                </div>
+
+                {{!-- Mobile --}}
+                <div class="link">
+                    <i class="bi bi-telephone-fill" title="Mobile"></i>
+                    <input type="number" class="text-input" name="Mobile" value="{{SkssfLinks.Mobile}}" placeholder="Enter Mobile">
+                </div>
+
+                {{!-- Signal --}}
+                <div class="link">
+                    <i class="bi bi-signal" title="Signal"></i>
+                    <input type="text" class="text-input" name="Signal" value="{{SkssfLinks.Signal}}" placeholder="Enter Signal">
+                </div>
+
+                {{!-- Telegram --}}
+                <div class="link">
+                    <i class="bi bi-telegram" title="Telegram"></i>
+                    <input type="number" class="text-input" name="Telegram" value="{{SkssfLinks.Telegram}}" placeholder="Enter Telegram">
+                </div>
+
+                {{!-- Tiktok --}}
+                <div class="link">
+                    <i class="bi bi-tiktok" title="Tiktok"></i>
+                    <input type="url" class="text-input" name="Tiktok" value="{{SkssfLinks.Tiktok}}" placeholder="Tiktok URL">
+                </div>
+
+                {{!-- Twitter --}}
+                <div class="link">
+                    <i class="bi bi-twitter" title="Twitter"></i>
+                    <input type="url" class="text-input" name="Twitter" value="{{SkssfLinks.Twitter}}" placeholder="Twitter URL">
+                </div>
+
+                {{!-- Whatsapp --}}
+                <div class="link">
+                    <i class="bi bi-whatsapp" title="Whatsapp"></i>
+                    <input type="number" class="text-input" name="Whatsapp" value="{{SkssfLinks.Whatsapp}}" placeholder="Enter Whatsapp">
+                </div>
+                {{!-- Youtube --}}
+                <div class="link">
+                    <i class="bi bi-youtube" title="Youtube"></i>
+                    <input type="url" class="text-input" name="Youtube" value="{{SkssfLinks.Youtube}}" placeholder="Youtube URL">
+                </div>
+
+                <div class="submit">
+                    <button type="submit" class="btn-lg">Submit</button>
+                </div>
+                
+                
+                
+            </form>
+        </div>
+    </div>
+
+
+</section>

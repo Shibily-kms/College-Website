@@ -122,11 +122,49 @@ module.exports = {
                 Whatsapp : "",
                 Youtube : ""
             }
+            let Skssf = {
+                Name: "Skssf",
+                Id : "PRGPH15",
+                Btn1: { Id: "BTN01" },
+                Btn2: { Id: "BTN02" }
+            }
+            let Fund = {
+                Name: "Fund",
+                Id : "PRGPH16",
+                Btn1: { Id: "BTN01" },
+                Btn2: { Id: "BTN02" }
+            }
+            let Store = {
+                Name: "Store",
+                Id : "PRGPH17",
+                Btn1: { Id: "BTN01" },
+                Btn2: { Id: "BTN02" }
+            }
+            let SkssfLinks ={
+                Type : "Skssf",
+                Discord : "",
+                Email : "",
+                Facebook : "",
+                Github : "",
+                Website : "",
+                Instagram : "",
+                Linkedin : "",
+                Messenger : "",
+                Mobile : "",
+                Signal : "",
+                Telegram : "",
+                Tiktok : "",
+                Twitter : "",
+                Whatsapp : "",
+                Youtube : ""
+            }
 
             // await db.get().collection(collection.FIRST_PAGE_COLLECTION).insertMany([slider,TheNsa,TheMajma,FLinks])
             // await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([TheNsa,TheMajma, Pre,Ug,Pg])
             //  await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([Nsa, Fine, Library, Literary, Sab, Medical, It, Reserch, Garden])
-              await db.get().collection(collection.LINK_COLLECTION).insertMany([NsaLinks])
+            //  await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([Skssf, Fund, Store])
+            // await db.get().collection(collection.LINK_COLLECTION).insertMany([NsaLinks])
+            await db.get().collection(collection.LINK_COLLECTION).insertMany([SkssfLinks])
 
             resolve(Success)
         })

@@ -8,52 +8,52 @@
   <div class="headding">
     <div>
       <i class="bi bi-text-paragraph"></i>
-      <h4>SKSSF About</h4>
+      <h4>Store About</h4>
     </div>
   </div>
   <div class="summery">
-    <form action="/admin/skssf/skssf-about" method="post">
-      <input type="text" hidden name="id" value="PRGPH15">
+    <form action="/admin/skssf/store-about" method="post">
+      <input type="text" hidden name="id" value="PRGPH17">
       <label for="">Header</label>
-      <input type="text" name="Header" value="{{SkssfPara.Header}}" class="text-input">
+      <input type="text" name="Header" value="{{Store.Header}}" class="text-input">
       <label for="">Paragraph 01</label>
-      <textarea name="Para1" id="a" class="text-input" cols="30" rows="10">{{SkssfPara.Para1}}</textarea>
+      <textarea name="Para1" id="a" class="text-input" cols="30" rows="10">{{Store.Para1}}</textarea>
       <label for="">Paragraph 02</label>
-      <textarea name="Para2" id="" class="text-input" cols="30" rows="10">{{SkssfPara.Para2}}</textarea>
-      <span {{#if SkssfPara.Para3}}{{else}} style="display: none;" {{/if}} id="para03">
+      <textarea name="Para2" id="" class="text-input" cols="30" rows="10">{{Store.Para2}}</textarea>
+      <span {{#if Store.Para3}}{{else}} style="display: none;" {{/if}} id="para03">
         <label for="">Paragraph 03 <span><i class="bi bi-trash3" onclick="closepara('para03')"></i></span></label>
-        <textarea name="Para3" id="" class="text-input" cols="30" rows="10">{{SkssfPara.Para3}}</textarea>
+        <textarea name="Para3" id="" class="text-input" cols="30" rows="10">{{Store.Para3}}</textarea>
       </span>
-      <span{{#if SkssfPara.Para4}}{{else}} style="display: none;" {{/if}} id="para04">
+      <span{{#if Store.Para4}}{{else}} style="display: none;" {{/if}} id="para04">
         <label for="">Paragraph 04 <span><i class="bi bi-trash3" onclick="closepara('para04')"></i></span></label>
-        <textarea name="Para4" id="" class="text-input" cols="30" rows="10">{{SkssfPara.Para4}}</textarea>
-        </span><span {{#if SkssfPara.Para5}}{{else}} style="display: none;" {{/if}} id="para05">
+        <textarea name="Para4" id="" class="text-input" cols="30" rows="10">{{Store.Para4}}</textarea>
+        </span><span {{#if Store.Para5}}{{else}} style="display: none;" {{/if}} id="para05">
           <label for="">Paragraph 05 <span><i class="bi bi-trash3" onclick="closepara('para05')"></i></span></label>
-          <textarea name="Para5" id="" class="text-input" cols="30" rows="10">{{SkssfPara.Para5}}</textarea>
+          <textarea name="Para5" id="" class="text-input" cols="30" rows="10">{{Store.Para5}}</textarea>
         </span>
-        <span {{#if SkssfPara.Btn1.Name}}{{else}} style="display: none;" {{/if}} id="btn01">
+       <span {{#if Store.Btn1.Name}}{{else}} style="display: none;" {{/if}} id="btn01">
         <label for="">Button 01 <span><i class="bi bi-trash3" onclick="closebtn('btn01')"></i></span></label>
         <div class="add-button">
           <label for="">Button name</label>
-          <input type="text" value="{{SkssfPara.Btn1.Name}}" name="B1Name" class="text-input">
+          <input type="text" value="{{Store.Btn1.Name}}" name="B1Name" class="text-input">
           <label for="">Link</label>
-          <input type="text" value="{{SkssfPara.Btn1.Link}}" name="B1Link" class="text-input">
+          <input type="text" value="{{Store.Btn1.Link}}" name="B1Link" class="text-input">
           <label class="checkbox-label" for="blank1">
-            <input type="checkbox" name="B1New" {{#if SkssfPara.Btn1.New}} checked{{/if}}  id="blank1">
+            <input type="checkbox" name="B1New" {{#if Store.Btn1.New}} checked{{/if}}  id="blank1">
             <span class="mark"></span>
           </label>
           <label style="margin-left: 45px; " for="blank1">Open new tab</label>
         </div>
       </span>
-      <span {{#if SkssfPara.Btn2.Name}}{{else}} style="display: none;" {{/if}} id="btn02">
+      <span {{#if Store.Btn2.Name}}{{else}} style="display: none;" {{/if}} id="btn02">
         <label for="">Button 02 <span><i class="bi bi-trash3" onclick="closebtn('btn02')"></i></span></label>
         <div class="add-button">
           <label for="">Button name</label>
-          <input type="text" value="{{SkssfPara.Btn2.Name}}" name="B2Name" class="text-input">
+          <input type="text" value="{{Store.Btn2.Name}}" name="B2Name" class="text-input">
           <label for="">Link</label>
-          <input type="text" value="{{SkssfPara.Btn2.Link}}" name="B2Link" class="text-input">
+          <input type="text" value="{{Store.Btn2.Link}}" name="B2Link" class="text-input">
           <label class="checkbox-label" for="blank2">
-            <input {{#if SkssfPara.Btn2.New}} checked{{/if}} type="checkbox" name="B2New" id="blank2">
+            <input {{#if Store.Btn2.New}} checked{{/if}} type="checkbox" name="B2New" id="blank2">
             <span class="mark"></span>
           </label>
           <label style="margin-left: 45px; " for="blank2">Open new tab</label>
@@ -61,9 +61,9 @@
       </span>
 
         <div class="buttons">
-          {{#if SkssfPara.Para5}}
-          {{#if SkssfPara.Para4}}
-          {{#if SkssfPara.Para3}}
+          {{#if Store.Para5}}
+          {{#if Store.Para4}}
+          {{#if Store.Para3}}
           {{else}}
           <button id="praButton" type="button" onclick="showPara('para')" class="btn-md"><i></i>Add Paragraph</button>
           {{/if}}
@@ -74,8 +74,8 @@
           <button id="praButton" type="button" onclick="showPara('para')" class="btn-md"><i></i>Add Paragraph</button>
           {{/if}}
 
-          {{#if SkssfPara.Btn2.Name}}
-          {{#if SkssfPara.Btn1.Name}}
+          {{#if Store.Btn2.Name}}
+          {{#if Store.Btn1.Name}}
           {{else}}
           <button id="btnButton" type="button" onclick="showButton()" class="btn-md"><i></i>Add Button</button>
           {{/if}}
