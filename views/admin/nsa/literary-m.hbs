@@ -1,0 +1,97 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('Union').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="headding">
+        <div>
+            <i class="bi bi-people-fill"></i>
+            <h4>Literary Members</h4>
+        </div>
+    </div>
+    <div class="edit-profile">
+
+        {{#each LiteraryPro}}
+        <div id="profileDiv{{this.Id}}" class="profile">
+            <img src="/images/profiles/{{this.Id}}.jpg" alt="">
+            <h5 id="fullname{{this.Id}}">{{this.FullName}}</h5>
+            <p id="position{{this.Id}}" hidden>{{this.Position}}</p>
+            <p id="address{{this.Id}}" hidden>{{this.Address}}</p>
+            <p id="mobile{{this.Id}}" hidden>{{this.Mobile}}</p>
+            <div class="profile-overly">
+                <div class="" title="View & Edit" onclick="openmodel('{{this.Id}}')">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                </div>
+                <div title="Index" class="index">
+                    <span id="index{{this.Id}}">{{this.Index}}</span>
+                </div>
+                <div title="Remove" onclick="deleteProfile('{{this.Id}}')" class="remove">
+                    <i id="removeIcon{{this.Id}}" class="bi bi-trash3"></i>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+
+        <div class="profile">
+            <div class="add-profile-button" onclick="openmodel('new');">
+                <div>
+                    <i class="bi bi-person-plus-fill"></i>
+                    <h5>Add new</h5>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="model-border" id="profile-Div">
+        <div class="edit-slider teacher-profile-div" id="profile-model">
+            <div class="model">
+                <div class="header">
+                    <h4 id="model-header">Edit </h4>
+                    <i title="Close" class="bi bi-x-circle" onclick="closeModel('profile-Div')"></i>
+                </div>
+                <div class="content">
+                    <form action="/admin/nsa/literary-members" method="post" enctype="multipart/form-data">
+                        <div class="image">
+                            <img id="profile-image" src="/images/background/1.jpg" alt="profile">
+                            <h5></h5>
+                            <div data-title="Choose image" class="admin-edit">
+                                <i onclick="chooseSlider()" class="bi bi-camera-fill"></i>
+                            </div>
+                            <input type="file" onchange="viewImage(event)" hidden accept="image/jpg, image/jpeg"
+                                name="Profile" id="slider-file">
+
+                        </div>
+                        <input type="text" id="slider-id" hidden name="Id">
+                        <div class="on-content">
+                            <label for="">Index <span>( Do not use the same numbers )</span></label>
+                            <input placeholder="enter nsaonline" id="index" required name="Index" type="number"
+                                class="text-input">
+                            <label for="">Full name </label>
+                            <input placeholder="enter nsaonline" id="fullname" name="FullName" type="text"
+                                class="text-input">
+                            <label for="">Position </label>
+                            <input placeholder="enter nsaonline" id="position" name="Position" type="text"
+                                class="text-input">
+                            <label for="">Address </label>
+                            <textarea placeholder="enter nsaonline" name="Address" id="address" maxlength="150"
+                                class="text-input"></textarea>
+                            <label for="">Mobile </label>
+                            <input placeholder="enter nsaonline" id="mobile" name="Mobile" type="number"
+                                class="text-input">
+                        </div>
+                </div>
+                <div class="footer">
+                    <button type="reset" class="btn-md cancel">Reset</button>
+                    <button type="submit" class="btn-md save">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+

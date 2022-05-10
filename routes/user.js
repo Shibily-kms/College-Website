@@ -79,7 +79,7 @@ router.get('/nsa', async (req, res) => {
     let nsaPro = await userHelpers.getNormalProfile(Type1);
     let Type2 = "Nsa"
     let NsaLinks = await userHelpers.getNormelLinks(Type2);
-    console.log(nsaPara);
+    
     res.render('user/nsa', { title: "The NSA", nsaWebDarkTheme, adminHere, user: true, nsaPara,nsaPro,NsaLinks })
 
 });
@@ -88,8 +88,9 @@ router.get('/nsa/fine-arts', async (req, res) => {
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH07"
     let FineArts = await userHelpers.getNormalPara(Id);
-    
-    res.render('user/fine-arts', { title: "Fine arts", nsaWebDarkTheme, adminHere, user: true, FineArts })
+    let Type1 = "Fine"
+    let FinePro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/fine-arts', { title: "Fine arts", nsaWebDarkTheme, adminHere, user: true, FineArts, FinePro })
 
 });
 router.get('/nsa/library-board', async (req, res) => {
@@ -97,7 +98,9 @@ router.get('/nsa/library-board', async (req, res) => {
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH08"
     let Library = await userHelpers.getNormalPara(Id);
-    res.render('user/library', { title: "Library board", nsaWebDarkTheme, adminHere, user: true, Library })
+    let Type1 = "Library"
+    let LibraryPro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/library', { title: "Library board", nsaWebDarkTheme, adminHere, user: true, Library, LibraryPro })
 
 });
 router.get('/nsa/literary-wing', async (req, res) => {
@@ -105,7 +108,9 @@ router.get('/nsa/literary-wing', async (req, res) => {
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH09"
     let Literary = await userHelpers.getNormalPara(Id);
-    res.render('user/literary', { title: "Literary wing", nsaWebDarkTheme, adminHere, user: true, Literary })
+    let Type1 = "Literary"
+    let LiteraryPro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/literary', { title: "Literary wing", nsaWebDarkTheme, adminHere, user: true, Literary, LiteraryPro })
 
 });
 router.get('/nsa/social-affairs', async (req, res) => {
@@ -113,7 +118,9 @@ router.get('/nsa/social-affairs', async (req, res) => {
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH10"
     let Sab = await userHelpers.getNormalPara(Id);
-    res.render('user/sab', { title: "Social affairs board", nsaWebDarkTheme, adminHere, user: true, Sab })
+    let Type1 = "Sab"
+    let SabPro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/sab', { title: "Social affairs board", nsaWebDarkTheme, adminHere, user: true, Sab, SabPro })
 
 });
 router.get('/nsa/medical-board', async (req, res) => {
@@ -121,7 +128,9 @@ router.get('/nsa/medical-board', async (req, res) => {
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH11"
     let Medical = await userHelpers.getNormalPara(Id);
-    res.render('user/medical', { title: "Medical board", nsaWebDarkTheme, adminHere, user: true, Medical })
+    let Type1 = "Medical"
+    let MedicalPro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/medical', { title: "Medical board", nsaWebDarkTheme, adminHere, user: true, Medical, MedicalPro })
 
 });
 router.get('/nsa/pro-itnob', async (req, res) => {
@@ -129,7 +138,9 @@ router.get('/nsa/pro-itnob', async (req, res) => {
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH12"
     let ItNob = await userHelpers.getNormalPara(Id);
-    res.render('user/it', { title: "PRO & IT nob", nsaWebDarkTheme, adminHere, user: true, ItNob })
+    let Type1 = "ItNob"
+    let ItNobPro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/it', { title: "PRO & IT nob", nsaWebDarkTheme, adminHere, user: true, ItNob, ItNobPro })
 
 });
 router.get('/nsa/research-cell', async (req, res) => {
@@ -137,7 +148,9 @@ router.get('/nsa/research-cell', async (req, res) => {
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH13"
     let Research = await userHelpers.getNormalPara(Id);
-    res.render('user/research', { title: "Research cell", nsaWebDarkTheme, adminHere, user: true, Research })
+    let Type1 = "Research"
+    let ResearchPro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/research', { title: "Research cell", nsaWebDarkTheme, adminHere, user: true, Research , ResearchPro})
 
 });
 router.get('/nsa/garden-committee', async (req, res) => {
@@ -145,7 +158,9 @@ router.get('/nsa/garden-committee', async (req, res) => {
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH14"
     let Garden = await userHelpers.getNormalPara(Id);
-    res.render('user/garden', { title: "Garden Committee", nsaWebDarkTheme, adminHere, user: true, Garden })
+    let Type1 = "Garden"
+    let GardenPro = await userHelpers.getNormalProfile(Type1);
+    res.render('user/garden', { title: "Garden Committee", nsaWebDarkTheme, adminHere, user: true, Garden,GardenPro  })
 
 });
 

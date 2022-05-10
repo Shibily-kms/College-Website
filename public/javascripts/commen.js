@@ -81,5 +81,70 @@ function viewImage(event) {
     }
 }
 
-// call
+// Open and Delete Profile in admin page
+
+
+
+function openmodel(id) {
+    let profileDiv = document.getElementById('profile-Div')
+    let profile = document.getElementById('profile-model')
+    let header = document.getElementById('model-header')
+    let image = document.getElementById('profile-image')
+    let indexInput = document.getElementById('index')
+    let nameInput = document.getElementById('fullname')
+    let positionInput = document.getElementById('position')
+    let addressInput = document.getElementById('address')
+    let mobileInput = document.getElementById('mobile')
+    let idInput = document.getElementById('slider-id')
+
+        profileDiv.style.display = "flex"
+        profile.style.display = "block"
+        if (id == 'new') {
+            header.innerHTML = "Create profile"
+            indexInput.value = ''
+            idInput.value = ''
+            nameInput.value = ''
+            positionInput.value = ''
+            addressInput.value = ''
+            mobileInput.value = ''
+            document.getElementById('slider-file').value = ''
+            image.src = '/images/background/1.jpg'
+        } else {
+            let index = document.getElementById('index' + id).innerHTML
+            let fullname = document.getElementById('fullname' + id).innerHTML
+            let position = document.getElementById('position' + id).innerHTML
+            let address = document.getElementById('address' + id).innerHTML
+            let mobile = document.getElementById('mobile' + id).innerHTML
+            header.innerHTML = "Update profile"
+            image.src = '/images/profiles/' + id + '.jpg'
+            indexInput.value = index
+            nameInput.value = fullname
+            addressInput.value = address
+            positionInput.value = position
+            mobileInput.value = mobile
+            idInput.value = id
+        }
+    }
+
+
+    function deleteProfile(Id) {
+
+        let div = document.getElementById('profileDiv' + Id)
+        let Icon = document.getElementById('removeIcon' + Id)
+        Icon.className = 'bi bi-emoji-frown'
+
+
+        $.ajax({
+            url: '/admin/delete-profile',
+            data: {
+                Id
+            },
+            method: 'post',
+            success: (response) => {
+                div.style.display = 'none'
+
+            }
+        })
+    }
+
 
