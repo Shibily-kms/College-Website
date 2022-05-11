@@ -107,6 +107,12 @@
    
   }
 
+  .news-one-item>div>div>img {
+    width: 100%;
+    height: 300px;
+
+}
+
 
 
     
@@ -126,6 +132,13 @@
     width: 100%;
   }
 
+  .news-one-item>div>div>img {
+    width: 100%;
+    height: 250px;
+
+}
+
+
 }
 
 /* all mobile */
@@ -137,6 +150,13 @@
     bottom: 6px;
    
   }
+
+  .news-one-item>div>div>img {
+    width: 100%;
+    height: 150px;
+
+}
+
  
   
 

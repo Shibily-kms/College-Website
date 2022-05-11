@@ -214,8 +214,6 @@
 
 /* Edit profile */
 .edit-profile{
-   
-    
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
@@ -225,8 +223,7 @@
     padding-right: 10px;
     margin-top: 20px;
     position: relative;
-    
-   
+    width: 220px;
 }
 .edit-profile>.profile img{
     width: 200px;

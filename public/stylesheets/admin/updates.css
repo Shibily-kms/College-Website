@@ -1,0 +1,160 @@
+.add-button-top {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+.add-button-top button {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    background-color: var(--color-green-1);
+    color: var(--color-white);
+    font-weight: normal;
+}
+
+.add-button-top i {
+    margin-right: 5px;
+}
+
+
+/* News admin thampnail */
+.news-thum-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.news-thum-div>.news-thumbnail {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    position: relative;
+    width: 270px;
+
+}
+
+.news-thum-div>.news-thumbnail img {
+    width: 250px;
+    height: 150px;
+    min-width: 250px;
+    min-height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    box-shadow: var(--shadow-c-white);
+    background: url(/images/news/1.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.news-thum-div>.news-thumbnail:hover .news-thumb-overly {
+    opacity: 1;
+
+}
+
+.news-thum-div>.news-thumbnail h5 {
+    font-weight: normal;
+    text-align: center;
+    margin-top: 5px;
+    font-family: "Manjari";
+    font-weight: 900;
+
+}
+
+.news-thum-div>.news-thumbnail .news-thumb-overly {
+    position: absolute;
+    width: 250px;
+    height: 100px;
+    top: 50px;
+    left: 10px;
+    border-radius: 0 0 12px 12px;
+    -webkit-border-radius: 0 0 12px 12px;
+    -moz-border-radius: 0 0 12px 12px;
+    -ms-border-radius: 0 0 12px 12px;
+    -o-border-radius: 0 0 12px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    box-shadow: inset 0px -70px 35px -18px var(--color-c-white-light-1);
+    overflow: hidden;
+    opacity: 0;
+    transition-property: transform, ;
+}
+
+.news-thum-div>.news-thumbnail .news-thumb-overly div {
+    right: 10px;
+    top: 10px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-c-black);
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--color-c-white);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+}
+
+.news-thum-div>.news-thumbnail .news-thumb-overly .remove {
+    background-color: var(--color-red-1);
+}
+
+.news-thum-div>.news-thumbnail .add-profile-button {
+    background-color: var(--color-white-2);
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-c-white);
+    cursor: pointer;
+}
+
+.news-thum-div>.news-thumbnail .add-profile-button div {
+    text-align: center;
+}
+
+.news-thum-div>.news-thumbnail .add-profile-button div>i {
+    font-size: 60px;
+}
+
+.news-thum-div>.news-thumbnail .add-profile-button div>h5 {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.news-text-area {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 50px;
+    max-height: 150px;
+    font-family: "Manjari";
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.news-header-input{
+    font-family: "Manjari";
+    font-weight: bold;
+    font-size: 14px; 
+}

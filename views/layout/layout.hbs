@@ -22,11 +22,13 @@
   <link rel='stylesheet' href='/stylesheets/admin/first-page.css' />
   <link rel='stylesheet' href='/stylesheets/admin/college.css' />
   <link rel='stylesheet' href='/stylesheets/admin/union.css' />
+  <link rel='stylesheet' href='/stylesheets/admin/updates.css' />
   <link rel='stylesheet' href='/stylesheets/commen/style.css' />
   <link rel='stylesheet' href='/stylesheets/user/home.css' />
   <link rel='stylesheet' href='/stylesheets/user/footer.css' />
   <link rel='stylesheet' href='/stylesheets/user/college.css' />
   <link rel='stylesheet' href='/stylesheets/user/nsa.css' />
+  <link rel='stylesheet' href='/stylesheets/user/updates.css' />
   <link rel='stylesheet' href='/stylesheets/user/header.css' />
   {{!-- Animation --}}
   <link rel='stylesheet' href='/stylesheets/user/animations.css' />
@@ -52,6 +54,9 @@
   <link href='https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500;600;700;800;900&display=swap'
     rel="stylesheet">
   <link href='https://fonts.googleapis.com/css2?family=Manjari:wght@100;200;300;400;500;600;700;800;900&display=swap'
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
   {{!-- Cropper.js --}}
@@ -139,18 +144,18 @@
   </div>
   {{/if}}
   {{{body}}}
-  <div id="confirm-box-div" class="confirm-box-div" >
-        <div id="confirm-box" class="confirm-box">
-            <div class="title">
-                <i class="bi bi-question-diamond"></i>
-                <p id="confirm-title">Are you delter sfs sfsdf sdf sdfsdfsdf sfsf sdd gd g dgdfgdgdf ?</p>
-            </div>
-            <div class="footer">
-                <button id="confirmYes"  class="btn-lg">Yes</button>
-                <button id="confirmNo"  class="btn-lg">No</button>
-            </div>
-        </div>
+  <div id="confirm-box-div" class="confirm-box-div">
+    <div id="confirm-box" class="confirm-box">
+      <div class="title">
+        <i class="bi bi-question-diamond"></i>
+        <p id="confirm-title"> - - </p>
+      </div>
+      <div class="footer">
+        <button id="confirmYes" class="btn-lg">Yes</button>
+        <button id="confirmNo" class="btn-lg">No</button>
+      </div>
     </div>
+  </div>
   {{#if admin}}
   {{else}}
   {{>user-footer}}

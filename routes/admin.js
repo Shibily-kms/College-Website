@@ -1021,12 +1021,47 @@ router.post('/skssf/store-about', verifyAdminLogin, (req, res) => {
   })
 });
 
+// Updates - News
 
+router.get('/news', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let AllNews = await userHelpers.getAllNewsFullSize();
+ 
+  if (req.session.Success) {
+    res.render('admin/updates/news', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, AllNews   })
+    req.session.Success = false
+  } else {
+    res.render('admin/updates/news', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, AllNews   })
+  }
+});
 
+router.post('/news', verifyAdminLogin, (req, res) => {
+ 
+  adminHelpers.addUpdateNews(req.body).then((response) => {
+    let Image = req.files
+    if (Image) {
+      Image = req.files.News
+      Image.mv('./public/images/news/' + response.Id + '.jpg')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/news')
+  })
+});
 
+router.post('/delete-news', (req, res) => {
 
+  adminHelpers.deleteNews(req.body).then((response) => {
+    let Imagepath = path.join(__dirname, '../public/images/news/' + req.body.Id + '.jpg')
+    fs.unlink(Imagepath, function (err) {
+      if (err)
+        return;
 
+    });
 
+    res.json(response)
+  })
+});
 
 
 

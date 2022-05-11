@@ -64,37 +64,38 @@
 
     </div>
     <div class="model-border" id="profile-Div">
-    <div class="edit-slider" id="edit-slider">
-        <div class="model">
-            <div class="header">
-                <h4>Edit slider</h4>
-                <i title="Close" class="bi bi-x-circle" onclick="closeModel(id)"></i>
-            </div>
-            <div class="content">
-                <form action="/admin/first-pege/slider/edit-slider" method="post" enctype="multipart/form-data">
-                    <div class="image">
-                        <img id="slider-image" src="" alt="slider" >
-                        <div data-title="Choose image" class="admin-edit">
-                            <i onclick="chooseSlider()" class="bi bi-camera-fill"></i>
+        <div class="edit-slider" id="edit-slider">
+            <div class="model">
+                <div class="header">
+                    <h4>Edit slider</h4>
+                    <i title="Close" class="bi bi-x-circle" onclick="closeModel(id)"></i>
+                </div>
+                <div class="content">
+                    <form action="/admin/first-pege/slider/edit-slider" method="post" enctype="multipart/form-data">
+                        <div class="image">
+                            <img id="slider-image" src="" alt="slider">
+                            <div data-title="Choose image" class="admin-edit">
+                                <i onclick="chooseSlider()" class="bi bi-camera-fill"></i>
+                            </div>
+                            <input type="file" onchange="viewImage(event)" hidden accept="image/jpg, image/jpeg"
+                                name="slider" id="slider-file">
                         </div>
-                        <input type="file" onchange="viewImage(event)" hidden accept="image/jpg, image/jpeg" name="slider" id="slider-file">
-                    </div>
-                    <input type="text" id="slider-id" hidden name="id">
-                    <div>
-                        <label for="">Header <span>( maximum length 35 letters only )</span></label>
-                        <input id="slider-header" name="header" type="text" maxlength="35" class="text-input">
-                        <label for="">Content <span>( maximum length 350 letters only )</span></label>
-                        <textarea name="content" id="slider-content" cols="30" rows="10" maxlength="350"
-                            class="text-input"></textarea>
-                    </div>
-            </div>
-            <div class="footer">
-                <button type="reset" class="btn-md cancel">Reset</button>
-                <button type="submit" class="btn-md save">Save</button>
-                </form>
+                        <input type="text" id="slider-id" hidden name="id">
+                        <div>
+                            <label for="">Header <span>( maximum length 35 letters only )</span></label>
+                            <input id="slider-header" name="header" type="text" maxlength="35" class="text-input">
+                            <label for="">Content <span>( maximum length 350 letters only )</span></label>
+                            <textarea name="content" id="slider-content" cols="30" rows="10" maxlength="350"
+                                class="text-input"></textarea>
+                        </div>
+                </div>
+                <div class="footer">
+                    <button type="reset" class="btn-md cancel">Reset</button>
+                    <button type="submit" class="btn-md save">Save</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 {{!-- Alert --}}
@@ -190,7 +191,7 @@
     function hideAlert() {
         alertAudio.src = ""
         alertDiv.style.display = "none"
-      
+
     }
 
     function viewImage(event) {
@@ -198,13 +199,13 @@
             const file = event.target.files[0];
 
             const maxFileSize = 3145728; // 3 MB
-            
+
 
 
             const img = new Image();
             img.src = URL.createObjectURL(file);
             img.onload = () => {
-               
+
                 if (file.size > maxFileSize) {
                     alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
                     alertDiv.style.display = "flex"

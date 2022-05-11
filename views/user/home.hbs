@@ -19,7 +19,7 @@
         <div class="info">
           <h2>{{Slides.[1].Header}}</h2>
           <p>{{Slides.[1].Content}}</p>
-          
+
         </div>
       </div>
       <div class="slide">
@@ -61,8 +61,8 @@
 <section class="home-container" style="">
   {{!-- Noorul huda content --}}
   <div class="content-div {{#if adminHere}} edit-boarder {{/if}}">
-    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/first-page/the-nsa" target="_blank"><i
-        class="bi bi-pencil-fill"></i></a> {{/if}}
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/first-page/the-nsa"
+      target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
     <h3 class="header" id="NSA-Header">{{TheNsa.Header}}</h3>
     <p class="perag">{{TheNsa.Para1}}</p>
     <p class="perag">{{TheNsa.Para2}}</p>
@@ -73,8 +73,8 @@
 
   {{!-- College content --}}
   <div class="content-div {{#if adminHere}} edit-boarder {{/if}} ">
-    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" target="_blank" href="/admin/first-page/the-majma"><i
-        class="bi bi-pencil-fill"></i></a> {{/if}}
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" target="_blank"
+      href="/admin/first-page/the-majma"><i class="bi bi-pencil-fill"></i></a> {{/if}}
     <h3 class="header" id="Majma-Header">{{TheMajma.Header}}</h3>
     <p class="perag">{{TheMajma.Para1}}</p>
     <p class="perag">{{TheMajma.Para2}}</p>
@@ -86,7 +86,8 @@
   {{!-- four links --}}
 
   <div class="four-links {{#if adminHere}} edit-boarder {{/if}}">
-    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" target="_blank" href="/admin/first-page/links"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+    {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" target="_blank"
+      href="/admin/first-page/links"><i class="bi bi-pencil-fill"></i></a> {{/if}}
     <a href="{{Links.Cic}}" target="_blank">
       <div class="link-div">
         <i class="bi bi-mortarboard-fill"></i>
@@ -127,55 +128,22 @@
       <span class="first-word">NEWS</span> UPDATES
     </h3>
     <div class="news-div">
+      {{#each FourNews}}
       <div class="news-item">
         <div class="img-hover-zoom">
-          <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
+          <img src="/images/news/{{this.Id}}.jpg" alt="news-cover">
         </div>
-        <h4>ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
-        <p>അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും
-          ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ
-          ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും
-          രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്.</p>
-        <button class="btn-md hover-fill-dr">Read more</button>
+        <h4>{{this.Header}}</h4>
+        <p>{{this.Content.[0]}}</p>
+        <a href="/news/{{this.Id}}"><button class="btn-md hover-fill-dr">Read more</button></a>
       </div>
-      <div class="news-item">
-        <div class="img-hover-zoom">
-          <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
-        </div>
-        <h4>ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
-        <p>അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും
-          ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ
-          ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും
-          രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്.</p>
-        <button class="btn-md hover-fill-dr">Read more</button>
-      </div>
-      <div class="news-item">
-        <div class="img-hover-zoom">
-          <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
-        </div>
-        <h4>ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
-        <p>അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും
-          ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ
-          ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും
-          രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്.</p>
-        <button class="btn-md hover-fill-dr">Read more</button>
-      </div>
-      <div class="news-item">
-        <div class="img-hover-zoom">
-          <img src="/images/news/photo-1612151855475-877969f4a6cc.jpg" alt="news-cover">
-        </div>
-        <h4>ഉദ്ഘാടനം നിര്‍വഹിച്ചു</h4>
-        <p>അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും
-          ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ
-          ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും
-          രൂപത്തിൽ സജീവമാണ്. അവരുടെ എല്ലാ ഉപകരണങ്ങളും യന്ത്രങ്ങളും ഏതെങ്കിലും രൂപത്തിൽ സജീവമാണ്.</p>
-        <button class="btn-md hover-fill-dr">Read more</button>
-      </div>
+      {{/each}}
+
     </div>
     <div class="seemore">
       <a href="/news" class="btn-lg hover-fill-grn">See more</a>
     </div>
-  
+
   </div>
 </section>
 

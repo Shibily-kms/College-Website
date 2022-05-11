@@ -320,7 +320,7 @@
 .model{
  width: 700px;
  height: auto;
-
+cursor:auto;
  border-radius: 15px ;
  -webkit-border-radius: 15px ;
  -moz-border-radius: 15px ;
@@ -402,13 +402,16 @@
 }
 
 .model-border{
-    width: 90%;
-    height: 85vh;
+    width: 100%;
+    height: 100vh;
     position: fixed;
     justify-content: center;
     align-items: center;
-    top: 80px;
+    top: 0;
+    left: 0;
     display: none;
+    cursor: not-allowed;
+    z-index: 15;
 }
 
 /* Info bar */

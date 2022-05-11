@@ -1,0 +1,186 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('Updates').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="headding">
+        <div>
+            <i class="bi bi-newspaper"></i>
+            <h4>News updates</h4>
+        </div>
+    </div>
+    <div class="add-button-top">
+        <button type="button" onclick="openNewsModel('new');" class="btn-lg"><i class="bi bi-plus-circle-dotted"></i>
+            Add news</button>
+    </div>
+    <div class="news-thum-div">
+        {{#each AllNews }}
+        <div id="profileDiv{{this.Id}}" class="news-thumbnail">
+            <img src="/images/news/{{this.Id}}.jpg" alt="">
+            <h5 id="header{{this.Id}}">{{this.Header}}</h5>
+            <p id="content1{{this.Id}}" hidden>{{this.Content.[0]}}</p>
+            <p id="content2{{this.Id}}" hidden>{{this.Content.[1]}}</p>
+            <p id="content3{{this.Id}}" hidden>{{this.Content.[2]}}</p>
+            <p id="content4{{this.Id}}" hidden>{{this.Content.[3]}}</p>
+            <p id="content5{{this.Id}}" hidden>{{this.Content.[4]}}</p>
+            
+            <div class="news-thumb-overly">
+                <div class="" title="View & Edit" onclick="openNewsModel('{{this.Id}}')">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                </div>
+                <div title="Remove" onclick="deleteNews('{{this.Id}}')" class="remove">
+                    <i id="removeIcon{{this.Id}}" class="bi bi-trash3"></i>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    
+     <div class="model-border" id="profile-Div">
+        <div class="edit-slider" id="edit-slider">
+            <div class="model">
+                <div class="header">
+                    <h4 id="model-header"></h4>
+                    <i title="Close" class="bi bi-x-circle" onclick="closeModel('profile-Div')"></i>
+                </div>
+                <div class="content">
+                    <form action="/admin/news" method="post" enctype="multipart/form-data">
+                        <div class="image">
+                            <img id="profile-image" src="/images/background/1.jpg" alt="news">
+                            
+                            <div data-title="Choose image" class="admin-edit">
+                                <i onclick="chooseSlider()" class="bi bi-camera-fill"></i>
+                            </div>
+                            <input type="file" onchange="viewImage(event)" hidden accept="image/jpg, image/jpeg"
+                                name="News" id="slider-file">
+
+              
+                        </div>
+                        <input type="text" id="slider-id" hidden name="Id">
+                        <div>
+                            <label for="">Title <span>( maximum length 100 letters only )</span></label>
+                            <input id="slider-header" placeholder="Use unicode malayalam" name="Header" type="text" maxlength="100" class="text-input news-header-input">
+                            <label style="font-weight: bold;" for="">News contents </label> <br>
+                            
+                            <div>
+                            <textarea placeholder="Paragraph 1 | Use unicode malayalam" name="Content" id="slider-content1" cols="30" rows="10" 
+                                class="text-input news-text-area"></textarea>
+                            <textarea  placeholder="Paragraph 2 | Use unicode malayalam" name="Content" id="slider-content2" cols="30" rows="10" 
+                                class="text-input news-text-area"></textarea>
+                            <textarea  placeholder="Paragraph 3 | Use unicode malayalam"  name="Content" id="slider-content3" cols="30" rows="10" 
+                                class="text-input news-text-area"></textarea>
+                            <textarea placeholder="Paragraph 4 | Use unicode malayalam"  name="Content" id="slider-content4" cols="30" rows="10" 
+                                class="text-input news-text-area"></textarea>
+                            <textarea placeholder="Paragraph 5 | Use unicode malayalam"  name="Content" id="slider-content5" cols="30" rows="10" 
+                                class="text-input news-text-area"></textarea>
+                                
+                            </div>
+                        </div>
+                </div>
+                <div class="footer">
+                    <button type="reset" class="btn-md cancel">Reset</button>
+                    <button type="submit" class="btn-md save">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+<script>
+
+    function openNewsModel(id) {
+        let profileDiv = document.getElementById('profile-Div')
+        let profile = document.getElementById('edit-slider')
+        let header = document.getElementById('model-header')
+        let image = document.getElementById('profile-image')
+        let headerInput = document.getElementById('slider-header')
+        let content1 = document.getElementById('slider-content1');
+        let content2 = document.getElementById('slider-content2');
+        let content3 = document.getElementById('slider-content3');
+        let content4 = document.getElementById('slider-content4');
+        let content5 = document.getElementById('slider-content5');
+        let idInput = document.getElementById('slider-id')
+
+        profileDiv.style.display = "flex"
+        profile.style.display = "block"
+
+        if (id == 'new') {
+            header.innerHTML = "Create news"
+            idInput.value = ''
+            headerInput.value = ''
+            content1.value = ''
+            content2.value = ''
+            content3.value = ''
+            content4.value = ''
+            content5.value = ''
+            document.getElementById('slider-file').value = ''
+            image.src = '/images/background/1.jpg'
+        } else {
+            let headervalue = document.getElementById('header'+ id).innerHTML
+            let content1Value = document.getElementById('content1'+ id).innerHTML
+            let content2Value = document.getElementById('content2'+ id).innerHTML
+            let content3Value = document.getElementById('content3'+ id).innerHTML
+            let content4Value = document.getElementById('content4'+ id).innerHTML
+            let content5Value = document.getElementById('content5'+ id).innerHTML
+        
+            header.innerHTML = "Update news"
+            image.src = '/images/news/' + id + '.jpg'
+            headerInput.value = headervalue
+            content1.value = content1Value
+            content2.value = content2Value
+            content3.value = content3Value
+            content4.value = content4Value
+            content5.value = content5Value
+            idInput.value = id
+        }
+    }
+</script>
+
+<script>
+
+    function deleteNews(Id) {
+
+        let div = document.getElementById('profileDiv' + Id)
+        let Icon = document.getElementById('removeIcon' + Id)
+        let confirmDiv = document.getElementById('confirm-box-div')
+        let confirmTitle = document.getElementById('confirm-title')
+        let yesButton = document.getElementById('confirmYes')
+        let NoButton = document.getElementById('confirmNo')
+        let title = "Do you want to delete this news ?"
+
+        Icon.className = 'bi bi-emoji-frown'
+        confirmDiv.style.display = 'flex';
+        confirmTitle.innerHTML = title
+
+        yesButton.addEventListener("click", () => {
+            $.ajax({
+                url: '/admin/delete-news',
+                data: {
+                    Id
+                },
+                method: 'post',
+                success: (response) => {
+                    div.style.display = 'none'
+                    confirmDiv.style.display = 'none';
+
+                }
+            })
+        });
+        NoButton.addEventListener("click", () => {
+            confirmDiv.style.display = 'none';
+            Icon.className = 'i bi-trash3'
+        });
+
+
+    }
+
+
+
+</script>

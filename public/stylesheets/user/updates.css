@@ -1,0 +1,58 @@
+/* News One view */
+
+.news-one-item {
+    width: 100%;
+}
+
+.news-one-item>div {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.news-one-item>div>div>img {
+    width: 700px;
+    height: 350px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.news-one-item>div>.img-hover-zoom {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.news-one-item h3 {
+    font-family: 'Anek Malayalam', sans-serif;
+    margin-top: 10px;
+    color: var(--color-c-rose-yellow-light-2);
+    text-align: center;
+
+}
+
+.news-one-item p {
+    font-family: 'Manjari', sans-serif;
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: justify;
+    text-indent: 60px;
+    line-height: 23px;
+}
+
+.news-one-item .time {
+    text-indent: 0px;
+    font-size: 14px;
+    color: var(--color-black-light-5);
+    text-align: end;
+
+}

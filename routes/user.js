@@ -26,8 +26,9 @@ router.get('/', async function (req, res, next) {
     var TheMajma = await userHelpers.getNormalPara(Id2);
     var Slides = await userHelpers.getFullSlide();
     var Links = await userHelpers.getFLinks();
+    let FourNews = await userHelpers.getlatestNews();
     res.render('user/home', {
-        title: "Home", nsaWebDarkTheme, adminHere, user: true, Slides, TheNsa, TheMajma, Links
+        title: "Home", nsaWebDarkTheme, adminHere, user: true, Slides, TheNsa, TheMajma, Links, FourNews
     });
 });
 
@@ -200,6 +201,24 @@ router.get('/skssf/store', async (req, res) => {
     res.render('user/store', { title: "Store", nsaWebDarkTheme, adminHere, user: true, Store, StorePro })
 
 });
+
+router.get("/news",async (req,res)=>{
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    userHelpers.getAllNewsSmallSize().then((AllNews)=>{
+        res.render('user/news-all',{title: "News Updates", nsaWebDarkTheme, adminHere, user: true, AllNews })
+    })
+});
+
+router.get("/news/:id",async (req,res)=>{
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    let Id = req.params.id
+    userHelpers. getOneNewsFullSize(Id).then((OneNews)=>{
+        res.render('user/news-One',{title: "News Updates", nsaWebDarkTheme, adminHere, user: true, OneNews })
+    })
+});
+
 
 
 

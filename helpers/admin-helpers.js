@@ -147,7 +147,7 @@ module.exports = {
             }
         })
     },
-
+    
     deleteProfile:(body)=>{
         return new Promise((resolve, reject) => { 
             db.get().collection(collection.PROFILE_COLLECTON).deleteOne({Id:body.Id}).then((Id)=>{
@@ -180,7 +180,67 @@ module.exports = {
                 resolve()
             })
          })
-    }
+    },
+
+    addUpdateNews: (body) => {
+        
+        let response = []
+        return new Promise((resolve, reject) => {
+            
+            if (body.Id == '') {
+                body.Time = new Date(); 
+                create_random_id(10)
+                function create_random_id(sting_length) {
+                    var randomString = '';
+                    var numbers = '123456789ABCDEFGHJKLMNOPQRSTUVWXYZ'
+                    for (var i, i = 0; i < sting_length; i++) {
+                        randomString += numbers.charAt(Math.floor(Math.random() * numbers.length))
+                    }
+                    body.Id = randomString
+                }
+                
+                db.get().collection(collection.NEWS_COLLECTION).insertOne(body).then(() => {
+                    response.Id = body.Id
+                    response.Success= "New news Successfully Created"
+                    resolve(response)
+                })
+            }else{
+                db.get().collection(collection.NEWS_COLLECTION).updateOne({Id:body.Id},{
+                    $set:{
+                        Header : body.Header,
+                        Content : body.Content,
+                        
+                    }
+                }).then(()=>{
+                    response.Id = body.Id
+                    response.Success= "This news Successfully Updated"
+                    resolve(response)
+                })
+            }
+        })
+    },
+
+    deleteNews:(body)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.NEWS_COLLECTION).deleteOne({Id:body.Id}).then((Id)=>{
+                resolve(Id)
+            })
+         })
+    },
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -251,8 +251,9 @@
   }
   .news-div .news-item img{
     width: 100%;
+    height: 150px;
     overflow: hidden;
-    height: auto;
+    object-fit: cover;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -276,6 +277,15 @@
   color: var(--color-rose-light-3);
   font-family: "Manjari";
   font-weight:bold;
+  color: var(--color-c-rose-yellow-light-2);
+  
+}
+.news-div .news-item .time{
+  margin-top: 0;
+  font-size: 12px;
+  text-align: end;
+  color: var(--color-black-light-5);
+
   
 }
 .news-div .news-item p{
