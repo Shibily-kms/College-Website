@@ -97,7 +97,7 @@ header.sticky .menu-item .sub-menu{
 
 .menu-item .sub-menu .sub-item{
   position: relative;
-  padding: 7px 0;
+  padding: 7px 7px;
   cursor: pointer;
   box-shadow: inset var(--shadow-white);
 }

@@ -6,13 +6,19 @@
                     <div>
                         <img src="/images/icons/nsa-online.png" alt="nsa-logo">
                         <div class="icons">
-                            <a href="" target="_blank" data-title="G mail"><i class="bi bi-envelope-fill"></i></a>
-                            <a href="" target="_blank" data-title="Fest result"><i class="bi bi-award-fill"></i></a>
-                            <a href="" target="_blank" data-title="Youtube channel"><i class="bi bi-youtube"></i></a>
-                            <a href="" target="_blank" data-title="Facebook page"><i class="bi bi-facebook"></i></a>
-                            <a href="" target="_blank" data-title="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="mailto:nsamajmaakvr@gmail.com" target="_blank" data-title="G mail"><i
+                                    class="bi bi-envelope-fill"></i></a>
+                            <a href="http://fest.nsaonline.in" target="_blank" data-title="Fest result"><i
+                                    class="bi bi-award-fill"></i></a>
+                            <a href="https://www.youtube.com/channel/UCGfpDbNkMgIW5e6pHbaBmxg" target="_blank"
+                                data-title="Youtube channel"><i class="bi bi-youtube"></i></a>
+                            <a href="https://www.facebook.com/nsamajma/" target="_blank" data-title="Facebook page"><i
+                                    class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/nsa_majmaa_kvr/?hl=en" target="_blank"
+                                data-title="Instagram"><i class="bi bi-instagram"></i></a>
                             <a href="" target="_blank" data-title="Whatsapp"><i class="bi bi-whatsapp"></i></i></a>
-                            <a href="" target="_blank" data-title="Telegram channel"><i class="bi bi-telegram"></i></a>
+                            <a href="https://t.me/NoorulHudaStudentsAssociation" target="_blank"
+                                data-title="Telegram channel"><i class="bi bi-telegram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -31,10 +37,16 @@
             </div>
             <div class="bottom">
                 <div>
-                    <p>Copyright © 2021 - 2022 NSAOnline. All Rights Reserved</p>
+                    <p>Copyright © 2021 - <span id="thisYear"> </span> NSAOnline. All Rights Reserved</p>
                     <a href="">Created by : Dreams_art</a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+
+<script>
+    const d = new Date();
+    let year = d.getFullYear();
+    document.getElementById('thisYear').innerHTML = year
+</script>

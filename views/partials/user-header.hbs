@@ -21,7 +21,7 @@
         <span class="sub-btn" href="#">Union <i class="fas fa-angle-down"></i></span>
         <ul class="sub-menu">
 
-          <li class="sub-item more">
+          <li class="sub-item more" style="">
             <a class="" href="/nsa">NSA </a><i class="fas fa-angle-right more-btn"></i>
             <ul class="more-menu">
               <li class="more-item"><a href="/nsa/fine-arts">Fine arts</a></li>
@@ -43,7 +43,7 @@
             </ul>
           </li>
 
-          <li class="sub-item"><a href="/nsa/class-unions">Class unions</a></li>
+          {{!-- <li class="sub-item"><a href="/nsa/class-unions">Class unions</a></li> --}}
         </ul>
       </li>
       <li class="menu-item">
@@ -62,18 +62,12 @@
 
         </ul>
       </li>
-      <li class="menu-item">
-        <span class="sub-btn"><i id="theam-icon" {{#if nsaWebDarkTheme}}class="bi bi-moon-fill"
-            {{else}}class="bi bi-brightness-high-fill" {{/if}}></i> Theme <i class="fas fa-angle-down"></i></span>
-        <ul class="sub-menu">
-          <li class="sub-item" id="light"><span href="" onclick="toLight()"><i class="bi bi-brightness-high-fill"></i>
-              Light</span></li>
-          <li class="sub-item" id="dark"><span onclick="toDark()"><i class="bi bi-moon-fill"></i> Dark </span></li>
-
-        </ul>
+      <li class="menu-item" onclick="tooDark()" title="Change theme">
+        <span style="cursor: pointer ;" class="sub-btn" id="theme-button"> {{#if nsaWebDarkTheme}}<i
+            class=" bi bi-brightness-high-fill"></i>{{else}}<i class="bi bi-moon-fill"></i>{{/if}} Theme </span>
       </li>
 
-      <li class="menu-item"><a href="/search"><i class="bi bi-search search-name"></i></a></li>
+      {{!-- <li class="menu-item"><a href="" ><i class="bi bi-search search-name"></i></a></li> --}}
 
     </ul>
 
@@ -161,6 +155,46 @@
       method: 'post',
       success: () => {
         alert('change')
+      }
+    })
+
+  }
+
+
+</script>
+
+<script>
+
+
+  function tooDark() {
+
+    let Ontheme = null
+    var theme = document.getElementById('theme-change')
+    var button = document.getElementById('theme-button')
+
+    if (theme.className === "Light") {
+      // To dark
+      button.innerHTML = '<i class="bi bi-brightness-high-fill"></i> Theme'
+      theme.href = '/stylesheets/root/dark-theme.css'
+      theme.className = "Dark"
+      Ontheme = "Dark"
+
+    } else {
+      // To Light
+      button.innerHTML = '<i class="bi bi-moon-fill"></i> Theme'
+      theme.href = '/stylesheets/root/light-theme.css'
+      theme.className = "Light"
+      Ontheme = "Light"
+    }
+
+    $.ajax({
+      url: '/change-theme',
+      data: {
+        theme: Ontheme
+      },
+      method: 'post',
+      success: () => {
+
       }
     })
 

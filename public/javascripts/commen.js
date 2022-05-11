@@ -42,7 +42,7 @@ function closebtn(id) {
 // Slider
 
 function closeModel(id) {
-    
+
     document.getElementById(id).style.display = 'none'
 }
 
@@ -65,7 +65,7 @@ function viewImage(event) {
         const img = new Image();
         img.src = URL.createObjectURL(file);
         img.onload = () => {
-           
+
             if (file.size > maxFileSize) {
                 alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
                 alertDiv.style.display = "flex"
@@ -97,43 +97,51 @@ function openmodel(id) {
     let mobileInput = document.getElementById('mobile')
     let idInput = document.getElementById('slider-id')
 
-        profileDiv.style.display = "flex"
-        profile.style.display = "block"
-        if (id == 'new') {
-            header.innerHTML = "Create profile"
-            indexInput.value = ''
-            idInput.value = ''
-            nameInput.value = ''
-            positionInput.value = ''
-            addressInput.value = ''
-            mobileInput.value = ''
-            document.getElementById('slider-file').value = ''
-            image.src = '/images/background/1.jpg'
-        } else {
-            let index = document.getElementById('index' + id).innerHTML
-            let fullname = document.getElementById('fullname' + id).innerHTML
-            let position = document.getElementById('position' + id).innerHTML
-            let address = document.getElementById('address' + id).innerHTML
-            let mobile = document.getElementById('mobile' + id).innerHTML
-            header.innerHTML = "Update profile"
-            image.src = '/images/profiles/' + id + '.jpg'
-            indexInput.value = index
-            nameInput.value = fullname
-            addressInput.value = address
-            positionInput.value = position
-            mobileInput.value = mobile
-            idInput.value = id
-        }
+    profileDiv.style.display = "flex"
+    profile.style.display = "block"
+    if (id == 'new') {
+        header.innerHTML = "Create profile"
+        indexInput.value = ''
+        idInput.value = ''
+        nameInput.value = ''
+        positionInput.value = ''
+        addressInput.value = ''
+        mobileInput.value = ''
+        document.getElementById('slider-file').value = ''
+        image.src = '/images/background/1.jpg'
+    } else {
+        let index = document.getElementById('index' + id).innerHTML
+        let fullname = document.getElementById('fullname' + id).innerHTML
+        let position = document.getElementById('position' + id).innerHTML
+        let address = document.getElementById('address' + id).innerHTML
+        let mobile = document.getElementById('mobile' + id).innerHTML
+        header.innerHTML = "Update profile"
+        image.src = '/images/profiles/' + id + '.jpg'
+        indexInput.value = index
+        nameInput.value = fullname
+        addressInput.value = address
+        positionInput.value = position
+        mobileInput.value = mobile
+        idInput.value = id
     }
+}
 
 
-    function deleteProfile(Id) {
+function deleteProfile(Id) {
 
-        let div = document.getElementById('profileDiv' + Id)
-        let Icon = document.getElementById('removeIcon' + Id)
-        Icon.className = 'bi bi-emoji-frown'
+    let div = document.getElementById('profileDiv' + Id)
+    let Icon = document.getElementById('removeIcon' + Id)
+    let confirmDiv = document.getElementById('confirm-box-div')
+    let confirmTitle = document.getElementById('confirm-title')
+    let yesButton = document.getElementById('confirmYes')
+    let NoButton = document.getElementById('confirmNo')
+    let title = "Do you want to delete this profile ?"
 
+    Icon.className = 'bi bi-emoji-frown'
+    confirmDiv.style.display = 'flex';
+    confirmTitle.innerHTML = title
 
+    yesButton.addEventListener("click", () => {
         $.ajax({
             url: '/admin/delete-profile',
             data: {
@@ -142,9 +150,21 @@ function openmodel(id) {
             method: 'post',
             success: (response) => {
                 div.style.display = 'none'
+                confirmDiv.style.display = 'none';
 
             }
         })
-    }
+    });
+    NoButton.addEventListener("click", () => {
+        confirmDiv.style.display = 'none';
+        Icon.className = 'i bi-trash3'
+    });
+    
+    
+}
+
+
+
+
 
 

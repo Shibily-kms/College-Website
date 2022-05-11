@@ -24,3 +24,15 @@
        
 }
   }
+
+  @keyframes openConfirmBox {
+    0%   { margin-top: -250px; }
+ 
+    100% { margin-top: 60px;}
+  }
+  
+  @keyframes closeConfirmBox {
+    0%   { margin-top: 60px; }
+ 
+    100% { margin-top: -250px;}
+  }

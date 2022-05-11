@@ -1,7 +1,9 @@
 <section class="our-teacher">
     <div class="main-title title-image">
         <h1>THE NSA</h1>
-        <div class="icons">
+        <div class="icons {{#if adminHere}} edit-boarder {{/if}}">
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" target="_blank" href="/admin/nsa/nsa-links"><i
+        class="bi bi-pencil-fill"></i></a> {{/if}}
           {{#if NsaLinks.Discord}}<a href="{{NsaLinks.Discord}}" target="_blank" data-title="Discord"><i class="bi bi-discord"></i></a> {{/if}}
           {{#if NsaLinks.Email}}<a href="mailto:{{NsaLinks.Email}}" target="_blank" data-title="Email"><i class="bi bi-envelope-fill"></i></a> {{/if}}
           {{#if NsaLinks.Facebook}}<a href="{{NsaLinks.Facebook}}" target="_blank" data-title="Facebook"><i class="bi bi-facebook"></i></a> {{/if}}
@@ -45,7 +47,7 @@
     </div>
 
     <div style="margin-top: 0;" class="four-profile {{#if adminHere}} edit-boarder {{/if}}">
-        {{#if adminHere}} <a class="admin-edit edit-icon-content" href="/admin/our-faculty/pg-hod" data-title="Edit"
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" href="/admin/nsa/nsa-members" data-title="Edit"
             target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
 
         {{!-- 25% --}}

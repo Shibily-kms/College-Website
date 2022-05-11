@@ -75,17 +75,17 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
- 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-228273482-1">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-228273482-1');
-</script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-228273482-1">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-228273482-1');
+  </script>
 </head>
 
 
@@ -139,6 +139,18 @@
   </div>
   {{/if}}
   {{{body}}}
+  <div id="confirm-box-div" class="confirm-box-div" >
+        <div id="confirm-box" class="confirm-box">
+            <div class="title">
+                <i class="bi bi-question-diamond"></i>
+                <p id="confirm-title">Are you delter sfs sfsdf sdf sdfsdfsdf sfsf sdd gd g dgdfgdgdf ?</p>
+            </div>
+            <div class="footer">
+                <button id="confirmYes"  class="btn-lg">Yes</button>
+                <button id="confirmNo"  class="btn-lg">No</button>
+            </div>
+        </div>
+    </div>
   {{#if admin}}
   {{else}}
   {{>user-footer}}

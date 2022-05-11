@@ -36,12 +36,14 @@ footer{
 .user-footer .top .section-two div h3 {
     font-weight: 600;
     margin-bottom: 7px;
-    font-family: "Poppins";
     color: var(--color-white);
+    
 }
 .user-footer .top .section-two div p {
     text-align: justify;
     color: var(--color-white);
+    font-weight: 300;
+    line-height: 22px;
 }
 .user-footer .bottom div{
     display: flex;
