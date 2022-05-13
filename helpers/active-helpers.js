@@ -172,7 +172,7 @@ module.exports = {
 
             await db.get().collection(collection.FIRST_PAGE_COLLECTION).insertMany([slider,TheNsa,TheMajma,FLinks])
             await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([TheNsa,TheMajma, Pre,Ug,Pg])
-             await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([Nsa, Fine, Library, Literary, Sab, Medical, It, Reserch, Garden])
+             await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([Nsa, Fine, Library, Literary, Sab, Medical, It, Research, Garden])
              await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([Skssf, Fund, Store])
             await db.get().collection(collection.LINK_COLLECTION).insertMany([NsaLinks])
             await db.get().collection(collection.LINK_COLLECTION).insertMany([SkssfLinks])
