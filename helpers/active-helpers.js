@@ -120,7 +120,18 @@ module.exports = {
                 Tiktok : "",
                 Twitter : "",
                 Whatsapp : "",
-                Youtube : ""
+                Youtube : "",
+                NameDiscord : "",
+                NameFacebook : "",
+                NameGithub : "",
+                NameWebsite : "",
+                NameInstagram : "",
+                NameLinkedin : "",
+                NameMessenger : "",
+                NameTelegram : "",
+                NameTiktok : "",
+                NameTwitter : "",
+                NameYoutube : ""
             }
             let Skssf = {
                 Name: "Skssf",
@@ -163,8 +174,8 @@ module.exports = {
             // await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([TheNsa,TheMajma, Pre,Ug,Pg])
             //  await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([Nsa, Fine, Library, Literary, Sab, Medical, It, Reserch, Garden])
             //  await db.get().collection(collection.PARAGRAPH_COLLECTION).insertMany([Skssf, Fund, Store])
-            // await db.get().collection(collection.LINK_COLLECTION).insertMany([NsaLinks])
-            await db.get().collection(collection.LINK_COLLECTION).insertMany([SkssfLinks])
+            await db.get().collection(collection.LINK_COLLECTION).insertMany([NsaLinks])
+            // await db.get().collection(collection.LINK_COLLECTION).insertMany([SkssfLinks])
 
             resolve(Success)
         })

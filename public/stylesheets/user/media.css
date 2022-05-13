@@ -65,6 +65,36 @@
     max-width: 700px;
 }
 
+.contact-us{
+  display: block;
+  
+}
+
+.contact-us>div{
+  width: 100%;
+}
+.contact-us .message{
+  padding: 15px;
+  border-left: none;
+  border-top: 1px solid var(--color-c-white-light-3);
+}
+
+.contact-us .message div{
+  display: flex;
+  justify-content: end;
+}
+
+.contact-us .message button{
+  float: none;
+  
+}
+
+#google-map{
+  width: 100%;
+  height: 250px;
+}
+
+
 }
 
 /* ipad */
@@ -141,7 +171,10 @@
     max-width: 500px;
 }
 
-
+#google-map{
+  width: 100%;
+  height: 200px;
+}
 
 
 
@@ -182,7 +215,26 @@
     max-width: 100%;
 }
 
+.contact-us .message button{
+  float: none;
+  width: 100%;
+  transition-property: transform, opacity;
+}
 
+
+#google-map{
+  width: 100%;
+  height: 150px;
+}
+
+.copyright{
+  display: block;
+  
+ 
+}
+.copyright h5{
+  text-align: center;
+}
 
 }
 

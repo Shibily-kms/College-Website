@@ -1106,6 +1106,38 @@ router.post('/delete-gallery', (req, res) => {
   })
 });
 
+// About - Social links
+
+router.get('/social-links',verifyAdminLogin,async(req,res)=>{
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Type2 = "Nsa"
+  let NsaLinks = await userHelpers.getNormelLinks(Type2);
+  console.log(req.session.Success);
+  if (req.session.Success) {
+    res.render('admin/about/social-links', {title: 'Admin panel',    nsaWebDarkTheme, admin, sideHeader: true, NsaLinks  })
+    req.session.Success = false
+    console.log(req.session.Success);
+  } else {
+    res.render('admin/about/social-links', {title: 'Admin panel',  nsaWebDarkTheme, admin, sideHeader: true, NsaLinks  })
+  }
+});
+
+router.post('/social-links',verifyAdminLogin,async(req,res)=>{
+  let type = "Nsa"
+  adminHelpers.updateLinkName(req.body, type).then(() => {
+    req.session.Success = "Successfully edited"
+    res.redirect('/admin/social-links')
+  })
+});
+
+router.get('/messages',verifyAdminLogin,async(req,res)=>{
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let AllMessages = await adminHelpers.getuserMessages(); 
+    res.render('admin/about/message', {title: 'Admin panel',  nsaWebDarkTheme, admin, sideHeader: true, AllMessages })
+  
+});
 
 
 

@@ -5,5 +5,6 @@ module.exports={
    PARAGRAPH_COLLECTION : 'paragraph',
    LINK_COLLECTION : "links",
    NEWS_COLLECTION : "news",
-   GALLERY_COLLECTION : "gallery"
+   GALLERY_COLLECTION : "gallery",
+   MESSAGE_COLLECTION : 'message'
 }

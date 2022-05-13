@@ -42,6 +42,11 @@
     text-align: center;
     font-weight: normal;
 }
+.header-links .link-div h5{
+    text-align: center;
+    font-weight: normal;
+    color: var(--color-red-1);
+}
 .header-links .link-div .link i{
     margin-left: 10px;
     font-size: 25px;

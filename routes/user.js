@@ -227,6 +227,29 @@ router.get("/gallery", async (req, res) => {
     })
 });
 
+router.get("/contact-us", async (req, res) => {
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    let Type2 = "Nsa"
+    let NsaLinks = await userHelpers.getNormelLinks(Type2);
+    if (req.session.Success) {
+        res.render('user/contact-us', { title: "Contact us", "Success": req.session.Success,  nsaWebDarkTheme, adminHere, user: true,  NsaLinks })
+        req.session.Success = false
+      } else {
+        res.render('user/contact-us', { title: "Contact us", nsaWebDarkTheme, adminHere, user: true,  NsaLinks })
+      }
+
+   
+});
+
+router.post("/user-message", async (req, res) => {
+    userHelpers.sendMessage(req.body).then(()=>{
+        req.session.Success = "Your message was sended"
+        res.redirect('/contact-us')
+    })
+   
+});
+
 
 
 

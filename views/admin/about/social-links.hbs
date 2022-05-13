@@ -1,0 +1,121 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('About').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="headding">
+        <div>
+            <i class="bi bi-link"></i>
+            <h4>Social links</h4>
+        </div>
+    </div>
+    <div class="header-links">
+        <div class="link-div">
+            <h4>NSA available links</h4>
+            <h5>Don't enter social media links Only enter Name</h5>
+            <form action="/admin/social-links" method="post">
+               
+                {{!-- Discord --}}
+                {{#if NsaLinks.Discord}}
+                <div class="link">
+                    <i class="bi bi-discord" title="Discord"></i>
+                    <input type="text" class="text-input" value="{{NsaLinks.NameDiscord}}" name="NameDiscord" placeholder="Enter UserName Or Group name...">
+                </div>
+                {{/if}}
+                
+                
+                {{#if NsaLinks.Facebook}}
+                {{!-- facebook --}}
+                <div class="link">
+                    <i class="bi bi-facebook" title="Facebook"></i>
+                    <input type="text" class="text-input" value="{{NsaLinks.NameFacebook}}" name="NameFacebook" placeholder="Enter UserName Or Title Or Name...">
+                </div>
+                {{/if}}
+            
+                {{#if NsaLinks.Github}}
+                {{!-- github --}}
+                <div class="link">
+                    <i class="bi bi-github" title="Github"></i>
+                    <input type="text" class="text-input" value="{{NsaLinks.NameGithub}}" name="NameGithub" placeholder="Enter UserName Or Title Or Name...">
+                </div>
+                {{/if}}
+                
+                {{#if NsaLinks.Website}}
+                {{!-- Website --}}
+                <div class="link">
+                    <i class="bi bi-globe" title="Website"></i>
+                    <input type="text" class="text-input" value="{{NsaLinks.NameWebsite}}" name="NameWebsite" placeholder="Enter UserName Or Title Or Name...">
+                </div>
+                {{/if}}
+
+                {{#if NsaLinks.Instagram}}
+                {{!-- Instagram --}}
+                <div class="link">
+                    <i class="bi bi-instagram" title="Instagram"></i>
+                    <input type="text" class="text-input" name="NameInstagram" value="{{NsaLinks.NameInstagram}}" placeholder="Enter UserName Or Title Or Name...">
+                </div>
+                {{/if}}
+
+                {{#if NsaLinks.Linkedin}}
+                {{!-- Linkedin --}}
+                <div class="link">
+                    <i class="bi bi-linkedin" title="Linkedin"></i>
+                    <input type="text" class="text-input" name="NameLinkedin" value="{{NsaLinks.NameLinkedin}}" placeholder="Enter UserName Or Title Or Name...">
+                </div>
+                {{/if}}
+
+                {{#if NsaLinks.Messenger}}
+                {{!-- Messenger --}}
+                <div class="link">
+                    <i class="bi bi-messenger" title="Messenger"></i>
+                    <input type="text" class="text-input" value="{{NsaLinks.NameMessenger}}" name="NameMessenger" placeholder="Enter UserName Or Title Or Name...">
+                </div>
+                {{/if}}
+
+                {{#if NsaLinks.Telegram}}
+                {{!-- Telegram --}}
+                <div class="link">
+                    <i class="bi bi-telegram" title="Telegram"></i>
+                    <input type="text" class="text-input" name="NameTelegram" value="{{NsaLinks.NameTelegram}}" placeholder="Enter Channeel or Group Name">
+                </div>
+                {{/if}}
+
+                {{#if NsaLinks.Tiktok}}
+                {{!-- Tiktok --}}
+                <div class="link">
+                    <i class="bi bi-tiktok" title="Tiktok"></i>
+                    <input type="text" class="text-input" name="NameTiktok" value="{{NsaLinks.NameTiktok}}" placeholder="Enter UserName Or Title Or Name...">
+                </div>
+                {{/if}}
+
+                {{#if NsaLinks.Twitter}}
+                {{!-- Twitter --}}
+                <div class="link">
+                    <i class="bi bi-twitter" title="Twitter"></i>
+                    <input type="text" class="text-input" name="NameTwitter" value="{{NsaLinks.NameTwitter}}" placeholder="Enter UserName Or Title Or Name...">
+                </div>
+                {{/if}}
+
+
+                {{#if NsaLinks.Youtube}}
+                {{!-- Youtube --}}
+                <div class="link">
+                    <i class="bi bi-youtube" title="Youtube"></i>
+                    <input type="text" class="text-input" name="NameYoutube" value="{{NsaLinks.NameYoutube}}" placeholder="Entere UserName Or Channel Name...">
+                </div>
+                {{/if}}
+
+                <div class="submit">
+                    <button type="submit" class="btn-lg">Submit</button>
+                </div>
+                
+                
+                
+            </form>
+        </div>
+    </div>
+
+
+</section>

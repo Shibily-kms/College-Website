@@ -214,6 +214,14 @@ module.exports = {
 
             resolve(response);
         })
+    },
+
+    sendMessage:(body)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.MESSAGE_COLLECTION).insertOne(body).then(()=>{
+                resolve()
+            })
+         })
     }
 
 
