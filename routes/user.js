@@ -80,8 +80,8 @@ router.get('/nsa', async (req, res) => {
     let nsaPro = await userHelpers.getNormalProfile(Type1);
     let Type2 = "Nsa"
     let NsaLinks = await userHelpers.getNormelLinks(Type2);
-    
-    res.render('user/nsa', { title: "The NSA", nsaWebDarkTheme, adminHere, user: true, nsaPara,nsaPro,NsaLinks })
+
+    res.render('user/nsa', { title: "The NSA", nsaWebDarkTheme, adminHere, user: true, nsaPara, nsaPro, NsaLinks })
 
 });
 router.get('/nsa/fine-arts', async (req, res) => {
@@ -151,7 +151,7 @@ router.get('/nsa/research-cell', async (req, res) => {
     let Research = await userHelpers.getNormalPara(Id);
     let Type1 = "Research"
     let ResearchPro = await userHelpers.getNormalProfile(Type1);
-    res.render('user/research', { title: "Research cell", nsaWebDarkTheme, adminHere, user: true, Research , ResearchPro})
+    res.render('user/research', { title: "Research cell", nsaWebDarkTheme, adminHere, user: true, Research, ResearchPro })
 
 });
 router.get('/nsa/garden-committee', async (req, res) => {
@@ -161,7 +161,7 @@ router.get('/nsa/garden-committee', async (req, res) => {
     let Garden = await userHelpers.getNormalPara(Id);
     let Type1 = "Garden"
     let GardenPro = await userHelpers.getNormalProfile(Type1);
-    res.render('user/garden', { title: "Garden Committee", nsaWebDarkTheme, adminHere, user: true, Garden,GardenPro  })
+    res.render('user/garden', { title: "Garden Committee", nsaWebDarkTheme, adminHere, user: true, Garden, GardenPro })
 
 });
 
@@ -177,8 +177,8 @@ router.get('/skssf', async (req, res) => {
     let SkssfPro = await userHelpers.getNormalProfile(Type1);
     let Type2 = "Skssf"
     let SkssfLinks = await userHelpers.getNormelLinks(Type2);
-    
-    res.render('user/skssf', { title: "The SKSSF", nsaWebDarkTheme, adminHere, user: true, SkssfPara,SkssfPro,SkssfLinks })
+
+    res.render('user/skssf', { title: "The SKSSF", nsaWebDarkTheme, adminHere, user: true, SkssfPara, SkssfPro, SkssfLinks })
 });
 
 router.get('/skssf/fund', async (req, res) => {
@@ -202,20 +202,28 @@ router.get('/skssf/store', async (req, res) => {
 
 });
 
-router.get("/news",async (req,res)=>{
+router.get("/news", async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
-    userHelpers.getAllNewsSmallSize().then((AllNews)=>{
-        res.render('user/news-all',{title: "News Updates", nsaWebDarkTheme, adminHere, user: true, AllNews })
+    userHelpers.getAllNewsSmallSize().then((AllNews) => {
+        res.render('user/news-all', { title: "News Updates", nsaWebDarkTheme, adminHere, user: true, AllNews })
     })
 });
 
-router.get("/news/:id",async (req,res)=>{
+router.get("/news/:id", async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = req.params.id
-    userHelpers. getOneNewsFullSize(Id).then((OneNews)=>{
-        res.render('user/news-One',{title: "News Updates", nsaWebDarkTheme, adminHere, user: true, OneNews })
+    userHelpers.getOneNewsFullSize(Id).then((OneNews) => {
+        res.render('user/news-One', { title: "News Updates", nsaWebDarkTheme, adminHere, user: true, OneNews })
+    })
+});
+
+router.get("/gallery", async (req, res) => {
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    userHelpers.getUserGallery().then((Gallery) => {
+        res.render('user/gallery', { title: "Gallery", nsaWebDarkTheme, adminHere, user: true, Gallery })
     })
 });
 

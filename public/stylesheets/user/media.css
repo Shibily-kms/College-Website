@@ -1,72 +1,83 @@
 /*  laptop & pc*/
-@media (min-width:1025px){
-  
-
-}
+@media (min-width:1025px) {}
 
 /* ipad Pro */
-@media (max-width:1024px){
-  .news-div .news-item{
+@media (max-width:1024px) {
+  .news-div .news-item {
     width: 50%;
-    
+
 
   }
-  .content-div .header::after{
+
+  .content-div .header::after {
     content: "";
-    
+
     bottom: 9px;
-   
+
   }
- 
+
 
 }
 
 @media (max-width:900px) {
 
   .user-footer .top {
-    display:block;
-   
+    display: block;
+
+  }
+
+  .user-footer .top .section-one {
+    width: 100%;
+
+  }
+
+  .user-footer .top .section-two {
+    width: 100%;
+    margin-top: 25px;
+
+  }
+
+  .user-footer .top .section-two div h3 {
+    text-align: center;
+
+  }
+
+  .user-footer .bottom div {
+    display: block;
+    text-align: center;
+  }
+
+  .user-footer .bottom div a {
+    margin-top: 8px;
+  }
+
+  .gallery .section {
+    width: 33.33%;
+  }
+
+  .gallery-one .border img{
+    max-height: 350px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    max-width: 700px;
 }
-
-.user-footer .top .section-one {
-  width: 100%;
- 
-}
-
-.user-footer .top .section-two {
-  width: 100%;
-  margin-top: 25px;
-
-}
-.user-footer .top .section-two div h3 {
-  text-align: center;
-
-}
-
-.user-footer .bottom div{
-  display: block;
-  text-align: center;
-}
-
-.user-footer .bottom div a{
- margin-top: 8px;
-}
-
-
 
 }
 
 /* ipad */
 @media (max-width:768px) {
-    
-  .four-links{
+
+  .four-links {
     display: block;
     margin-top: 20px;
     width: 100%;
   }
 
-  .four-links .link-div{
-    
+  .four-links .link-div {
+
     display: flex;
     float: none;
     margin-top: 10px;
@@ -84,51 +95,70 @@
     padding-top: 10px;
     padding-bottom: 10px;
     min-height: auto;
-    
-}
-  .four-links .link-div i{
+
+  }
+
+  .four-links .link-div i {
     font-size: 20px;
     border: none;
     padding: none;
-}
-  .four-links .link-div h4{
+  }
+
+  .four-links .link-div h4 {
     margin-left: 20px;
     margin-top: 0;
-    
+
   }
-  .demmi-div{
+
+  .demmi-div {
     display: none;
   }
 
-  .content-div .header::after{
+  .content-div .header::after {
     content: "";
-    
+
     bottom: 8px;
-   
+
   }
 
   .news-one-item>div>div>img {
     width: 100%;
     height: 300px;
 
+  }
+
+  .gallery .section {
+    width: 50%;
+  }
+
+  .gallery-one .border img{
+    max-height: 80%;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    max-width: 500px;
 }
 
 
 
-    
+
+
 
 
 }
 
 /* 500 */
-@media (max-width:500px)  {
-  .news-div .news-item{
+@media (max-width:500px) {
+  .news-div .news-item {
     width: 100%;
     padding: 0;
     padding-top: 15px;
 
   }
-  .seemore a{
+
+  .seemore a {
     width: 100%;
   }
 
@@ -136,7 +166,22 @@
     width: 100%;
     height: 250px;
 
+  }
+
+  .gallery .section {
+    width: 100%;
+  }
+
+  .gallery-one .border img{
+    max-height: 80%;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    max-width: 100%;
 }
+
 
 
 }
@@ -144,20 +189,20 @@
 /* all mobile */
 @media (max-width:375px) {
 
-  .content-div .header::after{
+  .content-div .header::after {
     content: "";
-    
+
     bottom: 6px;
-   
+
   }
 
   .news-one-item>div>div>img {
     width: 100%;
     height: 150px;
 
-}
+  }
 
- 
-  
+
+
 
 }

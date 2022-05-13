@@ -40,13 +40,13 @@
         min-width:600px;
         margin-left: 200px;
         transition: 0.3s;
-        transition-property: transform, ;
+        transition-property: transform, opacity;
         position: relative;
         }
         .little-container{
         margin-left: 65px;
         transition: 0.3s;
-        transition-property: transform, ;
+        transition-property: transform, opacity;
         position: relative;
           }
    
@@ -105,13 +105,13 @@
         min-width:600px;
         margin-left: 200px;
         transition: 0.3s;
-        transition-property: transform, ;
+        transition-property: transform, opacity;
         position: relative;
     }
     .little-container{
         margin-left: 65px;
         transition: 0.3s;
-        transition-property: transform, ;
+        transition-property: transform, opacity;
         position: relative;
           }
     .home-container{
@@ -149,7 +149,7 @@
         padding-bottom : 20px;
         margin-left: 65px;
         transition: 0.3s;
-        transition-property: transform, ;
+        transition-property: transform, opacity;
         position: relative;
     }
 

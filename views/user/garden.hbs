@@ -62,7 +62,7 @@
 <script>
 
     let pre = document.getElementById('Header').innerHTML
-    console.log('hi')
+
     const first = pre.split(' ').shift();
     document.getElementById("Header").innerHTML = pre.replace(first, `<span class ="first-word">` + first + `</span>`);
 

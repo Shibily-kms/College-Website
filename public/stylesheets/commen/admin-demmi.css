@@ -265,7 +265,7 @@
     box-shadow: inset 1px -80px 40px -10px var(--color-c-white-light-1);
     overflow: hidden;
     opacity: 0;
-    transition-property: transform, ;
+    transition-property: transform, opacity;
 }
 .edit-profile>.profile .profile-overly div{
     right: 10px;

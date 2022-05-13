@@ -84,7 +84,7 @@
     box-shadow: inset 0px -70px 35px -18px var(--color-c-white-light-1);
     overflow: hidden;
     opacity: 0;
-    transition-property: transform, ;
+    transition-property: transform, opacity;
 }
 
 .news-thum-div>.news-thumbnail .news-thumb-overly div {

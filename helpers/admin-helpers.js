@@ -66,7 +66,7 @@ module.exports = {
         })
     },
     editPeragraphWithButton: (body, type) => {
-        console.log(body,type);
+     
         return new Promise((resolve, reject) => {
             db.get().collection(collection.PARAGRAPH_COLLECTION).updateOne({ Name: type, }, {
                 $set: {
@@ -85,7 +85,7 @@ module.exports = {
                     "Btn2.New" : body.B2New
                 }
             }).then(() => {
-                console.log('iam2');
+               
                 resolve()
             })
         })
@@ -228,6 +228,50 @@ module.exports = {
          })
     },
 
+    addUpdateGallery: (body) => {
+       
+        let response = []
+        return new Promise((resolve, reject) => {
+            if (body.Id == '') {
+                
+                create_random_id(10)
+                function create_random_id(sting_length) {
+                    var randomString = '';
+                    var numbers = '123456789ABCDEFGHJKLMNOPQRSTUVWXYZ987654321qwertyuioplkjhgfdsazxcvbnm'
+                    for (var i, i = 0; i < sting_length; i++) {
+                        randomString += numbers.charAt(Math.floor(Math.random() * numbers.length))
+                    }
+                    body.Id = randomString
+                }
+                
+                db.get().collection(collection.GALLERY_COLLECTION).insertOne(body).then(() => {
+                    response.Id = body.Id
+                    response.Success= "New Image Successfully added to Gallery"
+                    resolve(response)
+                })
+            }else{
+                db.get().collection(collection.GALLERY_COLLECTION).updateOne({Id:body.Id},{
+                    $set:{
+                        Title : body.Title,
+                        Description : body.Description
+                    }
+                }).then(()=>{
+                    response.Id = body.Id
+                    response.Success= "This Image Successfully Updated"
+                    resolve(response)
+                })
+            }
+        })
+    },
+
+    deleteGalleryImage:(body)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.GALLERY_COLLECTION).deleteOne({Id:body.Id}).then((Id)=>{
+                resolve(Id)
+            })
+         })
+    },
+    
     
 
 

@@ -128,10 +128,10 @@ module.exports = {
             const count1 = 300;
             const count2 = 50;
             for (let i = 0; i < latest.length; i++) {
-                latest[i].Header = latest[i].Header.slice(0,count2) + (latest[i].Header.length > count2 ? "..." : "")
-                latest[i].Content[0] = latest[i].Content[0].slice(0,count1) + (latest[i].Content[0].length > count1 ? "..." : "")
+                latest[i].Header = latest[i].Header.slice(0, count2) + (latest[i].Header.length > count2 ? "..." : "")
+                latest[i].Content[0] = latest[i].Content[0].slice(0, count1) + (latest[i].Content[0].length > count1 ? "..." : "")
                 latest[i].Time = latest[i].Time.toLocaleString('en-US', { timeZone: "Asia/Kolkata" });
-                
+
             }
             resolve(latest)
         })
@@ -144,10 +144,10 @@ module.exports = {
             const count1 = 300;
             const count2 = 50;
             for (let i = 0; i < news.length; i++) {
-                news[i].Header = news[i].Header.slice(0,count2) + (news[i].Header.length > count2 ? "..." : "")
-                news[i].Content[0] = news[i].Content[0].slice(0,count1) + (news[i].Content[0].length > count1 ? "..." : "")
+                news[i].Header = news[i].Header.slice(0, count2) + (news[i].Header.length > count2 ? "..." : "")
+                news[i].Content[0] = news[i].Content[0].slice(0, count1) + (news[i].Content[0].length > count1 ? "..." : "")
                 news[i].Time = news[i].Time.toLocaleString('en-US', { timeZone: "Asia/Kolkata" });
-                
+
             }
             resolve(news)
 
@@ -156,12 +156,65 @@ module.exports = {
 
     getOneNewsFullSize: (Id) => {
         return new Promise(async (resolve, reject) => {
-            let news = await db.get().collection(collection.NEWS_COLLECTION).findOne({Id})
-                news.Time = news.Time.toLocaleString('en-US', { timeZone: "Asia/Kolkata" });
+            let news = await db.get().collection(collection.NEWS_COLLECTION).findOne({ Id })
+            news.Time = news.Time.toLocaleString('en-US', { timeZone: "Asia/Kolkata" });
             resolve(news)
 
         })
     },
+
+    getFullGallery: () => {
+        return new Promise(async (resolve, reject) => {
+            let Gallery = await db.get().collection(collection.GALLERY_COLLECTION).find().toArray();
+            Gallery.reverse();
+            resolve(Gallery);
+        })
+    },
+
+    getUserGallery: () => {
+        return new Promise(async (resolve, reject) => {
+            let response = []
+            let Group1 = []
+            let Group2 = []
+            let Group3 = []
+            let Group4 = []
+            let Gallery = await db.get().collection(collection.GALLERY_COLLECTION).find().toArray();
+
+            Gallery.reverse();
+
+            
+            for (let i = 0; i < Gallery.length; i++) {
+                let Divide = i / 4
+                var decimals = Divide - Math.floor(Divide);
+                switch (decimals) {
+                    case 0:
+                        Group1.push(Gallery[i])
+                        break;
+                    case 0.25:
+                        Group2.push(Gallery[i])
+                        break;
+                    case 0.5:
+                        Group3.push(Gallery[i])
+                        break;
+                    case 0.75:
+                        Group4.push(Gallery[i])
+                        break;
+                
+                    default:
+                        break;
+                }
+            }
+            // response.Gallery = Gallery
+            response.Group1 = Group1
+            response.Group2 = Group2
+            response.Group3 = Group3
+            response.Group4 = Group4
+            
+          
+
+            resolve(response);
+        })
+    }
 
 
 

@@ -1,0 +1,121 @@
+/* Gallery */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery .section {
+    width: 25%;
+}
+
+.gallery .section .item {
+
+    margin: 8px;
+    position: relative;
+    overflow: hidden;
+
+
+}
+
+.gallery>.section>.item>img {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: 1px solid var(--color-c-black-opacity-7);
+    cursor:zoom-in;
+}
+.gallery>.section>.item:hover .gallery-overly{
+    opacity: 1;
+    transition-property: transform, opacity;
+}
+
+.gallery-overly {
+    
+    position: absolute;
+    z-index: 2;
+    bottom: 4px;
+    background-color: var(--color-c-black-opacity-7) ;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    -ms-border-radius: 0 0 10px 10px;
+    -o-border-radius: 0 0 10px 10px;
+    opacity: 0;
+}
+
+.gallery-overly>h5 {
+    word-wrap: break-word;
+    color: var(--color-c-white);
+}
+
+/* Gallery One */
+
+.gallery-one{
+    background-color: var(--color-black-opacity-9);
+    position: fixed;
+    z-index: 14;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: none;
+   
+    
+}
+.gallery-one .border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: zoom-out;
+}
+.gallery-one .border img{
+    max-height: 400px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    max-width: 100%;
+    
+}
+.gallery-one .border>div>div{
+ 
+   display: flex;
+   justify-content: center;
+ 
+}
+.gallery-one .border h3{
+    color: var(--color-rose-light-3);
+    text-align: center;
+    margin-top: 5px;
+}
+
+.gallery-one .border p{
+    margin-top: 5px;
+    color: var(--color-white);
+    text-align: center;
+    font-weight: normal;
+    word-wrap: break-word;
+    
+}
+.gallery-one .icon{
+    
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+.gallery-one .icon i{
+    font-size: 30px;
+    color: var(--color-white);
+    z-index: 15;
+    cursor: pointer;
+}

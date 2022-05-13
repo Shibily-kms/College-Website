@@ -365,7 +365,7 @@ router.get('/our-faculty/pg-hod', verifyAdminLogin, async (req, res) => {
 router.post('/our-faculty/pg-hod', verifyAdminLogin, (req, res) => {
   req.body.Type = 'Hod'
   adminHelpers.addUpdateProfile(req.body).then((response) => {
-    console.log('here me');
+   
     let Image = req.files
     if (Image) {
       Image = req.files.Profile
@@ -1053,6 +1053,49 @@ router.post('/delete-news', (req, res) => {
 
   adminHelpers.deleteNews(req.body).then((response) => {
     let Imagepath = path.join(__dirname, '../public/images/news/' + req.body.Id + '.jpg')
+    fs.unlink(Imagepath, function (err) {
+      if (err)
+        return;
+
+    });
+
+    res.json(response)
+  })
+});
+
+
+// About - Gallery
+
+router.get('/gallery',verifyAdminLogin , async(req,res)=>{
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let Gallery = await userHelpers.getFullGallery();
+  if (req.session.Success) {
+    res.render('admin/about/gallery',{ title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, Gallery    })
+    req.session.Success = false
+  } else {
+    res.render('admin/about/gallery',{ title: 'Admin panel',  nsaWebDarkTheme, admin, sideHeader: true,  Gallery   })
+  }
+});
+
+router.post('/gallery', verifyAdminLogin, (req, res) => {
+ 
+  adminHelpers.addUpdateGallery(req.body).then((response) => {
+    let Image = req.files
+    if (Image) {
+      Image = req.files.Image
+      Image.mv('./public/images/gallery/' + response.Id + '.jpg')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/gallery')
+  })
+});
+
+
+router.post('/delete-gallery', (req, res) => {
+
+  adminHelpers.deleteGalleryImage(req.body).then((response) => {
+    let Imagepath = path.join(__dirname, '../public/images/gallery/' + req.body.Id + '.jpg')
     fs.unlink(Imagepath, function (err) {
       if (err)
         return;
