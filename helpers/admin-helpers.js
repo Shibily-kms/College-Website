@@ -33,6 +33,15 @@ module.exports = {
         })
     },
 
+    checkActivation:()=>{
+        return new Promise(async(resolve, reject) => { 
+        db.get().collection(collection.FIRST_PAGE_COLLECTION).findOne({Name : "Slide"}).then((check)=>{
+                
+                resolve(check)
+            })
+         })
+    },
+
     // First page
     editSlider: (body) => {
 

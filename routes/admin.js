@@ -18,14 +18,16 @@ const verifyAdminLogin = (req, res, next) => {
 
 /* GET users listing. */
 /* HOme page */
-router.get('/', verifyAdminLogin, (req, res, next) => {
+router.get('/', verifyAdminLogin, async(req, res, next) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
+  let activation = await adminHelpers.checkActivation();
+  console.log(activation);
   if (req.session.Success) {
-    res.render('admin/home', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, "Success": req.session.Success })
+    res.render('admin/home', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, "Success": req.session.Success, activation })
     req.session.Success = false
   } else {
-    res.render('admin/home', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, })
+    res.render('admin/home', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, activation })
   }
 });
 
