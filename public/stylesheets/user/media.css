@@ -254,6 +254,22 @@
 
   }
 
+  
+  .gallery .section {
+    width: 100%;
+  }
+
+  .gallery-one .border img{
+    max-height: auto;
+    min-height: auto;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    max-width: 100%;
+}
+
 
 
 
