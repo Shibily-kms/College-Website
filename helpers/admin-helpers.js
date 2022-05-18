@@ -33,13 +33,13 @@ module.exports = {
         })
     },
 
-    checkActivation:()=>{
-        return new Promise(async(resolve, reject) => { 
-        db.get().collection(collection.FIRST_PAGE_COLLECTION).findOne({Name : "Slide"}).then((check)=>{
-                
+    checkActivation: () => {
+        return new Promise(async (resolve, reject) => {
+            db.get().collection(collection.FIRST_PAGE_COLLECTION).findOne({ Name: "Slide" }).then((check) => {
+
                 resolve(check)
             })
-         })
+        })
     },
 
     // First page
@@ -282,7 +282,7 @@ module.exports = {
     },
 
     updateLinkName: (body, Type) => {
-        console.log(body);
+
         return new Promise((resolve, reject) => {
             db.get().collection(collection.LINK_COLLECTION).updateOne({ Type }, {
                 $set: {
@@ -306,12 +306,133 @@ module.exports = {
     },
 
     getuserMessages: () => {
-        return new Promise(async(resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             let Message = await db.get().collection(collection.MESSAGE_COLLECTION).find().toArray();
             Message.reverse();
             resolve(Message)
         })
+    },
+
+    addUpdateFrame: (body) => {
+        function calculateRatio(num_1, num_2) {
+
+            for (num = num_2; num > 1; num--) {
+
+                if ((num_1 % num) == 0 && (num_2 % num) == 0) {
+                    num_1 = num_1 / num;
+                    num_2 = num_2 / num;
+                }
+
+            }
+            var ratio = {
+                W: num_1,
+                H: num_2
+            }
+            return ratio;
+        }
+        return new Promise((resolve, reject) => {
+            let response = []
+
+            if (body.Id == "") {
+                create_random_id(10)
+                function create_random_id(sting_length) {
+                    var randomString = '';
+                    var numbers = '123456789ABCDEFGHJKLMNOPQRSTUVWXYZ'
+                    for (var i, i = 0; i < sting_length; i++) {
+                        randomString += numbers.charAt(Math.floor(Math.random() * numbers.length))
+                    }
+                    body.Id = randomString
+                }
+                var Imageratio = calculateRatio(body.IW, body.IH)
+                body.RW = Imageratio.W
+                body.RH = Imageratio.H
+                body.Count = null
+
+                db.get().collection(collection.FRAME_COLLECTION).insertOne(body).then(() => {
+                    response.Success = "New frame succesfully created"
+                    response.Id = body.Id
+                    resolve(response)
+                })
+
+
+            } else {
+                var Imageratio = calculateRatio(body.IW, body.IH)
+                db.get().collection(collection.FRAME_COLLECTION).updateOne({ Id: body.Id }, {
+                    $set: {
+                        Header: body.Header,
+                        IX: body.IX,
+                        IY: body.IY,
+                        IW: body.IW,
+                        IH: body.IH,
+                        NX: body.NX,
+                        NY: body.NY,
+                        NW: body.NW,
+                        NH: body.NH,
+                        RW: Imageratio.W,
+                        RH: Imageratio.H
+                    }
+                }).then(() => {
+                    response.Success = "This Frame succesfully updated"
+                    response.Id = body.Id
+                    resolve(response)
+                })
+            }
+        })
+    },
+
+    hideFrame:(body)=>{
+        console.log(body);
+        let response = []
+        return new Promise((resolve, reject) => { 
+            if(body.Hide === "1"){
+                db.get().collection(collection.FRAME_COLLECTION).updateOne({Id:body.Id},{
+                    $set:{
+                        Hide : ""
+                    }
+                }).then(()=>{
+
+                    body.Hide = ""
+                    response.Hide = body.Hide
+                    resolve(response)
+                })
+            }else{
+                db.get().collection(collection.FRAME_COLLECTION).updateOne({Id:body.Id},{
+                    $set:{
+                        Hide : 1
+                    }
+                }).then((response)=>{
+                    body.Hide = "1"
+                    response.Hide = body.Hide
+                    resolve(response)
+                })
+            }
+         })
+    },
+
+    deleteFrame: (body) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.FRAME_COLLECTION).deleteOne({ Id: body.Id }).then((Id) => {
+                resolve(Id)
+            })
+        })
+    },
+
+    downloadCountFrame:(body)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.FRAME_COLLECTION).findOne({Id : body.Id}).then((result)=>{
+                db.get().collection(collection.FRAME_COLLECTION).updateOne({Id : body.Id},{
+                   $set:{
+                       Count : result.Count + 1
+                   }
+                })
+                
+            }).then(()=>{
+                resolve()
+            })
+         })
     }
+
+
 
 
 

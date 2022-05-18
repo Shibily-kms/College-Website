@@ -1,0 +1,202 @@
+<section class="container frame-div" style="margin-top: 30px; ">
+
+    <div class="frame">
+        <div id="cover" class="cover-img">
+            <img src="/images/frames/{{OneFrame.Id}}-1.jpg" id="cover-image" alt="cover image">
+        </div>
+
+        {{!-- Section 1 --}}
+        <div id="section1">
+            <input type="text" name="Name" value="" id="NameInput" class="text-input">
+
+            <div id="upload-Div">
+                <button class="btn-lg" id="upload-btn" data-title="Choose image" onclick="chooseImage()"><i
+                        class="bi bi-camera-fill"></i>
+                    Upload image</button>
+                <input type="file" onchange="HideSection1()" hidden accept="image/jpg, image/jpeg" name="Profile"
+                    id="upload-file">
+            </div>
+        </div>
+
+
+        {{!-- Seciton 2 --}}
+        <div id="section2" style="display:none;" class="box-2">
+            <div class="result"></div>
+            <div class="options hide">
+                <input type="number" style="display: none ;" class="img-w" value="300" min="100" max="1200" />
+            </div>
+            <input type="number" hidden id="RatioW" value="{{OneFrame.RW}}">
+            <input type="number" hidden id="RatioH" value="{{OneFrame.RH}}">
+            <button id="" onclick="clickSave()" class="btn-lg hide save-button1">Save</button>
+        </div>
+
+
+        {{!-- Seciton 3 --}}
+        <div id="section3" style="display:none;" class="section2">
+            <div hidden>
+                <input type="number" value="{{OneFrame.IX}}" id="ImageIX">
+                <input type="number" value="{{OneFrame.IY}}" id="ImageIY">
+                <input type="number" value="{{OneFrame.IW}}" id="ImageIW">
+                <input type="number" value="{{OneFrame.IH}}" id="ImageIH">
+                <input type="number" value="{{OneFrame.NX}}" id="NameNX">
+                <input type="number" value="{{OneFrame.NY}}" id="NameNY">
+                <input type="number" value="{{OneFrame.NW}}" id="NameNW">
+                <input type="number" value="{{OneFrame.NH}}" id="NameNH">
+                <input type="text" value="{{OneFrame.Id}}" id="FrameId">
+            </div>
+            <!--rightbox-->
+            <div class="box-2 img-result hide">
+                <!-- result of crop -->
+                <img class="cropped" id="cropped" src="" alt="" />
+            </div>
+            <canvas hidden id="mergedImage" width="240" height="297"></canvas>
+            <img src="/images/frames/{{OneFrame.Id}}-2.jpg" id="frime" hidden alt="">
+            <div class="status">
+                <p id="status"><i class="bi bi-arrow-clockwise"></i> Loading...</p>
+            </div>
+
+            <a href="" class="btn-lg download hide downlaod-button"><i class="bi bi-download"></i> Download</a>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    // vars
+    let result = document.querySelector(".result"),
+        img_result = document.querySelector(".img-result"),
+        img_w = document.querySelector(".img-w"),
+        img_h = document.querySelector(".img-h"),
+        options = document.querySelector(".options"),
+        save = document.querySelector(".save-button1"),
+        cropped = document.querySelector(".cropped"),
+        dwn = document.querySelector(".download"),
+        upload = document.querySelector("#upload-file"),
+        RatioW = document.getElementById('RatioW').value;
+    RatioH = document.getElementById('RatioH').value;
+    cropper = "";
+
+    // on change show image with crop options
+    upload.addEventListener("change", (e) => {
+        if (e.target.files.length) {
+            // start file reader
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                if (e.target.result) {
+                    // create new image
+                    let img = document.createElement("img");
+
+                    img.id = "image";
+                    img.src = e.target.result;
+                    // clean result before
+                    result.innerHTML = "";
+                    // append new image
+                    result.appendChild(img);
+                    // show save btn and options
+                    save.classList.remove("hide");
+                    options.classList.remove("hide");
+                    // init cropper
+                    cropper = new Cropper(img, {
+                        aspectRatio: RatioW / RatioH,
+                    });
+                }
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+
+    // save on click
+    save.addEventListener("click", async (e) => {
+        e.preventDefault();
+        // get result to data uri
+        let imgSrc = cropper
+            .getCroppedCanvas({
+                width: img_w.value, // input value
+            })
+            .toDataURL();
+        // remove hide class of img
+        cropped.classList.remove("hide");
+        img_result.classList.remove("hide");
+        // show image cropped
+        cropped.src = imgSrc;
+
+        // Mergin 
+        let ResultCanvas = document.getElementById('mergedImage')
+        var context = ResultCanvas.getContext("2d");
+        var frime = document.getElementById('frime');
+        let ImageIX = document.getElementById('ImageIX').value,
+            ImageIY = document.getElementById('ImageIY').value,
+            ImageIW = document.getElementById('ImageIW').value,
+            ImageIH = document.getElementById('ImageIH').value
+        let NameNX = document.getElementById('NameNX').value,
+            NameNY = document.getElementById('NameNY').value,
+            NameNW = document.getElementById('NameNW').value,
+            NameNH = document.getElementById('NameNH').value,
+            NameInput = document.getElementById('NameInput').value
+        TextWight = parseInt(NameNX) + (parseInt(NameNW) / 2)
+        TextHigth = parseInt(NameNY) + (parseInt(NameNH) / 2) + 35
+        let Status = document.getElementById('status')
+
+        let img = new Image;
+
+        ResultCanvas.width = frime.width;
+        ResultCanvas.height = frime.height;
+
+        img.onload = function () {
+            context.drawImage(img, ImageIX, ImageIY, ImageIW, ImageIH);
+            context.drawImage(frime, 0, 0)
+            context.font = "100px Rubik"
+            context.textAlign = "center";
+            context.fillText(NameInput, TextWight, TextHigth, NameNW, NameNH)
+            context.globalAlpha = 1.0;
+
+            let canvas = document.getElementById('mergedImage')
+            var image = canvas.toDataURL("image/jpg");
+
+            dwn.download = "imagename.png";
+            dwn.setAttribute("href", image);
+            Status.innerHTML = "Poster creation success, Download Below "
+
+        };
+        img.src = imgSrc;
+
+        // Download cound
+        let FrameId = document.getElementById('FrameId').value
+
+        $.ajax({
+            url: '/admin/status-frame-count',
+            data: {
+                Id : FrameId
+            },
+            method: 'post',
+            success: () => {
+            }
+        })
+
+
+
+
+    });
+</script>
+
+
+
+
+<script>
+    let cover = document.getElementById('cover');
+    let section1 = document.getElementById('section1')
+    let section2 = document.getElementById('section2')
+    let section3 = document.getElementById('section3')
+    function HideSection1() {
+
+        cover.style.display = 'none'
+        section1.style.display = 'none'
+        section2.style.display = 'block'
+    }
+    function clickSave() {
+        section3.style.display = 'block'
+        section2.style.display = 'none'
+    }
+
+
+</script>

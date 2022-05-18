@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Rubik","Montserrat","Poppins",sans-serif;
+    font-family: "Rubik","Poppins", "Montserrat",sans-serif;
   }
   
   body{
@@ -11,7 +11,7 @@
     color: var(--color-c-black);
     background-color: var(--color-white-2);
     box-sizing: border-box;
-    font-family: "Rubik","Montserrat","Poppins",sans-serif;
+    font-family: "Rubik", "Poppins", "Montserrat",sans-serif;
     min-width: 275px;
 }
 

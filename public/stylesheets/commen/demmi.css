@@ -350,7 +350,7 @@ cursor:auto;
     
     background-color: var(--color-c-white-light-2);
     max-height: 300px;
-    overflow: scroll;
+    overflow: auto;
     overflow-x: hidden;
     padding: 10px;
 }
@@ -412,6 +412,8 @@ cursor:auto;
     display: none;
     cursor: not-allowed;
     z-index: 15;
+    background-color: var(--color-black-opacity-3);
+    
 }
 
 /* Info bar */

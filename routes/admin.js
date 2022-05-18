@@ -22,7 +22,7 @@ router.get('/', verifyAdminLogin, async(req, res, next) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
   let activation = await adminHelpers.checkActivation();
-  console.log(activation);
+ 
   if (req.session.Success) {
     res.render('admin/home', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, "Success": req.session.Success, activation })
     req.session.Success = false
@@ -1065,6 +1065,66 @@ router.post('/delete-news', (req, res) => {
   })
 });
 
+// Updates - status frame
+
+router.get('/frame', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let AllFrames = await userHelpers.getAllFrames();
+  if (req.session.Success) {
+    res.render('admin/updates/frame', { title: 'Admin panel', "Success": req.session.Success, nsaWebDarkTheme, admin, sideHeader: true, AllFrames })
+    req.session.Success = false
+  } else {
+    res.render('admin/updates/frame', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, AllFrames  })
+  }
+});
+
+router.post('/frame', verifyAdminLogin, (req, res) => {
+ 
+  adminHelpers.addUpdateFrame(req.body).then((response) => {
+    let Image = req.files
+    if (Image ) {
+      Image = req.files.Frame
+      Image2 = req.files.FramePoster
+      Image.mv('./public/images/frames/' + response.Id + '-2.jpg')
+      Image2.mv('./public/images/frames/' + response.Id + '-1.jpg')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/frame')
+  })
+});
+
+router.post('/hide-frame',async(req, res) => {
+  adminHelpers.hideFrame(req.body).then((response)=>{
+    res.json(response)
+
+  })
+}); 
+
+router.post('/delete-frame', (req, res) => {
+
+  adminHelpers.deleteFrame(req.body).then((response) => {
+    let Imagepath1 = path.join(__dirname, '../public/images/frames/' + req.body.Id + '-1.jpg')
+    let Imagepath2 = path.join(__dirname, '../public/images/frames/' + req.body.Id + '-2.jpg')
+    fs.unlink(Imagepath1, function (err) {
+      if (err)
+        return;
+    });
+    fs.unlink(Imagepath2, function (err) {
+      if (err)
+        return;
+    });
+
+    res.json(response)
+  })
+});
+router.post('/status-frame-count', (req, res) => {
+  adminHelpers.downloadCountFrame(req.body).then(() => {
+    res.json()
+  })
+});
+
+
 
 // About - Gallery
 
@@ -1115,11 +1175,11 @@ router.get('/social-links',verifyAdminLogin,async(req,res)=>{
   let admin = req.session.NSAWEBADMIN
   let Type2 = "Nsa"
   let NsaLinks = await userHelpers.getNormelLinks(Type2);
-  console.log(req.session.Success);
+ 
   if (req.session.Success) {
     res.render('admin/about/social-links', {title: 'Admin panel',    nsaWebDarkTheme, admin, sideHeader: true, NsaLinks  })
     req.session.Success = false
-    console.log(req.session.Success);
+  
   } else {
     res.render('admin/about/social-links', {title: 'Admin panel',  nsaWebDarkTheme, admin, sideHeader: true, NsaLinks  })
   }

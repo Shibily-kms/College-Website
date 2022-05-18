@@ -56,3 +56,127 @@
     text-align: end;
 
 }
+
+/* Status frame */
+
+.frame-div{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+.frame{
+    background-color: var(--color-c-white-light-5);
+    box-shadow: var(--shadow-c-white);
+    max-width: 100%;
+    min-width: 400px;
+    padding: 15px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    height: fit-content;
+}
+.frame .cover-img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.frame .cover-img>img{
+    width: 250px;
+}
+
+.frame input{
+    width: 100%;
+    margin-top: 15px;
+}
+.frame #upload-Div{
+    width: 100%;
+    margin-top: 15px;
+
+}
+.frame #upload-Div button{
+    width: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    background-color: var(--color-rose-light-2);
+    color: var(--color-white);
+}
+.frame #upload-Div button i{
+   font-size: 22px;
+   
+   
+}
+.box-2 {
+    padding: 0.5em;
+    width: 400px;
+    max-width: 100%;
+}
+.frame .save-button1{
+    width: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    color: var(--color-white);
+    background-color: var(--color-rose-light-2);
+    margin-top: 15px;
+}
+
+.frame .downlaod-button{
+    display: inline-block;
+    cursor: pointer;
+    color: var(--color-white);
+    width: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin-top: 15px;
+    background-color: var(--color-rose-light-2);
+}
+.frame .downlaod-button i{
+    font-size: 24px;
+    margin-right: 10px;
+}
+.frame img{
+    max-width: 100%;
+}
+
+.hide {
+    display: none;
+}
+.frame .img-result{
+    display: flex;
+    justify-content: center;
+}
+.frame  .box {
+    padding: 0.5em;
+    width: 100%;
+    margin: 0.5em;
+}
+.frame  .options label,
+.frame .options input {
+    width: 4em;
+    padding: 0.5em 1em;
+}
+.frame .status{
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-blue-light-11);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+    color: var(--color-blue-light-1);
+}
+
+ 

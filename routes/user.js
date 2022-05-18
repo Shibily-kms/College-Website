@@ -202,6 +202,7 @@ router.get('/skssf/store', async (req, res) => {
 
 });
 
+// UPdates
 router.get("/news", async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
@@ -219,6 +220,21 @@ router.get("/news/:id", async (req, res) => {
     })
 });
 
+router.get('/status-frame',async (req,res)=>{
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    let AllFrames = await userHelpers.getAllFrames();
+    res.render('user/frame',{ title: "Status frame", nsaWebDarkTheme, adminHere, user: true, AllFrames })
+});
+
+router.get('/status-frame/:id',async (req,res)=>{
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    let OneFrame = await userHelpers.getOneFrames(req.params.id);
+    res.render('user/frame-one',{ title: "Status frame", nsaWebDarkTheme, adminHere, user: true, OneFrame })
+});
+
+// About
 router.get("/gallery", async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN

@@ -15,6 +15,8 @@
   <link id='theme-change' class='{{#if nsaWebDarkTheme}}Dark {{else}}Light{{/if}}' rel='stylesheet' {{#if
     nsaWebDarkTheme}} href='/stylesheets/root/dark-theme.css' {{else}} href='/stylesheets/root/light-theme.css'
     {{/if}} />
+
+  {{!-- Other --}}
   <link rel='stylesheet' href='/stylesheets/admin/style.css' />
   <link rel='stylesheet' href='/stylesheets/admin/sign.css' />
   <link rel='stylesheet' href='/stylesheets/admin/header.css' />
@@ -31,12 +33,12 @@
   <link rel='stylesheet' href='/stylesheets/user/updates.css' />
   <link rel='stylesheet' href='/stylesheets/user/about.css' />
   <link rel='stylesheet' href='/stylesheets/user/header.css' />
+    {{!-- Demmi --}}
+  <link rel='stylesheet' href='/stylesheets/commen/demmi.css' />
+  <link rel='stylesheet' href='/stylesheets/commen/admin-demmi.css' />
   {{!-- Animation --}}
   <link rel='stylesheet' href='/stylesheets/user/animations.css' />
   <link rel='stylesheet' href='/stylesheets/admin/animations.css' />
-  {{!-- Demmi --}}
-  <link rel='stylesheet' href='/stylesheets/commen/demmi.css' />
-  <link rel='stylesheet' href='/stylesheets/commen/admin-demmi.css' />
   {{!-- Media --}}
   <link rel='stylesheet' href='/stylesheets/commen/media.css' />
   <link rel='stylesheet' href='/stylesheets/user/media.css' />
@@ -61,7 +63,11 @@
     rel="stylesheet">
 
   {{!-- Cropper.js --}}
-
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
 
   {{!-- Boostrap Icon --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">

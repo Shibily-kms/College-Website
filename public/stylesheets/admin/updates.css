@@ -158,3 +158,93 @@
     font-weight: bold;
     font-size: 14px; 
 }
+
+
+/* Status frame */
+
+.admin-frame .axis-inputs{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.admin-frame .axis-inputs .col{
+    width: 50%;
+    padding-right: 10px;
+}
+
+.admin-frame .axis-inputs .col input{
+    width: 100%;
+}
+
+ /* HIDE RADIO */
+ .admin-frame .img-radio-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+.admin-frame .img-radio-input+.img-radio-img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+.admin-frame .img-radio-input:checked+.img-radio-img {
+    outline: 2px solid #f00;
+}
+.admin-frame .img-radio-img{
+    width: 50px;
+}
+.admin-frame h5{
+    font-weight: 600;
+}
+
+.admin-frame .header-input input{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.frame-edit>.profile .profile-overly div:first-child{
+    width: 65px;
+}
+.frame-edit>.profile .profile-overly div:first-child i{
+    margin-right: 5px;
+}
+
+
+
+.frame-edit-model .model>.content>form>.image{
+    
+    width: 500px;
+  
+}
+.frame-edit-model .model>.content>form>.image>div{
+    
+   
+    position: relative;
+    
+}
+.frame-edit-model .model>.content>form>.image>div>h5{
+    font-weight: normal;
+    text-align: center;
+}
+
+.frame-edit-model .model>.content>form>.image>div>img{
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px ;
+    -webkit-border-radius: 15px ;
+    -moz-border-radius: 15px ;
+    -ms-border-radius: 15px ;
+    -o-border-radius: 15px ;
+    box-shadow: var(--shadow-c-white);
+    overflow: hidden;
+}
+.frame-edit-model .model>.content>form>.image>div>.admin-edit{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    
+}

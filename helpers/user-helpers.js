@@ -222,7 +222,26 @@ module.exports = {
                 resolve()
             })
          })
-    }
+    },
+
+    getAllFrames:()=>{
+        return new Promise(async(resolve, reject) => { 
+            let Frames = await db.get().collection(collection.FRAME_COLLECTION).find().toArray()
+            Frames.reverse();
+            resolve(Frames)
+         })
+    },
+    getOneFrames:(Id)=>{
+        return new Promise(async(resolve, reject) => { 
+            let Frame = await db.get().collection(collection.FRAME_COLLECTION).findOne({Id})
+            
+            resolve(Frame)
+         })
+    },
+
+
+    
+
 
 
 

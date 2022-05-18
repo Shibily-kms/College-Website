@@ -1,0 +1,24 @@
+<section class="our-teacher">
+    <div class="main-title title-image">
+        <h1>Status frames</h1>
+    </div>
+</section>
+<section class="container" style="margin-top: -80px;">
+    <div class="news-div">
+      {{#each AllFrames}}
+      {{#if this.Hide}}
+      
+      {{else}}
+      <div class="news-item frame-user">
+          <a href="/status-frame/{{this.Id}}">
+        <div class="img-hover-zoom">
+          <img src="/images/frames/{{this.Id}}-1.jpg" style="height: 250px;"  alt="frame-cover">
+        </div>
+        </a>
+        <h4 style="color: var(--color-c-black) ;">{{this.Header}}</h4>
+      </div>
+      {{/if}}
+      {{/each}}
+
+    </div>
+</section>

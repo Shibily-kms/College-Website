@@ -46,6 +46,9 @@ function closeModel(id) {
     document.getElementById(id).style.display = 'none'
 }
 
+function chooseImage() {
+    document.getElementById('upload-file').click();
+}
 function chooseSlider() {
     document.getElementById('slider-file').click();
 }
@@ -74,6 +77,7 @@ function viewImage(event) {
             } else {
 
                 image.src = URL.createObjectURL(event.target.files[0])
+                
 
 
             }

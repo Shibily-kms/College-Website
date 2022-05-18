@@ -236,6 +236,19 @@
   text-align: center;
 }
 
+.frame{
+  background-color: yellowgreen;
+  
+  min-width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  height: fit-content;
+}
+
 }
 
 /* all mobile */
