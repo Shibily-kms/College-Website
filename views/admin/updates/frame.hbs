@@ -32,12 +32,13 @@
             <p id="NH{{this.Id}}" hidden>{{this.NH}}</p>
             <p id="Hide{{this.Id}}" hidden>{{this.Hide}}</p>
 
-            <div class="profile-overly ">
+            <div class="profile-overly " style="height:150px ; top: 50px;">
 
-                <div class="" style="margin-left: 3px; margin-right: 3px;" title="Count" >
+                <div class="" style="margin-left: 3px; margin-right: 3px;" title="Count">
                     <i class="bi bi-download"></i> {{this.Count}}
                 </div>
-                <div class="" style="margin-left: 3px; margin-right: 3px;" title="View & Edit" onclick="openmodelFrame('{{this.Id}}')">
+                <div class="" style="margin-left: 3px; margin-right: 3px;" title="View & Edit"
+                    onclick="openmodelFrame('{{this.Id}}')">
                     <i class="bi bi-arrows-fullscreen"></i>
                 </div>
                 <div class="" style="margin-left: 3px; margin-right: 3px;" onclick="hideFrame('{{this.Id}}')">
@@ -49,16 +50,29 @@
 
 
                 </div>
-                <div title="Remove" style="margin-left: 3px; margin-right: 3px;" onclick="deleteFrame('{{this.Id}}')" class="remove">
+                <div title="Remove" style="margin-left: 3px; margin-right: 3px;" onclick="deleteFrame('{{this.Id}}')"
+                    class="remove">
                     <i id="removeIcon{{this.Id}}" class="bi bi-trash3"></i>
                 </div>
             </div>
+
+            <div class="profile-overly frame-overly" style="top:60px; box-shadow:none; ">
+
+                <a href="/status-frame/{{this.Id}}" target="_blank">
+                    <div class="" style="margin-left: 3px; margin-right: 3px;" title="Count">
+                        <i class="bi bi-box-arrow-up-left"></i> Check
+                    </div>
+                </a>
+                <input id="copy-text{{this.Id}}" value="https://www.nsaonline.in/status-frame/{{this.Id}}" hidden>
+                <div class="" style="margin-left: 3px; margin-right: 3px;" title="View & Edit"
+                    onclick="copyLinkFrame('{{this.Id}}')" id="copy-btn-div{{this.Id}}">
+                    <i id="copy-btn-icon{{this.Id}}" class="bi bi-clipboard"></i> Link
+                </div>
+
+            </div>
+
         </div>
         {{/each}}
-
-
-
-
     </div>
     <div class="model-border frame-edit-model" id="profile-Div">
         <div class="edit-slider teacher-profile-div" id="profile-model">
@@ -303,45 +317,75 @@
     }
 
     function chooseImage1() {
-    document.getElementById('frame-file1').click();
-}
-    function chooseImage2() {
-    document.getElementById('frame-file2').click();
-}
-
-
-function viewImage2(event) {
-    var image = document.getElementById('profile-image2')
-    var alertDiv = document.getElementById('alert-div')
-    var alertContent = document.getElementById('alert-content')
-    var alertAudio = document.getElementById('alert-audio')
-    if (event.target.files && event.target.files[0]) {
-        const file = event.target.files[0];
-
-        const maxFileSize = 3145728; // 3 MB
-
-
-
-        const img = new Image();
-        img.src = URL.createObjectURL(file);
-        img.onload = () => {
-
-            if (file.size > maxFileSize) {
-                alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
-                alertDiv.style.display = "flex"
-                alertAudio.src = "/audio/alert/01.mp3"
-                setTimeout(hideAlert, 3000)
-            } else {
-
-                image.src = URL.createObjectURL(event.target.files[0])
-                
-
-
-            }
-        };
+        document.getElementById('frame-file1').click();
     }
-}
+    function chooseImage2() {
+        document.getElementById('frame-file2').click();
+    }
+
+
+    function viewImage2(event) {
+        var image = document.getElementById('profile-image2')
+        var alertDiv = document.getElementById('alert-div')
+        var alertContent = document.getElementById('alert-content')
+        var alertAudio = document.getElementById('alert-audio')
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+
+            const maxFileSize = 3145728; // 3 MB
 
 
 
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+            img.onload = () => {
+
+                if (file.size > maxFileSize) {
+                    alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
+                    alertDiv.style.display = "flex"
+                    alertAudio.src = "/audio/alert/01.mp3"
+                    setTimeout(hideAlert, 3000)
+                } else {
+
+                    image.src = URL.createObjectURL(event.target.files[0])
+
+
+
+                }
+            };
+        }
+    }
+
+
+
+</script>
+
+<script>
+    function copyLinkFrame(Id) {
+        console.log('hi')
+        /* Get the text field */
+        let copyText = document.getElementById('copy-text' + Id);
+        let copyDiv = document.getElementById('copy-btn-div' + Id);
+        let copyIcon = document.getElementById('copy-btn-icon' + Id);
+       
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 999999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+        copyDiv.innerHTML = "Copied!"
+        copyIcon.className = "bi bi-clipboard-check"
+        
+        const myTimeout = setTimeout(myGreeting, 5000);
+
+        function myGreeting() {
+            copyDiv.innerHTML = "Link"
+            copyIcon.className = "bi bi-clipboard"
+        
+        }
+
+
+    }
 </script>

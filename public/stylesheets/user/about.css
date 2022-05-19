@@ -2,6 +2,7 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .gallery .section {
@@ -164,6 +165,7 @@
 .contact-us .about .links{
    
     padding: 15px;
+    position: relative;
 }
 .contact-us .about .links p i{
     font-size: 20px;

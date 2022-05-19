@@ -385,6 +385,7 @@
 .news-div {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .news-div .news-item {

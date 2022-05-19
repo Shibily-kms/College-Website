@@ -15,7 +15,9 @@
                 </div>
             </div>
             <hr>
-            <div class="links">
+            <div class="links {{#if adminHere}} edit-boarder {{/if}}">
+                {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/social-links"
+            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
                 {{#if NsaLinks.Discord}}
                <a href="{{NsaLinks.Discord}}"><p><i class="bi bi-discord"></i>{{NsaLinks.NameDiscord}}</p></a>
                {{/if}}

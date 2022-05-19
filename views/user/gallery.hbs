@@ -6,12 +6,14 @@
 <section class="container" style="margin-top: -70px;">
     {{!-- Gallery --}}
 
-    <div class="gallery">
-
+    <div class="gallery {{#if adminHere}} edit-boarder {{/if}}">
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/frame"
+            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
         <div class="section">
             {{#each Gallery.Group1}}
             <div class="item">
-                <img src="/images/gallery/{{this.Id}}.jpg" alt="Image" onclick="zoomImage('{{this.Id}}')" onclick="zoomImage('{{this.Id}}')">
+                <img src="/images/gallery/{{this.Id}}.jpg" alt="Image" onclick="zoomImage('{{this.Id}}')"
+                    onclick="zoomImage('{{this.Id}}')">
                 <div class="gallery-overly">
                     <h5 id="title{{this.Id}}">{{this.Title}}</h5>
                     <p id="description{{this.Id}}" hidden>{{this.Description}}</p>
@@ -58,14 +60,14 @@
 
     {{!-- Gallery One Image --}}
 
-    <div id="gallery-one" class="gallery-one" >
-        <div class="border "  onclick="closeGallery()" >
+    <div id="gallery-one" class="gallery-one">
+        <div class="border " onclick="closeGallery()">
             <div>
                 <div>
-                <img id="one-image" src="/images/gallery/1u4fdkN3nF.jpg" alt="gallery">
+                    <img id="one-image" src="/images/gallery/1u4fdkN3nF.jpg" alt="gallery">
                 </div>
                 <h3 id="one-title">sdfsdfsd</h3>
-                <p id="one-description" >sfsdfsdfsd</p>
+                <p id="one-description">sfsdfsdfsd</p>
             </div>
         </div>
         <div class="icon" onclick="closeGallery()">
@@ -77,23 +79,23 @@
 
 <script>
 
-        let one = document.getElementById('gallery-one')
-        let oneImage = document.getElementById('one-image')
-        let oneTitle = document.getElementById('one-title')
-        let oneDescription = document.getElementById('one-description')
+    let one = document.getElementById('gallery-one')
+    let oneImage = document.getElementById('one-image')
+    let oneTitle = document.getElementById('one-title')
+    let oneDescription = document.getElementById('one-description')
     function zoomImage(Id) {
 
-        let title = document.getElementById('title'+Id);
-        let description = document.getElementById('description'+Id)
+        let title = document.getElementById('title' + Id);
+        let description = document.getElementById('description' + Id)
 
 
         one.style.display = 'block'
-        oneImage.src = "/images/gallery/"+Id+".jpg"
+        oneImage.src = "/images/gallery/" + Id + ".jpg"
         oneTitle.innerHTML = title.innerHTML
         oneDescription.innerHTML = description.innerHTML
     }
-    function closeGallery(){
+    function closeGallery() {
         one.style.display = 'none'
-        
+
     }
 </script>
