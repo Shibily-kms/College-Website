@@ -84,7 +84,8 @@
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
-    max-width: 100%;
+    max-height: 80vh;
+    max-width: 90%;
     
 }
 .gallery-one .border>div>div{

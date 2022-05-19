@@ -176,26 +176,6 @@
     width: 100%;
 }
 
- /* HIDE RADIO */
- .admin-frame .img-radio-input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* IMAGE STYLES */
-.admin-frame .img-radio-input+.img-radio-img {
-    cursor: pointer;
-}
-
-/* CHECKED STYLES */
-.admin-frame .img-radio-input:checked+.img-radio-img {
-    outline: 2px solid #f00;
-}
-.admin-frame .img-radio-img{
-    width: 50px;
-}
 .admin-frame h5{
     font-weight: 600;
 }

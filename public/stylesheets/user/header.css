@@ -1,4 +1,4 @@
-header{
+header {
   z-index: 10;
   position: fixed;
   top: 0;
@@ -13,47 +13,41 @@ header{
   transition: 0.6s;
 }
 
-header .logo img{
+header .logo img {
   width: 170px;
 }
 
-.nav-active{
+.nav-active {
   color: var(--color-c-blue-light-5);
 }
-header  #navigation{
+
+header #navigation {
   position: relative;
   line-height: 75px;
   transition: 0.6s;
   transition-property: line-height;
 }
 
-header.sticky  #navigation{
+header.sticky #navigation {
   line-height: 60px;
 }
 
-header  #navigation .menu{
+header #navigation .menu {
   position: relative;
   display: flex;
   justify-content: center;
   list-style: none;
   user-select: none;
- 
+
 }
 
 
- .close-btn .logo{
+.close-btn .logo {
   display: none;
 }
 
 
-.menu-item > a{
-  color: var(--color-white);
-  font-size: 1em;
-  text-decoration: none;
-  margin: 20px;
-  padding: 25px 0;
-}
-.menu-item > span{
+.menu-item>a {
   color: var(--color-white);
   font-size: 1em;
   text-decoration: none;
@@ -61,16 +55,25 @@ header  #navigation .menu{
   padding: 25px 0;
 }
 
-.menu-item > a:hover{
-  color: var(--color-black-light-9);
-  transition: 0.3s;
+.menu-item>span {
+  color: var(--color-white);
+  font-size: 1em;
+  text-decoration: none;
+  margin: 20px;
+  padding: 25px 0;
 }
-.menu-item > span:hover{
+
+.menu-item>a:hover {
   color: var(--color-black-light-9);
   transition: 0.3s;
 }
 
-.menu-item .sub-menu{
+.menu-item>span:hover {
+  color: var(--color-black-light-9);
+  transition: 0.3s;
+}
+
+.menu-item .sub-menu {
   position: absolute;
   background: var(--color-c-blue-light-2);
   top: 74px;
@@ -85,47 +88,48 @@ header  #navigation .menu{
   transition-property: transform, opacity;
 }
 
-header.sticky .menu-item .sub-menu{
+header.sticky .menu-item .sub-menu {
   top: 60px;
 }
 
-.menu-item:hover .sub-menu{
+.menu-item:hover .sub-menu {
   pointer-events: all;
   transform: translateY(0);
   opacity: 1;
 }
 
-.menu-item .sub-menu .sub-item{
+.menu-item .sub-menu .sub-item {
   position: relative;
   padding: 7px 7px;
   cursor: pointer;
   box-shadow: inset var(--shadow-white);
 }
 
-.menu-item .sub-menu .sub-item a{
-  color: var(--color-white);
-  font-size: 1em;
-  text-decoration: none;
-  padding: 15px 30px;
-}
-.menu-item .sub-menu .sub-item span{
+.menu-item .sub-menu .sub-item a {
   color: var(--color-white);
   font-size: 1em;
   text-decoration: none;
   padding: 15px 30px;
 }
 
-.menu-item .sub-menu .sub-item:hover{
+.menu-item .sub-menu .sub-item span {
+  color: var(--color-white);
+  font-size: 1em;
+  text-decoration: none;
+  padding: 15px 30px;
+}
+
+.menu-item .sub-menu .sub-item:hover {
   background: var(--color-c-blue-light-5);
 }
 
-.menu-item .sub-menu .sub-item:last-child:hover{
+.menu-item .sub-menu .sub-item:last-child:hover {
   border-radius: 0 0 8px 8px;
 }
 
 
 
-.more .more-menu{
+.more .more-menu {
   position: absolute;
   background: var(--color-c-blue-light-2);
   list-style: none;
@@ -141,22 +145,23 @@ header.sticky .menu-item .sub-menu{
   transition-property: transform, opacity;
 }
 
-.more:hover .more-menu{
+.more:hover .more-menu {
   pointer-events: all;
   transform: translateY(0);
   opacity: 1;
 }
 
-.more .more-menu .more-item{
+.more .more-menu .more-item {
   padding: 7px 0;
   box-shadow: inset var(--shadow-white);
   transition: 0.3s;
 }
 
-.more .more-menu .more-item:hover{
+.more .more-menu .more-item:hover {
   background: var(--color-c-blue-light-5);
 }
-.sub-item .more-btn{
+
+.sub-item .more-btn {
   background-color: var(--color-white);
   padding: 1px 10px 1px 10px;
   border-radius: 100px;
@@ -166,15 +171,16 @@ header.sticky .menu-item .sub-menu{
   -o-border-radius: 100px;
   color: var(--color-c-blue-1);
 }
-.menu-btn{
+
+.menu-btn {
   display: none;
 }
 
 
 
 /* .................... Media .................. */
-@media (max-width: 1060px){
-  header  #navigation .menu{
+@media (max-width: 1060px) {
+  header #navigation .menu {
     position: fixed;
     display: block;
     background: var(--color-c-blue-light-2);
@@ -189,75 +195,75 @@ header.sticky .menu-item .sub-menu{
     transition-property: right, visibility;
   }
 
-  header.sticky   #navigation{
+  header.sticky #navigation {
     line-height: 75px;
   }
 
-  header   #navigation .menu.active{
+  header #navigation .menu.active {
     right: 0;
     visibility: visible;
   }
 
-  .menu-item{
+  .menu-item {
     position: relative;
   }
 
 
-  .menu-item .sub-menu{
+  .menu-item .sub-menu {
     opacity: 1;
     position: relative;
     top: 0;
     transform: translateX(10px);
-    background: var(--color-slider-info) ;
+    background: var(--color-slider-info);
     border-radius: 5px;
     overflow: hidden;
     display: none;
   }
 
-  header.sticky .menu-item .sub-menu{
+  header.sticky .menu-item .sub-menu {
     top: 0;
   }
 
-  .menu-item:hover .sub-menu{
+  .menu-item:hover .sub-menu {
     transform: translateX(10px);
   }
 
-  .menu-item .sub-menu .sub-item{
+  .menu-item .sub-menu .sub-item {
     box-shadow: none;
   }
 
-  .menu-item .sub-menu .sub-item:hover{
+  .menu-item .sub-menu .sub-item:hover {
     background: none;
   }
 
-  .menu-item .sub-menu .sub-item a:hover{
+  .menu-item .sub-menu .sub-item a:hover {
     color: var(--color-black-light-9);
     transition: 0.3s;
   }
 
-  .more .more-menu{
+  .more .more-menu {
     opacity: 1;
     position: relative;
     left: 0;
     transform: translateY(0);
-    background: var(--color-slider-info) ;
+    background: var(--color-slider-info);
     border-radius: 5px;
     display: none;
   }
 
-  .more .more-menu .more-item{
+  .more .more-menu .more-item {
     box-shadow: none;
   }
 
-  .more .more-menu .more-item:hover{
+  .more .more-menu .more-item:hover {
     background: none;
   }
 
-  .more .more-menu .more-item a{
+  .more .more-menu .more-item a {
     margin-left: 20px;
   }
 
-  .more .more-btn{
+  .more .more-btn {
     background-color: var(--color-white);
     padding: 1px 10px 1px 10px;
     border-radius: 100px;
@@ -266,9 +272,9 @@ header.sticky .menu-item .sub-menu{
     -ms-border-radius: 100px;
     -o-border-radius: 100px;
     color: var(--color-c-blue-1);
-}
+  }
 
-  .close-btn{
+  .close-btn {
     position: absolute;
     background: url(/images/icons/close-icon.png) no-repeat;
     width: 40px;
@@ -279,17 +285,18 @@ header.sticky .menu-item .sub-menu{
     left: 0;
     margin: 25px;
     cursor: pointer;
-    
+
   }
-  .menu-item a ::after{
+
+  .menu-item a ::after {
     content: "Search";
     margin-left: 5px;
     font-style: normal;
   }
-  
 
 
-  .menu-btn{
+
+  .menu-btn {
     background: url(/images/icons/menu-icon.png) no-repeat;
     width: 40px;
     height: 40px;
@@ -297,26 +304,77 @@ header.sticky .menu-item .sub-menu{
     background-position: center;
     cursor: pointer;
     display: block;
-    
+
   }
 
-  header{
+  header {
     padding: 15px 20px;
   }
 
-  header.sticky{
+  header.sticky {
     padding: 10px 20px;
   }
 }
 
-@media (max-width: 500px){
-  header  #navigation .menu{
+@media (max-width:900px) {
+
+  header .logo img {
+    width: 150px;
+  }
+
+}
+
+@media (max-width:768px) {
+
+  header .logo img {
+    width: 130px;
+  }
+  header #navigation .menu {
+    position: fixed;
+    display: block;
+    background: var(--color-c-blue-light-2);
+    min-width: 350px;
+    height: 100vh;
+    top: 0;
+    right: -100%;
+    padding: 90px 50px;
+    visibility: hidden;
+    overflow-y: auto;
+    transition: 0.5s;
+    transition-property: right, visibility;
+   
+  }
+
+  header.sticky #navigation {
+    line-height: 75px;
+  }
+  header{
+    padding: 10px 20px;
+  }
+  header.sticky #navigation {
+    line-height: 75px;
+  }
+
+  
+}
+
+@media (max-width: 500px) {
+  header .logo img{
+    width: 110px;
+  }
+
+  header #navigation .menu {
     min-width: 100%;
   }
 
-  .close-btn .logo{
+  .close-btn .logo {
     display: block;
     margin-left: 70px;
   }
+
+  header{
+    padding: 6px 15px;
+  }
+
 
 }
