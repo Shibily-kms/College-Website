@@ -1,0 +1,310 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('first-page').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="headding">
+        <div>
+            <i class="bi bi-balloon-heart"></i>
+            <h4>Day bar</h4>
+        </div>
+        <p><i class="bi bi-info-circle"></i> This page not support dark theme</p>
+    </div>
+    <div class="add-button-top">
+        <button type="button" onclick="openmodelFrame('new');" class="btn-lg"><i class="bi bi-plus-circle-dotted"></i>
+            Add new</button>
+    </div>
+    <div class="edit-profile frame-edit">
+        <div class="day-table">
+            <table id="table_id" class="display  auto-index">
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Thumb</th>
+                        <th>Header</th>
+                        <th>Day/Month</th>
+                        <th>View</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if AllDayBar.[0]}}
+                    {{#each AllDayBar}}
+                    <tr id="profileDiv{{this.Id}}">
+                        <td>
+                            
+                            <p id="des{{this.Id}}" hidden>{{this.Description}}</p>
+                            <p id="link{{this.Id}}" hidden>{{this.Link}}</p>
+                            <p id="day{{this.Id}}" hidden>{{this.Day}}</p>
+                            <p id="month{{this.Id}}" hidden>{{this.Month}}</p>
+                        </td>
+                        <td class="thumb"><img src="/images/day-bar/{{this.Id}}.png" alt=""></td>
+                        <td id="header{{this.Id}}">{{this.Title}}</td>
+                        <td>{{this.Day}}/{{this.Month}}</td>
+                        <td class="Edit"><button onclick="openmodelFrame('{{this.Id}}')" class="btn-sm"><i
+                                    class="bi bi-arrows-fullscreen"></i></button></td>
+                        <td class="Delete"><button onclick="deleteFrame('{{this.Id}}')" class="btn-sm"><i id="removeIcon{{this.Id}}"
+                                    class="bi bi-trash3"></i></button></td>
+                    </tr>
+                    {{/each}}
+                    {{else}}
+                    <tr style="display: hidden;">
+                        <th colspan="5"><i class="bi bi-emoji-frown"></i> No Items available !</th>
+
+                    </tr>
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+
+
+        {{!-- {{#each AllDayBar}}
+        <div id="profileDiv{{this.Id}}" class="profile ">
+            <img src="/images/day-bar/{{this.Id}}.png" alt="Frame">
+            <h5 id="header{{this.Id}}">{{this.Title}} </h5>
+            <p id="des{{this.Id}}" hidden>{{this.Description}}</p>
+            <p id="link{{this.Id}}" hidden>{{this.Link}}</p>
+            <p id="day{{this.Id}}" hidden>{{this.Day}}</p>
+            <p id="month{{this.Id}}" hidden>{{this.Month}}</p>
+
+            <div class="profile-overly " style="height:150px ; top: 50px;">
+
+                <div class="" style="margin-left: 3px; margin-right: 3px; width : 100px" title="Count">
+                    <i class="bi bi-calendar3"></i> {{this.Day}}/{{this.Month}}
+                </div>
+                <div class="" style="margin-left: 3px; margin-right: 3px;" title="View & Edit"
+                    onclick="openmodelFrame('{{this.Id}}')">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                </div>
+
+                <div title="Remove" style="margin-left: 3px; margin-right: 3px;" onclick="deleteFrame('{{this.Id}}')"
+                    class="remove">
+                    <i id="removeIcon{{this.Id}}" class="bi bi-trash3"></i>
+                </div>
+            </div>
+        </div>
+        {{/each}} --}}
+    </div>
+    <div class="model-border frame-edit-model" id="profile-Div">
+        <div class="edit-slider teacher-profile-div" id="profile-model">
+            <div class="model admin-frame">
+                <div class="header">
+                    <h4 id="model-header">Update </h4>
+                    <i title="Close" class="bi bi-x-circle" onclick="closeModel('profile-Div')"></i>
+                </div>
+                <div class="content ">
+                    <form action="/admin/day-bar" method="post" enctype="multipart/form-data">
+                        <div class="image">
+                            <div class="">
+                                <h5>Day thumb <span style="color:red ; font-size:11px;">( Png Only)</span> </h5>
+
+                                <img id="profile-image" src="/images/background/1.jpg" alt="profile">
+
+                                <div data-title="Choose image" class="admin-edit">
+                                    <i onclick="chooseImage1()" class="bi bi-camera-fill"></i>
+                                </div>
+                                <input type="file" onchange="viewImage(event)" hidden accept=" image/png "
+                                    name="DayPhoto" id="frame-file1">
+
+                            </div>
+                            <div style="margin-top: 10px;" class="">
+                                <h5>Day gif <span style="color:red ; font-size:11px;">( Gif Only)</span></h5>
+                                <img id="profile-image2" src="/images/background/1.jpg" alt="profile">
+
+                                <div data-title="Choose image" class="admin-edit">
+                                    <i onclick="chooseImage2()" class="bi bi-camera-fill"></i>
+                                </div>
+                                <input type="file" onchange="viewImage2(event)" hidden accept="  image/gif "
+                                    name="DayGif" id="frame-file2">
+
+                            </div>
+                        </div>
+                        <input type="text" id="slider-id" hidden name="Id">
+                        <input type="text" id="" hidden name="Color">
+                        <div class="on-content">
+                            <div class="axis-inputs">
+                                <div class="col">
+                                    <label for="">Day</label>
+                                    <input class="text-input" type="number" name="Day" id="day" value=""
+                                        placeholder="eg : 15" required max="31" min="1">
+                                </div>
+                                <div class="col">
+                                    <label for="">Month</label>
+                                    <input class="text-input" type="number" max="12" min="1" name="Month" id="month"
+                                        value="" placeholder="eg : 8" required>
+                                </div>
+                            </div>
+                            <div class="header-input">
+                                <label for="">Title </label>
+                                <input placeholder="max length 50 letters only" class="text-input" type="text"
+                                    maxlength="50" required name="Title" value="" id="header">
+                            </div>
+                            <div class="header-input">
+                                <label for="">Description</label>
+                                <textarea placeholder="max length 200 letters only" class="text-input"
+                                    name="Description" required maxlength="200" id="description" cols="30"
+                                    rows="10"></textarea>
+
+                            </div>
+                            <div class="header-input">
+                                <label for="">Link</label>
+                                <input class="text-input" type="text" name="Link" value="" id="link">
+                            </div>
+
+
+
+
+
+                        </div>
+                </div>
+                <div class="footer">
+                    <button type="reset" class="btn-md cancel">Reset</button>
+                    <button type="submit" class="btn-md save">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
+
+<script>
+
+    function openmodelFrame(id) {
+        let profileDiv = document.getElementById('profile-Div')
+        let profile = document.getElementById('profile-model')
+        let header = document.getElementById('model-header')
+        let image = document.getElementById('profile-image')
+        let image2 = document.getElementById('profile-image2')
+        let HeaderInput = document.getElementById('header')
+        let desinput = document.getElementById('description')
+        let linkinput = document.getElementById('link')
+        let dayInput = document.getElementById('day')
+        let monthInput = document.getElementById('month')
+        let idInput = document.getElementById('slider-id')
+
+        profileDiv.style.display = "flex"
+        profile.style.display = "block"
+        if (id == 'new') {
+            header.innerHTML = "Create new"
+            idInput.value = ''
+            HeaderInput.value = ''
+            desinput.value = ''
+            linkinput.value = ''
+            dayInput.value = ''
+            monthInput.value = ''
+            image.src = '/images/background/1.jpg'
+            image2.src = '/images/background/1.jpg'
+            document.getElementById('frame-file1').value = ''
+            document.getElementById('frame-file2').value = ''
+        } else {
+
+            let Header = document.getElementById('header' + id).innerHTML
+            let des = document.getElementById('des' + id).innerHTML
+            let link = document.getElementById('link' + id).innerHTML
+            let day = document.getElementById('day' + id).innerHTML
+            let month = document.getElementById('month' + id).innerHTML
+
+
+
+            header.innerHTML = "Update day"
+            image.src = '/images/day-bar/' + id + '.png'
+            image2.src = '/images/gif/' + id + '.gif'
+            HeaderInput.value = Header
+            desinput.value = des
+            linkinput.value = link
+            dayInput.value = day
+            monthInput.value = month
+            idInput.value = id
+        }
+    }
+
+
+    function deleteFrame(Id) {
+
+        let div = document.getElementById('profileDiv' + Id)
+        let Icon = document.getElementById('removeIcon' + Id)
+        let confirmDiv = document.getElementById('confirm-box-div')
+        let confirmTitle = document.getElementById('confirm-title')
+        let yesButton = document.getElementById('confirmYes')
+        let NoButton = document.getElementById('confirmNo')
+        let title = "Do you want to delete this Day bar ?"
+
+        Icon.className = 'bi bi-emoji-frown'
+        confirmDiv.style.display = 'flex';
+        confirmTitle.innerHTML = title
+
+        yesButton.addEventListener("click", () => {
+            $.ajax({
+                url: '/admin/delete-day-bar',
+                data: {
+                    Id
+                },
+                method: 'post',
+                success: (response) => {
+                    div.style.display = 'none'
+                    confirmDiv.style.display = 'none';
+
+                }
+            })
+        });
+        NoButton.addEventListener("click", () => {
+            confirmDiv.style.display = 'none';
+            Icon.className = 'i bi-trash3'
+        });
+
+
+    }
+
+
+
+
+    function chooseImage1() {
+        document.getElementById('frame-file1').click();
+    }
+    function chooseImage2() {
+        document.getElementById('frame-file2').click();
+    }
+
+
+    function viewImage2(event) {
+        var image = document.getElementById('profile-image2')
+        var alertDiv = document.getElementById('alert-div')
+        var alertContent = document.getElementById('alert-content')
+        var alertAudio = document.getElementById('alert-audio')
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+
+            const maxFileSize = 3145728; // 3 MB
+
+
+
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+            img.onload = () => {
+
+                if (file.size > maxFileSize) {
+                    alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
+                    alertDiv.style.display = "flex"
+                    alertAudio.src = "/audio/alert/01.mp3"
+                    setTimeout(hideAlert, 3000)
+                } else {
+
+                    image.src = URL.createObjectURL(event.target.files[0])
+
+
+
+                }
+            };
+        }
+    }
+
+</script>

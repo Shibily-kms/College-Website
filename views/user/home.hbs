@@ -1,4 +1,4 @@
-<section class="slider-section-div" >
+<section class="slider-section-div">
   {{!-- Slider --}}
   <div class="slider-div">
     {{#if adminHere}}
@@ -59,6 +59,26 @@
 
 </section>
 <section class="home-container" style="">
+  {{!-- Day bar --}}
+{{#if DayBar.Id}}
+  <div class="day-bar-div">
+    <div class="day-bar day-{{DayBar.Color}}">
+      <div class="gif">
+        <img src="/images/gif/{{DayBar.Id}}.gif" alt="">
+        <img class="horizone" src="/images/gif/{{DayBar.Id}}.gif" alt="">
+      </div>
+      <div class="image">
+        <img src="/images/day-bar/{{DayBar.Id}}.png" alt="photo">
+      </div>
+      <div class="content">
+        <h4>{{DayBar.Title}}</h4>
+        <p>{{DayBar.Description}} <a href="{{DayBar.Link}}">more</a></p>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+
   {{!-- Noorul huda content --}}
   <div class="content-div {{#if adminHere}} edit-boarder {{/if}}">
     {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/first-page/the-nsa"

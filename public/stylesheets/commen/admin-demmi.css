@@ -111,6 +111,12 @@
     margin-top: 7px;
     margin-bottom: 10px;
 }
+.headding>p{
+    font-size: 13px;
+    margin-left: 10px;
+    font-style: italic;
+    color: var(--color-c-rose-yellow-light-3);
+}
 .headding>div{
     background-color: var(--color-c-rose-yellow-light-3);
     display: flex;

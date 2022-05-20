@@ -199,6 +199,52 @@ router.post('/first-page/links', verifyAdminLogin, (req, res) => {
   })
 });
 
+// First page - Day bar
+
+router.get('/first-page/day-bar', verifyAdminLogin, async (req, res) => {
+  
+  let admin = req.session.NSAWEBADMIN
+  let AllDayBar = await adminHelpers.getAllDayBar();
+  if (req.session.Success) {
+    res.render('admin/first-page/day-bar', { title: 'Admin panel', ThemeError:true ,"Success": req.session.Success,  admin, sideHeader: true, AllDayBar })
+    req.session.Success = false
+  } else {
+    res.render('admin/first-page/day-bar', { title: 'Admin panel',  ThemeError:true, admin, sideHeader: true, AllDayBar })
+  }
+});
+
+router.post('/day-bar', verifyAdminLogin, (req, res) => {
+  adminHelpers.addUpdateDayBar(req.body).then((response) => {
+    Image = req.files
+    if (Image ) {
+      Image = req.files.DayPhoto
+      Image2 = req.files.DayGif
+      Image.mv('./public/images/day-bar/' + response.Id + '.png')
+      Image2.mv('./public/images/gif/' + response.Id + '.gif')
+    }
+    req.session.Success = response.Success
+    res.redirect('/admin/first-page/day-bar')
+  })
+});
+
+router.post('/delete-day-bar', (req, res) => {
+
+  adminHelpers.deleteDayBar(req.body).then((response) => {
+    let Imagepath1 = path.join(__dirname, '../public/images/day-bar/' + req.body.Id + '.png')
+    let Imagepath2 = path.join(__dirname, '../public/images/gif/' + req.body.Id + '.gif')
+    fs.unlink(Imagepath1, function (err) {
+      if (err)
+        return;
+    });
+    fs.unlink(Imagepath2, function (err) {
+      if (err)
+        return;
+    });
+
+    res.json(response)
+  })
+});
+
 // College - Our teacher
 
 router.get('/our-teachers', verifyAdminLogin, async (req, res) => {
@@ -1194,10 +1240,10 @@ router.post('/social-links',verifyAdminLogin,async(req,res)=>{
 });
 
 router.get('/messages',verifyAdminLogin,async(req,res)=>{
-  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+ 
   let admin = req.session.NSAWEBADMIN
   let AllMessages = await adminHelpers.getuserMessages(); 
-    res.render('admin/about/message', {title: 'Admin panel',  nsaWebDarkTheme, admin, sideHeader: true, AllMessages })
+    res.render('admin/about/message', {title: 'Admin panel', ThemeError:true, admin, sideHeader: true, AllMessages })
   
 });
 

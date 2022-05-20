@@ -10,45 +10,46 @@
             <i class="bi bi-chat-right-text-fill"></i>
             <h4>Messages</h4>
         </div>
+        <p><i class="bi bi-info-circle"></i> This page not support dark theme</p>
     </div>
 
     <div class="message-table">
         <table id="table_id" class="display auto-index">
-    <thead>
-        <tr>
-            <th>Sl No</th>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Subject</th>
-            <th>Message</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#if AllMessages.[0]}}
-        {{#each AllMessages}}
-        <tr>
-            <td></td>
-            <td>{{this.Name}}</td>
-            <td>{{this.Email}}</td>
-            <td>{{this.Subject}}</td>
-            <td>{{this.Message}}</td>
-        </tr>
-        {{/each}}
-        {{else}}
-            <tr style="display: hidden;">
-            <th colspan="5" ><i class="bi bi-emoji-frown"></i> No messages available !</th>
-           
-        </tr>
-        {{/if}}
-    </tbody>
-</table>
+            <thead>
+                <tr>
+                    <th>Sl No</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if AllMessages.[0]}}
+                {{#each AllMessages}}
+                <tr>
+                    <td></td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Email}}</td>
+                    <td>{{this.Subject}}</td>
+                    <td>{{this.Message}}</td>
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr style="display: hidden;">
+                    <th colspan="5"><i class="bi bi-emoji-frown"></i> No messages available !</th>
+
+                </tr>
+                {{/if}}
+            </tbody>
+        </table>
     </div>
 
 
 </section>
 
 <script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
 </script>

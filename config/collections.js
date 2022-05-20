@@ -7,5 +7,6 @@ module.exports={
    NEWS_COLLECTION : "news",
    GALLERY_COLLECTION : "gallery",
    MESSAGE_COLLECTION : 'message',
-   FRAME_COLLECTION : 'frame'
+   FRAME_COLLECTION : 'frame',
+   DAY_BAR_COLLECTION : 'dayBar'
 }

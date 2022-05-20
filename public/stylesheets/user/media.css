@@ -22,6 +22,11 @@
     bottom: 9px;
 
   }
+  .day-bar {
+    
+    padding: 7px 130px 7px 130px;
+ 
+  }
 
 
 }
@@ -113,6 +118,11 @@
   text-align: justify;
   text-indent: 60px;
   line-height: 23px;
+}
+.day-bar {
+    
+  padding: 7px 110px 7px 110px;
+
 }
 
 
@@ -211,6 +221,11 @@
   line-height: 23px;
 }
 
+.day-bar {
+    
+  padding: 7px 30px 7px 30px;
+
+}
 
 
 
@@ -332,6 +347,13 @@
  -o-border-radius: none;
 
 }
+
+.day-bar {
+    
+  padding: 7px 10px 7px 10px;
+
+}
+
 
 
 }

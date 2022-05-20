@@ -3,8 +3,11 @@
     <a href="/admin"> <img src="/images/icons/nsa-online.png" alt="NSA logo"> </a>
   </div>
   <div class="head-content">
-    <span data-title="Sidebar" id="menu-button" class="icon-div" onclick="menuChange()"><i class="bi bi-menu-app-fill"></i></span>
-    <span data-title="Change theme" id="theme-button" class="" onclick="tooDark()">{{#if nsaWebDarkTheme}}<i class="bi bi-brightness-high-fill"></i>{{else}}<i class="bi bi-moon-fill"></i>{{/if}}</span>
+    <span data-title="Sidebar" id="menu-button" class="icon-div" onclick="menuChange()"><i
+        class="bi bi-menu-app-fill"></i></span>
+    {{#if ThemeError}}  {{else}} <span data-title="Change theme"
+      id="theme-button" class="" onclick="tooDark()">{{#if nsaWebDarkTheme}}<i
+        class="bi bi-brightness-high-fill"></i>{{else}}<i class="bi bi-moon-fill"></i>{{/if}}</span> {{/if}}
   </div>
 </section>
 
@@ -40,14 +43,14 @@
     let Ontheme = null
     var theme = document.getElementById('theme-change')
     var button = document.getElementById('theme-button')
-    
+
     if (theme.className === "Light") {
       // To dark
       theme.href = '/stylesheets/root/dark-theme.css'
       button.innerHTML = '<i class="bi bi-brightness-high-fill"></i>'
       theme.className = "Dark"
       Ontheme = "Dark"
-    
+
     } else {
       // To Light
       button.innerHTML = '<i class="bi bi-moon-fill"></i>'
@@ -63,7 +66,7 @@
       },
       method: 'post',
       success: () => {
-        
+
       }
     })
 

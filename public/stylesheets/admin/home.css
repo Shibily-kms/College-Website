@@ -32,3 +32,37 @@
     -o-border-radius: 5px;
     box-shadow: var(--shadow-c-white);
 }
+.day-table{
+    margin-top: 15px;
+    width: 100%;
+    
+    
+}
+.day-table .thumb img{
+    width: 30px;
+    height: 25px;
+    border-radius: 3px ;
+    -webkit-border-radius: 3px ;
+    -moz-border-radius: 3px ;
+    -ms-border-radius: 3px ;
+    -o-border-radius: 3px ;
+}
+.day-table button{
+    font-size: 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: var(--color-white);
+    
+}
+.day-table .Edit button{
+    background-color: var(--color-blue-light-3);
+}
+.day-table .Delete button{
+    background-color: var(--color-red-1);
+}
+.day-table .Edit, .day-table .Delete {
+    text-align: center;
+}

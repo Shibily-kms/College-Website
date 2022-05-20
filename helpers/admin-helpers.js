@@ -57,6 +57,82 @@ module.exports = {
         })
     },
 
+    addUpdateDayBar:(body)=>{
+        return new Promise((resolve, reject) => { 
+            if (body.Id == '') {
+
+                create_random_id(10)
+                function create_random_id(sting_length) {
+                    var randomString = '';
+                    var numbers = '123456789ABCDEFGHJKLMNOPQRSTUVWXYZ'
+                    for (var i, i = 0; i < sting_length; i++) {
+                        randomString += numbers.charAt(Math.floor(Math.random() * numbers.length))
+                    }
+                    body.Id = randomString
+                }
+
+                create_random_idn(1)
+                function create_random_idn(sting_length) {
+                    var randomString = '';
+                    var numbers = '123456789'
+                    for (var i, i = 0; i < sting_length; i++) {
+                        randomString += numbers.charAt(Math.floor(Math.random() * numbers.length))
+                    }
+                    body.Color = randomString
+                } 
+                body.Filter = body.Month + body.Day 
+                body.Filter = parseInt(body.Filter)
+                body.Day = parseInt(body.Day)
+                body.Month = parseInt(body.Month)
+
+                db.get().collection(collection.DAY_BAR_COLLECTION).insertOne(body).then(() => {
+                    response.Id = body.Id
+                    response.Success = "New day bar Successfully Created"
+                    resolve(response)
+                })
+            } else {
+
+                body.Filter = body.Month + body.Day 
+                body.Filter = parseInt(body.Filter)
+                body.Day = parseInt(body.Day)
+                body.Month = parseInt(body.Month)
+
+                db.get().collection(collection.DAY_BAR_COLLECTION).updateOne({ Id: body.Id }, {
+                    $set: {
+                        Day: body.Day,
+                        Month: body.Month,
+                        Title: body.Title,
+                        Description: body.Description,
+                        Link: body.Link,
+                        Filter: body.Filter
+                    }
+                }).then(() => {
+                    response.Id = body.Id
+                    response.Success = "This Day bar Successfully Updated"
+                    resolve(response)
+                })
+            }
+         })
+    },
+
+    deleteDayBar:(body)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.DAY_BAR_COLLECTION).deleteOne({Id : body.Id}).then((response)=>{
+                resolve(response)
+            })
+         })
+    },
+
+    getAllDayBar:()=>{
+        return new Promise(async(resolve, reject) => { 
+            let days = await db.get().collection(collection.DAY_BAR_COLLECTION).find().toArray()
+            days.sort((a, b) => {
+                return a.Filter - b.Filter;
+            })
+            resolve(days)
+         })
+    },
+
     editPeragraph: (body, type) => {
         return new Promise((resolve, reject) => {
             db.get().collection(collection.PARAGRAPH_COLLECTION).updateOne({ Name: type }, {
