@@ -61,7 +61,7 @@ function viewImage(event) {
     if (event.target.files && event.target.files[0]) {
         const file = event.target.files[0];
 
-        const maxFileSize = 3145728; // 3 MB
+        const maxFileSize = 1048576; // 1 MB
 
 
 
@@ -70,7 +70,7 @@ function viewImage(event) {
         img.onload = () => {
 
             if (file.size > maxFileSize) {
-                alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
+                alertContent.innerHTML = "Image file is too big. Please choose smaller than 1 MB"
                 alertDiv.style.display = "flex"
                 alertAudio.src = "/audio/alert/01.mp3"
                 setTimeout(hideAlert, 3000)

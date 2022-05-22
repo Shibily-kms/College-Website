@@ -143,27 +143,28 @@
 
                             {{!-- Name axis --}}
                             <h5>Name input Detials</h5>
+                            <p style="color: red; font-size:12px;">Name input not added. Use all zero pixel</p>
                             <div class="axis-inputs">
                                 <div class="col">
                                     <label for="">X axis</label>
-                                    <input class="text-input" type="number" name="NX" id="NX" value=""
+                                    <input class="text-input" type="number" name="NX" id="NX" value="0"
                                         placeholder="Pixel size" required>
                                 </div>
                                 <div class="col">
                                     <label for="">Y axis</label>
-                                    <input class="text-input" type="number" name="NY" id="NY" value=""
+                                    <input class="text-input" type="number" name="NY" id="NY" value="0"
                                         placeholder="Pixel size" required>
                                 </div>
                             </div>
                             <div class="axis-inputs">
                                 <div class="col">
                                     <label for="">Width</label>
-                                    <input class="text-input" type="number" name="NW" id="NW" value=""
+                                    <input class="text-input" type="number" name="NW" id="NW" value="0"
                                         placeholder="Pixel size" required>
                                 </div>
                                 <div class="col">
                                     <label for="">Height</label>
-                                    <input class="text-input" type="number" name="NH" id="NH" value=""
+                                    <input class="text-input" type="number" name="NH" id="NH" value="0"
                                         placeholder="Pixel size" required>
                                 </div>
                             </div>
@@ -211,10 +212,10 @@
             IYinput.value = ''
             IWinput.value = ''
             IHinput.value = ''
-            NXinput.value = ''
-            NYinput.value = ''
-            NWinput.value = ''
-            NHinput.value = ''
+            NXinput.value = '0'
+            NYinput.value = '0'
+            NWinput.value = '0'
+            NHinput.value = '0'
             document.getElementById('frame-file1').value = ''
             document.getElementById('frame-file2').value = ''
             image.src = '/images/background/1.jpg'
@@ -332,8 +333,8 @@
         var alertAudio = document.getElementById('alert-audio')
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
-
-            const maxFileSize = 3145728; // 3 MB
+           
+            const maxFileSize = 1048576; // 1 MB
 
 
 
@@ -342,7 +343,8 @@
             img.onload = () => {
 
                 if (file.size > maxFileSize) {
-                    alertContent.innerHTML = "Image file is too big. Please choose smaller than 3 MB"
+                    alert("Image file is too big. Please choose smaller than 1 MB")
+                    alertContent.innerHTML = "Image file is too big. Please choose smaller than 1 MB"
                     alertDiv.style.display = "flex"
                     alertAudio.src = "/audio/alert/01.mp3"
                     setTimeout(hideAlert, 3000)

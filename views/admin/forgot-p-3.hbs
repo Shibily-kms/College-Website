@@ -1,0 +1,38 @@
+<section class="home-container">
+    <div class="admin-login">
+        <div class="signin">
+            <div class="header">
+                <img src="/images/icons/nsa-icon.png" alt="nsa-logo">
+                <h4>Forgot password</h4>
+            </div>
+            <div id="enter-otp" class="content">
+                <form action="/admin/new-password" onsubmit="return  checkConfirPassword()" method="post">
+                    <div class="info-note">
+                        <p class="">Create new password
+                        </p>
+                    </div>
+                    <label for="">New password</label>
+                    <input type="text" name="EmailId" value="{{result.EmailId}}" hidden>
+                    <input type="password" minlength="6" id="password" name="Password" class="text-input" required >
+                    <label for="">Confirm password</label>
+                    <input type="text" minlength="6" id="c-password" class="text-input" required >
+                    <button class="btn-lg">Submit</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<script>
+    function checkConfirPassword(){
+        let p = document.getElementById('password')
+        let cp = document.getElementById('c-password')
+        if(p.value == cp.value){
+        }else{
+            alert("Password not match")
+            return false;
+        }
+    }
+</script>

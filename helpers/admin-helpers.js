@@ -1,26 +1,29 @@
 var db = require('../config/connection')
 var collection = require('../config/collections')
 const bcrypt = require('bcrypt')
+const { CourierClient } = require("@trycourier/courier");
+const courier = CourierClient({ authorizationToken: "pk_prod_QNETBCFHJYMHB4PJCCCKJ1TNMSJX" });
 var ObjectId = require('mongodb').ObjectId;
 const { reject, resolve, all } = require('promise')
-const { response } = require('express')
+const { response } = require('express');
+const { DAY_BAR_COLLECTION } = require('../config/collections');
 
 module.exports = {
 
 
     // For admin
     authAdminLog: (body) => {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             let response = []
-            let proAdminAuth = {
-                EmailId: "admin@nsaonline.in",
-                Password: "$2b$10$Uf7AtQ19KCRcfbDgAu3p5OBQEGrPiwSxCgtTNYQV0P/AzADiXV9TG"
-            }
-
-            if (body.EmailId == proAdminAuth.EmailId) {
-                bcrypt.compare(body.Password, proAdminAuth.Password).then((result) => {
+            // let proAdminAuth = {
+            //     EmailId: "admin@nsaonline.in",
+            //     Password: "$2b$10$Uf7AtQ19KCRcfbDgAu3p5OBQEGrPiwSxCgtTNYQV0P/AzADiXV9TG"
+            // }
+            let Admin = await db.get().collection(collection.AUTH_COLLECTIONS).findOne({ EmailId: body.EmailId })
+            if (Admin) {
+                bcrypt.compare(body.Password, Admin.Password).then((result) => {
                     if (result) {
-                        response.adminDetails = proAdminAuth,
+                        response.adminDetails = Admin,
                             response.success = true
                         resolve(response)
                     } else {
@@ -30,6 +33,83 @@ module.exports = {
             } else {
                 resolve({ EmailError: true })
             }
+
+            
+        })
+    },
+
+    checkEmailId: (body) => {
+        return new Promise(async (resolve, reject) => {
+            let Admin = await db.get().collection(collection.AUTH_COLLECTIONS).findOne({ EmailId: body.EmailId })
+            let response = []
+            if (Admin) {
+                let OTP = 0
+                create_random_id(4)
+                function create_random_id(sting_length) {
+                    var randomString = '';
+                    var numbers = '1234567890'
+                    for (var i, i = 0; i < sting_length; i++) {
+                        randomString += numbers.charAt(Math.floor(Math.random() * numbers.length))
+                    }
+                    OTP = randomString
+                }
+                await db.get().collection(collection.AUTH_COLLECTIONS).updateOne({ EmailId: body.EmailId }, {
+                    $set: {
+                        Otp: OTP
+                    }
+                }).then(async () => {
+                    const { requestId } = await courier.send({
+                        message: {
+                            content: {
+                                title: "Forgot password OTP",
+                                body: ""
+                            },
+                            data: {
+                                ContentHead: "nsaonline website Admin panel Forgot password OTP",
+                                OTP: OTP
+                            },
+                            to: {
+                                email: Admin.EmailId
+                            }
+                        }
+                    });
+
+                    response.Success = "OTP Sended"
+                    response.EmailId = body.EmailId
+                    resolve(response)
+                })
+
+            } else {
+                response.Error = "Email id not match, Try again"
+                resolve(response)
+            }
+        })
+    },
+
+    checkOTP: (body) => {
+        return new Promise(async (resolve, reject) => {
+            let check = await db.get().collection(collection.AUTH_COLLECTIONS).findOne({ EmailId: body.EmailId, Otp: body.Otp })
+            if (check) {
+                resolve(check)
+            } else {
+                response.Error = "Otp Not match",
+                    response.EmailId = body.EmailId
+                resolve(response)
+            }
+        })
+    },
+
+    setNewPassword: (body) => {
+        return new Promise(async (resolve, reject) => {
+            body.Password = await bcrypt.hash(body.Password, 10)
+            db.get().collection(collection.AUTH_COLLECTIONS).updateOne({ EmailId: body.EmailId }, {
+                $set: {
+                    Password: body.Password,
+                    Otp: 0
+                }
+            }).then(() => {
+                resolve()
+            })
         })
     },
 
@@ -57,8 +137,8 @@ module.exports = {
         })
     },
 
-    addUpdateDayBar:(body)=>{
-        return new Promise((resolve, reject) => { 
+    addUpdateDayBar: (body) => {
+        return new Promise((resolve, reject) => {
             if (body.Id == '') {
 
                 create_random_id(10)
@@ -79,8 +159,8 @@ module.exports = {
                         randomString += numbers.charAt(Math.floor(Math.random() * numbers.length))
                     }
                     body.Color = randomString
-                } 
-                body.Filter = body.Month + body.Day 
+                }
+                body.Filter = body.Month + body.Day
                 body.Filter = parseInt(body.Filter)
                 body.Day = parseInt(body.Day)
                 body.Month = parseInt(body.Month)
@@ -92,7 +172,7 @@ module.exports = {
                 })
             } else {
 
-                body.Filter = body.Month + body.Day 
+                body.Filter = body.Month + body.Day
                 body.Filter = parseInt(body.Filter)
                 body.Day = parseInt(body.Day)
                 body.Month = parseInt(body.Month)
@@ -112,25 +192,25 @@ module.exports = {
                     resolve(response)
                 })
             }
-         })
+        })
     },
 
-    deleteDayBar:(body)=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.DAY_BAR_COLLECTION).deleteOne({Id : body.Id}).then((response)=>{
+    deleteDayBar: (body) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.DAY_BAR_COLLECTION).deleteOne({ Id: body.Id }).then((response) => {
                 resolve(response)
             })
-         })
+        })
     },
 
-    getAllDayBar:()=>{
-        return new Promise(async(resolve, reject) => { 
+    getAllDayBar: () => {
+        return new Promise(async (resolve, reject) => {
             let days = await db.get().collection(collection.DAY_BAR_COLLECTION).find().toArray()
             days.sort((a, b) => {
                 return a.Filter - b.Filter;
             })
             resolve(days)
-         })
+        })
     },
 
     editPeragraph: (body, type) => {
@@ -456,33 +536,33 @@ module.exports = {
         })
     },
 
-    hideFrame:(body)=>{
+    hideFrame: (body) => {
         console.log(body);
         let response = []
-        return new Promise((resolve, reject) => { 
-            if(body.Hide === "1"){
-                db.get().collection(collection.FRAME_COLLECTION).updateOne({Id:body.Id},{
-                    $set:{
-                        Hide : ""
+        return new Promise((resolve, reject) => {
+            if (body.Hide === "1") {
+                db.get().collection(collection.FRAME_COLLECTION).updateOne({ Id: body.Id }, {
+                    $set: {
+                        Hide: ""
                     }
-                }).then(()=>{
+                }).then(() => {
 
                     body.Hide = ""
                     response.Hide = body.Hide
                     resolve(response)
                 })
-            }else{
-                db.get().collection(collection.FRAME_COLLECTION).updateOne({Id:body.Id},{
-                    $set:{
-                        Hide : 1
+            } else {
+                db.get().collection(collection.FRAME_COLLECTION).updateOne({ Id: body.Id }, {
+                    $set: {
+                        Hide: 1
                     }
-                }).then((response)=>{
+                }).then((response) => {
                     body.Hide = "1"
                     response.Hide = body.Hide
                     resolve(response)
                 })
             }
-         })
+        })
     },
 
     deleteFrame: (body) => {
@@ -493,19 +573,19 @@ module.exports = {
         })
     },
 
-    downloadCountFrame:(body)=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.FRAME_COLLECTION).findOne({Id : body.Id}).then((result)=>{
-                db.get().collection(collection.FRAME_COLLECTION).updateOne({Id : body.Id},{
-                   $set:{
-                       Count : result.Count + 1
-                   }
+    downloadCountFrame: (body) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.FRAME_COLLECTION).findOne({ Id: body.Id }).then((result) => {
+                db.get().collection(collection.FRAME_COLLECTION).updateOne({ Id: body.Id }, {
+                    $set: {
+                        Count: result.Count + 1
+                    }
                 })
-                
-            }).then(()=>{
+
+            }).then(() => {
                 resolve()
             })
-         })
+        })
     }
 
 
