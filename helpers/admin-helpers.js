@@ -2,11 +2,11 @@ var db = require('../config/connection')
 var collection = require('../config/collections')
 const bcrypt = require('bcrypt')
 const { CourierClient } = require("@trycourier/courier");
-const courier = CourierClient({ authorizationToken: "k_prod_YQ215TTT7JMSWAP6MMRP9453JW8K" });
+const courier = CourierClient({ authorizationToken: "pk_prod_YQ215TTT7JMSWAP6MMRP9453JW8K" });
 var ObjectId = require('mongodb').ObjectId;
 const { reject, resolve, all } = require('promise')
 const { response } = require('express');
-const { DAY_BAR_COLLECTION } = require('../config/collections');
+
 
 module.exports = {
 
@@ -43,6 +43,7 @@ module.exports = {
             let Admin = await db.get().collection(collection.AUTH_COLLECTIONS).findOne({ EmailId: body.EmailId })
             let response = []
             if (Admin) {
+              
                 let OTP = 0
                 create_random_id(4)
                 function create_random_id(sting_length) {
@@ -58,6 +59,7 @@ module.exports = {
                         Otp: OTP
                     }
                 }).then(async () => {
+                 
                     const { requestId } = await courier.send({
                         message: {
                             content: {
@@ -73,7 +75,7 @@ module.exports = {
                             }
                         }
                     });
-
+                   
                     response.Success = "OTP Sended"
                     response.EmailId = body.EmailId
                     resolve(response)
@@ -537,7 +539,7 @@ module.exports = {
     },
 
     hideFrame: (body) => {
-        console.log(body);
+       
         let response = []
         return new Promise((resolve, reject) => {
             if (body.Hide === "1") {

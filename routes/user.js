@@ -28,7 +28,7 @@ router.get('/', async function (req, res, next) {
     var Links = await userHelpers.getFLinks();
     let FourNews = await userHelpers.getlatestNews();
     let DayBar = await userHelpers.getTodayBar();
-    console.log(DayBar);
+
     res.render('user/home', {
         title: "Home", nsaWebDarkTheme, adminHere, user: true, Slides, TheNsa, TheMajma, Links, FourNews, DayBar
     });

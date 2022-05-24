@@ -86,7 +86,7 @@ router.get('/forgot-password', async (req, res) => {
 
 router.post('/check-email', (req, res) => {
   adminHelpers.checkEmailId(req.body).then((result) => {
-    console.log(result);
+  
     if (result.Success) {
       res.render('admin/forgot-p-2', { title: 'Admin SignIn', result })
     }
@@ -100,7 +100,7 @@ router.post('/check-email', (req, res) => {
 
 router.post('/checkOTP', (req, res) => {
   adminHelpers.checkOTP(req.body).then((result) => {
-    console.log(result);
+
     if (result.Error) {
       req.session.Error = result.Error
       res.render('admin/forgot-p-2', { title: 'Admin SignIn', "Error": req.session.Error, result })
