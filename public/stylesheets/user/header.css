@@ -85,7 +85,7 @@ header #navigation .menu {
   transform: translateY(20px);
   opacity: 0;
   transition: 0.3s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
 }
 
 header.sticky .menu-item .sub-menu {
@@ -142,7 +142,7 @@ header.sticky .menu-item .sub-menu {
   transform: translateY(20px);
   opacity: 0;
   transition: 0.3s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
 }
 
 .more:hover .more-menu {

@@ -9,7 +9,7 @@
   box-shadow: var(--shadow-c-white);
   padding-left: 7px;
   transition: 0.4s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -ms-transition: 0.4s;
@@ -64,7 +64,7 @@
   margin-left: 10px;
   transition: .1s;
   font-size: 16px;
-  transition-property: transform;
+  transition-property: transform, smooth;
   -webkit-transition: .1s;
   -moz-transition: .1s;
   -ms-transition: .1s;
@@ -76,7 +76,7 @@
 .side-bar .main-item>.icon>i {
   font-size: 18px;
   transition: 0.4s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
 }
 
 /*  */
@@ -94,7 +94,7 @@
   transform: translateX(20px);
   opacity: 0;
   transition: 0.4s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
@@ -189,7 +189,7 @@
   box-shadow: var(--shadow-c-white);
   padding-left: 7px;
   transition: 0.4s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
 }
 
 .little-bar .menu {
@@ -240,7 +240,7 @@
 .little-bar .main-item>.title {
   margin-left: 0;
   transition: 0.4s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
   font-size: 9px;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -260,7 +260,7 @@
 .little-bar .main-item>.icon>i {
   font-size: 24px;
   transition: 0.4s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
 }
 
 
@@ -283,7 +283,7 @@
   transform: translateX(20px);
   opacity: 0;
   transition: 0.4s;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
@@ -374,7 +374,7 @@
     box-shadow: var(--shadow-c-white);
     padding-left: 7px;
     transition: 0.4s;
-    transition-property: transform, opacity;
+    transition-property: transform, smooth;
   }
 
   .side-bar .menu {
@@ -428,7 +428,7 @@
     text-align: center;
     transition: 0.4s;
     font-size: 9px;
-    transition-property: transform, opacity;
+    transition-property: transform, smooth;
     padding: 0;
 
 
@@ -441,7 +441,7 @@
   .side-bar .main-item>.icon>i {
     font-size: 24px;
     transition: 0.4s;
-    transition-property: transform, opacity;
+    transition-property: transform, smooth;
   }
 
 
@@ -464,7 +464,7 @@
     transform: translateX(20px);
     opacity: 0;
     transition: 0.4s;
-    transition-property: transform, opacity;
+    transition-property: transform, smooth;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;

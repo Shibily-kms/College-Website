@@ -1,9 +1,16 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('more').className = "main-item active-main"
+</script>
+
+
+{{!--  --}}
 <section class="home-container">
     <div class="admin-login">
         <div class="signin">
             <div class="header">
                 <img src="/images/icons/nsa-icon.png" alt="nsa-logo">
-                <h4>Forgot password</h4>
+                <h4>Change Password</h4>
             </div>
             <div id="enter-otp" class="content">
                 <form action="/admin/new-password" onsubmit="return  checkConfirPassword()" method="post">

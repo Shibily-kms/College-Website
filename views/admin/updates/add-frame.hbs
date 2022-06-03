@@ -1,0 +1,191 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('Updates').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="headding">
+        <div>
+            <i class="bi bi-file-person-fill"></i>
+            <h4>Add frame</h4>
+        </div>
+    </div>
+
+    <div class="add-frame">
+        <div class="col-1">
+            <canvas {{!-- style="background-color: red;" --}} id="mergedImage"></canvas>
+        </div>
+        <div class="col-2">
+
+            <img src="/images/frames/{{FrameId}}-2.jpg" id="frime" alt="Frame Image" hidden>
+
+
+
+            <input type="text" id="slider-id" hidden name="Id">
+            <input type="text" id="" hidden name="Hide">
+            <div class="on-content">
+                <div class="header-input">
+                    <label for="">Title</label>
+                    <input class="text-input" type="text" name="Header" value="" id="header">
+                </div>
+                <h5 style="margin-top:10px">User Photo Detials</h5>
+                <div class="axis-inputs">
+                    <div class="col">
+                        <label for="">X axis</label>
+                        <input class="text-input" type="number" name="IX" id="IX" value="" placeholder="Pixel size"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label for="">Y axis</label>
+                        <input class="text-input" type="number" name="IY" id="IY" value="" placeholder="Pixel size"
+                            required>
+                    </div>
+                </div>
+                <div class="axis-inputs">
+                    <div class="col">
+                        <label for="">Width</label>
+                        <input class="text-input" type="number" name="IW" id="IW" value="" placeholder="Pixel size"
+                            required>
+                    </div>
+                    <div class="col">
+                        <label for="">Height</label>
+                        <input class="text-input" type="number" name="IH" id="IH" value="" placeholder="Pixel size"
+                            required>
+                    </div>
+                </div>
+
+
+                {{!-- Name axis --}}
+                <h5 style="margin-top:10px">Name input Detials</h5>
+
+                <div class="axis-inputs">
+                    <div class="col">
+                        <label for="">X axis</label>
+                        <input class="text-input" type="number" name="NX" id="NX" placeholder="Pixel size" required>
+                    </div>
+                    <div class="col">
+                        <label for="">Y axis</label>
+                        <input class="text-input" type="number" name="NY" id="NY" placeholder="Pixel size" required>
+                    </div>
+                </div>
+                <div class="axis-inputs">
+                    <div class="col">
+                        <label for="">Width</label>
+                        <input class="text-input" type="number" name="NW" id="NW" placeholder="Pixel size" required>
+                    </div>
+                    <div class="col">
+                        <label for="">Height</label>
+                        <input class="text-input" type="number" name="NH" id="NH" placeholder="Pixel size" required>
+                    </div>
+                </div>
+                <div class="axis-inputs">
+                    <div class="col">
+                        <label for="">Font size</label>
+                        <input class="text-input" type="number" name="NW" id="NW" placeholder="Pixel size" required>
+                    </div>
+                    <div class="col">
+                        <label for="">Font family</label>
+                        <input class="text-input" type="number" name="NH" id="NH" placeholder="Pixel size" required>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<script>
+    function hi() {
+        console.log('hi')
+    }
+</script>
+
+<script>
+    // vars
+    let dwn = document.querySelector(".download")
+    console.log('hi')
+
+    // Mergin 
+    let ResultCanvas = document.getElementById('mergedImage')
+    let context = ResultCanvas.getContext("2d");
+    var frime = document.getElementById('frime');
+    let ImageIX = document.getElementById('ImageIX').value,
+        ImageIY = document.getElementById('ImageIY').value,
+        ImageIW = document.getElementById('ImageIW').value,
+        ImageIH = document.getElementById('ImageIH').value
+    let NameNX = document.getElementById('NameNX').value,
+        NameNY = document.getElementById('NameNY').value,
+        NameNW = document.getElementById('NameNW').value,
+        NameNH = document.getElementById('NameNH').value,
+        // NameInput = document.getElementById('NameInput').value
+        TextWight = parseInt(NameNX) + (parseInt(NameNW) / 2)
+    TextHigth = parseInt(NameNY) + (parseInt(NameNH) / 2) + 35
+    let Status = document.getElementById('status')
+
+    let img = new Image;
+
+    ResultCanvas.width = frime.width;
+    ResultCanvas.height = frime.height;
+
+    img.onload = function () {
+        context.drawImage(img, ImageIX, ImageIY, ImageIW, ImageIH);
+        context.drawImage(frime, 0, 0)
+        context.font = "100px Rubik"
+        context.textAlign = "center";
+        context.fillText(NameInput, TextWight, TextHigth, NameNW, NameNH)
+        context.globalAlpha = 1.0;
+
+        let canvas = document.getElementById('mergedImage')
+        var image = canvas.toDataURL("image/jpg");
+
+        dwn.download = "imagename.png";
+        dwn.setAttribute("href", image);
+        Status.innerHTML = "Poster creation success, Download Below "
+
+    };
+
+
+    img.src = imgSrc;
+
+    // Download cound
+    let FrameId = document.getElementById('FrameId').value
+
+    $.ajax({
+        url: '/admin/status-frame-count',
+        data: {
+            Id: FrameId
+        },
+        method: 'post',
+        success: () => {
+        }
+    })
+
+
+
+
+
+</script>
+
+
+
+
+<script>
+    let cover = document.getElementById('cover');
+    let section1 = document.getElementById('section1')
+    let section2 = document.getElementById('section2')
+    let section3 = document.getElementById('section3')
+    function HideSection1() {
+
+        cover.style.display = 'none'
+        section1.style.display = 'none'
+        section2.style.display = 'block'
+    }
+    function clickSave() {
+        section3.style.display = 'block'
+        section2.style.display = 'none'
+    }
+
+
+</script>

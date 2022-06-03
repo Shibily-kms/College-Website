@@ -6,13 +6,14 @@ const courier = CourierClient({ authorizationToken: "pk_prod_YQ215TTT7JMSWAP6MMR
 var ObjectId = require('mongodb').ObjectId;
 const { reject, resolve, all } = require('promise')
 const { response } = require('express');
+const DeviceDetector = require('node-device-detector');
 
 
 module.exports = {
 
 
     // For admin
-    authAdminLog: (body) => {
+    authAdminLog: (body, deviceInfo) => {
         return new Promise(async (resolve, reject) => {
             let response = []
             // let proAdminAuth = {
@@ -21,11 +22,33 @@ module.exports = {
             // }
             let Admin = await db.get().collection(collection.AUTH_COLLECTIONS).findOne({ EmailId: body.EmailId })
             if (Admin) {
-                bcrypt.compare(body.Password, Admin.Password).then((result) => {
+                bcrypt.compare(body.Password, Admin.Password).then(async (result) => {
                     if (result) {
-                        response.adminDetails = Admin,
+
+                        let data = {
+                            DeviceId: null,
+                            EmailId: body.EmailId,
+                            os: deviceInfo.os,
+                            client: deviceInfo.client,
+                            device: deviceInfo.device,
+                            Online: null,
+                            Status: null
+                        }
+                        create_random_id(16)
+                        function create_random_id(sting_length) {
+                            var randomString = '';
+                            var numbers = '1234567890'
+                            for (var i, i = 0; i < sting_length; i++) {
+                                randomString += numbers.charAt(Math.floor(Math.random() * numbers.length))
+                            }
+                            data.DeviceId = randomString
+                        }
+                        await db.get().collection(collection.ADMIN_LOG_COLLECTION).insertOne(data).then(() => {
+                            response.adminDetails = Admin
+                            response.adminDetails.deviceId = data.DeviceId
                             response.success = true
-                        resolve(response)
+                            resolve(response)
+                        })
                     } else {
                         resolve({ PasswordError: true })
                     }
@@ -34,7 +57,7 @@ module.exports = {
                 resolve({ EmailError: true })
             }
 
-            
+
         })
     },
 
@@ -43,7 +66,7 @@ module.exports = {
             let Admin = await db.get().collection(collection.AUTH_COLLECTIONS).findOne({ EmailId: body.EmailId })
             let response = []
             if (Admin) {
-              
+
                 let OTP = 0
                 create_random_id(4)
                 function create_random_id(sting_length) {
@@ -59,9 +82,10 @@ module.exports = {
                         Otp: OTP
                     }
                 }).then(async () => {
-                 
+
                     const { requestId } = await courier.send({
                         message: {
+                            brand_id: "QWERTYUIOP01",
                             content: {
                                 title: "Forgot password OTP",
                                 body: ""
@@ -74,8 +98,10 @@ module.exports = {
                                 email: Admin.EmailId
                             }
                         }
+
                     });
-                   
+
+
                     response.Success = "OTP Sended"
                     response.EmailId = body.EmailId
                     resolve(response)
@@ -526,6 +552,7 @@ module.exports = {
                         NY: body.NY,
                         NW: body.NW,
                         NH: body.NH,
+                        NS: body.NS,
                         RW: Imageratio.W,
                         RH: Imageratio.H
                     }
@@ -539,7 +566,7 @@ module.exports = {
     },
 
     hideFrame: (body) => {
-       
+
         let response = []
         return new Promise((resolve, reject) => {
             if (body.Hide === "1") {
@@ -588,6 +615,357 @@ module.exports = {
                 resolve()
             })
         })
+    },
+
+    addUpdateVisit: () => {
+        return new Promise(async (resolve, reject) => {
+            let NowCount = 0
+            var Time = new Date();
+            let NowDate = Time.getDate() + "," + (Time.getMonth() + 1) + "," + Time.getFullYear()
+            let Now = await db.get().collection(collection.COUNT_COLLECTION).findOne({ Name: "Visit Count", NowDate })
+            if (Now) {
+                NowCount = Now.Count
+                db.get().collection(collection.COUNT_COLLECTION).updateOne({ Name: "Visit Count", NowDate }, {
+                    $set: {
+                        Count: NowCount + 1
+                    }
+                }).then(() => {
+                    resolve()
+                })
+            } else {
+                db.get().collection(collection.COUNT_COLLECTION).insertOne({ Name: "Visit Count", NowDate, Count: 1, Time }).then(() => {
+                    resolve()
+                })
+
+            }
+        })
+    },
+
+    // HOme
+
+    getTop4Frame: () => {
+        return new Promise(async (resolve, reject) => {
+            let Sort = await db.get().collection(collection.FRAME_COLLECTION).find().sort({ Count: -1 }).limit(4).toArray()
+            let Array = []
+            for (let i = 0; i < Sort.length; i++) {
+                let obj = {
+                    Id: Sort[i].Id,
+                    Header: Sort[i].Header,
+                    Count: Sort[i].Count
+                }
+                Array.push(obj)
+            }
+            resolve(Array);
+        })
+    },
+
+    getMessageCount: () => {
+        return new Promise(async (resolve, reject) => {
+            let Messages = await db.get().collection(collection.MESSAGE_COLLECTION).find().toArray()
+            Messages = Messages.length
+            // 0 - 1000
+            if (Messages < 1000) {
+                resolve(Messages)
+                // 1K - 9.9K
+            } else if (Messages < 10000) {
+                const firstNum = String(Messages)[0];
+                const SecondNum = String(Messages)[1];
+                if (SecondNum == "0") {
+                    resolve(firstNum + "K")
+                } else {
+                    resolve(firstNum + "." + SecondNum + "K")
+                }
+                // 10K - 99.9K
+            } else if (Messages < 100000) {
+                const firstNum = String(Messages).slice(0, 2);
+                const SecondNum = String(Messages)[2];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    resolve(firstNum + "K")
+                } else {
+                    resolve(firstNum + "." + SecondNum + "K")
+                }
+                // 100K - 999.9K
+            } else if (Messages < 1000000) {
+                const firstNum = String(Messages).slice(0, 3);
+                const SecondNum = String(Messages)[3];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    resolve(firstNum + "K")
+                } else {
+                    resolve(firstNum + "." + SecondNum + "K")
+                }
+                // 1M - 9.9M
+            } else if (Messages < 10000000) {
+                const firstNum = String(Messages)[0];
+                const SecondNum = String(Messages)[1];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    resolve(firstNum + "M")
+                } else {
+                    resolve(firstNum + "." + SecondNum + "M")
+                }
+            } else {
+                resolve("10M")
+            }
+
+        })
+    },
+
+    getVisiterCount: () => {
+        return new Promise(async (resolve, reject) => {
+            let allSubscriber = await db.get().collection(collection.COUNT_COLLECTION).find({ Name: "Visit Count" }).toArray();
+            let TotalCount = 0
+            let MillionView = 0
+            let TodayCount = 0
+            let MonthCount = 0
+            let YearCount = 0
+            let WeekCount = 0
+            let date = new Date();
+            let NowDate = date.getDate() + "," + (date.getMonth() + 1) + "," + date.getFullYear()
+
+            for (let i = 0; i < allSubscriber.length; i++) {
+                TotalCount = TotalCount + allSubscriber[i].Count
+                // Today 
+                if (NowDate == allSubscriber[i].NowDate) {
+                    TodayCount = TodayCount + allSubscriber[i].Count
+                }
+                // Week
+                var days = 7; // 7 Day
+                var last = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
+                console.log(last, 'last');
+                if (last < allSubscriber[i].Time) {
+                    WeekCount = WeekCount + allSubscriber[i].Count
+                }
+                // Month 
+                if (date.getMonth() == allSubscriber[i].Time.getMonth() && date.getFullYear() == allSubscriber[i].Time.getFullYear()) {
+                    MonthCount = MonthCount + allSubscriber[i].Count
+                }
+                // Year
+                if (date.getFullYear() == allSubscriber[i].Time.getFullYear()) {
+                    YearCount = YearCount + allSubscriber[i].Count
+                }
+            }
+
+            // 0 - 1000
+            if (TotalCount < 1000) {
+                MillionView = TotalCount
+                // 1K - 9.9K
+            } else if (TotalCount < 10000) {
+                const firstNum = String(TotalCount)[0];
+                const SecondNum = String(TotalCount)[1];
+                if (SecondNum == "0") {
+                    MillionView = firstNum + "K"
+
+                } else {
+                    MillionView = firstNum + "." + SecondNum + "K"
+
+                }
+                // 10K - 99.9K
+            } else if (TotalCount < 100000) {
+                const firstNum = String(TotalCount).slice(0, 2);
+                const SecondNum = String(TotalCount)[2];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    MillionView = firstNum + "K"
+                } else {
+                    MillionView = firstNum + "." + SecondNum + "K"
+                }
+                // 100K - 999.9K
+            } else if (TotalCount < 1000000) {
+                const firstNum = String(TotalCount).slice(0, 3);
+                const SecondNum = String(TotalCount)[3];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    MillionView = firstNum + "K"
+                } else {
+                    MillionView = firstNum + "." + SecondNum + "K"
+                }
+                // 1M - 9.9M
+            } else if (TotalCount < 10000000) {
+                const firstNum = String(TotalCount)[0];
+                const SecondNum = String(TotalCount)[1];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    MillionView = firstNum + "M"
+                } else {
+                    MillionView = firstNum + "." + SecondNum + "M"
+                }
+            } else {
+                MillionView = "10M"
+            }
+            let Obj = {
+                TotalCount: TotalCount,
+                MillionView: MillionView,
+                TodayCount: TodayCount,
+                MonthCount: MonthCount,
+                YearCount: YearCount,
+                WeekCount: WeekCount,
+            }
+            resolve(Obj)
+        })
+    },
+
+    getSubscriberCount: () => {
+        return new Promise(async (resolve, reject) => {
+            let allSubscriber = await db.get().collection(collection.SUBSCRIBE_COLLECTION).find().toArray();
+            let TotalCount = 0
+            let MillionView = 0
+            let TodayCount = 0
+            let MonthCount = 0
+            let YearCount = 0
+            let WeekCount = 0
+            let date = new Date();
+            let NowDate = date.getDate() + "," + (date.getMonth() + 1) + "," + date.getFullYear()
+
+            TotalCount = allSubscriber.length
+
+            for (let i = 0; i < allSubscriber.length; i++) {
+                // Today 
+                if (date.getDate() == allSubscriber[i].Time.getDate() && date.getMonth() == allSubscriber[i].Time.getMonth() && date.getFullYear() == allSubscriber[i].Time.getFullYear()) {
+                    TodayCount = TodayCount + 1
+                }
+                // Week
+                var days = 7; // 7 Day
+                var last = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
+                console.log(last, 'last');
+                if (last < allSubscriber[i].Time) {
+                    WeekCount = WeekCount + 1
+                }
+                // Month 
+                if (date.getMonth() == allSubscriber[i].Time.getMonth() && date.getFullYear() == allSubscriber[i].Time.getFullYear()) {
+                    MonthCount = MonthCount + 1
+                }
+                // Year
+                if (date.getFullYear() == allSubscriber[i].Time.getFullYear()) {
+                    YearCount = YearCount + 1
+                }
+            }
+
+            // 0 - 1000
+            if (TotalCount < 1000) {
+                MillionView = TotalCount
+                // 1K - 9.9K
+            } else if (TotalCount < 10000) {
+                const firstNum = String(TotalCount)[0];
+                const SecondNum = String(TotalCount)[1];
+                if (SecondNum == "0") {
+                    MillionView = firstNum + "K"
+
+                } else {
+                    MillionView = firstNum + "." + SecondNum + "K"
+
+                }
+                // 10K - 99.9K
+            } else if (TotalCount < 100000) {
+                const firstNum = String(TotalCount).slice(0, 2);
+                const SecondNum = String(TotalCount)[2];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    MillionView = firstNum + "K"
+                } else {
+                    MillionView = firstNum + "." + SecondNum + "K"
+                }
+                // 100K - 999.9K
+            } else if (TotalCount < 1000000) {
+                const firstNum = String(TotalCount).slice(0, 3);
+                const SecondNum = String(TotalCount)[3];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    MillionView = firstNum + "K"
+                } else {
+                    MillionView = firstNum + "." + SecondNum + "K"
+                }
+                // 1M - 9.9M
+            } else if (TotalCount < 10000000) {
+                const firstNum = String(TotalCount)[0];
+                const SecondNum = String(TotalCount)[1];
+                console.log(SecondNum);
+                if (SecondNum == "0") {
+                    MillionView = firstNum + "M"
+                } else {
+                    MillionView = firstNum + "." + SecondNum + "M"
+                }
+            } else {
+                MillionView = "10M"
+            }
+            let Obj = {
+                TotalCount: TotalCount,
+                MillionView: MillionView,
+                TodayCount: TodayCount,
+                MonthCount: MonthCount,
+                YearCount: YearCount,
+                WeekCount: WeekCount,
+            }
+            resolve(Obj)
+        })
+    },
+
+    adminLastLogin: (Id) => {
+        return new Promise((resolve, reject) => {
+            let time = new Date();
+            db.get().collection(collection.ADMIN_LOG_COLLECTION).updateOne({ DeviceId: Id }, {
+                $set: {
+                    Online: time
+                }
+            }).then(() => {
+                resolve()
+            })
+        })
+    },
+
+    getAllAdminLogs: (deviceId) => {
+        return new Promise(async (resolve, reject) => {
+            let all = await db.get().collection(collection.ADMIN_LOG_COLLECTION).find().toArray()
+            for (let i = 0; i < all.length; i++) {
+                all[i].Online = all[i].Online.toLocaleString('en-US', { timeZone: "Asia/Kolkata" });
+                if (all[i].DeviceId == deviceId) {
+                    all[i].ThisDevice = true
+                }
+                switch (all[i].device.type) {
+                    case "smartphone":
+                        all[i].SmartPhone = true
+                        break;
+                    case "tv":
+                        all[i].Tv = true
+                        break;
+                    case "tablet":
+                        all[i].Tablet = true
+                        break;
+                    case "desktop":
+                        all[i].Desktop = true
+                        break;
+                    default:
+                        all[i].OtherDevice = true
+                        break;
+                }
+            }
+            resolve(all.reverse())
+        })
+    },
+
+    TerminateAdmin:(body)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.ADMIN_LOG_COLLECTION).deleteOne({DeviceId : body.Id}).then((response)=>{
+                resolve(response)
+            })
+         })
+    },
+
+    checkActiveAdmin:(deviceId)=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.ADMIN_LOG_COLLECTION).findOne({DeviceId : deviceId}).then((response)=>{
+                resolve(response)
+            })
+         })
+    },
+
+    getAllSubscribers:()=>{
+        return new Promise((resolve, reject) => { 
+            db.get().collection(collection.SUBSCRIBE_COLLECTION).find().toArray().then((result)=>{
+                resolve(result)
+            })
+         })
     }
 
 

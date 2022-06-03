@@ -1,0 +1,154 @@
+/* More - Home */
+
+.more-list-border{
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+.more-list-border .more-list-div{
+    text-decoration: none;
+    color: var(--color-c-black);
+    width: 50%;
+}
+.more-list-div .more-list{
+    background-color: var(--color-c-white-light-3);
+    width:auto;
+    margin: 5px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    padding: 15px 15px 15px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.more-list-div .signout{
+    color: var(--color-red-2);
+}
+.more-list-div .more-list:hover{
+    background-color: var(--color-c-white-light-5   );
+}
+.more-list-div .signout:hover{
+    background-color: var(--color-red-1   );
+    color: var(--color-white);
+}
+.more-list-div .more-list .title p>i{
+    font-size: 22px;
+    margin-right: 5px;
+}
+.more-list-div .more-list .icon .active-button{
+    background-color: var(--color-green-1);
+    color: var(--color-white);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.more-list-div .more-list .icon .activated-button{
+    background-color: var(--color-blue-light-9);
+    color: var(--color-white);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+/* Admin log */
+.device-list-border{
+    justify-content:space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+}
+.device-list-div{
+    width: 270px;
+    
+}
+.device-list-div .device-list{
+    margin: 3px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: solid 1px var(--color-c-white-light-4);
+}
+.device-list .icon{
+    
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 1px var(--color-c-white-light-4);
+}
+.device-list .icon i{
+    font-size: 60px;
+    color: var(--color-c-black-opacity-4);
+}
+.device-list .content{
+    padding: 10px;
+}
+.device-list .content p{
+    font-size: 14px;
+    line-height: 21px;
+}
+.device-list .content p span{
+    font-weight: 500;
+}
+.device-list .content>:first-child{
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+.device-list .content>:nth-child(2){
+    text-align: center;
+    margin-bottom: 5px;
+    color: var(--color-c-black-opacity-6);
+}
+.device-list .confierm{
+    border-top: solid 1px var(--color-c-white-light-4);
+    text-align: center;
+    padding: 10px;
+}
+.device-list .confierm .terminate{
+    color: var(--color-red-1);
+}
+.device-list .confierm span{
+    color: var(--color-blue-light-9);
+}
+
+
+/* MORe - Ask team */
+
+.ask-border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85vh;
+}
+.ask-border .ask-div{
+  
+    width: 350px;
+}
+.ask-div .button{
+    width: 100%;
+    margin: 10px 0 10px 0;
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.ask-div .button i{
+    font-size: 22px;
+    margin-right: 10px;
+}

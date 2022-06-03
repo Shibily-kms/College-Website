@@ -187,7 +187,9 @@
     --color-warning : rgb(175, 143, 0);
     --color-warning-opacity-3 : rgba(255, 255, 0, 0.329);
     --color-red-1: rgb(223, 0, 0);
+    --color-red-2: rgb(223, 0, 0);
     --color-green-1: rgb(17, 129, 0);
+    --color-green-2: rgb(0, 209, 28);
     --color-slider-info : rgba(255, 255, 255, 0.37);
     --shadow-c-white : 0 5px 25px rgb(0 0 0 / 20%);
     --shadow-c-white2 : 0 5px 25px rgba(0, 0, 0, 0.363);

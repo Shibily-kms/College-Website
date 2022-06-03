@@ -31,6 +31,46 @@
     text-align: center;
     cursor: pointer;
 }
+.hover-fill-rose{
+    background: none;
+    border: solid var(--color-rose-light-1) 2px;
+    color: var(--color-rose-light-1);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.hover-fill-rose:hover{
+    background-color: var(--color-rose-light-1);
+    border: solid var(--color-rose-light-1) 2px;
+    color: var(--color-c-white);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.hover-fill-out-rose{
+    background-color: var(--color-rose-light-1);
+    border: solid var(--color-rose-light-1) 2px;
+    color: var(--color-white);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.hover-fill-out-rose:hover{
+    background: none;
+    border: solid var(--color-rose-light-1) 2px;
+    color: var(--color-rose-light-1);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
 .hover-fill-dr{
     background: none;
     border: solid var(--color-c-black) 2px;

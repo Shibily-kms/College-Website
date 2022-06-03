@@ -6,7 +6,15 @@
 
 /* ipad Pro */
 @media (max-width:1024px){
-  
+    .four-tab .tab-item .item-boarder .row-1 h2 i {
+        font-size: 35px;
+       
+    }
+    .four-tab .tab-item .item-boarder .Day-bar h2 i{
+        text-align: center;
+        font-size: 18px;
+        
+    }
  
 
 }
@@ -17,6 +25,16 @@
         display: none;
         
 }
+.four-tab .tab-item .item-boarder .row-1 h2 i {
+    font-size: 32px;
+    
+}
+.four-tab .tab-item .item-boarder .Day-bar h2 i{
+    text-align: center;
+    font-size: 17px;
+    
+}
+
 
 }
 
@@ -24,7 +42,16 @@
 @media (max-width:768px) {
     
   
-
+    .four-tab .tab-item .item-boarder .row-1 h2 i {
+        font-size: 30px;
+       
+    }
+    .four-tab .tab-item .item-boarder .Day-bar h2 i{
+        text-align: center;
+        font-size: 17px;
+       
+    }
+ 
 
     
 

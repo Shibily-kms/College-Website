@@ -1,0 +1,110 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('more').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="more-list-border">
+        <a href="/admin/more/admin-logs" class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-box-arrow-in-right"></i> Admin Logs </p>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/more/subscribers" class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-patch-check-fill"></i> Subscribers </p>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/more/change-password" class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-unlock-fill"></i> Change password </p>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </a>
+        <div href="/admin/more/active-website" data-title="First, click the Activate button to active all pages"
+            class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-plugin"></i> Active website </p>
+                </div>
+                <div class="icon">
+                    {{#if activation}}
+                    <button class="btn-sm activated-button">Activated</button>
+                    {{else}}
+                    <button id="active-button" onclick="activation()" class="btn-sm active-button">Activate</button>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <a href="/admin/more/ask-to-team" class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-question-lg"></i> Ask to creater team </p>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </a>
+        {{!-- <a href="" class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-chat-square-quote-fill"></i> About </p>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </a> --}}
+        <a href="/admin/signout" class="more-list-div">
+            <div class="more-list signout">
+                <div class="title">
+                    <p><i class="bi bi-box-arrow-left"></i> Sign Out </p>
+                </div>
+                <div class="icon">
+                    <small>Exit</small>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<div id="loading-gif" style="display: none;" class="loading-gif">
+    <img src="/images/gif/loading-2.gif" alt="">
+</div>
+
+<script>
+    function activation() {
+        let button = document.getElementById('active-button')
+        let gif = document.getElementById('loading-gif')
+        gif.style.display = 'flex'
+        button.innerHTML = "wait"
+        // $.ajax({
+        //       url: '/admin/activation-site',
+        //       data: {
+
+        //      },
+        //      method: 'post',
+        //      success: (response) => {
+        //          gif.style.display = 'none'
+        //           button.innerHTML = "Activated"
+        //       }
+        //    })
+    }
+</script>

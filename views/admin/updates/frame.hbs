@@ -11,8 +11,8 @@
             <h4>Status frame</h4>
         </div>
     </div>
-    <div class="add-button-top">
-        <button type="button" onclick="openmodelFrame('new');" class="btn-lg"><i class="bi bi-plus-circle-dotted"></i>
+    <div class="add-button-top" onclick="openmodelFrame('new')">
+        <button type="button" class="btn-lg"><i class="bi bi-plus-circle-dotted" ></i>
             Add frame</button>
     </div>
     <div class="edit-profile frame-edit">
@@ -30,6 +30,7 @@
             <p id="NY{{this.Id}}" hidden>{{this.NY}}</p>
             <p id="NW{{this.Id}}" hidden>{{this.NW}}</p>
             <p id="NH{{this.Id}}" hidden>{{this.NH}}</p>
+            <p id="NS{{this.Id}}" hidden>{{this.NS}}</p>
             <p id="Hide{{this.Id}}" hidden>{{this.Hide}}</p>
 
             <div class="profile-overly " style="height:150px ; top: 50px;">
@@ -143,30 +144,38 @@
 
                             {{!-- Name axis --}}
                             <h5>Name input Detials</h5>
-                            <p style="color: red; font-size:12px;">Name input not added. Use all zero pixel</p>
+                            
                             <div class="axis-inputs">
                                 <div class="col">
                                     <label for="">X axis</label>
-                                    <input class="text-input" type="number" name="NX" id="NX" value="0"
+                                    <input class="text-input" type="number" name="NX" id="NX" 
                                         placeholder="Pixel size" required>
                                 </div>
                                 <div class="col">
                                     <label for="">Y axis</label>
-                                    <input class="text-input" type="number" name="NY" id="NY" value="0"
+                                    <input class="text-input" type="number" name="NY" id="NY" 
                                         placeholder="Pixel size" required>
                                 </div>
                             </div>
                             <div class="axis-inputs">
                                 <div class="col">
                                     <label for="">Width</label>
-                                    <input class="text-input" type="number" name="NW" id="NW" value="0"
+                                    <input class="text-input" type="number" name="NW" id="NW" 
                                         placeholder="Pixel size" required>
                                 </div>
                                 <div class="col">
                                     <label for="">Height</label>
-                                    <input class="text-input" type="number" name="NH" id="NH" value="0"
+                                    <input class="text-input" type="number" name="NH" id="NH" 
                                         placeholder="Pixel size" required>
                                 </div>
+                            </div>
+                            <div class="axis-inputs">
+                                <div class="col">
+                                    <label for="">Font size</label>
+                                    <input class="text-input" type="number" name="NS" id="NS" 
+                                        placeholder="Pixel size" required>
+                                </div>
+                               
                             </div>
 
                         </div>
@@ -186,6 +195,7 @@
 <script>
 
     function openmodelFrame(id) {
+        console.log('clicked')
         let profileDiv = document.getElementById('profile-Div')
         let profile = document.getElementById('profile-model')
         let header = document.getElementById('model-header')
@@ -200,6 +210,7 @@
         let NYinput = document.getElementById('NY')
         let NWinput = document.getElementById('NW')
         let NHinput = document.getElementById('NH')
+        let NSinput = document.getElementById('NS')
         let idInput = document.getElementById('slider-id')
 
         profileDiv.style.display = "flex"
@@ -212,10 +223,11 @@
             IYinput.value = ''
             IWinput.value = ''
             IHinput.value = ''
-            NXinput.value = '0'
-            NYinput.value = '0'
-            NWinput.value = '0'
-            NHinput.value = '0'
+            NXinput.value = ''
+            NYinput.value = ''
+            NWinput.value = ''
+            NHinput.value = '   '
+            NSinput.value = '   '
             document.getElementById('frame-file1').value = ''
             document.getElementById('frame-file2').value = ''
             image.src = '/images/background/1.jpg'
@@ -230,6 +242,7 @@
             let NY = document.getElementById('NY' + id).innerHTML
             let NW = document.getElementById('NW' + id).innerHTML
             let NH = document.getElementById('NH' + id).innerHTML
+            let NS = document.getElementById('NS' + id).innerHTML
 
             header.innerHTML = "Update frame"
             image.src = '/images/frames/' + id + '-1.jpg'
@@ -243,6 +256,7 @@
             NYinput.value = NY
             NWinput.value = NW
             NHinput.value = NH
+            NSinput.value = NS
             idInput.value = id
         }
     }

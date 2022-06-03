@@ -65,3 +65,32 @@ footer{
     font-weight: 200;
    
 }
+
+
+/* Subscribe */
+
+.footer-subscribe-user{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
+}
+.footer-subscribe-user .boarder .descri{
+    text-align: start;
+    
+  }
+
+.footer-subscribe-user .boarder .button-area input{
+    width: 300px;
+    margin-top: 20px;
+}
+.footer-subscribe-user .boarder .button-area button{
+    background-color: var(--color-rose-light-1);
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    color: var(--color-white);
+}

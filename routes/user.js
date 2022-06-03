@@ -3,6 +3,22 @@ const adminHelpers = require('../helpers/admin-helpers');
 const userHelpers = require('../helpers/user-helpers');
 var router = express.Router();
 
+// Total Visite Count
+const checkVisit = (req, res, next) => {
+    let date = new Date();
+    let OnDate = date.getDate() + "," + (date.getMonth() + 1) + "," + date.getFullYear()
+    let ViDate = req.session.visitDate
+    console.log(ViDate, OnDate);
+    if (ViDate == OnDate) {
+        next();
+    } else {
+        adminHelpers.addUpdateVisit().then(() => {
+            req.session.visitDate = OnDate;
+            req.session.VisitDate2 = date;
+            next();
+        })
+    }
+};
 // change theme
 router.post('/change-theme', (req, res) => {
 
@@ -17,7 +33,7 @@ router.post('/change-theme', (req, res) => {
 });
 
 /* GET home page. */
-router.get('/', async function (req, res, next) {
+router.get('/', checkVisit, async (req, res, next) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id1 = "PRGPH01"
@@ -28,15 +44,22 @@ router.get('/', async function (req, res, next) {
     var Links = await userHelpers.getFLinks();
     let FourNews = await userHelpers.getlatestNews();
     let DayBar = await userHelpers.getTodayBar();
-
-    res.render('user/home', {
-        title: "Home", nsaWebDarkTheme, adminHere, user: true, Slides, TheNsa, TheMajma, Links, FourNews, DayBar
-    });
+    if (req.session.Success) {
+        res.render('user/home', { title: "Home", "Success": req.session.Success, nsaWebDarkTheme, adminHere, user: true, Slides, TheNsa, TheMajma, Links, FourNews, DayBar })
+        req.session.Success = false
+    } else if (req.session.Error) {
+        res.render('user/home', { title: "Home", "Error": req.session.Error, nsaWebDarkTheme, adminHere, user: true, Slides, TheNsa, TheMajma, Links, FourNews, DayBar })
+        req.session.Error = false
+    } else {
+        res.render('user/home', {
+            title: "Home", nsaWebDarkTheme, adminHere, user: true, Slides, TheNsa, TheMajma, Links, FourNews, DayBar
+        });
+    }
 });
 
 // Our teachers
 
-router.get('/our-teachers', (req, res) => {
+router.get('/our-teachers',checkVisit, (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     userHelpers.getAllTeachers().then((data) => {
@@ -46,7 +69,7 @@ router.get('/our-teachers', (req, res) => {
 });
 // Our leaders
 
-router.get('/our-leaders', (req, res) => {
+router.get('/our-leaders',checkVisit, (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     userHelpers.getAllLeaders().then((leaders) => {
@@ -56,7 +79,7 @@ router.get('/our-leaders', (req, res) => {
 
 // Our faculty
 
-router.get('/our-faculty', async (req, res) => {
+router.get('/our-faculty',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id1 = "PRGPH03"
@@ -73,7 +96,7 @@ router.get('/our-faculty', async (req, res) => {
 
 // NSA
 
-router.get('/nsa', async (req, res) => {
+router.get('/nsa',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH06"
@@ -86,7 +109,7 @@ router.get('/nsa', async (req, res) => {
     res.render('user/nsa', { title: "The NSA", nsaWebDarkTheme, adminHere, user: true, nsaPara, nsaPro, NsaLinks })
 
 });
-router.get('/nsa/fine-arts', async (req, res) => {
+router.get('/nsa/fine-arts',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH07"
@@ -96,7 +119,7 @@ router.get('/nsa/fine-arts', async (req, res) => {
     res.render('user/fine-arts', { title: "Fine arts", nsaWebDarkTheme, adminHere, user: true, FineArts, FinePro })
 
 });
-router.get('/nsa/library-board', async (req, res) => {
+router.get('/nsa/library-board',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH08"
@@ -106,7 +129,7 @@ router.get('/nsa/library-board', async (req, res) => {
     res.render('user/library', { title: "Library board", nsaWebDarkTheme, adminHere, user: true, Library, LibraryPro })
 
 });
-router.get('/nsa/literary-wing', async (req, res) => {
+router.get('/nsa/literary-wing',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH09"
@@ -116,7 +139,7 @@ router.get('/nsa/literary-wing', async (req, res) => {
     res.render('user/literary', { title: "Literary wing", nsaWebDarkTheme, adminHere, user: true, Literary, LiteraryPro })
 
 });
-router.get('/nsa/social-affairs', async (req, res) => {
+router.get('/nsa/social-affairs',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH10"
@@ -126,7 +149,7 @@ router.get('/nsa/social-affairs', async (req, res) => {
     res.render('user/sab', { title: "Social affairs board", nsaWebDarkTheme, adminHere, user: true, Sab, SabPro })
 
 });
-router.get('/nsa/medical-board', async (req, res) => {
+router.get('/nsa/medical-board',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH11"
@@ -136,7 +159,7 @@ router.get('/nsa/medical-board', async (req, res) => {
     res.render('user/medical', { title: "Medical board", nsaWebDarkTheme, adminHere, user: true, Medical, MedicalPro })
 
 });
-router.get('/nsa/pro-itnob', async (req, res) => {
+router.get('/nsa/pro-itnob',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH12"
@@ -146,7 +169,7 @@ router.get('/nsa/pro-itnob', async (req, res) => {
     res.render('user/it', { title: "PRO & IT nob", nsaWebDarkTheme, adminHere, user: true, ItNob, ItNobPro })
 
 });
-router.get('/nsa/research-cell', async (req, res) => {
+router.get('/nsa/research-cell',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH13"
@@ -156,7 +179,7 @@ router.get('/nsa/research-cell', async (req, res) => {
     res.render('user/research', { title: "Research cell", nsaWebDarkTheme, adminHere, user: true, Research, ResearchPro })
 
 });
-router.get('/nsa/garden-committee', async (req, res) => {
+router.get('/nsa/garden-committee',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH14"
@@ -170,7 +193,7 @@ router.get('/nsa/garden-committee', async (req, res) => {
 // SKSSF
 
 
-router.get('/skssf', async (req, res) => {
+router.get('/skssf',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH15"
@@ -183,7 +206,7 @@ router.get('/skssf', async (req, res) => {
     res.render('user/skssf', { title: "The SKSSF", nsaWebDarkTheme, adminHere, user: true, SkssfPara, SkssfPro, SkssfLinks })
 });
 
-router.get('/skssf/fund', async (req, res) => {
+router.get('/skssf/fund',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH16"
@@ -193,7 +216,7 @@ router.get('/skssf/fund', async (req, res) => {
     res.render('user/fund', { title: "Fund", nsaWebDarkTheme, adminHere, user: true, Fund, FundPro })
 
 });
-router.get('/skssf/store', async (req, res) => {
+router.get('/skssf/store',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = "PRGPH17"
@@ -205,7 +228,7 @@ router.get('/skssf/store', async (req, res) => {
 });
 
 // UPdates
-router.get("/news", async (req, res) => {
+router.get("/news",checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     userHelpers.getAllNewsSmallSize().then((AllNews) => {
@@ -213,7 +236,7 @@ router.get("/news", async (req, res) => {
     })
 });
 
-router.get("/news/:id", async (req, res) => {
+router.get("/news/:id",checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Id = req.params.id
@@ -222,22 +245,22 @@ router.get("/news/:id", async (req, res) => {
     })
 });
 
-router.get('/status-frame',async (req,res)=>{
+router.get('/status-frame',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let AllFrames = await userHelpers.getAllFrames();
-    res.render('user/frame',{ title: "Status frame", nsaWebDarkTheme, adminHere, user: true, AllFrames })
+    res.render('user/frame', { title: "Status frame", nsaWebDarkTheme, adminHere, user: true, AllFrames })
 });
 
-router.get('/status-frame/:id',async (req,res)=>{
+router.get('/status-frame/:id',checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let OneFrame = await userHelpers.getOneFrames(req.params.id);
-    res.render('user/frame-one',{ title: "Status frame", nsaWebDarkTheme, adminHere, user: true, OneFrame })
+    res.render('user/frame-one', { title: "Status frame", nsaWebDarkTheme, adminHere, user: true, OneFrame })
 });
 
 // About
-router.get("/gallery", async (req, res) => {
+router.get("/gallery",checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     userHelpers.getUserGallery().then((Gallery) => {
@@ -245,28 +268,72 @@ router.get("/gallery", async (req, res) => {
     })
 });
 
-router.get("/contact-us", async (req, res) => {
+router.get("/contact-us",checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Type2 = "Nsa"
     let NsaLinks = await userHelpers.getNormelLinks(Type2);
     if (req.session.Success) {
-        res.render('user/contact-us', { title: "Contact us", "Success": req.session.Success,  nsaWebDarkTheme, adminHere, user: true,  NsaLinks })
+        res.render('user/contact-us', { title: "Contact us", "Success": req.session.Success, nsaWebDarkTheme, adminHere, user: true, NsaLinks })
         req.session.Success = false
-      } else {
-        res.render('user/contact-us', { title: "Contact us", nsaWebDarkTheme, adminHere, user: true,  NsaLinks })
-      }
+    } else {
+        res.render('user/contact-us', { title: "Contact us", nsaWebDarkTheme, adminHere, user: true, NsaLinks })
+    }
 
-   
+
 });
 
-router.post("/user-message", async (req, res) => {
-    userHelpers.sendMessage(req.body).then(()=>{
+router.post("/user-message",checkVisit, async (req, res) => {
+    userHelpers.sendMessage(req.body).then(() => {
         req.session.Success = "Your message was sended"
         res.redirect('/contact-us')
     })
-   
+
 });
+
+router.get("/subscribe",checkVisit, async (req, res) => {
+    var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+    let adminHere = req.session.NSAWEBADMIN
+    if (req.session.Success) {
+        res.render('user/subscribe', { title: "Subscribe", "Success": req.session.Success, nsaWebDarkTheme, adminHere, user: true, })
+        req.session.Success = false
+    } else if (req.session.Error) {
+        res.render('user/subscribe', { title: "Subscribe", "Error": req.session.Error, nsaWebDarkTheme, adminHere, user: true, })
+        req.session.Error = false
+    } else {
+        res.render('user/subscribe', { title: "Subscribe", nsaWebDarkTheme, adminHere, user: true, })
+    }
+});
+
+router.post("/subscribe", async (req, res) => {
+    userHelpers.SubscribeAction(req.body).then((response) => {
+        if (response.Error) {
+            req.session.Error = response.Error
+            res.redirect('/subscribe')
+        } else if (response.Success) {
+            req.session.Success = response.Success
+            res.redirect('/subscribe')
+
+        }
+    })
+
+});
+
+router.post("/subscribe-footer", async (req, res) => {
+    userHelpers.SubscribeAction(req.body).then((response) => {
+        if (response.Error) {
+            req.session.Error = response.Error
+            res.redirect('/')
+        } else if (response.Success) {
+            req.session.Success = response.Success
+            res.redirect('/')
+
+        }
+    })
+
+});
+
+
 
 
 

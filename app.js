@@ -13,7 +13,7 @@ var adminRouter = require('./routes/admin');
 var hbs = require('express-handlebars');
 var app = express();
 var fileUpload = require('express-fileupload');
-
+var useragent = require('express-useragent');
 var db = require('./config/connection')
 
 var store = new MongoDBSession({
@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
-
+app.use(useragent.express());
 
 
 app.use(session({
@@ -51,6 +51,8 @@ db.connect((err)=>{
   if(err) console.log("Connection Error");
   else console.log('Database connected')
 })
+
+
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);

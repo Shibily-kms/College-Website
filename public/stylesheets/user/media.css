@@ -3,6 +3,7 @@
   .slider-section-div{
     padding-top: 70px;
   }
+
 }
 
 /* ipad Pro */
@@ -27,6 +28,7 @@
     padding: 7px 130px 7px 130px;
  
   }
+
 
 
 }
@@ -123,6 +125,22 @@
     
   padding: 7px 110px 7px 110px;
 
+}
+
+
+.footer-subscribe-user{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  
+}
+
+.footer-subscribe-user .boarder .button-area{
+ 
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -227,6 +245,16 @@
 
 }
 
+.subscribe-user .boarder{
+  width: 400px;
+ 
+  text-align: center;
+}
+
+.subscribe-user .boarder .button-area input{
+  width: 250px;
+  margin-top: 20px;
+}
 
 
 }
@@ -274,7 +302,7 @@
 .contact-us .message button{
   float: none;
   width: 100%;
-  transition-property: transform, opacity;
+  transition-property: transform, smooth;
 }
 
 
@@ -353,6 +381,37 @@
   padding: 7px 10px 7px 10px;
 
 }
+
+.subscribe-user .boarder{
+  width: 95%;
+
+  text-align: center;
+}
+
+.subscribe-user .boarder .button-area input{
+  width: 100%;
+  margin-top: 20px;
+}
+.subscribe-user .boarder .button-area button{
+  width: 100%;
+  margin-top: 5px;
+}
+.footer-subscribe-user .boarder{
+  width: 95%;
+
+  text-align: center;
+}
+
+.footer-subscribe-user .boarder .button-area input{
+  width: 100%;
+  margin-top: 20px;
+}
+.footer-subscribe-user .boarder .button-area button{
+  width: 100%;
+  margin-top: 5px;
+}
+
+
 
 
 

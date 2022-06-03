@@ -9,9 +9,16 @@
   <meta name="description" content="Official website for Noorul huda Students' Association (NSA). Under the Majma'a Sharee-ath & Arts College (Wafy), Kavanur - Areekode,
      You can evaluate the activities and services of our union through the website">
   <meta name="author" content="Noorul huda Students' Association (NSA)">
+  <meta name="keywords"
+    content="nsaonline, noorul huda, noorul huda students association, nsa, student union, majmaa wafy college, majma'a sharee-ath and arts college, wafy college union,">
+  <meta name="copyright" content="noorul huda sutudents association">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
 
   {{!-- Icon , styleSheet and Javascripts --}}
-  <link rel="icon" href="/images/icons/nsa-icon.png" type="png/jpg" sizes="16*16">
+  <link rel="icon" href="/images/icons/favicon.png">
   <link id='theme-change' class='{{#if nsaWebDarkTheme}}Dark {{else}}Light{{/if}}' rel='stylesheet' {{#if
     nsaWebDarkTheme}} href='/stylesheets/root/dark-theme.css' {{else}} href='/stylesheets/root/light-theme.css'
     {{/if}} />
@@ -25,6 +32,7 @@
   <link rel='stylesheet' href='/stylesheets/admin/college.css' />
   <link rel='stylesheet' href='/stylesheets/admin/union.css' />
   <link rel='stylesheet' href='/stylesheets/admin/updates.css' />
+  <link rel='stylesheet' href='/stylesheets/admin/more.css' />
   <link rel='stylesheet' href='/stylesheets/commen/style.css' />
   <link rel='stylesheet' href='/stylesheets/user/home.css' />
   <link rel='stylesheet' href='/stylesheets/user/footer.css' />
@@ -33,7 +41,7 @@
   <link rel='stylesheet' href='/stylesheets/user/updates.css' />
   <link rel='stylesheet' href='/stylesheets/user/about.css' />
   <link rel='stylesheet' href='/stylesheets/user/header.css' />
-    {{!-- Demmi --}}
+  {{!-- Demmi --}}
   <link rel='stylesheet' href='/stylesheets/commen/demmi.css' />
   <link rel='stylesheet' href='/stylesheets/commen/admin-demmi.css' />
   {{!-- Animation --}}
@@ -63,11 +71,8 @@
     rel="stylesheet">
 
   {{!-- Cropper.js --}}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
 
   {{!-- Boostrap Icon --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -91,8 +96,9 @@
   {{!-- jqury Table --}}
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
-  
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
 
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -174,6 +180,21 @@
   {{else}}
   {{>user-footer}}
   {{/if}}
+  {{!-- Page loader --}}
+  <div id="loader"  class="loading-gif"> 
+     <img src="/images/gif/loading-2.gif" alt="">
+  </div>
+  <script>
+    document.onreadystatechange = function () {
+      if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.querySelector("#loader").style.visibility = "visible";
+      } else {
+        document.querySelector("#loader").style.display = "none";
+        document.querySelector("body").style.visibility = "visible";
+      }
+    };
+  </script>
 
   <script>
 

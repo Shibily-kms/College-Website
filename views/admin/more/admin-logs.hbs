@@ -1,0 +1,95 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('more').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="device-list-border">
+        {{#each adminLogs}}
+        <div id="deviceDiv{{this.DeviceId}}" class="device-list-div">
+            <div class="device-list">
+                <div class="icon">
+                    {{#if SmartPhone}}
+                    <i class="bi bi-phone"></i>
+                    {{/if}}
+                    {{#if Desktop}}
+                    <i class="bi bi-laptop"></i>
+                    {{/if}}
+                    {{#if Tablet}}
+                    <i class="bi bi-tablet"></i>
+                    {{/if}}
+                    {{#if Tv}}
+                    <i class="bi bi-tv"></i>
+                    {{/if}}
+                    {{#if OtherDevice}}
+                    <i class="bi bi-exclamation-lg" title="Not found picher"></i>
+                    {{/if}}
+                </div>
+                <div class="content">
+                    {{#if Desktop}}
+                    <p>Not found</p>
+                    {{else}}
+                    <p>{{this.device.brand}} {{this.device.model}}</p>
+                    {{/if}}
+                    <p>{{this.device.type}}</p>
+                    <p>Last seen : <span>{{this.Online}}</span></p>
+                    <p>IP address: <span>Not found</span></p>
+                    <p>OS : <span>{{this.os.name}} {{this.os.version}} {{this.os.platform}}</span></p>
+                    <p>Browser : <span>{{this.client.name}}</span></p>
+                    <p>Version : <span>{{this.client.version}}</span></p>
+                    <p>Used Mail : <span>{{this.EmailId}}</span></p>
+                </div>
+                    {{#if this.ThisDevice}}
+                <div class="confierm">
+                    <span><i class="bi bi-check2-circle"></i> This device</span>
+                </div>
+                    {{else}} 
+                <div onclick="terminateAdmin('{{this.DeviceId}}')" style="cursor: pointer;" class="confierm">
+                    
+                    <span class="terminate" >Terminate</span>
+                </div>
+                    {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>
+
+<script>
+    
+function terminateAdmin(Id) {
+    console.log('hi')
+    let div = document.getElementById('deviceDiv' + Id)
+    let confirmDiv = document.getElementById('confirm-box-div')
+    let confirmTitle = document.getElementById('confirm-title')
+    let yesButton = document.getElementById('confirmYes')
+    let NoButton = document.getElementById('confirmNo')
+    let title = "Do you want to terminate this admin ?"
+
+    
+    confirmDiv.style.display = 'flex';
+    confirmTitle.innerHTML = title
+
+    yesButton.addEventListener("click", () => {
+        $.ajax({
+            url: '/admin/terminate',
+            data: {
+                Id
+            },
+            method: 'post',
+            success: (response) => {
+                div.style.display = 'none'
+                confirmDiv.style.display = 'none';
+
+            }
+        })
+    });
+    NoButton.addEventListener("click", () => {
+        confirmDiv.style.display = 'none';
+        
+    });
+    
+    
+}
+</script>

@@ -70,9 +70,11 @@ function viewImage(event) {
         img.onload = () => {
 
             if (file.size > maxFileSize) {
+                alert("Image file is too big. Please choose smaller than 1 MB")
                 alertContent.innerHTML = "Image file is too big. Please choose smaller than 1 MB"
                 alertDiv.style.display = "flex"
                 alertAudio.src = "/audio/alert/01.mp3"
+
                 setTimeout(hideAlert, 3000)
             } else {
 

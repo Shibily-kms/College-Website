@@ -1,0 +1,45 @@
+{{!-- active button --}}
+<script>
+    var current = document.getElementById('more').className = "main-item active-main"
+</script>
+
+{{!-- --}}
+<section id="admin-container" class="admin-container">
+    <div class="message-table">
+        <table id="table_id" class="display auto-index">
+            <thead>
+                <tr>
+                    <th>Sl No</th>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {{#if AllSubscribers.[0]}}
+                {{#each AllSubscribers}}
+                <tr>
+                    <td></td>
+                    <td>{{this.Id}}</td>
+                    <td>{{this.EmailId}}</td>
+                    <td>Active</td>
+                    
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr style="display: hidden;">
+                    <th colspan="5"><i class="bi bi-emoji-frown"></i> No subscribers !</th>
+
+                </tr>
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>

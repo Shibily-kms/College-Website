@@ -271,7 +271,7 @@
     box-shadow: inset 1px -80px 40px -10px var(--color-c-white-light-1);
     overflow: hidden;
     opacity: 0;
-    transition-property: transform, opacity;
+    transition-property: transform, smooth;
 }
 .edit-profile>.profile .profile-overly div{
     right: 10px;
@@ -458,4 +458,28 @@
     font-size: 12px;
     font-style: italic;
     text-align: center;
+}
+
+.add-button-2{
+    background-color: var(--color-c-black);
+    font-size: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: var(--color-c-white);
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    cursor: pointer;
+}
+.add-button-2>i{
+    font-size: 22px;
+    margin-right: 7px;
 }

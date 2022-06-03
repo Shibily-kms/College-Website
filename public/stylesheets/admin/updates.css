@@ -84,7 +84,7 @@
     box-shadow: inset 0px -70px 35px -18px var(--color-c-white-light-1);
     overflow: hidden;
     opacity: 0;
-    transition-property: transform, opacity;
+    transition-property: transform, smooth;
 }
 
 .news-thum-div>.news-thumbnail .news-thumb-overly div {
@@ -153,38 +153,39 @@
     font-size: 14px;
 }
 
-.news-header-input{
+.news-header-input {
     font-family: "Manjari";
     font-weight: bold;
-    font-size: 14px; 
+    font-size: 14px;
 }
 
 
 /* Status frame */
 
-.admin-frame .axis-inputs{
+.admin-frame .axis-inputs {
     display: flex;
     margin-bottom: 10px;
 }
 
-.admin-frame .axis-inputs .col{
+.admin-frame .axis-inputs .col {
     width: 50%;
     padding-right: 10px;
 }
 
-.admin-frame .axis-inputs .col input{
+.admin-frame .axis-inputs .col input {
     width: 100%;
 }
 
-.admin-frame h5{
+.admin-frame h5 {
     font-weight: 600;
 }
 
-.admin-frame .header-input input{
+.admin-frame .header-input input {
     width: 100%;
     margin-bottom: 10px;
 }
-.admin-frame .header-input textarea{
+
+.admin-frame .header-input textarea {
     min-width: 100%;
     max-width: 100%;
     max-height: 120px;
@@ -192,68 +193,168 @@
     margin-bottom: 10px;
 }
 
-.frame-edit>.profile .profile-overly div:first-child{
+.frame-edit>.profile .profile-overly div:first-child {
     width: 65px;
 }
-.frame-edit>.profile .profile-overly div:first-child i{
+
+.frame-edit>.profile .profile-overly div:first-child i {
     margin-right: 5px;
 }
 
 
-.frame-edit>.profile .frame-overly div:first-child{
+.frame-edit>.profile .frame-overly div:first-child {
     width: 75px;
     height: 20px;
     font-size: 12px;
     background-color: var(--color-c-rose-yellow-light-2);
 }
-.frame-edit>.profile .frame-overly div:last-child{
+
+.frame-edit>.profile .frame-overly div:last-child {
     width: 75px;
     height: 20px;
     font-size: 12px;
     background-color: var(--color-c-rose-yellow-light-2);
 }
-.frame-edit>.profile .frame-overly div:first-child i{
+
+.frame-edit>.profile .frame-overly div:first-child i {
     margin-right: 5px;
 }
-.frame-edit>.profile .frame-overly div:last-child i{
+
+.frame-edit>.profile .frame-overly div:last-child i {
     margin-right: 5px;
 }
 
 
 
-.frame-edit-model .model>.content>form>.image{
-    
+.frame-edit-model .model>.content>form>.image {
+
     width: 500px;
-  
+
+
 }
-.frame-edit-model .model>.content>form>.image>div{
-    
-   
+
+.frame-edit-model .model>.content>form>.image>div {
+
+
     position: relative;
-    
+
 }
-.frame-edit-model .model>.content>form>.image>div>h5{
+
+.frame-edit-model .model>.content>form>.image>div>h5 {
     font-weight: normal;
     text-align: center;
 }
 
-.frame-edit-model .model>.content>form>.image>div>img{
+.frame-edit-model .model>.content>form>.image>div>img {
     width: 200px;
     height: 150px;
     object-fit: cover;
-    border-radius: 15px ;
-    -webkit-border-radius: 15px ;
-    -moz-border-radius: 15px ;
-    -ms-border-radius: 15px ;
-    -o-border-radius: 15px ;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
     box-shadow: var(--shadow-c-white);
     overflow: hidden;
 }
-.frame-edit-model .model>.content>form>.image>div>.admin-edit{
+
+.frame-edit-model .model>.content>form>.image>div>.admin-edit {
     position: absolute;
     right: 20px;
     bottom: 20px;
-    
-    
+
+
 }
 
+
+/* Frame Add */
+
+.add-frame {
+
+    display: flex;
+}
+
+.add-frame .col-1 {
+
+    width: 50%;
+    padding: 15px;
+
+}
+
+.add-frame .col-1 canvas {
+    width: 100%;
+    height: auto;
+
+}
+
+.add-frame .col-2 {
+
+    width: 50%;
+    padding: 15px;
+    border-left: solid 1px var(--color-c-black-opacity-2);
+}
+
+.add-frame .col-2 .image {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.add-frame .col-2 input {
+    width: 100%;
+}
+
+.add-frame .col-2 .on-content .axis-inputs {
+    display: flex;
+}
+
+.add-frame .col-2 .on-content .axis-inputs .col {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 5px;
+
+}
+
+.add-frame .col-2 .on-content .axis-inputs .col input {
+    width: 100%;
+
+}
+
+.add-frame-thumb {
+    display: flex;
+    width: 100%;
+    height: 77vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.add-frame-thumb .image {
+
+    display: flex;
+}
+
+.add-frame-thumb .image div {
+    padding: 10px;
+}
+
+.add-frame-thumb .image div img {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+.add-frame-thumb .button{
+    
+    display: flex;
+    justify-content: end;
+}
+.add-frame-thumb .button button{
+    width: 150px;
+}

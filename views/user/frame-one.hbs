@@ -7,7 +7,7 @@
 
         {{!-- Section 1 --}}
         <div id="section1">
-            {{!-- <input type="text" name="Name" value="" id="NameInput" class="text-input"> --}}
+            <input type="text" name="Name" value="" id="NameInput" class="text-input">
 
             <div id="upload-Div">
                 <button class="btn-lg" id="upload-btn" data-title="Choose image" onclick="chooseImage()"><i
@@ -42,6 +42,7 @@
                 <input type="number" value="{{OneFrame.NY}}" id="NameNY">
                 <input type="number" value="{{OneFrame.NW}}" id="NameNW">
                 <input type="number" value="{{OneFrame.NH}}" id="NameNH">
+                <input type="number" value="{{OneFrame.NS}}" id="NameNS">
                 <input type="text" value="{{OneFrame.Id}}" id="FrameId">
             </div>
             <!--rightbox-->
@@ -132,6 +133,7 @@
             NameNY = document.getElementById('NameNY').value,
             NameNW = document.getElementById('NameNW').value,
             NameNH = document.getElementById('NameNH').value,
+            NameNS = document.getElementById('NameNS').value + "px Rubik",
             NameInput = document.getElementById('NameInput').value
         TextWight = parseInt(NameNX) + (parseInt(NameNW) / 2)
         TextHigth = parseInt(NameNY) + (parseInt(NameNH) / 2) + 35
@@ -145,7 +147,7 @@
         img.onload = function () {
             context.drawImage(img, ImageIX, ImageIY, ImageIW, ImageIH);
             context.drawImage(frime, 0, 0)
-            context.font = "100px Rubik"
+            context.font = NameNS
             context.textAlign = "center";
             context.fillText(NameInput, TextWight, TextHigth, NameNW, NameNH)
             context.globalAlpha = 1.0;
@@ -158,6 +160,8 @@
             Status.innerHTML = "Poster creation success, Download Below "
 
         };
+
+
         img.src = imgSrc;
 
         // Download cound
@@ -166,7 +170,7 @@
         $.ajax({
             url: '/admin/status-frame-count',
             data: {
-                Id : FrameId
+                Id: FrameId
             },
             method: 'post',
             success: () => {

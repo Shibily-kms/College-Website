@@ -5,14 +5,20 @@ const fs = require('fs');
 const path = require('path')
 const adminHelpers = require('../helpers/admin-helpers')
 const activeHelpers = require('../helpers/active-helpers')
-const userHelpers = require('../helpers/user-helpers')
+const userHelpers = require('../helpers/user-helpers');
+const DeviceDetector = require('node-device-detector');
 
 
 
-
-const verifyAdminLogin = (req, res, next) => {
+const verifyAdminLogin = async (req, res, next) => {
   if (req.session.NSAWEBADMIN) {
-    next()
+    let active = await adminHelpers.checkActiveAdmin(req.session.NSAWEBADMIN.deviceId)
+    if (active) {
+      next()
+    } else {
+      req.session.NSAWEBADMIN = undefined
+      res.redirect('/admin/signin')
+    }
   } else {
     res.redirect('/admin/signin')
   }
@@ -24,12 +30,23 @@ router.get('/', verifyAdminLogin, async (req, res, next) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
   let activation = await adminHelpers.checkActivation();
-
+  let DayBar = await userHelpers.getTodayBar();
+  let StatusFrame = await adminHelpers.getTop4Frame();
+  let MessageCount = await adminHelpers.getMessageCount();
+  let VisiterCount = await adminHelpers.getVisiterCount();
+  let SubscriberCount = await adminHelpers.getSubscriberCount();
+  console.log(VisiterCount);
   if (req.session.Success) {
-    res.render('admin/home', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, "Success": req.session.Success, activation })
+    res.render('admin/home', {
+      title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, "Success": req.session.Success, activation, DayBar, StatusFrame
+      , MessageCount, VisiterCount, SubscriberCount
+    })
     req.session.Success = false
   } else {
-    res.render('admin/home', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, activation })
+    res.render('admin/home', {
+      title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, activation, DayBar, StatusFrame, MessageCount, VisiterCount,
+      SubscriberCount
+    })
   }
 });
 
@@ -57,24 +74,28 @@ router.get('/signin', (req, res) => {
   }
 })
 router.post('/signin', (req, res) => {
-  adminHelpers.authAdminLog(req.body).then((response) => {
+  const detector = new DeviceDetector;
+  const deviceInfo = detector.detect(req.useragent.source);
+  adminHelpers.authAdminLog(req.body, deviceInfo).then((response) => {
     if (response.EmailError) {
       req.session.Error = "Email Id not match"
       res.redirect('/admin/signin')
-      
+
     } else if (response.PasswordError) {
       req.session.Error = "Password not match"
       res.redirect('/admin/signin')
-      
+
     } else if (response.success) {
+
+
       req.session.Success = "Admin account successfully loged"
       req.session.NSAWEBADMIN = response.adminDetails
       res.redirect('/admin')
-     
+
     } else {
       req.session.Error = "Somthing error! Try again"
       res.redirect('/admin/signin')
-      
+
     }
   })
 });
@@ -86,7 +107,7 @@ router.get('/forgot-password', async (req, res) => {
 
 router.post('/check-email', (req, res) => {
   adminHelpers.checkEmailId(req.body).then((result) => {
-  
+
     if (result.Success) {
       res.render('admin/forgot-p-2', { title: 'Admin SignIn', result })
     }
@@ -123,8 +144,14 @@ router.post('/new-password', (req, res) => {
 
 
 router.get('/signout', (req, res) => {
-  req.session.NSAWEBADMIN = undefined
-  res.redirect('/admin/signin')
+  let body = {
+    Id : req.session.NSAWEBADMIN.deviceId
+  }
+
+  adminHelpers.TerminateAdmin(body).then(()=>{
+    req.session.NSAWEBADMIN = undefined
+    res.redirect('/admin/signin')
+  })
 
 });
 
@@ -1220,6 +1247,14 @@ router.post('/status-frame-count', (req, res) => {
   })
 });
 
+// Update - add frame
+
+router.get('/frame/add-frame-image', verifyAdminLogin, (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  res.render('admin/updates/add-frame-image', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, })
+})
+
 
 
 // About - Gallery
@@ -1296,6 +1331,69 @@ router.get('/messages', verifyAdminLogin, async (req, res) => {
   res.render('admin/about/message', { title: 'Admin panel', ThemeError: true, admin, sideHeader: true, AllMessages })
 
 });
+
+// Network
+
+router.post('/change-admin-network', (req, res) => {
+  let Id = req.session.NSAWEBADMIN.deviceId
+  adminHelpers.adminLastLogin(Id).then(() => {
+    res.json()
+  })
+
+})
+
+
+// More
+
+router.get('/more', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let activation = await adminHelpers.checkActivation();
+  res.render('admin/more/more', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, activation })
+
+});
+
+// More - Admin logs
+
+router.get('/more/admin-logs', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  let adminLogs = await adminHelpers.getAllAdminLogs(admin.deviceId);
+  res.render('admin/more/admin-logs', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, adminLogs })
+
+});
+
+router.post('/terminate', verifyAdminLogin, (req, res) => {
+
+  adminHelpers.TerminateAdmin(req.body).then((response) => {
+    res.json(response)
+  })
+});
+
+// More - subscribers
+
+router.get('/more/subscribers', verifyAdminLogin, async (req, res) => {
+  
+  let admin = req.session.NSAWEBADMIN
+  let AllSubscribers = await adminHelpers.getAllSubscribers();
+  res.render('admin/more/subscribers', { title: 'Admin panel', ThemeError: true, admin, sideHeader: true, AllSubscribers })
+
+});
+
+router.get('/more/change-password', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  res.render('admin/forgot-p-3', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true })
+
+});
+
+router.get('/more/ask-to-team', verifyAdminLogin, async (req, res) => {
+  var nsaWebDarkTheme = req.session.nsaWebDarkTheme
+  let admin = req.session.NSAWEBADMIN
+  res.render('admin/more/ask-team', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true })
+
+});
+
 
 
 

@@ -4,20 +4,10 @@
 </script>
 
 {{!-- --}}
-<div id="admin-container" class="admin-container">
-    <div id="loading-gif" style="display: none;" class="loading-gif">
-        <img src="/images/gif/image_processing20200121-10388-3alhh1.gif" alt="">
-    </div>
+<section id="admin-container" class="admin-container">
     {{#if activation}}
-    <div class="info-bar activation-bar" style="justify-content:center ;">
-        <div class="col1">
-            <h5><i class="bi bi-check2-circle"></i> Activation complited !
-            </h5>
-        </div>
-        
-    </div>
     {{else}}
-    <div class="info-bar activation-bar">
+    <div class="info-bar activation-bar" style="margin-bottom: 10px;">
         <div class="col1">
             <h5><i class="bi bi-exclamation-triangle-fill"></i> First, click the Activate button to active all pages
             </h5>
@@ -27,12 +17,169 @@
         </div>
     </div>
     {{/if}}
-    <div class="add-button-top" style="margin-top:15px ;">
-       <a href="/admin/signout"> <button type="button" style="background-color:var(--color-red-1) ;" class="btn-md"><i style="font-size:18px ;" class="bi bi-box-arrow-left"></i>
-            Sign Out</button> </a>
+    <div class="admin-top-bar">
+        <p>Admin ID : <span class="id">{{admin.deviceId}}</span></p>
+        <p class="network"><i class="bi bi-record-fill"></i> Network</p>
+
+    </div>
+    <div class="four-tab">
+        <div class="tab-item">
+            <div class="item-boarder">
+                <div class="row-1 Day-bar">
+                    <h2>{{#if DayBar.Title}}{{DayBar.Title}}{{else}}Today{{/if}}</h2>
+                </div>
+                <div class="row-2">
+                    <h5 id="day-bar-date">01 June 2022</h5>
+                </div>
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="item-boarder">
+                <div class="row-1">
+                    <h2><i class="bi bi-cone-striped"></i><span> {{VisiterCount.MillionView}}</span></h2>
+                </div>
+                <div class="row-2">
+                    <h5>Visitors</h5>
+                </div>
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="item-boarder">
+                <div class="row-1">
+                    <h2><i class="bi bi-patch-check-fill"></i><span> {{SubscriberCount.MillionView}}</span></h2>
+                </div>
+                <div class="row-2">
+                    <h5>Subscribers</h5>
+                </div>
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="item-boarder">
+                <div class="row-1">
+                    <h2><i class="bi bi-envelope-paper-fill"></i><span> {{MessageCount}}</span></h2>
+                </div>
+                <div class="row-2">
+                    <h5>Messages</h5>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-</div>
+    {{!-- .............. --}}
+    <div class="four-tab">
+        <div class="tab-item">
+            <div class="item-boarder">
+                <div class="top">
+                    <h4>Top 4</h4>
+                    <h5>Status frame </h5>
+                </div>
+                <div class="list">
+                    {{#each StatusFrame}}
+                    <div class="item">
+                        <h5>{{#if this.Header}} {{this.Header}} {{else}} ID / {{this.Id}} {{/if}} </h5>
+                        <h5>{{this.Count}}</h5>
+                    </div>
+                    {{/each}}
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="item-boarder">
+                <div class="top">
+                    <h5>Visitors</h5>
+                    <h4>{{VisiterCount.TotalCount}}</h4>
+                </div>
+                <div class="list">
+                    <div class="item">
+                        <h5>Today</h5>
+                        <h5>{{VisiterCount.TodayCount}}</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last 7 Days</h5>
+                        <h5>{{VisiterCount.WeekCount}}</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last Month</h5>
+                        <h5>{{VisiterCount.MonthCount}}</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last Year</h5>
+                        <h5>{{VisiterCount.YearCount}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-item">
+            <div class="item-boarder">
+                <div class="top">
+                    <h5>Subscribers</h5>
+                    <h4>{{SubscriberCount.TotalCount}}</h4>
+                </div>
+                <div class="list">
+                    <div class="item">
+                        <h5>Today</h5>
+                        <h5>{{SubscriberCount.TodayCount}}</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last 7 Days</h5>
+                        <h5>{{SubscriberCount.WeekCount}}</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last Month</h5>
+                        <h5>{{SubscriberCount.MonthCount}}</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last Year</h5>
+                        <h5>{{SubscriberCount.YearCount}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- <div class="tab-item">
+            <div class="item-boarder">
+                <div class="top">
+                    <h5>Messages</h5>
+                    <h4>56986354</h4>
+                </div>
+                <div class="list">
+                    <div class="item">
+                        <h5>Today</h5>
+                        <h5>956879</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last 7 Days</h5>
+                        <h5>956879</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last Month</h5>
+                        <h5>956879</h5>
+                    </div>
+                    <div class="item">
+                        <h5>Last Year</h5>
+                        <h5>956879</h5>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+    </div>
+    <div id="loading-gif" style="display: none;" class="loading-gif">
+        <img src="/images/gif/loading-2.gif" alt="">
+    </div>
+
+</section>
+
+<script>
+    let dayBar = document.getElementById('day-bar-date')
+    let today = new Date().toLocaleDateString('en-us', { weekday: "short", year: "numeric", month: "short", day: "numeric" })
+    dayBar.innerHTML = today
+
+</script>
+
+
+
+
 
 <script>
     function activation() {
@@ -40,16 +187,16 @@
         let gif = document.getElementById('loading-gif')
         gif.style.display = 'flex'
         button.innerHTML = "wait"
-        $.ajax({
-            url: '/admin/activation-site',
-            data: {
+       // $.ajax({
+     //       url: '/admin/activation-site',
+     //       data: {
 
-            },
-            method: 'post',
-            success: (response) => {
-                gif.style.display = 'none'
-                button.innerHTML = "Activated"
-            }
-        })
+      //      },
+      //      method: 'post',
+      //      success: (response) => {
+      //          gif.style.display = 'none'
+     //           button.innerHTML = "Activated"
+     //       }
+    //    })
     }
 </script>
