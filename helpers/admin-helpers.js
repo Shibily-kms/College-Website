@@ -632,15 +632,15 @@ module.exports = {
                         Count: NowCount + 1
                     }
                 }).then(() => {
-                    db.ge().collection(collection.USER_LOCATION_COLLECTION).insertOne(UserId).then(() => {
+                    
                         resolve()
-                    })
+                    
                 })
             } else {
                 db.get().collection(collection.COUNT_COLLECTION).insertOne({ Name: "Visit Count", NowDate, Count: 1, Time }).then(() => {
-                    db.ge().collection(collection.USER_LOCATION_COLLECTION).insertOne(UserId).then(() => {
+                  
                         resolve()
-                    })
+                   
                 })
 
             }
