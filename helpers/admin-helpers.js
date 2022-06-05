@@ -619,6 +619,7 @@ module.exports = {
 
     addUpdateVisit: () => {
         return new Promise(async (resolve, reject) => {
+
             let NowCount = 0
             var Time = new Date();
             let NowDate = Time.getDate() + "," + (Time.getMonth() + 1) + "," + Time.getFullYear()
@@ -944,29 +945,106 @@ module.exports = {
         })
     },
 
-    TerminateAdmin:(body)=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.ADMIN_LOG_COLLECTION).deleteOne({DeviceId : body.Id}).then((response)=>{
+    TerminateAdmin: (body) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.ADMIN_LOG_COLLECTION).deleteOne({ DeviceId: body.Id }).then((response) => {
                 resolve(response)
             })
-         })
+        })
     },
 
-    checkActiveAdmin:(deviceId)=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.ADMIN_LOG_COLLECTION).findOne({DeviceId : deviceId}).then((response)=>{
+    checkActiveAdmin: (deviceId) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.ADMIN_LOG_COLLECTION).findOne({ DeviceId: deviceId }).then((response) => {
                 resolve(response)
             })
-         })
+        })
     },
 
-    getAllSubscribers:()=>{
-        return new Promise((resolve, reject) => { 
-            db.get().collection(collection.SUBSCRIBE_COLLECTION).find().toArray().then((result)=>{
+    getAllSubscribers: () => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.SUBSCRIBE_COLLECTION).find().toArray().then((result) => {
                 resolve(result)
             })
-         })
-    }
+        })
+    },
+
+    userLocationAccess: (body) => {
+        let location = body
+        console.log();
+        return new Promise(async (resolve, reject) => {
+            let Obj = {
+                Name: "Visit Location Count",
+                Country: location[Object.keys(location)[1]],
+                CountryCode: location[Object.keys(location)[2]],
+                RegionCode: location[Object.keys(location)[3]],
+                Region: location[Object.keys(location)[4]],
+                Count: 1
+            }
+            let check = await db.get().collection(collection.COUNT_COLLECTION).findOne({
+                Name: "Visit Location Count",
+                Country: location[Object.keys(location)[1]],
+                Region: location[Object.keys(location)[4]]
+            });
+            location.time = new Date();
+            if (check) {
+                db.get().collection(collection.COUNT_COLLECTION).updateOne({
+                    Name: "Visit Location Count",
+                    Country: location[Object.keys(location)[1]],
+                    Region: location[Object.keys(location)[4]]
+                }, {
+                    $set: {
+                        Count: check.Count + 1
+                    }
+                }).then(() => {
+                    
+                    db.ge().collection(collection.USER_LOCATION_COLLECTION).insertOne(location).then(()=>{
+                        resolve()
+                        
+                    })
+                })
+            } else {
+                console.log('insert data');
+                db.get().collection(collection.COUNT_COLLECTION).insertOne(Obj).then(() => {
+                    db.ge().collection(collection.USER_LOCATION_COLLECTION).insertOne(location).then(()=>{
+                        resolve()
+                    })
+                })
+            }
+        })
+    },
+
+    // getTop4VisitLocate: () => {
+    //     return new Promise(async (resolve, reject) => {
+    //         let array = []
+    //         let AllLocate = await db.get().collection(collection.COUNT_COLLECTION).find({ Name: "Visit Location Count" }).toArray();
+    //         for (let i = 0; i < AllLocate.length; i++) {
+    //             let Obj = {
+    //                 Country: "",
+    //                 Count: 0
+    //             }
+    //                 for (let j = 0; j < array.length; j++) {
+                        
+    //                     console.log('2');
+    //                     console.log(array,'2');
+    //                     if (AllLocate[i].Country == array[j].Country){
+    //                         console.log('3');
+    //                         console.log(array,'3');
+    //                         array[j].Count = array[j].Count + AllLocate[i].Count
+    //                         continue;
+    //                     }else if((j + 1) == array.length){
+    //                         console.log('4');
+    //                         console.log(array,'4');
+    //                         Obj.Country = AllLocate[i].Country
+    //                         Obj.Count = AllLocate[i].Count
+    //                         array.push(Obj)
+    //                     } 
+    //                 }
+                
+    //         }
+    //         console.log(array);
+    //     })
+    // }
 
 
 

@@ -24,6 +24,8 @@ const verifyAdminLogin = async (req, res, next) => {
   }
 };
 
+
+
 /* GET users listing. */
 /* HOme page */
 router.get('/', verifyAdminLogin, async (req, res, next) => {
@@ -35,6 +37,7 @@ router.get('/', verifyAdminLogin, async (req, res, next) => {
   let MessageCount = await adminHelpers.getMessageCount();
   let VisiterCount = await adminHelpers.getVisiterCount();
   let SubscriberCount = await adminHelpers.getSubscriberCount();
+  // let Top4VisitLocate = await adminHelpers.getTop4VisitLocate();
   console.log(VisiterCount);
   if (req.session.Success) {
     res.render('admin/home', {
@@ -145,10 +148,10 @@ router.post('/new-password', (req, res) => {
 
 router.get('/signout', (req, res) => {
   let body = {
-    Id : req.session.NSAWEBADMIN.deviceId
+    Id: req.session.NSAWEBADMIN.deviceId
   }
 
-  adminHelpers.TerminateAdmin(body).then(()=>{
+  adminHelpers.TerminateAdmin(body).then(() => {
     req.session.NSAWEBADMIN = undefined
     res.redirect('/admin/signin')
   })
@@ -1373,7 +1376,7 @@ router.post('/terminate', verifyAdminLogin, (req, res) => {
 // More - subscribers
 
 router.get('/more/subscribers', verifyAdminLogin, async (req, res) => {
-  
+
   let admin = req.session.NSAWEBADMIN
   let AllSubscribers = await adminHelpers.getAllSubscribers();
   res.render('admin/more/subscribers', { title: 'Admin panel', ThemeError: true, admin, sideHeader: true, AllSubscribers })

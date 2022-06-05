@@ -68,7 +68,7 @@
             class=" bi bi-brightness-high-fill"></i>{{else}}<i class="bi bi-moon-fill"></i>{{/if}} Theme </span>
       </li>
 
-      {{!-- <li class="menu-item"><a href="" ><i class="bi bi-search search-name"></i></a></li> --}}
+      {{!-- <li class="menu-item"><a href=""><i class="bi bi-search search-name"></i></a></li> --}}
 
     </ul>
 
@@ -201,4 +201,35 @@
 
   }
 
+</script>
+
+{{!-- Get location --}}
+
+<script>
+  var requestUrl = "http://ip-api.com/json";
+
+  $.ajax({
+    url: requestUrl,
+    type: 'GET',
+    success: function (json) {
+      console.log("My country is: " + json.country);
+      sendLocation(json);
+    },
+    error: function (err) {
+      console.log("Request failed, error= " + err);
+    }
+  });
+
+  function sendLocation(json) {
+    $.ajax({
+      url: '/user-location',
+      method: 'post',
+      data: {
+        location: json
+      },
+      success: (respose) => {
+        console.log('success')
+      }
+    })
+  }
 </script>
