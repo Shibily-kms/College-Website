@@ -37,7 +37,7 @@ router.get('/', verifyAdminLogin, async (req, res, next) => {
   let MessageCount = await adminHelpers.getMessageCount();
   let VisiterCount = await adminHelpers.getVisiterCount();
   let SubscriberCount = await adminHelpers.getSubscriberCount();
-  // let Top4VisitLocate = await adminHelpers.getTop4VisitLocate();
+  
   console.log(VisiterCount);
   if (req.session.Success) {
     res.render('admin/home', {

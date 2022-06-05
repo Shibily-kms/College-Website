@@ -5,7 +5,6 @@ var router = express.Router();
 
 // Total Visite Count
 const checkVisit = (req, res, next) => {
-    
     let date = new Date();
     let OnDate = date.getDate() + "," + (date.getMonth() + 1) + "," + date.getFullYear()
     let ViDate = req.session.visitDate
@@ -22,23 +21,6 @@ const checkVisit = (req, res, next) => {
 };
 
 
-// Get user location
-router.post('/user-location', (req, res) => {
-    let respose = ''
-    console.log('here locate');
-   
-    if (req.session.VisitLocation === null) {
-      
-      adminHelpers.userLocationAccess(req.body).then(() => {
-       
-        req.session.VisitLocation = true
-        res.json(respose)
-      })
-    } else {
-        console.log('out date');
-        res.json(respose)
-    }
-  })
 // change theme
 router.post('/change-theme', (req, res) => {
 

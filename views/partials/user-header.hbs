@@ -202,34 +202,3 @@
   }
 
 </script>
-
-{{!-- Get location --}}
-
-<script>
-  var requestUrl = "http://ip-api.com/json";
-
-  $.ajax({
-    url: requestUrl,
-    type: 'GET',
-    success: function (json) {
-      console.log("My country is: " + json.country);
-      sendLocation(json);
-    },
-    error: function (err) {
-      console.log("Request failed, error= " + err);
-    }
-  });
-
-  function sendLocation(json) {
-    $.ajax({
-      url: '/user-location',
-      method: 'post',
-      data: {
-        location: json
-      },
-      success: (respose) => {
-        console.log('success')
-      }
-    })
-  }
-</script>
