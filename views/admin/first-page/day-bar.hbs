@@ -34,7 +34,7 @@
                     {{#each AllDayBar}}
                     <tr id="profileDiv{{this.Id}}">
                         <td>
-                            
+
                             <p id="des{{this.Id}}" hidden>{{this.Description}}</p>
                             <p id="link{{this.Id}}" hidden>{{this.Link}}</p>
                             <p id="day{{this.Id}}" hidden>{{this.Day}}</p>
@@ -45,8 +45,8 @@
                         <td>{{this.Day}}/{{this.Month}}</td>
                         <td class="Edit"><button onclick="openmodelFrame('{{this.Id}}')" class="btn-sm"><i
                                     class="bi bi-arrows-fullscreen"></i></button></td>
-                        <td class="Delete"><button onclick="deleteFrame('{{this.Id}}')" class="btn-sm"><i id="removeIcon{{this.Id}}"
-                                    class="bi bi-trash3"></i></button></td>
+                        <td class="Delete"><button onclick="deleteFrame('{{this.Id}}')" class="btn-sm"><i
+                                    id="removeIcon{{this.Id}}" class="bi bi-trash3"></i></button></td>
                     </tr>
                     {{/each}}
                     {{else}}
@@ -60,32 +60,7 @@
         </div>
 
 
-        {{!-- {{#each AllDayBar}}
-        <div id="profileDiv{{this.Id}}" class="profile ">
-            <img src="/images/day-bar/{{this.Id}}.png" alt="Frame">
-            <h5 id="header{{this.Id}}">{{this.Title}} </h5>
-            <p id="des{{this.Id}}" hidden>{{this.Description}}</p>
-            <p id="link{{this.Id}}" hidden>{{this.Link}}</p>
-            <p id="day{{this.Id}}" hidden>{{this.Day}}</p>
-            <p id="month{{this.Id}}" hidden>{{this.Month}}</p>
-
-            <div class="profile-overly " style="height:150px ; top: 50px;">
-
-                <div class="" style="margin-left: 3px; margin-right: 3px; width : 100px" title="Count">
-                    <i class="bi bi-calendar3"></i> {{this.Day}}/{{this.Month}}
-                </div>
-                <div class="" style="margin-left: 3px; margin-right: 3px;" title="View & Edit"
-                    onclick="openmodelFrame('{{this.Id}}')">
-                    <i class="bi bi-arrows-fullscreen"></i>
-                </div>
-
-                <div title="Remove" style="margin-left: 3px; margin-right: 3px;" onclick="deleteFrame('{{this.Id}}')"
-                    class="remove">
-                    <i id="removeIcon{{this.Id}}" class="bi bi-trash3"></i>
-                </div>
-            </div>
-        </div>
-        {{/each}} --}}
+ 
     </div>
     <div class="model-border frame-edit-model" id="profile-Div">
         <div class="edit-slider teacher-profile-div" id="profile-model">
@@ -95,7 +70,16 @@
                     <i title="Close" class="bi bi-x-circle" onclick="closeModel('profile-Div')"></i>
                 </div>
                 <div class="content ">
+                    {{!-- Info Bar --}}
+                    <div class="info-bar">
+                        <div class="col1">
+                            <h5 style="font-weight: normal;"><i class="bi bi-info-circle-fill"></i></i>
+                                Choose <b>150px</b> aspect width images for the better experience
+                            </h5>
+                        </div>
+                    </div>
                     <form action="/admin/day-bar" method="post" enctype="multipart/form-data">
+
                         <div class="image">
                             <div class="">
                                 <h5>Day thumb <span style="color:red ; font-size:11px;">( Png Only)</span> </h5>

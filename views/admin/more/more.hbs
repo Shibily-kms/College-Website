@@ -40,7 +40,7 @@
             class="more-list-div">
             <div class="more-list">
                 <div class="title">
-                    <p><i class="bi bi-plugin"></i> Active website </p>
+                    <p><i class="bi bi-plugin"></i> Activate website </p>
                 </div>
                 <div class="icon">
                     {{#if activation}}
@@ -51,6 +51,37 @@
                 </div>
             </div>
         </div>
+        
+        <span onclick="alert('This feature is not included in this site')" class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-cloud-download-fill"></i> Backup data </p>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </span>
+        <span onclick="alert('This feature is not included in this site')" class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-cloud-upload-fill"></i> internalizating data </p>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </span>
+        <span onclick="alert('This feature is not included in this site')" class="more-list-div">
+            <div class="more-list">
+                <div class="title">
+                    <p><i class="bi bi-chat-square-quote-fill"></i> About </p>
+                </div>
+                <div class="icon">
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </span>
         <a href="/admin/more/ask-to-team" class="more-list-div">
             <div class="more-list">
                 <div class="title">
@@ -61,16 +92,6 @@
                 </div>
             </div>
         </a>
-        {{!-- <a href="" class="more-list-div">
-            <div class="more-list">
-                <div class="title">
-                    <p><i class="bi bi-chat-square-quote-fill"></i> About </p>
-                </div>
-                <div class="icon">
-                    <i class="bi bi-arrow-right"></i>
-                </div>
-            </div>
-        </a> --}}
         <a href="/admin/signout" class="more-list-div">
             <div class="more-list signout">
                 <div class="title">
@@ -95,16 +116,16 @@
         let gif = document.getElementById('loading-gif')
         gif.style.display = 'flex'
         button.innerHTML = "wait"
-        // $.ajax({
-        //       url: '/admin/activation-site',
-        //       data: {
+         $.ajax({
+               url: '/admin/activation-site',
+               data: {
 
-        //      },
-        //      method: 'post',
-        //      success: (response) => {
-        //          gif.style.display = 'none'
-        //           button.innerHTML = "Activated"
-        //       }
-        //    })
+              },
+              method: 'post',
+              success: (response) => {
+                  gif.style.display = 'none'
+                   button.innerHTML = "Activated"
+               }
+            })
     }
 </script>

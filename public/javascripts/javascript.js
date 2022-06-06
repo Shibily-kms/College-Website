@@ -1,6 +1,6 @@
 function hasNetWork(online) {
     const element = document.querySelector(".network");
-    // const span = document.querySelector("#network");
+   
 
     if (online) {
         element.classList.remove("offline")

@@ -11,6 +11,6 @@ module.exports={
    DAY_BAR_COLLECTION : 'dayBar',
    COUNT_COLLECTION : 'count',
    ADMIN_LOG_COLLECTION : 'adminLog',
-   SUBSCRIBE_COLLECTION : 'subscribe',
-   USER_LOCATION_COLLECTION : 'userLocation'
+   SUBSCRIBE_COLLECTION : 'subscribe'
+   
 }

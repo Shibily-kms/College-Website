@@ -201,6 +201,8 @@ img {
     /* Our Color */
     --color-warning : rgb(253, 207, 0);
     --color-warning-opacity-3 : rgba(255, 255, 0, 0.329);
+    --color-info : rgb(13, 202, 240);
+    --color-info-opacity-2 : rgb(13, 202, 240, 0.200);
     --color-red-1: rgb(223, 0, 0);
     --color-red-2: rgb(255, 0, 0);
     --color-green-1: rgb(17, 129, 0);

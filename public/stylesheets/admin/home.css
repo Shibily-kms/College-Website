@@ -192,7 +192,7 @@
     background-color: rgb(0, 133, 93);
 }
 .four-tab> :nth-child(2) .top{
-    background-color: rgb(115, 0, 182);
+    background-color: rgb(172, 0, 163);
 }
 .four-tab> :nth-child(3) .top{
     background-color: rgb(93, 133, 0);
@@ -232,7 +232,7 @@
     color: rgb(0, 133, 93);
 }
 .four-tab> :nth-child(2) .list>.item>:last-child{
-    color: rgb(115, 0, 182);
+    color: rgb(172, 0, 163);
 }
 .four-tab> :nth-child(3) .list>.item>:last-child{
     color: rgb(93, 133, 0);

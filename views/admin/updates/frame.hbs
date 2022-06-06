@@ -83,6 +83,15 @@
                     <i title="Close" class="bi bi-x-circle" onclick="closeModel('profile-Div')"></i>
                 </div>
                 <div class="content ">
+                    {{!-- Info Bar --}}
+                        <div class="info-bar">
+                            <div class="col1">
+                                <h5 style="font-weight: normal;"><i class="bi bi-info-circle-fill"></i></i>
+                                    Choose under <b>1 MB</b> images 
+                                </h5>
+                            </div>
+
+                        </div>
                     <form action="/admin/frame" method="post" enctype="multipart/form-data">
                         <div class="image">
                             <div class="">
@@ -195,7 +204,7 @@
 <script>
 
     function openmodelFrame(id) {
-        console.log('clicked')
+    
         let profileDiv = document.getElementById('profile-Div')
         let profile = document.getElementById('profile-model')
         let header = document.getElementById('model-header')

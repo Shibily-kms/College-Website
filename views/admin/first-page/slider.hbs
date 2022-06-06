@@ -66,12 +66,22 @@
     <div class="model-border" id="profile-Div">
         <div class="edit-slider" id="edit-slider">
             <div class="model">
+
                 <div class="header">
                     <h4>Edit slider</h4>
                     <i title="Close" class="bi bi-x-circle" onclick="closeModel(id)"></i>
                 </div>
                 <div class="content">
                     <form action="/admin/first-pege/slider/edit-slider" method="post" enctype="multipart/form-data">
+                        {{!-- Info Bar --}}
+                        <div class="info-bar">
+                            <div class="col1">
+                                <h5 style="font-weight: normal;"><i class="bi bi-info-circle-fill"></i></i>
+                                    Choose <b>68 : 25</b> aspect ratio images for the better experience
+                                </h5>
+                            </div>
+
+                        </div>
                         <div class="image">
                             <img id="slider-image" src="" alt="slider">
                             <div data-title="Choose image" class="admin-edit">

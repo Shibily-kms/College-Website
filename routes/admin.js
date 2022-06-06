@@ -37,18 +37,19 @@ router.get('/', verifyAdminLogin, async (req, res, next) => {
   let MessageCount = await adminHelpers.getMessageCount();
   let VisiterCount = await adminHelpers.getVisiterCount();
   let SubscriberCount = await adminHelpers.getSubscriberCount();
+  let adminCount = await adminHelpers.getAdminLogCount();
   
-  console.log(VisiterCount);
+
   if (req.session.Success) {
     res.render('admin/home', {
-      title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, "Success": req.session.Success, activation, DayBar, StatusFrame
-      , MessageCount, VisiterCount, SubscriberCount
+      title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, "Success": req.session.Success, activation, DayBar, StatusFrame,
+       MessageCount, VisiterCount, SubscriberCount, adminCount
     })
     req.session.Success = false
   } else {
     res.render('admin/home', {
       title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, activation, DayBar, StatusFrame, MessageCount, VisiterCount,
-      SubscriberCount
+      SubscriberCount, adminCount
     })
   }
 });
@@ -57,7 +58,7 @@ router.post('/activation-site', (req, res) => {
   activeHelpers.activateSite().then((response) => {
     res.json(response)
   })
-})
+});
 
 
 // signin and singout
@@ -75,7 +76,8 @@ router.get('/signin', (req, res) => {
   } else {
     res.render('admin/signin', { title: 'Admin SignIn', nsaWebDarkTheme })
   }
-})
+});
+
 router.post('/signin', (req, res) => {
   const detector = new DeviceDetector;
   const deviceInfo = detector.detect(req.useragent.source);
@@ -1256,7 +1258,7 @@ router.get('/frame/add-frame-image', verifyAdminLogin, (req, res) => {
   var nsaWebDarkTheme = req.session.nsaWebDarkTheme
   let admin = req.session.NSAWEBADMIN
   res.render('admin/updates/add-frame-image', { title: 'Admin panel', nsaWebDarkTheme, admin, sideHeader: true, })
-})
+});
 
 
 
@@ -1343,7 +1345,7 @@ router.post('/change-admin-network', (req, res) => {
     res.json()
   })
 
-})
+});
 
 
 // More

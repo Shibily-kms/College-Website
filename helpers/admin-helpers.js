@@ -16,10 +16,7 @@ module.exports = {
     authAdminLog: (body, deviceInfo) => {
         return new Promise(async (resolve, reject) => {
             let response = []
-            // let proAdminAuth = {
-            //     EmailId: "admin@nsaonline.in",
-            //     Password: "$2b$10$Uf7AtQ19KCRcfbDgAu3p5OBQEGrPiwSxCgtTNYQV0P/AzADiXV9TG"
-            // }
+           
             let Admin = await db.get().collection(collection.AUTH_COLLECTIONS).findOne({ EmailId: body.EmailId })
             if (Admin) {
                 bcrypt.compare(body.Password, Admin.Password).then(async (result) => {
@@ -647,7 +644,7 @@ module.exports = {
         })
     },
 
-    // HOme
+    // Home
 
     getTop4Frame: () => {
         return new Promise(async (resolve, reject) => {
@@ -685,7 +682,7 @@ module.exports = {
             } else if (Messages < 100000) {
                 const firstNum = String(Messages).slice(0, 2);
                 const SecondNum = String(Messages)[2];
-                console.log(SecondNum);
+               
                 if (SecondNum == "0") {
                     resolve(firstNum + "K")
                 } else {
@@ -695,7 +692,7 @@ module.exports = {
             } else if (Messages < 1000000) {
                 const firstNum = String(Messages).slice(0, 3);
                 const SecondNum = String(Messages)[3];
-                console.log(SecondNum);
+                
                 if (SecondNum == "0") {
                     resolve(firstNum + "K")
                 } else {
@@ -705,7 +702,7 @@ module.exports = {
             } else if (Messages < 10000000) {
                 const firstNum = String(Messages)[0];
                 const SecondNum = String(Messages)[1];
-                console.log(SecondNum);
+               
                 if (SecondNum == "0") {
                     resolve(firstNum + "M")
                 } else {
@@ -739,7 +736,7 @@ module.exports = {
                 // Week
                 var days = 7; // 7 Day
                 var last = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
-                console.log(last, 'last');
+        
                 if (last < allSubscriber[i].Time) {
                     WeekCount = WeekCount + allSubscriber[i].Count
                 }
@@ -771,7 +768,7 @@ module.exports = {
             } else if (TotalCount < 100000) {
                 const firstNum = String(TotalCount).slice(0, 2);
                 const SecondNum = String(TotalCount)[2];
-                console.log(SecondNum);
+         
                 if (SecondNum == "0") {
                     MillionView = firstNum + "K"
                 } else {
@@ -781,7 +778,7 @@ module.exports = {
             } else if (TotalCount < 1000000) {
                 const firstNum = String(TotalCount).slice(0, 3);
                 const SecondNum = String(TotalCount)[3];
-                console.log(SecondNum);
+               
                 if (SecondNum == "0") {
                     MillionView = firstNum + "K"
                 } else {
@@ -791,7 +788,7 @@ module.exports = {
             } else if (TotalCount < 10000000) {
                 const firstNum = String(TotalCount)[0];
                 const SecondNum = String(TotalCount)[1];
-                console.log(SecondNum);
+              
                 if (SecondNum == "0") {
                     MillionView = firstNum + "M"
                 } else {
@@ -834,7 +831,7 @@ module.exports = {
                 // Week
                 var days = 7; // 7 Day
                 var last = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
-                console.log(last, 'last');
+          
                 if (last < allSubscriber[i].Time) {
                     WeekCount = WeekCount + 1
                 }
@@ -866,7 +863,7 @@ module.exports = {
             } else if (TotalCount < 100000) {
                 const firstNum = String(TotalCount).slice(0, 2);
                 const SecondNum = String(TotalCount)[2];
-                console.log(SecondNum);
+           
                 if (SecondNum == "0") {
                     MillionView = firstNum + "K"
                 } else {
@@ -876,7 +873,7 @@ module.exports = {
             } else if (TotalCount < 1000000) {
                 const firstNum = String(TotalCount).slice(0, 3);
                 const SecondNum = String(TotalCount)[3];
-                console.log(SecondNum);
+             
                 if (SecondNum == "0") {
                     MillionView = firstNum + "K"
                 } else {
@@ -886,7 +883,7 @@ module.exports = {
             } else if (TotalCount < 10000000) {
                 const firstNum = String(TotalCount)[0];
                 const SecondNum = String(TotalCount)[1];
-                console.log(SecondNum);
+              
                 if (SecondNum == "0") {
                     MillionView = firstNum + "M"
                 } else {
@@ -973,6 +970,13 @@ module.exports = {
             })
         })
     },
+    getAdminLogCount:()=>{
+        return new Promise(async(resolve, reject) => { 
+            let admin = await db.get().collection(collection.ADMIN_LOG_COLLECTION).find().toArray()
+            let count = admin.length
+            resolve(count)
+         })
+    }
 
    
 

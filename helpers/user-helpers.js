@@ -235,7 +235,7 @@ module.exports = {
                         break;
                 }
             }
-            // response.Gallery = Gallery
+           
             response.Group1 = Group1
             response.Group2 = Group2
             response.Group3 = Group3
