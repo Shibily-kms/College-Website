@@ -169,7 +169,13 @@ function deleteProfile(Id) {
     
 }
 
+// Save loading
 
+function saveLoading(){
+    let btn = document.getElementById('saveBtn')
+    let load = document.getElementById('saveLoader')
+   load.style.display = 'block'
+}
 
 
 

@@ -148,6 +148,9 @@
 .four-tab>:nth-child(1) .item-boarder .row-1 h2  {
     color: rgb(11, 131, 0); 
 }
+.four-tab>:nth-child(1) .item-boarder .row-1 h2 i  {
+    color: rgb(11, 131, 0, .400); 
+}
 .four-tab>:nth-child(2) .item-boarder .row-1 h2  {
     color: rgb(0, 92, 153); 
 }

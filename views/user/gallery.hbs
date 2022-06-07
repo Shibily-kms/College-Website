@@ -7,12 +7,12 @@
     {{!-- Gallery --}}
 
     <div class="gallery {{#if adminHere}} edit-boarder {{/if}}">
-        {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/frame"
+        {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/gallery"
             target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
         <div class="section">
             {{#each Gallery.Group1}}
             <div class="item">
-                <img src="/images/gallery/{{this.Id}}.jpg" alt="Image" onclick="zoomImage('{{this.Id}}')"
+                <img src="/images/gallery/{{this.Id}}.jpg" alt="{{this.Title}}" title="{{this.Title}}" onclick="zoomImage('{{this.Id}}')"
                     onclick="zoomImage('{{this.Id}}')">
                 <div class="gallery-overly">
                     <h5 id="title{{this.Id}}">{{this.Title}}</h5>
@@ -24,7 +24,7 @@
         <div class="section">
             {{#each Gallery.Group2}}
             <div class="item">
-                <img src="/images/gallery/{{this.Id}}.jpg" alt="Image" onclick="zoomImage('{{this.Id}}')">
+                <img src="/images/gallery/{{this.Id}}.jpg" alt="{{this.Title}}" title="{{this.Title}}" onclick="zoomImage('{{this.Id}}')">
                 <div class="gallery-overly">
                     <h5 id="title{{this.Id}}">{{this.Title}}</h5>
                     <p id="description{{this.Id}}" hidden>{{this.Description}}</p>
@@ -35,7 +35,7 @@
         <div class="section">
             {{#each Gallery.Group3}}
             <div class="item">
-                <img src="/images/gallery/{{this.Id}}.jpg" alt="Image" onclick="zoomImage('{{this.Id}}')">
+                <img src="/images/gallery/{{this.Id}}.jpg" alt="{{this.Title}}" title="{{this.Title}}" onclick="zoomImage('{{this.Id}}')">
                 <div class="gallery-overly">
                     <h5 id="title{{this.Id}}">{{this.Title}}</h5>
                     <p id="description{{this.Id}}" hidden>{{this.Description}}</p>
@@ -46,7 +46,7 @@
         <div class="section">
             {{#each Gallery.Group4}}
             <div class="item">
-                <img src="/images/gallery/{{this.Id}}.jpg" alt="Image" onclick="zoomImage('{{this.Id}}')">
+                <img src="/images/gallery/{{this.Id}}.jpg" alt="{{this.Title}}" title="{{this.Title}}" onclick="zoomImage('{{this.Id}}')">
                 <div class="gallery-overly">
                     <h5 id="title{{this.Id}}">{{this.Title}}</h5>
                     <p id="description{{this.Id}}" hidden>{{this.Description}}</p>

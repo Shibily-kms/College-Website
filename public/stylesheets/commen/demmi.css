@@ -414,6 +414,8 @@ cursor:auto;
 .model .footer .save {
     background-color: var(--color-green-1);
     color: var(--color-white);
+    display: flex;
+    align-items: center;
     
 }
 .model .footer .cancel {
@@ -503,3 +505,26 @@ cursor:auto;
     align-items: center;
     color: var(--color-info);
 }
+
+/* Save loading */
+.saveLoader {
+    border: 3px solid #f3f3f31a;
+    border-radius: 50%;
+    border-top: 3px solid rgb(255, 255, 255);
+    border-bottom: 3px solid rgb(255, 255, 255);
+    width: 15px;
+    height: 15px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin-right: 5px;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
