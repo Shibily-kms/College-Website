@@ -270,7 +270,7 @@ router.get("/gallery", checkVisit, async (req, res) => {
     })
 });
 
-router.get("/contact-us", checkVisit, async (req, res) => {
+router.get("/user-message", checkVisit, async (req, res) => {
     var nsaWebDarkTheme = req.session.nsaWebDarkTheme
     let adminHere = req.session.NSAWEBADMIN
     let Type2 = "Nsa"
@@ -288,7 +288,7 @@ router.get("/contact-us", checkVisit, async (req, res) => {
 router.post("/user-message", checkVisit, async (req, res) => {
     userHelpers.sendMessage(req.body).then(() => {
         req.session.Success = "Your message was sended"
-        res.redirect('/contact-us')
+        res.redirect('/user-message')
     })
 
 });
