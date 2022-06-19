@@ -175,6 +175,9 @@
 .admin-frame .axis-inputs .col input {
     width: 100%;
 }
+.admin-frame .axis-inputs .col select {
+    width: 100%;
+}
 
 .admin-frame h5 {
     font-weight: 600;

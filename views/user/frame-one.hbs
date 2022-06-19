@@ -7,13 +7,13 @@
 
         {{!-- Section 1 --}}
         <div id="section1">
-            <input type="text" name="Name" value="" id="NameInput" class="text-input">
+            <input maxlength="15" type="text" name="Name" value="" id="NameInput" class="text-input" placeholder="Enter Name">
 
             <div id="upload-Div">
                 <button class="btn-lg" id="upload-btn" data-title="Choose image" onclick="chooseImage()"><i
                         class="bi bi-camera-fill"></i>
-                    Upload image</button>
-                <input type="file" onchange="HideSection1()" hidden accept="image/jpg, image/jpeg" name="Profile"
+                    Choose image</button>
+                <input  type="file" onchange="HideSection1()"  hidden accept="image/jpg, image/jpeg" name="Profile"
                     id="upload-file">
             </div>
         </div>
@@ -27,7 +27,7 @@
             </div>
             <input type="number" hidden id="RatioW" value="{{OneFrame.RW}}">
             <input type="number" hidden id="RatioH" value="{{OneFrame.RH}}">
-            <button id="" onclick="clickSave()" class="btn-lg hide save-button1">Save</button>
+            <button id="" onclick="clickSave()" class="btn-lg hide save-button1"><i class="bi bi-crop" style="font-size:20px ; margin-right:10px;"></i> Crop</button>
         </div>
 
 
@@ -43,6 +43,7 @@
                 <input type="number" value="{{OneFrame.NW}}" id="NameNW">
                 <input type="number" value="{{OneFrame.NH}}" id="NameNH">
                 <input type="number" value="{{OneFrame.NS}}" id="NameNS">
+                <input type="text" value="{{OneFrame.NC}}" id="NameNC">
                 <input type="text" value="{{OneFrame.Id}}" id="FrameId">
             </div>
             <!--rightbox-->
@@ -57,6 +58,7 @@
             </div>
 
             <a href="" class="btn-lg download hide downlaod-button"><i class="bi bi-download"></i> Download</a>
+             <button style="margin-top: 10px; width:100%;" onclick="location.reload();" class="btn-lg hover-fill-rose "> Create New</button>
 
         </div>
     </div>
@@ -134,9 +136,10 @@
             NameNW = document.getElementById('NameNW').value,
             NameNH = document.getElementById('NameNH').value,
             NameNS = document.getElementById('NameNS').value + "px Rubik",
+            NameNC = document.getElementById('NameNC').value,
             NameInput = document.getElementById('NameInput').value
-        TextWight = parseInt(NameNX) + (parseInt(NameNW) / 2)
-        TextHigth = parseInt(NameNY) + (parseInt(NameNH) / 2) + 35
+        TextWight = parseInt(NameNX) + (parseInt(NameNW) /2)
+        TextHigth = parseInt(NameNY) + (parseInt(NameNH) ) 
         let Status = document.getElementById('status')
 
         let img = new Image;
@@ -149,13 +152,14 @@
             context.drawImage(frime, 0, 0)
             context.font = NameNS
             context.textAlign = "center";
+            context.fillStyle = NameNC;
             context.fillText(NameInput, TextWight, TextHigth, NameNW, NameNH)
             context.globalAlpha = 1.0;
 
             let canvas = document.getElementById('mergedImage')
             var image = canvas.toDataURL("image/jpg");
-
-            dwn.download = "imagename.png";
+            let thisTime = new Date().getTime()
+            dwn.download = "nsaonline-frame-"+thisTime+".jpg";
             dwn.setAttribute("href", image);
             Status.innerHTML = "Poster creation success, Download Below "
 

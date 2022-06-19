@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="add-button-top" onclick="openmodelFrame('new')">
-        <button type="button" class="btn-lg"><i class="bi bi-plus-circle-dotted" ></i>
+        <button type="button" class="btn-lg"><i class="bi bi-plus-circle-dotted"></i>
             Add frame</button>
     </div>
     <div class="edit-profile frame-edit">
@@ -31,6 +31,7 @@
             <p id="NW{{this.Id}}" hidden>{{this.NW}}</p>
             <p id="NH{{this.Id}}" hidden>{{this.NH}}</p>
             <p id="NS{{this.Id}}" hidden>{{this.NS}}</p>
+            <p id="NC{{this.Id}}" hidden>{{this.NC}}</p>
             <p id="Hide{{this.Id}}" hidden>{{this.Hide}}</p>
 
             <div class="profile-overly " style="height:150px ; top: 50px;">
@@ -84,14 +85,14 @@
                 </div>
                 <div class="content ">
                     {{!-- Info Bar --}}
-                        <div class="info-bar">
-                            <div class="col1">
-                                <h5 style="font-weight: normal;"><i class="bi bi-info-circle-fill"></i></i>
-                                    Choose under <b>1 MB</b> images 
-                                </h5>
-                            </div>
-
+                    <div class="info-bar">
+                        <div class="col1">
+                            <h5 style="font-weight: normal;"><i class="bi bi-info-circle-fill"></i></i>
+                                Choose under <b>1 MB</b> images
+                            </h5>
                         </div>
+
+                    </div>
                     <form action="/admin/frame" method="post" enctype="multipart/form-data">
                         <div class="image">
                             <div class="">
@@ -153,45 +154,58 @@
 
                             {{!-- Name axis --}}
                             <h5>Name input Detials</h5>
-                            
+
                             <div class="axis-inputs">
                                 <div class="col">
                                     <label for="">X axis</label>
-                                    <input class="text-input" type="number" name="NX" id="NX" 
-                                        placeholder="Pixel size" required>
+                                    <input class="text-input" type="number" name="NX" id="NX" placeholder="Pixel size"
+                                        required>
                                 </div>
                                 <div class="col">
                                     <label for="">Y axis</label>
-                                    <input class="text-input" type="number" name="NY" id="NY" 
-                                        placeholder="Pixel size" required>
+                                    <input class="text-input" type="number" name="NY" id="NY" placeholder="Pixel size"
+                                        required>
                                 </div>
                             </div>
                             <div class="axis-inputs">
                                 <div class="col">
                                     <label for="">Width</label>
-                                    <input class="text-input" type="number" name="NW" id="NW" 
-                                        placeholder="Pixel size" required>
+                                    <input class="text-input" type="number" name="NW" id="NW" placeholder="Pixel size"
+                                        required>
                                 </div>
                                 <div class="col">
                                     <label for="">Height</label>
-                                    <input class="text-input" type="number" name="NH" id="NH" 
-                                        placeholder="Pixel size" required>
+                                    <input class="text-input" type="number" name="NH" id="NH" placeholder="Pixel size"
+                                        required>
                                 </div>
                             </div>
                             <div class="axis-inputs">
                                 <div class="col">
                                     <label for="">Font size</label>
-                                    <input class="text-input" type="number" name="NS" id="NS" 
-                                        placeholder="Pixel size" required>
+                                    <input class="text-input" type="number" name="NS" id="NS" placeholder="Pixel size"
+                                        required>
                                 </div>
-                               
+                                <div class="col">
+                                    <label for="">Color</label>
+
+                                    <select class="text-input" id="NC" name="NC">
+                                        <option id="NC1" value="white">White</option>
+                                        <option id="NC2" value="black">Black</option>
+                                        <option id="NC3" value="yellow">Yellow</option>
+                                    </select>
+                                </div>
+
+
                             </div>
+
 
                         </div>
                 </div>
                 <div class="footer">
                     <button type="reset" class="btn-md cancel">Reset</button>
-                    <button type="submit" id="saveBtn"  class="btn-md save " onclick="saveLoading()"><div id="saveLoader" style="display: none;" class="saveLoader"></div> Save</button>
+                    <button type="submit" id="saveBtn" class="btn-md save " onclick="saveLoading()">
+                        <div id="saveLoader" style="display: none;" class="saveLoader"></div> Save
+                    </button>
                     </form>
                 </div>
             </div>
@@ -204,7 +218,7 @@
 <script>
 
     function openmodelFrame(id) {
-    
+
         let profileDiv = document.getElementById('profile-Div')
         let profile = document.getElementById('profile-model')
         let header = document.getElementById('model-header')
@@ -220,6 +234,9 @@
         let NWinput = document.getElementById('NW')
         let NHinput = document.getElementById('NH')
         let NSinput = document.getElementById('NS')
+        let NC1input = document.getElementById('NC1')
+        let NC2input = document.getElementById('NC2')
+        let NC3input = document.getElementById('NC3')
         let idInput = document.getElementById('slider-id')
 
         profileDiv.style.display = "flex"
@@ -235,8 +252,11 @@
             NXinput.value = ''
             NYinput.value = ''
             NWinput.value = ''
-            NHinput.value = '   '
-            NSinput.value = '   '
+            NHinput.value = ''
+            NSinput.value = ''
+            NC1input.selected = true;
+            NC2input.selected = false;
+            NC3input.selected = false;
             document.getElementById('frame-file1').value = ''
             document.getElementById('frame-file2').value = ''
             image.src = '/images/background/1.jpg'
@@ -252,6 +272,7 @@
             let NW = document.getElementById('NW' + id).innerHTML
             let NH = document.getElementById('NH' + id).innerHTML
             let NS = document.getElementById('NS' + id).innerHTML
+            let NC = document.getElementById('NC' + id).innerHTML
 
             header.innerHTML = "Update frame"
             image.src = '/images/frames/' + id + '-1.jpg'
@@ -267,6 +288,23 @@
             NHinput.value = NH
             NSinput.value = NS
             idInput.value = id
+            console.log(NC);
+            if (NC == "yellow") {
+            console.log("y");
+                NC1input.selected = false;
+                NC2input.selected = false;
+                NC3input.selected = true;
+            } else if (NC == "black") {
+            console.log("b");
+                NC1input.selected = false;
+                NC2input.selected = true;
+                NC3input.selected = false;
+            } else {
+            console.log("w");
+                NC1input.selected = true;
+                NC2input.selected = false;
+                NC3input.selected = false;
+            }
         }
     }
 
@@ -344,6 +382,7 @@
     function chooseImage1() {
         document.getElementById('frame-file1').click();
     }
+
     function chooseImage2() {
         document.getElementById('frame-file2').click();
     }
@@ -356,7 +395,7 @@
         var alertAudio = document.getElementById('alert-audio')
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
-           
+
             const maxFileSize = 1048576; // 1 MB
 
 
@@ -388,12 +427,12 @@
 
 <script>
     function copyLinkFrame(Id) {
-  
+
         /* Get the text field */
         let copyText = document.getElementById('copy-text' + Id);
         let copyDiv = document.getElementById('copy-btn-div' + Id);
         let copyIcon = document.getElementById('copy-btn-icon' + Id);
-       
+
 
         /* Select the text field */
         copyText.select();
@@ -403,13 +442,13 @@
         navigator.clipboard.writeText(copyText.value);
         copyDiv.innerHTML = "Copied!"
         copyIcon.className = "bi bi-clipboard-check"
-        
+
         const myTimeout = setTimeout(myGreeting, 5000);
 
         function myGreeting() {
             copyDiv.innerHTML = "Link"
             copyIcon.className = "bi bi-clipboard"
-        
+
         }
 
 

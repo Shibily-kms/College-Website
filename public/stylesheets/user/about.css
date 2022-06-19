@@ -27,19 +27,20 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     border: 1px solid var(--color-c-black-opacity-7);
-    cursor:zoom-in;
+    cursor: zoom-in;
 }
-.gallery>.section>.item:hover .gallery-overly{
+
+.gallery>.section>.item:hover .gallery-overly {
     opacity: 1;
     transition-property: transform, smooth;
 }
 
 .gallery-overly {
-    
+
     position: absolute;
     z-index: 2;
     bottom: 4px;
-    background-color: var(--color-c-black-opacity-7) ;
+    background-color: var(--color-c-black-opacity-7);
     border-radius: 0 0 10px 10px;
     width: 100%;
     text-align: center;
@@ -58,7 +59,7 @@
 
 /* Gallery One */
 
-.gallery-one{
+.gallery-one {
     background-color: var(--color-black-opacity-9);
     position: fixed;
     z-index: 14;
@@ -68,18 +69,20 @@
     height: 100vh;
     overflow: hidden;
     display: none;
-   
-    
+
+
 }
-.gallery-one .border{
+
+.gallery-one .border {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     cursor: zoom-out;
 }
-.gallery-one .border img{
-    
+
+.gallery-one .border img {
+
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -87,35 +90,39 @@
     -o-border-radius: 15px;
     max-height: 80vh;
     max-width: 90%;
-    
+
 }
-.gallery-one .border>div>div{
- 
-   display: flex;
-   justify-content: center;
- 
+
+.gallery-one .border>div>div {
+
+    display: flex;
+    justify-content: center;
+
 }
-.gallery-one .border h3{
+
+.gallery-one .border h3 {
     color: var(--color-rose-light-3);
     text-align: center;
     margin-top: 5px;
 }
 
-.gallery-one .border p{
+.gallery-one .border p {
     margin-top: 5px;
     color: var(--color-white);
     text-align: center;
     font-weight: normal;
     word-wrap: break-word;
-    
+
 }
-.gallery-one .icon{
-    
+
+.gallery-one .icon {
+
     position: absolute;
     top: 50px;
     right: 50px;
 }
-.gallery-one .icon i{
+
+.gallery-one .icon i {
     font-size: 30px;
     color: var(--color-white);
     z-index: 15;
@@ -124,7 +131,7 @@
 
 /* Contact us */
 
-.contact-us{
+.contact-us {
     display: flex;
     width: 100%;
     box-shadow: var(--shadow-c-white2);
@@ -135,43 +142,53 @@
     -o-border-radius: 15px 15px 0 0;
     padding: 10px;
 }
-.contact-us>div{
+
+.contact-us>div {
     width: 50%;
 }
-.contact-us .about hr{
+
+.contact-us .about hr {
     width: 95%;
     margin-left: 2%;
     border-color: var(--color-c-white-light-3);
 }
-.contact-us .about .header{
+
+.contact-us .about .header {
     display: flex;
     align-items: center;
     padding: 15px;
-   
+
 }
-.contact-us .about .header img{
+
+.contact-us .about .header img {
     width: 100px;
 }
-.contact-us .about .header div{
+
+.contact-us .about .header div {
     margin-left: 10px;
 }
-.contact-us .about .header div h3{
+
+.contact-us .about .header div h3 {
     color: var(--color-rose-light-3);
 }
-.contact-us .about .header div h5{
+
+.contact-us .about .header div h5 {
     font-weight: normal;
     color: var(--color-c-white-light-10);
 }
-.contact-us .about .links{
-   
+
+.contact-us .about .links {
+
     padding: 15px;
     position: relative;
 }
-.contact-us .about .links p i{
+
+.contact-us .about .links p i {
     font-size: 20px;
-    margin-right: 10px; 
+    margin-right: 10px;
     color: var(--color-c-black);
 }
+
 .contact-us .about .links p {
     margin-bottom: 5px;
     color: var(--color-c-black);
@@ -180,28 +197,45 @@
 }
 
 
-.contact-us .message{
+.contact-us .message {
     padding: 15px;
     border-left: 1px solid var(--color-c-white-light-3);
 }
-.contact-us .message form{
+
+.contact-us .message form {
     margin-top: 10px;
 }
-.contact-us .message input{
+
+.contact-us .message .text-input {
     width: 100%;
     margin-bottom: 20px;
 }
-.contact-us .message textarea{
+
+.contact-us .message textarea {
     min-height: 180px;
     max-height: 180px;
     max-width: 100%;
     min-width: 100%;
 }
-.contact-us .message button>i{
+
+.contact-us .message .submit-btn {
+   
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-us .message .submit-btn span {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.contact-us .message button>i {
     margin-right: 10px;
 }
-.contact-us .message button{
-    float: right;
+
+.contact-us .message button {
+
     background-color: var(--color-rose-light-1);
     color: var(--color-white);
     border-radius: 10px;
@@ -213,44 +247,48 @@
     transition-property: transform, smooth;
 }
 
-#google-map{
+#google-map {
     width: 100%;
     height: 300px;
 }
 
-.copyright{
+.copyright {
     display: flex;
     justify-content: space-between;
-   
+
 }
-.copyright h5{
+
+.copyright h5 {
     font-weight: normal;
     color: var(--color-c-black);
 }
 
 /* Subscribe */
 
-.subscribe-user{
+.subscribe-user {
     width: 100%;
     height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.subscribe-user .boarder{
+
+.subscribe-user .boarder {
     width: 600px;
-   
+
     text-align: center;
 }
-.subscribe-user .boarder h4{
+
+.subscribe-user .boarder h4 {
     color: var(--color-c-rose-yellow-light-1);
 }
 
-.subscribe-user .boarder .button-area input{
+.subscribe-user .boarder .button-area input {
     width: 300px;
     margin-top: 20px;
 }
-.subscribe-user .boarder .button-area button{
+
+.subscribe-user .boarder .button-area button {
     background-color: var(--color-rose-light-1);
     border-radius: 7px;
     -webkit-border-radius: 7px;

@@ -9,13 +9,20 @@
   <meta name="description" content="Official website for Noorul huda Students' Association (NSA). Under the Majma'a Sharee-ath & Arts College (Wafy), Kavanur - Areekode,
      You can evaluate the activities and services of our union through the website">
   <meta name="author" content="Noorul huda Students' Association (NSA)">
+  <meta name='designer' content='shibily muhammed'>
+  <meta name='url' content='http://www.nsaonline.in'>
   <meta name="keywords"
     content="nsaonline, noorul huda, noorul huda students association, nsa, student union, majmaa wafy college, majma'a sharee-ath and arts college, wafy college union,">
   <meta name="copyright" content="noorul huda sutudents association">
+  <meta http-equiv="refresh" content="3000">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-touch-fullscreen" content="yes">
+  <meta name='og:title' content='NSA Online'>
+  <meta name='og:site_name' content='NSA ONLINE'>
+  <meta name='og:description' content="Official website for Noorul huda Students' Association (NSA). Under the Majma'a Sharee-ath & Arts College (Wafy), Kavanur - Areekode,
+     You can evaluate the activities and services of our union through the website" dat>
 
   {{!-- Icon , styleSheet and Javascripts --}}
   <link rel="icon" href="/images/icons/favicon.png">
@@ -182,14 +189,21 @@
   {{>user-footer}}
   {{/if}}
   {{!-- Page loader --}}
-  <div id="loader"  class="loading-gif"> 
-     <img src="/images/gif/loading-2.gif" alt="">
+  <div id="loader" class="page-loading-gif">
+    <div class="page-loader">
+      <img src="/images/icons/nsa-online-n-b-150.png" alt=""><br>
+      <img src="/images/gif/loading-3.gif" alt="">
+    </div>
+
+
+
   </div>
   <script>
     document.onreadystatechange = function () {
       if (document.readyState !== "complete") {
         document.querySelector("body").style.visibility = "hidden";
         document.querySelector("#loader").style.visibility = "visible";
+        document.querySelector("#loader").style.display = "flex";
       } else {
         document.querySelector("#loader").style.display = "none";
         document.querySelector("body").style.visibility = "visible";

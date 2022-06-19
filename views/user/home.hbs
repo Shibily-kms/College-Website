@@ -8,37 +8,35 @@
     <div class="slider">
       <div class="slide active">
         <img src="/images/slider/{{Slides.[0].Id}}.jpg" alt="">
-        <div class="info">
+        <div id="slides{{Slides.[0].Id}}" class="info">
           <h2>{{Slides.[0].Header}}</h2>
           <p>{{Slides.[0].Content}}</p>
-
         </div>
       </div>
       <div class="slide">
         <img src="/images/slider/{{Slides.[1].Id}}.jpg" alt="">
-        <div class="info">
+        <div id="slides{{Slides.[1].Id}}" class="info">
           <h2>{{Slides.[1].Header}}</h2>
           <p>{{Slides.[1].Content}}</p>
-
         </div>
       </div>
       <div class="slide">
         <img src="/images/slider/{{Slides.[2].Id}}.jpg" alt="">
-        <div class="info">
+        <div id="slides{{Slides.[2].Id}}" class="info">
           <h2>{{Slides.[2].Header}}</h2>
           <p>{{Slides.[2].Content}}</p>
         </div>
       </div>
       <div class="slide">
         <img src="/images/slider/{{Slides.[3].Id}}.jpg" alt="">
-        <div class="info">
+        <div id="slides{{Slides.[3].Id}}" class="info">
           <h2>{{Slides.[3].Header}}</h2>
           <p>{{Slides.[3].Content}}</p>
         </div>
       </div>
       <div class="slide">
         <img src="/images/slider/{{Slides.[4].Id}}.jpg" alt="">
-        <div class="info">
+        <div id="slides{{Slides.[4].Id}}" class="info">
           <h2>{{Slides.[4].Header}}</h2>
           <p>{{Slides.[4].Content}}</p>
         </div>
@@ -60,7 +58,7 @@
 </section>
 <section class="home-container" style="">
   {{!-- Day bar --}}
-{{#if DayBar.Id}}
+  {{#if DayBar.Id}}
   <div class="day-bar-div">
     <div class="day-bar day-{{DayBar.Color}}">
       <div class="gif">
@@ -265,5 +263,42 @@
   let majma = document.getElementById('Majma-Header').innerHTML
   const fir = majma.split(' ').shift();
   document.getElementById("Majma-Header").innerHTML = majma.replace(fir, `<span class ="first-word">` + fir + `</span>`);
+
+</script>
+
+<script>
+  let S1 = document.getElementById("slidesSLID01");
+  let S2 = document.getElementById("slidesSLID02");
+  let S3 = document.getElementById("slidesSLID03");
+  let S4 = document.getElementById("slidesSLID04");
+  let S5 = document.getElementById("slidesSLID05");
+  let S1H = document.querySelector('#slidesSLID01 :nth-child(1)')
+  let S1P = document.querySelector('#slidesSLID01 :nth-child(2)')
+  let S2H = document.querySelector('#slidesSLID02 :nth-child(1)')
+  let S2P = document.querySelector('#slidesSLID02 :nth-child(2)')
+  let S3H = document.querySelector('#slidesSLID03 :nth-child(1)')
+  let S3P = document.querySelector('#slidesSLID03 :nth-child(2)')
+  let S4H = document.querySelector('#slidesSLID04 :nth-child(1)')
+  let S4P = document.querySelector('#slidesSLID04 :nth-child(2)')
+  let S5H = document.querySelector('#slidesSLID05 :nth-child(1)')
+  let S5P = document.querySelector('#slidesSLID05 :nth-child(2)')
+
+  if(S1H.innerHTML == "" && S1P.innerHTML == ""){
+    S1.style.display = 'none'
+  }
+  if(S2H.innerHTML == "" && S2P.innerHTML == ""){
+    S2.style.display = 'none'
+  }
+  if(S3H.innerHTML == "" && S3P.innerHTML == ""){
+    S3.style.display = 'none'
+  }
+  if(S4H.innerHTML == "" && S4P.innerHTML == ""){
+    S4.style.display = 'none'
+  }
+  if(S5H.innerHTML == "" && S5P.innerHTML == ""){
+    S5.style.display = 'none'
+  }
+
+
 
 </script>

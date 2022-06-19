@@ -249,10 +249,11 @@ module.exports = {
 
     sendMessage: (body) => {
         return new Promise((resolve, reject) => {
+            body.Time = new Date ();
             db.get().collection(collection.MESSAGE_COLLECTION).insertOne(body).then(() => {
                 resolve()
             })
-        })
+        })  
     },
 
     getAllFrames: () => {

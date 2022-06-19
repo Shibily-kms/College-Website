@@ -9,53 +9,75 @@
             <div class="header">
                 <img src="/images/icons/nsa-icon.png" title="nsa logo" alt="nsa logo">
                 <div>
-                <h3>NOORUL HUDA STUDENTS ASSOCIATION (NSA)</h3>
-                <h5>Under : Majma'a Shree-ath & Arts College, Kavanur </h5>
-                <h5>Rahmath nagar, Kavanur P.O, Areekode, Malappuram Dt.</h5>
+                    <h3>NOORUL HUDA STUDENTS ASSOCIATION (NSA)</h3>
+                    <h5>Under : Majma'a Shree-ath & Arts College, Kavanur </h5>
+                    <h5>Rahmath nagar, Kavanur P.O, Areekode, Malappuram Dt.</h5>
                 </div>
             </div>
             <hr>
             <div class="links {{#if adminHere}} edit-boarder {{/if}}">
                 {{#if adminHere}} <a class="admin-edit edit-icon-content" data-title="Edit" href="/admin/social-links"
-            target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
+                    target="_blank"><i class="bi bi-pencil-fill"></i></a> {{/if}}
                 {{#if NsaLinks.Discord}}
-               <a href="{{NsaLinks.Discord}}"><p><i class="bi bi-discord"></i>{{NsaLinks.NameDiscord}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Discord}}">
+                    <p><i class="bi bi-discord"></i>{{NsaLinks.NameDiscord}}</p>
+                </a>
+                {{/if}}
 
                 {{#if NsaLinks.Facebook}}
-               <a href="{{NsaLinks.Facebook}}"><p><i class="bi bi-facebook"></i>{{NsaLinks.NameFacebook}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Facebook}}">
+                    <p><i class="bi bi-facebook"></i>{{NsaLinks.NameFacebook}}</p>
+                </a>
+                {{/if}}
 
                 {{#if NsaLinks.Github}}
-               <a href="{{NsaLinks.Github}}"><p><i class="bi bi-github"></i>{{NsaLinks.NameGithub}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Github}}">
+                    <p><i class="bi bi-github"></i>{{NsaLinks.NameGithub}}</p>
+                </a>
+                {{/if}}
                 {{#if NsaLinks.Website}}
-               <a href="{{NsaLinks.Website}}"><p><i class="bi bi-globe"></i>{{NsaLinks.NameWebsite}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Website}}">
+                    <p><i class="bi bi-globe"></i>{{NsaLinks.NameWebsite}}</p>
+                </a>
+                {{/if}}
                 {{#if NsaLinks.Instagram}}
-               <a href="{{NsaLinks.Instagram}}"><p><i class="bi bi-instagram"></i>{{NsaLinks.NameInstagram}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Instagram}}">
+                    <p><i class="bi bi-instagram"></i>{{NsaLinks.NameInstagram}}</p>
+                </a>
+                {{/if}}
                 {{#if NsaLinks.Linkedin}}
-               <a href="{{NsaLinks.Linkedin}}"><p><i class="bi bi-linkedin"></i>{{NsaLinks.NameLinkedin}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Linkedin}}">
+                    <p><i class="bi bi-linkedin"></i>{{NsaLinks.NameLinkedin}}</p>
+                </a>
+                {{/if}}
                 {{#if NsaLinks.Messenger}}
-               <a href="{{NsaLinks.Messenger}}"><p><i class="bi bi-messenger"></i>{{NsaLinks.NameMessenger}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Messenger}}">
+                    <p><i class="bi bi-messenger"></i>{{NsaLinks.NameMessenger}}</p>
+                </a>
+                {{/if}}
                 {{#if NsaLinks.Telegram}}
-               <a href="{{NsaLinks.Telegram}}"><p><i class="bi bi-telegram"></i>{{NsaLinks.NameTelegram}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Telegram}}">
+                    <p><i class="bi bi-telegram"></i>{{NsaLinks.NameTelegram}}</p>
+                </a>
+                {{/if}}
                 {{#if NsaLinks.Tiktok}}
-               <a href="{{NsaLinks.Tiktok}}"><p><i class="bi bi-tiktok"></i>{{NsaLinks.NameTiktok}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Tiktok}}">
+                    <p><i class="bi bi-tiktok"></i>{{NsaLinks.NameTiktok}}</p>
+                </a>
+                {{/if}}
                 {{#if NsaLinks.Twitter}}
-               <a href="{{NsaLinks.Twitter}}"><p><i class="bi bi-twitter"></i>{{NsaLinks.NameTwitter}}</p></a>
-               {{/if}}
+                <a href="{{NsaLinks.Twitter}}">
+                    <p><i class="bi bi-twitter"></i>{{NsaLinks.NameTwitter}}</p>
+                </a>
+                {{/if}}
                 {{#if NsaLinks.Youtube}}
-               <a href="{{NsaLinks.Youtube}}"><p><i class="bi bi-youtube"></i>{{NsaLinks.NameYoutube}}</p></a>
-               {{/if}}
-               
-               
-               
+                <a href="{{NsaLinks.Youtube}}">
+                    <p><i class="bi bi-youtube"></i>{{NsaLinks.NameYoutube}}</p>
+                </a>
+                {{/if}}
+
+
+
             </div>
         </div>
         <div class="message">
@@ -64,21 +86,27 @@
                 <input class="text-input" type="text" name="Name" placeholder="Full name " required>
                 <input class="text-input" type="email" name="Email" placeholder="E-mail address " required>
                 <input class="text-input" type="text" name="Subject" placeholder="Header" required>
-                <textarea class="text-input" name="Message" id="" cols="30"  rows="10" placeholder="Message..." required></textarea>
-                <div>
-                <button class="btn-lg"><i class="bi bi-send-fill"></i> Send</button>
+                <textarea class="text-input" name="Message" id="" cols="30" rows="10" placeholder="Message..."
+                    required></textarea>
+                <div class="submit-btn">
+                    <span>
+                        <input id="remember" type="checkbox" onclick="alert('Enter OK to Continue')"  aria-label="paid 500 rupees" required>
+                        <label style="margin-left:10px ;" for="remember">I'm not a robot</label>
+                    </span>
+                    <button class="btn-lg"><i class="bi bi-send-fill"></i> Send</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <div style="width: 100%"><iframe id="google-map"  frameborder="0" scrolling="no" marginheight="0"
-            marginwidth="0"
+    <div style="width: 100%"><iframe id="google-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
             src="https://maps.google.com/maps?width=720&amp;height=600&amp;hl=en&amp;q=Noorul%20huda%20students%20association%20,kavanur+(Noorul%20huda%20students%20association)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
                 href="https://www.gps.ie/wearable-gps/">Kids wearables</a></iframe>
     </div>
     <div class="copyright">
         <h5>Copyright © 2021 - <span id="thisYear2"> </span> NSAOnline. All Rights Reserved</h5>
-        <a href="https://wa.me/+919567148324" target="_blank"><h5>Created by : IRIS FAMILY (Batch 2014 - 2022)</h5></a>
+        <a data-title="IRIS FAMILY (Batch 2014 - 2022)" href="https://wa.me/+919567148324" target="_blank">
+            <h5>Powered by | IRIS Union</h5>
+        </a>
     </div>
 </section>

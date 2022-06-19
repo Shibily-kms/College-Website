@@ -43,6 +43,7 @@ router.get('/', checkVisit, async (req, res, next) => {
     let Id2 = "PRGPH02"
     var TheMajma = await userHelpers.getNormalPara(Id2);
     var Slides = await userHelpers.getFullSlide();
+    console.log(Slides);
     var Links = await userHelpers.getFLinks();
     let FourNews = await userHelpers.getlatestNews();
     let DayBar = await userHelpers.getTodayBar();
@@ -325,10 +326,10 @@ router.post("/subscribe-footer", async (req, res) => {
     userHelpers.SubscribeAction(req.body).then((response) => {
         if (response.Error) {
             req.session.Error = response.Error
-            res.redirect('/')
+            res.redirect('/#subscribe')
         } else if (response.Success) {
             req.session.Success = response.Success
-            res.redirect('/')
+            res.redirect('/#subscribe')
 
         }
     })

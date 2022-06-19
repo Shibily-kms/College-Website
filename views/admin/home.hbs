@@ -155,7 +155,8 @@
                 <div class="list">
                     {{#if DayBar.Title}}
                     <div style="justify-content : center; height: 130px; align-items:center;" class="item">
-                        <h5 style="color:var(--color-c-black); font-weight: normal; text-align:center;">{{DayBar.Title}}</h5>
+                        <h5 style="color:var(--color-c-black); font-weight: normal; text-align:center;">{{DayBar.Title}}
+                        </h5>
                     </div>
                     {{else}}
                     <div style="justify-content : center; height: 130px; align-items:center;" class="item">
@@ -166,8 +167,16 @@
                 </div>
             </div>
         </div>
-        
-      
+        <div class="admin-footer">
+            <div class="copyright">
+                <h5>Copyright © 2021 - <span id="thisYear"> </span> NSAOnline. All Rights Reserved</h5>
+                <a title="IRIS FAMILY (Batch 2014 - 2022)" href="https://wa.me/+919567148324" target="_blank">
+                    <h5>Powered by | IRIS Union</h5>
+                </a>
+            </div>
+        </div>
+
+
     </div>
     <div id="loading-gif" style="display: none;" class="loading-gif">
         <img src="/images/gif/loading-2.gif" alt="">
@@ -186,15 +195,29 @@
 </script>
 
 
-
-
-
 <script>
     function activation() {
         let button = document.getElementById('active-button')
         let gif = document.getElementById('loading-gif')
         gif.style.display = 'flex'
         button.innerHTML = "wait"
+        $.ajax({
+            url: '/admin/activation-site',
+            data: {
 
+            },
+            method: 'post',
+            success: (response) => {
+                gif.style.display = 'none'
+                button.innerHTML = "Activated"
+            }
+        })
     }
+</script>
+
+<script>
+    const d = new Date();
+    let year = d.getFullYear();
+    document.getElementById('thisYear').innerHTML = year;
+   
 </script>

@@ -530,7 +530,7 @@ module.exports = {
                 body.Count = null
 
                 db.get().collection(collection.FRAME_COLLECTION).insertOne(body).then(() => {
-                    response.Success = "New frame succesfully created"
+                    response.Success = "New frame created, Check Your Values on Demo"
                     response.Id = body.Id
                     resolve(response)
                 })
@@ -550,11 +550,12 @@ module.exports = {
                         NW: body.NW,
                         NH: body.NH,
                         NS: body.NS,
+                        NC: body.NC,
                         RW: Imageratio.W,
                         RH: Imageratio.H
                     }
                 }).then(() => {
-                    response.Success = "This Frame succesfully updated"
+                    response.Success = "This Frame updated, Check Your Values on Demo"
                     response.Id = body.Id
                     resolve(response)
                 })
